@@ -10,7 +10,6 @@ export class AskQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //comment in ask-question
   }
 
 }
