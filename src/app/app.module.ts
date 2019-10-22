@@ -1,5 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +13,12 @@ import { UserNavComponent } from './user-nav/user-nav.component';
 import { ExpertNavComponent } from './expert-nav/expert-nav.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { ExpertPageComponent } from './expert-page/expert-page.component';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
+    BrowserModule,
     AppComponent,
     LoginPageComponent,
     QuestionListComponent,
