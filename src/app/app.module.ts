@@ -18,10 +18,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {PostsComponent} from './posts/posts.component'
+import {PostFormComponent} from './post-form/post-form.component';
 
 @NgModule({
   declarations: [
-    BrowserModule,
     AppComponent,
     LoginPageComponent,
     QuestionListComponent,
@@ -32,16 +34,17 @@ import { MatInputModule } from '@angular/material/input';
     EnterResponseComponent,
     SelfTagsComponent,
     UserNavComponent,
-    ExpertNavComponent,
     UserPageComponent,
     ExpertPageComponent,
-    BrowserAnimationsModule,
-    HttpClientModule
+    PostsComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
