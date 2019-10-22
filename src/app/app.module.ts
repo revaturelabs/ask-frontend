@@ -15,6 +15,9 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { ExpertPageComponent } from './expert-page/expert-page.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { BrowserModule } from '@angular/platform-browser';
     UserNavComponent,
     ExpertNavComponent,
     UserPageComponent,
-    ExpertPageComponent
+    ExpertPageComponent,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
