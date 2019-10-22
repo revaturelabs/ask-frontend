@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { ViewQuestionComponent } from './view-question/view-question.component';
-import { QuestionComponent } from './question/question.component';
 import { QuestionPreviewComponent } from './question-preview/question-preview.component';
 import { ResponseComponent } from './response/response.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
@@ -24,7 +23,6 @@ import { ExpertPageComponent } from './expert-page/expert-page.component';
     LoginPageComponent,
     QuestionListComponent,
     ViewQuestionComponent,
-    QuestionComponent,
     QuestionPreviewComponent,
     ResponseComponent,
     AskQuestionComponent,
