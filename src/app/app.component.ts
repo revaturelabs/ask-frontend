@@ -12,8 +12,8 @@ export class AppComponent {
   environmentName = '';
 
   constructor() {
-  
+
   }
-  
+
 }
 
