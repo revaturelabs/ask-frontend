@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QUESTIONS } from '../mock-questions';
-import { RESPONSES } from '../mock-responses';
+import { QUESTIONS } from '../../mock-questions';
+import { RESPONSES } from '../../mock-responses';
 
 @Component({
   selector: 'app-view-question',
