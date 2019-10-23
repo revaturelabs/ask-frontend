@@ -14,6 +14,9 @@ import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { UserNavComponent } from './users/user-nav/user-nav.component';
 import { ExpertNavComponent } from './experts/expert-nav/expert-nav.component';
 import { MaterialImportModule } from '../material-import/material-import.module';
+import {PostFormComponent} from './post-form/post-form.component';
+import {PostsComponent} from './posts/posts.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { MaterialImportModule } from '../material-import/material-import.module'
     SelfTagsComponent,
     UserNavComponent,
     ExpertNavComponent,
-    routingComponents
+    routingComponents,
+    PostFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
     BrowserAnimationsModule,
     FormsModule,
     MaterialImportModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
