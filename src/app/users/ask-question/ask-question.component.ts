@@ -12,6 +12,7 @@ export class AskQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
