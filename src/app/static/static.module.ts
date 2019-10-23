@@ -7,7 +7,11 @@ import { QuestionListComponent } from './question-list/question-list.component';
 
 
 @NgModule({
-  declarations: [FooterComponent, LoginPageComponent, QuestionListComponent],
+  declarations: [
+    FooterComponent,
+    LoginPageComponent,
+    QuestionListComponent,
+  ],
   imports: [
     CommonModule
   ]

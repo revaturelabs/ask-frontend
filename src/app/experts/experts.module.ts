@@ -7,7 +7,11 @@ import { EnterResponseComponent } from './enter-response/enter-response.componen
 
 
 @NgModule({
-  declarations: [ExpertNavComponent, ExpertPageComponent, EnterResponseComponent],
+  declarations: [
+    ExpertNavComponent,
+    ExpertPageComponent,
+    EnterResponseComponent,
+  ],
   imports: [
     CommonModule
   ]

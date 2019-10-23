@@ -8,7 +8,12 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
 
 
 @NgModule({
-  declarations: [UserNavComponent, UserPageComponent, ViewQuestionComponent, AskQuestionComponent],
+  declarations: [
+    UserNavComponent,
+    UserPageComponent,
+    ViewQuestionComponent,
+    AskQuestionComponent,
+  ],
   imports: [
     CommonModule
   ]
