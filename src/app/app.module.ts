@@ -11,7 +11,7 @@ import { QuestionListComponent } from './static/question-list/question-list.comp
 import { ViewQuestionComponent } from './static/view-question/view-question.component';
 import { AskQuestionComponent } from './users/ask-question/ask-question.component';
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
-import { SelfTagsComponent } from './self-tags/self-tags.component';
+import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { UserNavComponent } from './users/user-nav/user-nav.component';
 import { ExpertNavComponent } from './experts/expert-nav/expert-nav.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
