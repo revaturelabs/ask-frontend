@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { MaterialImportModule } from '../../material-import/material-import.module';
 
 
 
@@ -13,7 +14,8 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     AskQuestionComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialImportModule,
   ]
 })
 export class UsersModule { }

@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ViewQuestionComponent } from './view-question/view-question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { MaterialImportModule } from '../../material-import/material-import.module';
 
 
 
@@ -15,7 +16,8 @@ import { QuestionListComponent } from './question-list/question-list.component';
     QuestionListComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialImportModule,
   ]
 })
 export class StaticModule { }
