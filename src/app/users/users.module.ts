@@ -22,4 +22,4 @@ const routes: Routes = [
   ]
 })
 export class UsersModule { }
-export const routingComponents = [UserPageComponent,AskQuestionComponent]
+export const routingComponents = [AskQuestionComponent]
