@@ -1,4 +1,4 @@
-<h2>Welcome to the Cipher Stocks Forum</h2>
+<h2>Question Resolution Center</h2>
 <div class="card card-body mb-3">
   <form>
     <div class="form-group">
@@ -11,8 +11,8 @@
     </div>
     <input type="hidden" [(ngModel)]="currentPost.id" name="id">
 
-    <button *ngIf="!isEdit" (click)="addPost(title.value, body.value)" class="btn btn-dark btn-block">Add Post</button>
+    <button *ngIf="!isEdit" (click)="addPost(title.value, body.value)" class="btn btn-dark btn-block">Add Response</button>
 
-    <button *ngIf="isEdit" (click)="updatePost()" class="btn btn-warning btn-block">Update Post</button>
+    <button *ngIf="isEdit" (click)="updatePost()" class="btn btn-warning btn-block">Update Response</button>
   </form>
 </div>

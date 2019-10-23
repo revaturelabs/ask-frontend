@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelfTagsComponent implements OnInit {
 
+  checked = false;
+  indeterminate = false;
+  labelPosition = 'after';
+  disabled = false;
+
   constructor() { }
 
   ngOnInit() {

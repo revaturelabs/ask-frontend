@@ -21,6 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {PostsComponent} from './posts/posts.component'
 import {PostFormComponent} from './post-form/post-form.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {PostFormComponent} from './post-form/post-form.component';
     ViewQuestionComponent,
     QuestionPreviewComponent,
     ResponseComponent,
+    ExpertNavComponent,
     AskQuestionComponent,
     EnterResponseComponent,
     SelfTagsComponent,
@@ -44,7 +47,9 @@ import {PostFormComponent} from './post-form/post-form.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

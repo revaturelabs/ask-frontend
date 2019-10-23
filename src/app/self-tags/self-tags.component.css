@@ -1,0 +1,19 @@
+.head {
+  align-content : center;
+}
+
+.expertise-section {
+  display: flex;
+  align-content: center;
+  height: 90px;
+}
+
+.check-box-margin {
+  margin:  40px;
+  align-self: auto;
+}
+
+.card{
+    align-content: center;
+    align-self: auto;
+}
