@@ -1,12 +1,13 @@
 .expertise-section {
   display: flex;
   align-content: center;
-  height: 100px;
+  height: 80px;
 }
 
 .check-box-margin {
-  margin:  60px;
-  align-self: auto;
+  margin:  70px;
+  align-self: center;
+  width: 40px;
 }
 
 
@@ -15,7 +16,7 @@ mat-card{
 }
 
 .expertise-section{
-    display: flex ; 
+    align-self: auto;
     justify-content: center;
 }
 
