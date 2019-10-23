@@ -16,6 +16,7 @@ import { UserNavComponent } from './users/user-nav/user-nav.component';
 import { ExpertNavComponent } from './experts/expert-nav/expert-nav.component';
 import { UserPageComponent } from './users/user-page/user-page.component';
 import { ExpertPageComponent } from './experts/expert-page/expert-page.component';
+import { MaterialImportModule } from '../material-import/material-import.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ExpertPageComponent } from './experts/expert-page/expert-page.component
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MaterialImportModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
