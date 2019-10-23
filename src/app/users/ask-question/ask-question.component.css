@@ -1,9 +1,9 @@
 #ask-question {
     width: 40%;
-    height: 40%;
+    height: 5%; /* 40% change it back to this after testing material */
     padding: 7%;
-    border: 3px solid lightslategray;
-    background-color: aliceblue;
+    /* border: 3px solid lightslategray; */
+    /* background-color: aliceblue; */
     /* margin: auto; */
 
     margin: 0;
@@ -24,3 +24,17 @@
     justify-content: center;
     align-items: left;
 }
+
+/* Testing out angular material form under this comment line (Adam, you are free to ignore below codes */
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    width: 50%;
+    margin: auto;
+  }
+  
+  .example-container>* {
+    width: 100%;
+  }

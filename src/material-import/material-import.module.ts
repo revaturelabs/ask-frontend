@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatMenuModule, MatButtonModule } from '@angular/material';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule, MatButtonModule, MatToolbarModule, MatInputModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MatMenuModule, MatButtonModule, MatToolbarModule],
-  exports: [MatMenuModule, MatButtonModule, MatToolbarModule]
+  imports: [CommonModule, MatMenuModule, MatButtonModule, MatToolbarModule, MatInputModule, MatOptionModule, MatSelectModule, FormsModule, ReactiveFormsModule],
+  exports: [MatMenuModule, MatButtonModule, MatToolbarModule, MatInputModule, MatOptionModule, MatSelectModule, FormsModule, ReactiveFormsModule]
 })
 export class MaterialImportModule { }
