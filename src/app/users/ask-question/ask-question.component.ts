@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../models/Post';
 
 @Component({
   selector: 'app-ask-question',
@@ -10,6 +12,7 @@ export class AskQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
