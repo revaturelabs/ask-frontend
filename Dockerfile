@@ -3,8 +3,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm install puppeteer
-RUN npm run test -- --watch=false --browsers=ChromeHeadless
+RUN npm install -g @angular/cli
+RUN ng test --browsers ChromeHeadless --watch=false
 RUN npm run build
 
 
