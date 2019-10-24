@@ -14,9 +14,9 @@ import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { UserNavComponent } from './users/user-nav/user-nav.component';
 import { ExpertNavComponent } from './experts/expert-nav/expert-nav.component';
 import { MaterialImportModule } from '../material-import/material-import.module';
-import {PostFormComponent} from './post-form/post-form.component';
-import {PostsComponent} from './posts/posts.component';
-import {HttpClientModule} from '@angular/common/http';
+import { PostFormComponent} from './post-form/post-form.component';
+import { PostsComponent} from './posts/posts.component';
+import { HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 
 @NgModule({

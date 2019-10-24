@@ -10,8 +10,8 @@ import { QuestionListComponent } from './static/question-list/question-list.comp
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
   {path: 'ask', component: AskQuestionComponent},
-  { path: 'user-page', component: UserPageComponent},
-  { path: 'expert-page', component: ExpertPageComponent},
+  {path: 'user-page', component: UserPageComponent},
+  {path: 'expert-page', component: ExpertPageComponent},
   {path: 'settings', component: SelfTagsComponent},
   {path: 'questions', component: QuestionListComponent},
 ];
