@@ -1,1 +1,6 @@
-<p>question-list works!</p>
+<p>{{question.title}}</p>
+<ul>
+    <li *ngFor="let question of questions">
+        <span>{{question.title}}</span><b> -{{question.username}}</b>
+    </li>
+</ul>

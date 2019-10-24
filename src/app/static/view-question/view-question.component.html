@@ -1,0 +1,8 @@
+<h3>{{ question.title }}</h3>
+<p>{{ question.description }}</p>
+
+<ul>
+    <li *ngFor="let response of responses">
+        <p>{{ response.text }}</p> -{{ response.expertName }}
+    </li>
+</ul>
