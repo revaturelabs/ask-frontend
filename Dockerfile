@@ -3,7 +3,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run test -- --watch=false
+RUN npm install puppeteer
+RUN npm run test -- --watch=false --browsers=ChromeHeadless
 RUN npm run build
 
 
