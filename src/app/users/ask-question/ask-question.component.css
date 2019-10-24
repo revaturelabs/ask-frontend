@@ -1,40 +1,53 @@
-#ask-question {
+.example-container {
+    display: flex;
+    height: 40%;
     width: 40%;
-    height: 5%; /* 40% change it back to this after testing material */
-    padding: 7%;
-    /* border: 3px solid lightslategray; */
-    /* background-color: aliceblue; */
-    /* margin: auto; */
-
-    margin: 0;
+    flex-direction: column;
+    border: 1px solid #DDDDDD;
+    /* background-color: #EEEEEE; */
+    padding: 0% 5% 5% 5%;
+    margin: auto;
     position: absolute;
     top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    
-}
-
-#ask-question-content {
-    text-align: left;
-    margin: auto;
-    width: 100%;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: left;
-}
-
-/* Testing out angular material form under this comment line (Adam, you are free to ignore below codes */
-
-.example-container {
-    display: flex;
-    flex-direction: column;
-    border: 3px solid black;
-    width: 50%;
-    margin: auto;
   }
   
-  .example-container>* {
+  /* .example-container>* {
     width: 100%;
+  } */
+
+  #ask-question-button-submit {
+    padding: 2%;
+    margin: 2%;
+    background-color: #F26925;
+    color:#ffffff;
+    width:40%;
+    left: 15%;
+  }
+
+  #ask-question-button-cancel {
+    padding: 2%;
+    margin: 2%;
+    background-color: #474C55;
+    color:#ffffff;
+    width:40%;
+    left: 15%;
+  }
+  
+  h2 {
+    background: #474C55;
+	color:#ffffff;
+	padding: 2.5% 0% 2.5% 0%;
+    font-weight: normal;
+    margin: 0% 0% 0% -10%;
+    width: 100%;
+    position: absolute;
+    translate: inherit;
+    transform: translate(0%, -60px);
+    
+
+    /* -ms-transform: translate(-10%, -50%); */
+    /* transform: translate(-50%, -50% -50% -50%); */
   }
