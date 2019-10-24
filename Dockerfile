@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run test -- --no-watch --browsers=ChromeHeadless
+RUN npm run test -- --no-watch
 RUN npm run build
 
 
