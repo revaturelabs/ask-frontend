@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +17,9 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import {PostFormComponent} from './post-form/post-form.component';
 import {PostsComponent} from './posts/posts.component';
 import {HttpClientModule} from '@angular/common/http';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,7 @@ import {HttpClientModule} from '@angular/common/http';
     ExpertNavComponent,
     routingComponents,
     PostFormComponent,
-    PostsComponent
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,12 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     MaterialImportModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
