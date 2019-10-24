@@ -1,0 +1,21 @@
+<p>single-question works!</p>
+
+<mat-card class="question-card" *ngFor="let question of questions">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title>Question: {{ question.title }}</mat-card-title>
+    <mat-card-subtitle>{{ question.date }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ question.username }}</mat-card-subtitle>
+  </mat-card-header>
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <mat-card-content>
+    <p hidden>
+      {{ question.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="viewQuestion()">VIEW</button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- custom component with input and (maybe in the future) output -->
