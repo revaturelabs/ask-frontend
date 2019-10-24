@@ -1,24 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { Post } from '../models/Post';
+import { Component, OnInit } from "@angular/core";
+import { PostService } from "../services/post.service";
+import { Post } from "../models/Post";
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: "app-posts",
+  templateUrl: "./posts.component.html",
+  styleUrls: ["./posts.component.css"]
 })
 export class PostsComponent implements OnInit {
   posts: Post[];
   currentPost: Post = {
     id: 0,
-    title: '',
-    body: ''
-  }
+    userId: 0,
+    head: "",
+    body: "",
+    postStamp: ""
+  };
   isEdit: boolean = false;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {}
 
-  ngOnInit() {  
+  ngOnInit() {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
     });
@@ -35,29 +37,30 @@ export class PostsComponent implements OnInit {
 
   onUpdatedPost(post: Post) {
     this.posts.forEach((cur, index) => {
-      if(post.id === cur.id) {
+      if (post.id === cur.id) {
         this.posts.splice(index, 1);
         this.posts.unshift(post);
         this.isEdit = false;
         this.currentPost = {
           id: 0,
-          title: '',
-          body: ''
-        }
+          userId: 0,
+          head: "",
+          body: "",
+          postStamp: ""
+        };
       }
     });
   }
 
   removePost(post: Post) {
-    if(confirm('Are You Sure?')) {
+    if (confirm("Are You Sure?")) {
       this.postService.removePost(post.id).subscribe(() => {
         this.posts.forEach((cur, index) => {
-          if(post.id === cur.id) {
-            this.posts.splice(index, 1);  
+          if (post.id === cur.id) {
+            this.posts.splice(index, 1);
           }
         });
       });
     }
   }
-
 }

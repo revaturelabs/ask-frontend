@@ -10,14 +10,14 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
 
 @NgModule({
   declarations: [
-    FooterComponent,
-    LoginPageComponent,
-    ViewQuestionComponent,
-    QuestionListComponent,
+  FooterComponent,
+  LoginPageComponent,
+  ViewQuestionComponent,
+  QuestionListComponent,
   ],
   imports: [
-    CommonModule,
-    MaterialImportModule,
+  CommonModule,
+  MaterialImportModule,
   ]
 })
 export class StaticModule { }
