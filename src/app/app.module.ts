@@ -17,6 +17,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import {PostFormComponent} from './post-form/post-form.component';
 import {PostsComponent} from './posts/posts.component';
 import {HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './static/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {HttpClientModule} from '@angular/common/http';
     ExpertNavComponent,
     routingComponents,
     PostFormComponent,
-    PostsComponent
+    PostsComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

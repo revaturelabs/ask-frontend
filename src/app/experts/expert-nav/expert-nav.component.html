@@ -19,7 +19,7 @@
     </mat-menu>
     <button mat-button [matMenuTriggerFor]="account">Account</button>
     <mat-menu #account="matMenu">
-      <button mat-menu-item>Settings</button>
+      <button mat-menu-item routerLink="/settings">Settings</button>
       <button mat-menu-item routerLink="/">Logout</button>
     </mat-menu>
   </mat-toolbar-row>
