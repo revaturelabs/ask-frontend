@@ -1,9 +1,26 @@
 button {
-    padding:5px;
-    margin:5px;
+  padding: 5px;
+	margin: 5px;
+	background-color: #F26925;
+	color:#ffffff;
+	width:80%;
 }
 
-#buttons {
-    text-align: center;
-    margin-top: 20%;
+#Login {
+	position:absolute;
+	width:260px;
+	transform:translate(-50%, -50%);
+	top:50%;
+	left:50%;
+	background:#B9B9BA;
+	text-align: center;
+	padding-bottom:10px;
+}
+
+h2 {
+	background: #474C55;
+	color:#ffffff;
+	padding:10px;
+	font-weight: normal;
+	margin:0px;
 }
