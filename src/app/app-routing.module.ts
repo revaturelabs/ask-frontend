@@ -8,8 +8,8 @@ import { AskQuestionComponent } from './users/ask-question/ask-question.componen
 const routes: Routes = [
   {path: '', component: LoginPageComponent},
   {path: 'ask', component: AskQuestionComponent},
-  { path: 'user-page', component: UserPageComponent},
-  { path: 'expert-page', component: ExpertPageComponent}
+  {path: 'user-page', component: UserPageComponent},
+  {path: 'expert-page', component: ExpertPageComponent}
 ];
 
 @NgModule({

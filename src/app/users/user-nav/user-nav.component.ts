@@ -9,17 +9,11 @@ import { Router } from '@angular/router';
 export class UserNavComponent implements OnInit {
 
 
-  constructor(
-    private router: Router) { }
+  constructor (private router: Router) {}
 
   ngOnInit() {
   }
 
-  ask() {
-    this.router.navigate(['/ask-question']);
-  }
-
-
-
+  ask() {}
 
 }
