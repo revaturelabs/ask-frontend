@@ -1,21 +1,17 @@
-
-<body>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
   <table>
   <tr>
-    <td><input type="checkbox" ngModel name="" > HTML/CSS</td>
-    <td><input type="checkbox" ngModel name="" > Java</td>
+    <td><input type="checkbox" ngModel name="HTML/CSS">HTML/CSS</td>
+    <td><input type="checkbox" ngModel name="Java">Java</td>
   </tr><br>
   <tr>
-    <td><input type="checkbox" ngModel name=""  > Spring</td>
-    <td><input type="checkbox" ngModel name="" > SQL</td>
+    <td><input type="checkbox" ngModel name="Spring">Spring</td>
+    <td><input type="checkbox" ngModel name="SQL">SQL</td>
   </tr><br>
   <tr>
-    <td><input type="checkbox" ngModel name="" > Angular</td>
-    <td><input type="checkbox" ngModel name="" >JavaScript</td>
+    <td><input type="checkbox" ngModel name="Angular">Angular</td>
+    <td><input type="checkbox" ngModel name="JavaScript">JavaScript</td>
   </tr><br>
 </table>
   <button type="submit" value="Submit">Submit</button>
 </form>
-
-</body>
