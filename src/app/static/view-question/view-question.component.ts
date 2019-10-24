@@ -10,10 +10,10 @@ import { RESPONSES } from '../../mock-responses';
 export class ViewQuestionComponent implements OnInit {
 
   //Passing mock dependencies in
-  question=QUESTIONS[1];
-  responses=RESPONSES;
+  question = QUESTIONS[1];
+  responses = RESPONSES;
   //mock dependencies done
-
+  
   constructor() { }
 
   ngOnInit() {

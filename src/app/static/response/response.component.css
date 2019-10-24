@@ -1,0 +1,13 @@
+.response-card {
+  width: 65%;
+  margin-left: auto;
+  margin-right: 9%;
+  margin-top: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+mat-card-actions {
+  text-align: right;
+}
