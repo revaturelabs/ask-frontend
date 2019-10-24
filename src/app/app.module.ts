@@ -18,6 +18,7 @@ import { PostFormComponent} from './post-form/post-form.component';
 import { PostsComponent} from './posts/posts.component';
 import { HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
+import { FooterComponent } from './static/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NavbarComponent } from './static/navbar/navbar.component';
     PostFormComponent,
     PostsComponent,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
