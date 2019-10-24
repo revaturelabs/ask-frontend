@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'expert-page', component: ExpertPageComponent},
   {path: 'settings', component: SelfTagsComponent},
   {path: 'questions', component: QuestionListComponent},
+
 ];
 
 @NgModule({

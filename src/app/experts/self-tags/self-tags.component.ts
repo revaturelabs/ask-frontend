@@ -11,10 +11,10 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./self-tags.component.css']
 })
 export class SelfTagsComponent implements OnInit {
-onSubmit(f: NgForm) {
-return true;
 
-}
+  onSubmit(f: NgForm) {
+    return true;
+  }
   constructor() { }
 
   ngOnInit() {
