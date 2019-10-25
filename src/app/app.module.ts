@@ -20,6 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { MatInputModule } from '@angular/material';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatCardModule
     
   ],
   providers: [],

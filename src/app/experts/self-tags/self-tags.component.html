@@ -1,23 +1,8 @@
-<div class="card" *ngFor="let tag of tags">
-  <div class="card-body">
-    <p>{{ tag.tagName }}</p>
-  </div>
-</div>
-
-<!-- <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <table>
-  <tr>
-    <td><input type="checkbox" ngModel name="" > HTML/CSS</td>
-    <td><input type="checkbox" ngModel name="" > Java</td>
-  </tr><br>
-  <tr>
-    <td><input type="checkbox" ngModel name=""  > Spring</td>
-    <td><input type="checkbox" ngModel name="" > SQL</td>
-  </tr><br>
-  <tr>
-    <td><input type="checkbox" ngModel name="" > Angular</td>
-    <td><input type="checkbox" ngModel name="" >JavaScript</td>
-  </tr><br>
-</table>
-  <button type="submit" value="Submit">Submit</button>
-</form> -->
+<mat-card >
+    <h2 class="head">Please Select Your Category</h2>
+    <mat-card-content class="card" *ngFor="let tag of tags">
+      <section class="expertise-section" >
+      <mat-checkbox class="check-box-margin" >{{ tag.tagName}}</mat-checkbox>
+    </section>  
+    </mat-card-content>
+  </mat-card>

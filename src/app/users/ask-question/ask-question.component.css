@@ -24,4 +24,11 @@
   justify-content: center;
   align-items: left;
 }
+.form-group {
+  padding: 10px;
+
+}
+label{
+  padding: 10px;
+}
 
