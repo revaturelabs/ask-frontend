@@ -9,6 +9,7 @@ export const environment = {
   postsUrl: "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions",
   tagsUrl: "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags"
   allQuestionsUri: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions',
+  tagsUri: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags',
 };
 
 /*
