@@ -5,6 +5,7 @@ import { ExpertPageComponent } from './expert-page/expert-page.component';
 import { EnterResponseComponent } from './enter-response/enter-response.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { SelfTagsComponent } from './self-tags/self-tags.component';
+import { TagCreationComponent } from './tag-creation/tag-creation.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { SelfTagsComponent } from './self-tags/self-tags.component';
     ExpertPageComponent,
     EnterResponseComponent,
     SelfTagsComponent,
+    TagCreationComponent,
   ],
   imports: [CommonModule, MaterialImportModule, SelfTagsComponent],
 })

@@ -20,6 +20,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { TagCreationComponent } from './expert/tag-creation/tag-creation.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FooterComponent } from './static/footer/footer.component';
     PostsComponent,
     NavbarComponent,
     FooterComponent,
+    TagCreationComponent,
   ],
   imports: [
     BrowserModule,
