@@ -3,8 +3,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm install puppeteer 
-RUN export CHROME_BIN=/usr/bin/chromium-browser
+RUN npm install chromium 
 RUN npm run test -- --watch=false --browsers=ChromeHeadless
 RUN npm run build
 
