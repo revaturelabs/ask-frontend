@@ -10,6 +10,10 @@
   transform: translate(-50%, -300px)
 }
 
+textarea {
+  max-height: 150px;
+}
+
 h3 {
   background: #55698d;
   padding: 7px 4% 7px 4%;
