@@ -1,17 +1,8 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-  <table>
-  <tr>
-    <td><mat-checkbox type="checkbox" ngModel name="HTML/CSS">HTML/CSS</mat-checkbox></td>
-    <td><mat-checkbox type="checkbox" ngModel name="Java">Java</mat-checkbox></td>
-  </tr><br>
-  <tr>
-    <td><mat-checkbox type="checkbox" ngModel name="Spring">Spring</mat-checkbox></td>
-    <td><mat-checkbox type="checkbox" ngModel name="SQL">SQL</mat-checkbox></td>
-  </tr><br>
-  <tr>
-    <td><mat-checkbox type="checkbox" ngModel name="Angular">Angular</mat-checkbox></td>
-    <td><mat-checkbox type="checkbox" ngModel name="JavaScript">JavaScript</mat-checkbox></td>
-  </tr><br>
-</table>
-  <button mat-stroked-button class="button" type="submit" value="Submit">Submit</button>
-</form>
+<mat-card>
+  <h2 class="head">Please Select Your Area of Interest</h2>
+  <mat-card-content class="card" *ngFor="let tag of tags">
+    <section class="expertise-section">
+      <mat-checkbox class="check-box-margin">{{ tag.tagName }}</mat-checkbox>
+    </section>
+  </mat-card-content>
+</mat-card>

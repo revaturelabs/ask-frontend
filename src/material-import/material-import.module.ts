@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import {
   MatMenuModule,
   MatButtonModule,
-  MatToolbarModule, 
+  MatToolbarModule,
   MatCardModule,
   MatChipsModule,
+  MatCheckboxModule,
 } from '@angular/material';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
 
 @NgModule({
   declarations: [],
@@ -20,6 +19,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
     MatCardModule,
     MatChipsModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatMenuModule,
@@ -28,6 +28,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
     MatCardModule,
     MatChipsModule,
-  ]
+    MatCheckboxModule,
+  ],
 })
-export class MaterialImportModule { }
+export class MaterialImportModule {}

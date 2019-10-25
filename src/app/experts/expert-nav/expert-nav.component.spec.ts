@@ -8,9 +8,8 @@ describe('ExpertNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExpertNavComponent ]
-    })
-    .compileComponents();
+      declarations: [ExpertNavComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
