@@ -8,21 +8,19 @@ import { ViewQuestionComponent } from './static/view-question/view-question.comp
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 
-
 const routes: Routes = [
-  {path: '', component: LoginPageComponent},
-  {path: 'ask', component: AskQuestionComponent},
-  {path: 'user-page', component: UserPageComponent},
-  {path: 'expert-page', component: ExpertPageComponent},
-  {path: 'view-question', component: ViewQuestionComponent},
-  {path: 'settings', component: SelfTagsComponent},
-  {path: 'questions', component: QuestionListComponent},
+  { path: '', component: LoginPageComponent },
+  { path: 'ask', component: AskQuestionComponent },
+  { path: 'user-page', component: UserPageComponent },
+  { path: 'expert-page', component: ExpertPageComponent },
+  { path: 'view-question', component: ViewQuestionComponent },
+  { path: 'settings', component: SelfTagsComponent },
+  { path: 'questions', component: QuestionListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
-export const routingComponents = [UserPageComponent,ExpertPageComponent]
+export class AppRoutingModule {}
+export const routingComponents = [UserPageComponent, ExpertPageComponent];

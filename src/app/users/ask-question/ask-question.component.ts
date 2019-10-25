@@ -5,14 +5,10 @@ import { Post } from '../../models/Post';
 @Component({
   selector: 'app-ask-question',
   templateUrl: './ask-question.component.html',
-  styleUrls: ['./ask-question.component.css']
+  styleUrls: ['./ask-question.component.css'],
 })
 export class AskQuestionComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 }
