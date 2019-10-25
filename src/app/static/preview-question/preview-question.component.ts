@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { QUESTIONS } from '../../mock-questions';
+import { Component, OnInit, Input } from '@angular/core';
+//import { QUESTIONS } from '../../mock-questions';
 import { ViewQuestionComponent } from '../view-question/view-question.component';
 import { Router } from '@angular/router';
+import { Question } from '../../models/Question';
 
 
 @Component({
@@ -11,9 +12,12 @@ import { Router } from '@angular/router';
 })
 export class PreviewQuestionComponent implements OnInit {
 
+  @Input() question: Question;
+
   // Passing mock dependencies in
-  questions = QUESTIONS;
+  //questions = QUESTIONS;
   // mock dependencies done
+
 
   viewQuestion = (() => {
     console.log('clicked');
