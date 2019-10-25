@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { Post } from "../models/Post";
-import { environment } from "src/environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Post } from '../models/Post';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class PostService {
   constructor(private http: HttpClient) {}
@@ -29,7 +29,7 @@ export class PostService {
   }
 
   removePost(post: Post | number): Observable<Post> {
-    const id = typeof post === "number" ? post : post.id;
+    const id = typeof post === 'number' ? post : post.id;
     const url = `${environment.postsUrl}/${id}`;
 
     return this.http.delete<Post>(url, httpOptions);
