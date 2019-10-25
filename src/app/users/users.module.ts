@@ -4,11 +4,7 @@ import { UserNavComponent } from './user-nav/user-nav.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
-import { Routes } from '@angular/router';
 
-const routes: Routes = [
-  { path: 'ask-question', component: AskQuestionComponent}
-];
 
 @NgModule({
   declarations: [
@@ -22,4 +18,4 @@ const routes: Routes = [
   ]
 })
 export class UsersModule { }
-export const routingComponents = [AskQuestionComponent]
+

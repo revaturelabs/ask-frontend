@@ -14,13 +14,11 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  uLogin() {
-    this.router.navigate(['/user-page']);
-  }
-
-  eLogin() {
-    this.router.navigate(['/expert-page']);
-  }
-
+  userLogin() {
+      this.router.navigate(['/user-page']);
+    }
+  
+  expertLogin() {
+      this.router.navigate(['/expert-page']);
+    }
 }
