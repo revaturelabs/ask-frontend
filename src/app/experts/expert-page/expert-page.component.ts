@@ -1,12 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-expert-page",
-  templateUrl: "./expert-page.component.html",
-  styleUrls: ["./expert-page.component.css"]
+  selector: 'app-expert-page',
+  templateUrl: './expert-page.component.html',
+  styleUrls: ['./expert-page.component.css']
 })
 export class ExpertPageComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }

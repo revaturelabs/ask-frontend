@@ -1,12 +1,16 @@
-<form class="tag-form">
-  <mat-form-field class="tag-full-width">
-  <label>Click here to input your Topic:</label>
-  <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let option of filteredOptions | async" [(value)]="option"
-      (onSelectionChange)=updateExpert(option)>
-      {{option}}
-    </mat-option>
-  </mat-autocomplete>
-  </mat-form-field>
-</form>
+<div id="ask-question">
+  <form #askQuestionForm>
+    <div id="ask-question-content">
+      <h1>Ask an Expert</h1>
+      Title:<br>
+      <input type="text" name="title"><br>
+      Tags:
+      <input type="text" name="tags">
+      <br>
+      Your Question:<br>
+      <input type="text" name="question">
+      <br>
+      <input type="submit" name="submit-question">
+    </div>
+  </form>
+</div>

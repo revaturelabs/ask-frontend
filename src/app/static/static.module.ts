@@ -5,19 +5,21 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ViewQuestionComponent } from './view-question/view-question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
 @NgModule({
   declarations: [
-  FooterComponent,
-  LoginPageComponent,
-  ViewQuestionComponent,
-  QuestionListComponent,
+    FooterComponent,
+    LoginPageComponent,
+    ViewQuestionComponent,
+    QuestionListComponent,
+    NavbarComponent,
   ],
   imports: [
-  CommonModule,
-  MaterialImportModule,
+    CommonModule,
+    MaterialImportModule,
   ]
 })
 export class StaticModule { }

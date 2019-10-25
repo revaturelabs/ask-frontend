@@ -8,19 +8,17 @@ import { SelfTagsComponent } from './self-tags/self-tags.component';
 
 
 
-
 @NgModule({
   declarations: [
     ExpertNavComponent,
     ExpertPageComponent,
     EnterResponseComponent,
-    SelfTagsComponent
+    SelfTagsComponent,
   ],
   imports: [
     CommonModule,
     MaterialImportModule,
     SelfTagsComponent,
-
   ]
 })
 export class ExpertsModule { }
