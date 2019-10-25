@@ -3,15 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.css']
+  styleUrls: ['./user-page.component.css'],
 })
 export class UserPageComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    let nav = document.getElementById("navbar");
-    nav.style.visibility = "visible";
+    //reveal navbar
+    document.getElementById('navbar').style.visibility = 'visible';
   }
-
 }

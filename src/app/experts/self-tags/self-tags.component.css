@@ -1,26 +1,27 @@
-body{
+body {
   background-color: whitesmoke;
 }
-th, td {
-
+th,
+td {
   padding: 5px;
   text-align: left;
   height: 30px;
   vertical-align: bottom;
 }
 table {
-  background-color:white ;
+  background-color: white;
   margin-top: 30px;
   position: relative;
   width: 40%;
   border: 1px solid black;
   margin-left: 30%;
   margin-right: 30%;
-
 }
 button {
   margin-top: 10px;
   position: relative;
   right: 48%;
   left: 48%;
+  background-color: #42a5f5;
+  color: #f5f3fc;
 }

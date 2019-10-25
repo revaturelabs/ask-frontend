@@ -1,25 +1,23 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-login-page",
-  templateUrl: "./login-page.component.html",
-  styleUrls: ["./login-page.component.css"]
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-
   constructor(private router: Router) {}
 
   ngOnInit() {
-    console.log("nope");
-    let nav = document.getElementById("navbar");
-    nav.style.visibility = "hidden";
+    //reveal navbar
+    document.getElementById('navbar').style.visibility = 'hidden';
   }
   userLogin() {
-    this.router.navigate(["/user-page"]);
+    this.router.navigate(['/user-page']);
   }
 
   expertLogin() {
-    this.router.navigate(["/expert-page"]);
+    this.router.navigate(['/expert-page']);
   }
 }
