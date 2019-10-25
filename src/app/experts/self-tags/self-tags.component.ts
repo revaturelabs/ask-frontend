@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Tags} from '../../models/Tags';
+import { Tags } from '../../models/Tags';
 import { TagService } from 'src/app/services/tags.service';
 
 
@@ -12,15 +12,13 @@ import { TagService } from 'src/app/services/tags.service';
     
     export class SelfTagsComponent implements OnInit {
 
-      tags : Tags[];
+    tags : Tags[];
     
     constructor(private tagsService: TagService) { }
-
-
+    
     ngOnInit() {
       this.tagsService.getTags().subscribe(tags => {
         this.tags = tags})
 
       }
-
     }

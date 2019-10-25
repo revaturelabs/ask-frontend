@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
+import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
 import { ViewQuestionComponent } from './static/view-question/view-question.component';
 import { AskQuestionComponent } from './users/ask-question/ask-question.component';
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
@@ -15,20 +16,18 @@ import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { UserNavComponent } from './users/user-nav/user-nav.component';
 import { ExpertNavComponent } from './experts/expert-nav/expert-nav.component';
 import { MaterialImportModule } from '../material-import/material-import.module';
-import {PostFormComponent} from './post-form/post-form.component';
-import {PostsComponent} from './posts/posts.component';
-import {HttpClientModule} from '@angular/common/http';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
+import { PostFormComponent} from './post-form/post-form.component';
+import { PostsComponent} from './posts/posts.component';
+import { HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './static/navbar/navbar.component';
+import { FooterComponent } from './static/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     QuestionListComponent,
+    PreviewQuestionComponent,
     ViewQuestionComponent,
     AskQuestionComponent,
     EnterResponseComponent,
@@ -38,7 +37,8 @@ import {MatCardModule} from '@angular/material/card';
     routingComponents,
     PostFormComponent,
     PostsComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
