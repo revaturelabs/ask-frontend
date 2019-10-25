@@ -1,17 +1,17 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
   <table>
   <tr>
-    <td><input type="checkbox" ngModel name="HTML/CSS">HTML/CSS</td>
-    <td><input type="checkbox" ngModel name="Java">Java</td>
+    <td><mat-checkbox type="checkbox" ngModel name="HTML/CSS">HTML/CSS</mat-checkbox></td>
+    <td><mat-checkbox type="checkbox" ngModel name="Java">Java</mat-checkbox></td>
   </tr><br>
   <tr>
-    <td><input type="checkbox" ngModel name="Spring">Spring</td>
-    <td><input type="checkbox" ngModel name="SQL">SQL</td>
+    <td><mat-checkbox type="checkbox" ngModel name="Spring">Spring</mat-checkbox></td>
+    <td><mat-checkbox type="checkbox" ngModel name="SQL">SQL</mat-checkbox></td>
   </tr><br>
   <tr>
-    <td><input type="checkbox" ngModel name="Angular">Angular</td>
-    <td><input type="checkbox" ngModel name="JavaScript">JavaScript</td>
+    <td><mat-checkbox type="checkbox" ngModel name="Angular">Angular</mat-checkbox></td>
+    <td><mat-checkbox type="checkbox" ngModel name="JavaScript">JavaScript</mat-checkbox></td>
   </tr><br>
 </table>
-  <button type="submit" value="Submit">Submit</button>
+  <button mat-stroked-button class="button" type="submit" value="Submit">Submit</button>
 </form>
