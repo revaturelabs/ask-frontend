@@ -5,14 +5,14 @@
   flex-direction: column;
   border: 1.5px solid #55698d;
   position: absolute;
-  top: 60%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -300px)
 }
 
 h3 {
   background: #55698d;
-  padding: 10px 4% 10px 4%;
+  padding: 7px 4% 7px 4%;
   color: #ffffff;
   position: absolute;
   width: 92.1%;

@@ -7,11 +7,15 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
+// import { PostService } from '../../services/post.service';
+// import { Post } from '../../models/Post';
+
 /**
  * The current typescript is for Angular Material Chips.
  * TODO: listen for tags on backend,
  *       route to backend
  */
+
 
 @Component({
   selector: 'app-ask-question',
@@ -83,6 +87,7 @@ export class AskQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserNavComponent implements OnInit {
 
-  constructor() { }
+  constructor () {}
 
   ngOnInit() {
   }
