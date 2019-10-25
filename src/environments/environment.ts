@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  environmentName: 'Default Environment',
-  localhostUri: 'http://localhost:8080/',
-  postsUrl: 'https://jsonplaceholder.typicode.com/posts',
-  tagsUrl : 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags'
+  environmentName: "Default Environment",
+  localhostUri: "http://localhost:8080/",
+  postsUrl: "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions",
+  tagsUrl: "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags"
 };
 
 /*
