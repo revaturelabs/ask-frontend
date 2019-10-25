@@ -14,8 +14,9 @@ export class TagCreationComponent implements OnInit {
   ngOnInit() {
   }
 
-  tag: Tags;
+  tag: Tags = { id: 0, tagName: '' };
 
+  //need to change Endpoint
   endpoint: string = "/tag";
 
   onSubmit() {
