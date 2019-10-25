@@ -3,10 +3,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-#RUN npm install lynx
 RUN npm install chromium
 ENV CHROME_BIN=/usr/bin/google-chrome
-RUN npm run test -- --watch=false --browsers=Chrome --sandbox=false
+RUN npm run test -- --watch=false --code-coverage=true --browsers=ChromeHeadless
 RUN npm run build
 
 
