@@ -10,6 +10,8 @@ export class ExpertPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let nav = document.getElementById("navbar");
+    nav.style.visibility = "visible";
   }
 
 }
