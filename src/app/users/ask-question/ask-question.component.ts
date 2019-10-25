@@ -7,6 +7,12 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
+/**
+ * The current typescript is for Angular Material Chips.
+ * TODO: listen for tags on backend,
+ *       route to backend
+ */
+
 @Component({
   selector: 'app-ask-question',
   templateUrl: './ask-question.component.html',
@@ -36,13 +42,13 @@ export class AskQuestionComponent implements OnInit {
   }
 
   add(event: MatChipInputEvent): void {
-    // Add fruit only when MatAutocomplete is not open
+    // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
 
-      // Add our fruit
+      // Add our tag
       if ((value || '').trim()) {
         this.tags.push(value.trim());
       }

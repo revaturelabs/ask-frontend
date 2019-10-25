@@ -1,49 +1,50 @@
-<div class="example-container">
+<div class="ask-question-container">
+  <h3>
+    Ask an Expert
+  </h3>
 
-    <h2>
-        Ask an Expert
-    </h2>
+  <mat-form-field>
+    <input matInput placeholder="Title: " />
+  </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Title: ">
-    </mat-form-field>
+  <mat-form-field class="tag-chip-list">
+    <mat-chip-list #chipList aria-label="Tag selection">
+      <mat-chip
+        *ngFor="let tag of tags"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(tag)"
+      >
+        {{ tag }}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="Select a category tags: "
+        #tagInput
+        [formControl]="tagCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
-    <mat-form-field class="example-chip-list">
-        <mat-chip-list #chipList aria-label="Tag selection">
-          <mat-chip
-            *ngFor="let tag of tags"
-            [selectable]="selectable"
-            [removable]="removable"
-            (removed)="remove(tag)">
-            {{tag}}
-            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-          </mat-chip>
-          <input
-            placeholder="Select a category tags: "
-            #tagInput
-            [formControl]="tagCtrl"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="add($event)">
-        </mat-chip-list>
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-            {{tag}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Your Question: "></textarea>
+  </mat-form-field>
 
-    <mat-form-field>
-      <textarea matInput placeholder="Your Question: "></textarea>
-    </mat-form-field>
-
-    <div>
-        <button mat-raised-button id="ask-question-button-submit">Submit</button>
-        <button mat-raised-button id="ask-question-button-cancel">Cancel</button>
-    </div>
-
+  <div>
+    <button mat-raised-button id="ask-question-button-submit">Submit</button>
+    <button mat-raised-button id="ask-question-button-cancel">Cancel</button>
   </div>
-
-  
+</div>
