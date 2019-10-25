@@ -18,6 +18,8 @@ import { PostFormComponent} from './post-form/post-form.component';
 import { PostsComponent} from './posts/posts.component';
 import { HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { NavbarComponent } from './static/navbar/navbar.component';
     FormsModule,
     MaterialImportModule,
     HttpClientModule,
+    MatCheckboxModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
