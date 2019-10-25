@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
   MatMenuModule,
   MatButtonModule,
   MatToolbarModule,
   MatCardModule,
-  MatChipsModule
-} from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+  MatChipsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule
+} from "@angular/material";
 
 
 
@@ -21,7 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   exports: [
     MatMenuModule,
@@ -30,7 +38,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
   ]
 })
-export class MaterialImportModule { }
+export class MaterialImportModule {}

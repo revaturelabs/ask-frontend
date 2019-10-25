@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 import { ViewQuestionComponent } from './static/view-question/view-question.component';
+import { QuestionComponent } from './static/question/question.component';
+import { ResponseComponent } from './static/response/response.component';
 import { AskQuestionComponent } from './users/ask-question/ask-question.component';
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
@@ -25,6 +27,8 @@ import { NavbarComponent } from './static/navbar/navbar.component';
     LoginPageComponent,
     QuestionListComponent,
     ViewQuestionComponent,
+    QuestionComponent,
+    ResponseComponent,
     AskQuestionComponent,
     EnterResponseComponent,
     SelfTagsComponent,
@@ -33,12 +37,7 @@ import { NavbarComponent } from './static/navbar/navbar.component';
     routingComponents,
     PostFormComponent,
     PostsComponent,
-<<<<<<< HEAD
-    QuestionComponent,
-    ResponseComponent
-=======
     NavbarComponent,
->>>>>>> dev
   ],
   imports: [
     BrowserModule,
