@@ -22,4 +22,6 @@ button {
   position: relative;
   right: 48%;
   left: 48%;
+  background-color: #42a5f5;
+  color: #f5f3fc;
 }
