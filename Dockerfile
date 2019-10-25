@@ -6,7 +6,7 @@ COPY . .
 #RUN npm install lynx
 RUN npm install chromium
 ENV CHROME_BIN=/usr/bin/google-chrome
-RUN npm run test -- --watch=false --browsers=Chrome
+RUN npm run test -- --watch=false --browsers=Chrome --sandbox=false
 RUN npm run build
 
 
