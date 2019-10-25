@@ -1,2 +1,6 @@
-<app-question></app-question>
-<app-response></app-response>
+<div class="question-component">
+  <app-question></app-question>
+</div>
+<div class="response-component" *ngFor="let response of allResponses">
+  <app-response [expertName]="response.expertName" [date]="response.date" [text]="response.text"></app-response>
+</div>

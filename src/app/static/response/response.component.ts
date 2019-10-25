@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-response',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./response.component.css']
 })
 export class ResponseComponent implements OnInit {
+  @Input() expertName: string;
+  @Input() date: string;
+  @Input() text: string;
 
   constructor() { }
 
