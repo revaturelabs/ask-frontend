@@ -4,7 +4,7 @@ import { RESPONSES } from '../../mock-responses';
 @Component({
   selector: 'app-view-question',
   templateUrl: './view-question.component.html',
-  styleUrls: ['./view-question.component.css']
+  styleUrls: ['./view-question.component.css'],
 })
 export class ViewQuestionComponent implements OnInit {
   //Passing mock dependencies in
@@ -22,4 +22,5 @@ export class ViewQuestionComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnInit() {}
 }

@@ -1,0 +1,23 @@
+mat-card-actions {
+  text-align: right;
+}
+
+.question-card {
+  width: 80%;
+  height: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+mat-chip {
+  font-size: 0.75em;
+}

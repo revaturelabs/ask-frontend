@@ -6,8 +6,6 @@ import { EnterResponseComponent } from './enter-response/enter-response.componen
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { SelfTagsComponent } from './self-tags/self-tags.component';
 
-
-
 @NgModule({
   declarations: [
     ExpertNavComponent,
@@ -15,10 +13,6 @@ import { SelfTagsComponent } from './self-tags/self-tags.component';
     EnterResponseComponent,
     SelfTagsComponent,
   ],
-  imports: [
-    CommonModule,
-    MaterialImportModule,
-    SelfTagsComponent,
-  ]
+  imports: [CommonModule, MaterialImportModule, SelfTagsComponent],
 })
-export class ExpertsModule { }
+export class ExpertsModule {}

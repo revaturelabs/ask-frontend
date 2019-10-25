@@ -1,8 +1,4 @@
-<p>{{ question.title }}</p>
-<ul>
-    <li *ngFor="let question of questions">
-        <span>{{ question.title }}</span><b> -{{ question.username }}</b>
-    </li>
-</ul> -->
-
-<!-- custom component with input and (maybe in the future) output
+<app-preview-question
+  *ngFor="let question of questions"
+  [question]="question"
+></app-preview-question>
