@@ -6,6 +6,7 @@ import { ViewQuestionComponent } from './view-question/view-question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -16,6 +17,7 @@ import { PreviewQuestionComponent } from './preview-question/preview-question.co
     ViewQuestionComponent,
     QuestionListComponent,
     PreviewQuestionComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
