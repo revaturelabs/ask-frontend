@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { Question } from '../question';
 import { Question } from '../../models/Question';
 
 @Component({
@@ -14,6 +13,7 @@ export class QuestionListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
     // Mock questions
     this.questions = [
       {

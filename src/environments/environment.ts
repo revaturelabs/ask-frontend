@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   environmentName: 'Default Environment',
-  localhostUri: 'http://localhost:8080/'
+  localhostUri: 'http://localhost:8080/',
+  allQuestionsUri: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions',
 };
 
 /*
