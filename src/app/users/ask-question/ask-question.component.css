@@ -4,7 +4,7 @@
   width: 40%;
   flex-direction: column;
   border: 1px solid #dddddd;
-  /* background-color: #EEEEEE; */
+  /* background-color: #EEEEEE;  still deciding on the background color*/
   padding: 0% 5% 5% 5%;
   margin: auto;
   position: absolute;
@@ -12,6 +12,19 @@
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+h3 {
+  background: #55698d;
+  /* border: 1px solid #dddddd; */
+  color: #ffffff;
+  padding: 2.5% 0% 2.5% 0%;
+  font-weight: normal;
+  margin: 0% 0% 0% -10%;
+  width: 100%;
+  position: absolute;
+  translate: inherit;
+  transform: translate(0%, -100%);
 }
 
 #ask-question-button-submit {
@@ -30,17 +43,4 @@
   color: #ffffff;
   width: 40%;
   left: 15%;
-}
-
-h3 {
-  background: #55698d;
-  /* border: 1px solid #dddddd; */
-  color: #ffffff;
-  padding: 2.5% 0% 2.5% 0%;
-  font-weight: normal;
-  margin: 0% 0% 0% -10%;
-  width: 100%;
-  position: absolute;
-  translate: inherit;
-  transform: translate(-1px, -53px);
 }
