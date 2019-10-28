@@ -6,7 +6,6 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 
 
-
 @NgModule({
   declarations: [
     UserNavComponent,
@@ -19,3 +18,4 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
   ]
 })
 export class UsersModule { }
+

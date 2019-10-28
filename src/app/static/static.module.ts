@@ -5,8 +5,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ViewQuestionComponent } from './view-question/view-question.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
-
-
+import { PreviewQuestionComponent } from './preview-question/preview-question.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +14,9 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
     LoginPageComponent,
     ViewQuestionComponent,
     QuestionListComponent,
+    PreviewQuestionComponent,
+    NavbarComponent,
   ],
-  imports: [
-    CommonModule,
-    MaterialImportModule,
-  ]
+  imports: [CommonModule, MaterialImportModule],
 })
-export class StaticModule { }
+export class StaticModule {}
