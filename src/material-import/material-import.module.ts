@@ -7,7 +7,10 @@ import {
   MatCardModule,
   MatChipsModule,
   MatCheckboxModule,
+  MatFormFieldModule,
 } from '@angular/material';
+
+
 
 @NgModule({
   declarations: [],
@@ -20,6 +23,7 @@ import {
     MatCardModule,
     MatChipsModule,
     MatCheckboxModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatMenuModule,
@@ -29,6 +33,7 @@ import {
     MatCardModule,
     MatChipsModule,
     MatCheckboxModule,
+    MatFormFieldModule,
   ],
 })
 export class MaterialImportModule {}
