@@ -12,9 +12,9 @@ import { JsonPipe } from '@angular/common';
 // import { Post } from '../../models/Post';
 
 /**
- * The current typescript is for Angular Material Chips.
- * TODO: listen for tags on backend,
- *       route to backend
+ * @author: Kyung Min Lee, Nathan Cross
+ * The current typescript is for Angular Material forms with autocomplete chips & two fields.
+ *
  */
 
 const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
@@ -120,7 +120,6 @@ export class AskQuestionComponent implements OnInit {
       fetch(qUrl, {method: "POST", body: JSON.stringify(this.form.value) })
       console.log(this.form.value);
       console.log(this.form);
-      console.log(this.tags);
   }
 
 }
