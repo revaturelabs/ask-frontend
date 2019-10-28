@@ -11,8 +11,10 @@ export class PostsComponent implements OnInit {
   posts: Post[];
   currentPost: Post = {
     id: 0,
-    title: '',
+    head: '',
     body: '',
+    userId: 0,
+    creationDate: '',
   };
   isEdit: boolean = false;
 
@@ -41,8 +43,10 @@ export class PostsComponent implements OnInit {
         this.isEdit = false;
         this.currentPost = {
           id: 0,
-          title: '',
+          head: '',
           body: '',
+          userId: 0,
+          creationDate: '',
         };
       }
     });
