@@ -2,8 +2,9 @@
   <app-question></app-question>
 </div>
 <div class="response-component" *ngFor="let response of allResponses">
-  <app-response [expertName]="response.expertName" [date]="response.date" [text]="response.text"></app-response>
+  <app-response [currentResponse]="response"></app-response>
 </div>
+
 <div class="submit-response">
   <mat-form-field>
     <textarea matInput placeholder="Enter a response"></textarea>
