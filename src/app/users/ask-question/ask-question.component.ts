@@ -1,11 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { JsonPipe } from '@angular/common';
 
 // import { PostService } from '../../services/post.service';
 // import { Post } from '../../models/Post';
@@ -16,6 +17,7 @@ import {map, startWith} from 'rxjs/operators';
  *       route to backend
  */
 
+const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
 
 @Component({
   selector: 'app-ask-question',
@@ -24,6 +26,7 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class AskQuestionComponent implements OnInit {
 
+  form: FormGroup;
   visible = true;
   selectable = true;
   removable = true;
@@ -39,10 +42,11 @@ export class AskQuestionComponent implements OnInit {
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
         map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+    
   }
 
   add(event: MatChipInputEvent): void {
@@ -86,8 +90,37 @@ export class AskQuestionComponent implements OnInit {
     return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  ngOnInit() {
+  questionInput: Object = {
+    "title": null,
+    "tags": null,
+    "question": null,
+  }
 
+  submitQuestion = function(event, qTitle, qTags, qQuestion) {
+    console.log('submit question reached');
+    event.preventDefault();
+    this.questionInput.title = qTitle;
+    this.questionInput.tags = this.tags;
+    this.questionInput.question = qQuestion;
+    console.log(this.questionInput);
+    console.log(this.tags);
+  }
+
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      title: [''],
+      tags: [''],
+      question: ['']
+    });
+  }
+
+  onSubmit() {
+    event.preventDefault();
+      fetch(qUrl, {method: "POST", body: JSON.stringify(this.form.value) })
+      console.log(this.form.value);
+      console.log(this.form);
+      console.log(this.tags);
   }
 
 }
