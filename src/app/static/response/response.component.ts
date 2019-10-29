@@ -8,9 +8,11 @@ import { Response } from '../../models/Response';
 })
 export class ResponseComponent implements OnInit {
   @Input() currentResponse: Response = {
-    expertName: '',
-    date: '',
-    text: '',
+    id: 0,
+    responderId: 0,
+    title: '',
+    body: '',
+    creationDate: ''
   };
 
   constructor() {}
