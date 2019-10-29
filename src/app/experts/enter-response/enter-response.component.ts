@@ -20,13 +20,6 @@ export class EnterResponseComponent implements OnInit {
 
   addResponse(title, body) {
     if (!title || !body) {
-      this.currentResponse = {
-        id: 0,
-        responderId: 0,
-        title: '',
-        body: '',
-        creationDate: '',
-      }
       alert('Please add Response');
     } else {
       this.responseService
