@@ -1,18 +1,18 @@
 <mat-form-field class="chip-list">
     <mat-icon matSuffix>search</mat-icon>
-    <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip-list #chipList aria-label="Tag selection">
       <mat-chip
-        *ngFor="let fruit of fruits"
+        *ngFor="let tag of tags"
         [selectable]="selectable"
         [removable]="removable"
-        (removed)="remove(fruit)">
-        {{fruit}}
+        (removed)="remove(tag)">
+        {{tag}}
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
         placeholder="Question category..."
         #fruitInput
-        [formControl]="fruitCtrl"
+        [formControl]="tagCtrl"
         [matAutocomplete]="auto"
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -20,8 +20,8 @@
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-        {{fruit}}
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+        {{tag}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

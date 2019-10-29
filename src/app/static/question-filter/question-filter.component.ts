@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -23,8 +23,8 @@ export class QuestionFilterComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
-  tags: string[] = [];
-  allTagsFromServer: string[] = [];
+  tags: string[] = ['Java'];
+  allTagsFromServer: string[] = ['Java', 'Angular'];
 
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
@@ -91,12 +91,10 @@ export class QuestionFilterComponent implements OnInit {
     return this.allTagsFromServer.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
   ngOnInit() {
-    this.form = this.fb.group({
-      title: [''],
-      tags: [''],
-      question: ['']
-    });
-    this.ts.getTags();
+    // this.form = this.fb.group({
+    // tags: ['']
+    // });
+    // this.ts.getTags();
   }
 }
 
