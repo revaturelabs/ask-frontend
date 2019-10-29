@@ -70,13 +70,11 @@ h3 {
 
 mat-form-field{
   margin: 0 13% 0 13%;
-  width: 95%;
+  width: 75%;
 }
 mat-form-field input {
   width: 75%;
   height: 25px;
-  border: none;
-  border-bottom:1.5px solid #55698d;
   padding-left: 5px;
 }
 input:focus {
@@ -95,3 +93,4 @@ button {
   background-color: #f26925;
   color: #ffffff;
 }
+

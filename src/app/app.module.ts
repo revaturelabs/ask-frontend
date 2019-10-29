@@ -20,6 +20,8 @@ import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { QuestionFilterComponent} from './static/question-filter/question-filter.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { FooterComponent } from './static/footer/footer.component';
     PostsComponent,
     NavbarComponent,
     FooterComponent,
+    QuestionFilterComponent,
   ],
   imports: [
     BrowserModule,

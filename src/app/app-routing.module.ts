@@ -7,6 +7,7 @@ import { AskQuestionComponent } from './users/ask-question/ask-question.componen
 import { ViewQuestionComponent } from './static/view-question/view-question.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
+import { QuestionFilterComponent} from './static/question-filter/question-filter.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'view-question', component: ViewQuestionComponent },
   { path: 'settings', component: SelfTagsComponent },
   { path: 'questions', component: QuestionListComponent },
+  { path: 'filter-questions', component: QuestionFilterComponent},
 ];
 
 @NgModule({
