@@ -9,17 +9,19 @@ import {map, startWith} from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
 import { TagService } from 'src/app/services/tags.service';
 import { Tags } from 'src/app/models/Tags';
+import { environment } from 'src/environments/environment'
 
 // import { PostService } from '../../services/post.service';
 // import { Post } from '../../models/Post';
 
 /**
- * @author: Kyung Min Lee, Nathan Cross
+ * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
  * The current typescript is for Angular Material forms with autocomplete chips & two fields.
  *
  */
 
-const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
+// const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
+const qUrl = environment.tagsUri;
 
 @Component({
   selector: 'app-ask-question',
@@ -36,13 +38,7 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   tags: string[] = [];
-  allTagsFromServer: string[];
-  allTags: string[] = ['Front-end', 'Back-end', 'Angular', 'HTML', 'CSS', 
-                        'JavaScript', 'Java', 'Spring','Database', 'SQL',
-                        'AWS', 'GCS', 'Azure'];
-
-                  
-  
+  allTagsFromServer: string[] = [];
 
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
@@ -50,12 +46,11 @@ export class AskQuestionComponent implements OnInit {
   constructor(private fb: FormBuilder, private ts: TagService) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
-        map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+        map((tag: string | null) => tag ? this._filter(tag) : this.allTagsFromServer.slice()));
     this.ts.getTags().subscribe((tags) => {
-        
+      
         for (let index = 0; index < tags.length; index++) {
-          this.allTagsFromServer[index] = tags[index].tagName;
-          
+          this.allTagsFromServer.push(tags[index].tagName);
         }
         
         console.log(this.allTagsFromServer);
@@ -71,8 +66,14 @@ export class AskQuestionComponent implements OnInit {
       const value = event.value;
 
       // Add our tag
+      //Prevents inputing chips that is not on the list
       if ((value || '').trim()) {
-        this.tags.push(value.trim());
+        if (!this.allTagsFromServer.includes(value)) {
+          alert("Tag not recognized!")
+        } 
+        else {
+          this.tags.push(value.trim());
+        }  
       }
 
       // Reset the input value
@@ -101,7 +102,7 @@ export class AskQuestionComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTags.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTagsFromServer.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
   }
 
   questionInput: Object = {
