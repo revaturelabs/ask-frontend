@@ -21,10 +21,6 @@ export class QuestionService {
     return this.http.get<Question[]>(environment.questionsUri);
   }
 
-  getQuestionById(question: Question): Observable<Question> {
-    return this.http.get<Question>(`${environment.questionsUri}/${question.id}`);
-  }
-
   setQuestionId(questionId) {
     this.questionId = questionId;
   }

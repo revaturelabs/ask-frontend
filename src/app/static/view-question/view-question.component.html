@@ -1,5 +1,5 @@
 <div class="question-component">
-  <app-question></app-question>
+  <app-question [selectedQuestion]="selectedQuestion"></app-question>
 </div>
 <div class="response-component" *ngFor="let response of allResponses">
   <app-response [currentResponse]="response"></app-response>

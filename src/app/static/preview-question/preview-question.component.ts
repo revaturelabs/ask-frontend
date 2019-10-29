@@ -11,13 +11,13 @@ import { Question } from '../../models/Question';
 export class PreviewQuestionComponent implements OnInit {
   @Input() question: Question;
 
-  constructor(public router: Router, private questionIdService: QuestionService) {}
+  constructor(
+    public router: Router,
+    private questionIdService: QuestionService,
+  ) {}
 
-  viewQuestion = (selectQuestionId) => {
-
+  viewQuestion = selectQuestionId => {
     this.questionIdService.setQuestionId(selectQuestionId);
-    console.log(this.questionIdService);
-
     this.router.navigate([`/view-question/`]);
   }
 
