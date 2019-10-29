@@ -8,6 +8,7 @@ import {
   MatChipsModule,
   MatCheckboxModule,
   MatFormFieldModule,
+  MatIconModule,
 } from '@angular/material';
 
 
@@ -24,6 +25,7 @@ import {
     MatChipsModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatIconModule,
   ],
   exports: [
     MatMenuModule,
@@ -34,6 +36,7 @@ import {
     MatChipsModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatIconModule,
   ],
 })
 export class MaterialImportModule {}
