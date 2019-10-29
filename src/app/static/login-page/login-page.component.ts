@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
   constructor(private router: Router) {}
 
+  hide = true;
+
   ngOnInit() {}
 
   userLogin() {
