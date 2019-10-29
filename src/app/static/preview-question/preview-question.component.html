@@ -2,11 +2,12 @@
   <mat-card-header>
     <!-- Profile avatar would go here -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
-    <mat-card-title>Question: {{ post.head }}</mat-card-title>
+    <mat-card-title>Question: {{ question.head }}</mat-card-title>
     <mat-card-subtitle
-      >Submit Date: {{ post.creationDate | date: 'medium' }}</mat-card-subtitle
+      >Submit Date:
+      {{ question.creationDate | date: 'medium' }}</mat-card-subtitle
     >
-    <mat-card-subtitle>User ID: {{ post.userId }}</mat-card-subtitle>
+    <mat-card-subtitle>User ID: {{ question.userId }}</mat-card-subtitle>
   </mat-card-header>
   <!-- Image uploads would go here if we have that implementation -->
   <!-- <img mat-card-image src="s3-aws.com/jpg" alt="Code snippet"> -->
@@ -15,7 +16,7 @@
       <!-- <mat-chip color="primary" selected>{{ question.tags }}</mat-chip> -->
     </mat-chip-list>
     <p hidden>
-      {{ post.body }}
+      {{ question.body }}
     </p>
   </mat-card-content>
   <mat-card-actions>

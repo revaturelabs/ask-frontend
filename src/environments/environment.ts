@@ -7,6 +7,7 @@ export const environment = {
   environmentName: 'Default Environment',
   localhostUri: 'http://localhost:8080/',
   postsUrl: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question',
+  questionsUri: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question',
   tagsUrl: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags',
 };
 
