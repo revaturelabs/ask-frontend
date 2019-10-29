@@ -1,39 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-<<<<<<< HEAD
-
-import { 
-=======
 import {
->>>>>>> origin/dev
   MatMenuModule,
   MatButtonModule,
   MatToolbarModule,
   MatCardModule,
   MatChipsModule,
-<<<<<<< HEAD
-  MatInputModule,
-  MatOptionModule,
-  MatSelectModule,
-=======
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
   MatSelectModule,
-  MatCheckboxModule
->>>>>>> origin/dev
+  MatCheckboxModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-<<<<<<< HEAD
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatIconModule} from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 // import {MatInputModule} from '@angular/material/input';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-=======
->>>>>>> origin/dev
 @NgModule({
   declarations: [],
 
@@ -44,7 +29,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatToolbarModule,
     MatCardModule,
     MatChipsModule,
-<<<<<<< HEAD
+    MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
@@ -53,14 +38,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
-    MatButtonToggleModule
-=======
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatCheckboxModule,
->>>>>>> origin/dev
+    MatButtonToggleModule,
   ],
   exports: [
     MatMenuModule,
@@ -68,7 +46,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatToolbarModule,
     MatCardModule,
     MatChipsModule,
-<<<<<<< HEAD
+    MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
@@ -77,18 +55,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
-    MatButtonToggleModule
-  ]
-
-})
-export class MaterialImportModule { }
-=======
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatCheckboxModule
+    MatButtonToggleModule,
   ],
 })
 export class MaterialImportModule {}
->>>>>>> origin/dev

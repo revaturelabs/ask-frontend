@@ -7,6 +7,8 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
+import { TagService } from 'src/app/services/tags.service';
+import { Tags } from 'src/app/models/Tags';
 
 // import { PostService } from '../../services/post.service';
 // import { Post } from '../../models/Post';
@@ -34,17 +36,30 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   tags: string[] = [];
+  allTagsFromServer: string[];
   allTags: string[] = ['Front-end', 'Back-end', 'Angular', 'HTML', 'CSS', 
                         'JavaScript', 'Java', 'Spring','Database', 'SQL',
                         'AWS', 'GCS', 'Azure'];
 
+                  
+  
+
   @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ts: TagService) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
         map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+    this.ts.getTags().subscribe((tags) => {
+        
+        for (let index = 0; index < tags.length; index++) {
+          this.allTagsFromServer[index] = tags[index].tagName;
+          
+        }
+        
+        console.log(this.allTagsFromServer);
+    });
     
   }
 
@@ -103,6 +118,7 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.question = qQuestion;
     console.log(this.questionInput);
     console.log(this.tags);
+    console.log(this.ts.getTags())
   }
 
 
@@ -112,13 +128,7 @@ export class AskQuestionComponent implements OnInit {
       tags: [''],
       question: ['']
     });
-  }
-
-  onSubmit() {
-    event.preventDefault();
-      fetch(qUrl, {method: "POST", body: JSON.stringify(this.form.value) })
-      console.log(this.form.value);
-      console.log(this.form);
+    this.ts.getTags();
   }
 
 }
