@@ -8,8 +8,6 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-
-
 @NgModule({
   declarations: [
     FooterComponent,
@@ -19,9 +17,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     PreviewQuestionComponent,
     NavbarComponent,
   ],
-  imports: [
-    CommonModule,
-    MaterialImportModule,
-  ]
+  imports: [CommonModule, MaterialImportModule],
 })
-export class StaticModule { }
+export class StaticModule {}

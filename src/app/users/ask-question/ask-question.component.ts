@@ -22,10 +22,9 @@ const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
 @Component({
   selector: 'app-ask-question',
   templateUrl: './ask-question.component.html',
-  styleUrls: ['./ask-question.component.css']
+  styleUrls: ['./ask-question.component.css'],
 })
 export class AskQuestionComponent implements OnInit {
-
   form: FormGroup;
   visible = true;
   selectable = true;
