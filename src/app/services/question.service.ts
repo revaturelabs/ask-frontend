@@ -12,10 +12,25 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class QuestionService {
+
+  questionId: number;
+
   constructor(private http: HttpClient) {}
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(environment.questionsUri);
+  }
+
+  getQuestionById(question: Question): Observable<Question> {
+    return this.http.get<Question>(`${environment.questionsUri}/${question.id}`);
+  }
+
+  setQuestionId(questionId) {
+    this.questionId = questionId;
+  }
+
+  getQuestionId() {
+    return this.questionId;
   }
 
   saveQuestion(question: Question): Observable<Question> {

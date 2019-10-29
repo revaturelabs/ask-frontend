@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
 
 @Component({
@@ -11,12 +11,15 @@ import { Question } from '../../models/Question';
 export class PreviewQuestionComponent implements OnInit {
   @Input() question: Question;
 
-  viewQuestion = () => {
-    //Will change this
-    this.router.navigate(['/view-question']);
-  }
+  constructor(public router: Router, private questionIdService: QuestionService) {}
 
-  constructor(public router: Router) {}
+  viewQuestion = (selectQuestionId) => {
+
+    this.questionIdService.setQuestionId(selectQuestionId);
+    console.log(this.questionIdService);
+
+    this.router.navigate([`/view-question/`]);
+  }
 
   ngOnInit() {}
 }

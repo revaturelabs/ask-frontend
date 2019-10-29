@@ -13,13 +13,13 @@
   <!-- <img mat-card-image src="s3-aws.com/jpg" alt="Code snippet"> -->
   <mat-card-content>
     <mat-chip-list class="mat-chip-list-wrapper">
-      <!-- <mat-chip color="primary" selected>{{ question.tags }}</mat-chip> -->
+      <!-- <mat-chip color="primary" selected>{{ tag.tagName }}</mat-chip> -->
     </mat-chip-list>
     <p hidden>
       {{ question.body }}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="viewQuestion()">VIEW</button>
+    <button mat-button (click)="viewQuestion(question.id)">VIEW</button>
   </mat-card-actions>
 </mat-card>

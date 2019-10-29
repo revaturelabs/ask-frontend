@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QUESTIONS } from '../../mock-questions';
-import { RESPONSES } from '../../mock-responses';
+import { ResponseService } from '../../services/response.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-question',
@@ -8,12 +8,18 @@ import { RESPONSES } from '../../mock-responses';
   styleUrls: ['./view-question.component.css'],
 })
 export class ViewQuestionComponent implements OnInit {
-  //Passing mock dependencies in
-  question = QUESTIONS[1];
-  responses = RESPONSES;
-  //mock dependencies done
+  allResponses: any[];
 
-  constructor() {}
+  constructor(private responseService: ResponseService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.allResponses = [];
+    this.responseService.getResponses().subscribe(
+      (response) => {
+        for (let r in response) {
+          this.allResponses.push(response[r]);
+        }
+      }
+    )
+  }
 }
