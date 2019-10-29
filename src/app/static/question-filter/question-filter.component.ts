@@ -8,6 +8,7 @@ import {map, startWith} from 'rxjs/operators';
 
 /**
  * @title Chips Autocomplete
+ * @author Borko Stankovic
  */
 @Component({
   selector: 'app-question-filter',
@@ -20,61 +21,82 @@ export class QuestionFilterComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = ['HTML'];
-  allFruits: string[] = ['SQL', 'HTML', 'CSS', 'Java', 'Angular'];
+  tagCtrl = new FormControl();
+  filteredTags: Observable<string[]>;
+  tags: string[] = [];
+  allTagsFromServer: string[] = [];
 
-  @ViewChild('fruitInput', {static: false}) fruitInput: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
 
   constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
-  }
-  ngOnInit() {
-  }
+        map((tag: string | null) => tag ? this._filter(tag) : this.allTagsFromServer.slice()));
+    // this.ts.getTags().subscribe((tags) => {
+
+    //       for (let index = 0; index < tags.length; index++) {
+    //         this.allTagsFromServer.push(tags[index].tagName);
+    //       }
+
+    //       console.log(this.allTagsFromServer);
+    //   });
+
+      }
 
   add(event: MatChipInputEvent): void {
-    // Add fruit only when MatAutocomplete is not open
+    // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
 
-      // Add our fruit
+      // Add our tag
+      // Prevents inputing chips that is not on the list
       if ((value || '').trim()) {
-        this.fruits.push(value.trim());
+        if (!this.allTagsFromServer.includes(value)) {
+          alert('Tag not recognized!')
+        } else {
+          this.tags.push(value.trim());
+        }
       }
+
 
       // Reset the input value
       if (input) {
         input.value = '';
       }
 
-      this.fruitCtrl.setValue(null);
+      this.tagCtrl.setValue(null);
     }
   }
 
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.tags.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTagsFromServer.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+  }
+  ngOnInit() {
+    this.form = this.fb.group({
+      title: [''],
+      tags: [''],
+      question: ['']
+    });
+    this.ts.getTags();
   }
 }
 
