@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponseService } from '../../services/response.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-enter-response',
