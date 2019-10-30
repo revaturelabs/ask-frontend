@@ -15,6 +15,6 @@ export class TagService {
   constructor(private http: HttpClient) {}
 
   getTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(environment.tagsUrl);
+    return this.http.get<Tag[]>(environment.tagsUri);
   }
 }
