@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Tags } from '../../models/Tags';
+import { Tag } from '../../models/Tag';
 import { TagService } from 'src/app/services/tags.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { TagService } from 'src/app/services/tags.service';
   styleUrls: ['./self-tags.component.css'],
 })
 export class SelfTagsComponent implements OnInit {
-  tags: Tags[];
+  tags: Tag[];
 
   constructor(private tagService: TagService) {}
 

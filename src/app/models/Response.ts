@@ -1,7 +1,7 @@
 export interface Response {
   id: number;
   responderId: number;
-  title: string;
+  questionId: number;
   body: string;
   creationDate: string;
 }

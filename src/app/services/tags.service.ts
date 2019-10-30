@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tags } from '../models/Tags';
+import { Tag } from '../models/Tag';
 import { environment } from '../../environments/environment';
 
 const httpOptions = {
@@ -14,7 +14,7 @@ const httpOptions = {
 export class TagService {
   constructor(private http: HttpClient) {}
 
-  getTags(): Observable<Tags[]> {
-    return this.http.get<Tags[]>(environment.tagsUrl);
+  getTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(environment.tagsUrl);
   }
 }

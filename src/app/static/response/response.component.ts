@@ -10,7 +10,7 @@ export class ResponseComponent implements OnInit {
   @Input() response: Response = {
     id: 0,
     responderId: 0,
-    title: '',
+    questionId: 0,
     body: '',
     creationDate: ''
   };

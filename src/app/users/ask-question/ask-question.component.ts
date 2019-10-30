@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
 import { TagService } from 'src/app/services/tags.service';
-import { Tags } from 'src/app/models/Tags';
 import { environment } from 'src/environments/environment'
 
 // import { PostService } from '../../services/post.service';
