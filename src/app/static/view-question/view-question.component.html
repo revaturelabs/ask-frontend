@@ -1,8 +1,8 @@
 <div class="question-component">
   <app-question></app-question>
 </div>
-<div class="response-component" *ngFor="let response of allResponses">
-  <app-response [currentResponse]="response"></app-response>
+<div class="response-component" *ngFor="let response of responses">
+  <app-response [response]="response"></app-response>
 </div>
 
 <div class="submit-response">

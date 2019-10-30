@@ -7,7 +7,7 @@ import { Response } from '../../models/Response';
   styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent implements OnInit {
-  @Input() currentResponse: Response = {
+  @Input() response: Response = {
     id: 0,
     responderId: 0,
     title: '',
