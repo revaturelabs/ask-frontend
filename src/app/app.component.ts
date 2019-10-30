@@ -7,9 +7,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  env = environment;
   title = 'ask-frontend';
-  environmentName = '';
 
   constructor() {}
 }
