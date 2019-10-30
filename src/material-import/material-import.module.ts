@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  MatAutocompleteModule,
   MatMenuModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatToolbarModule,
   MatCardModule,
   MatChipsModule,
   MatFormFieldModule,
   MatInputModule,
+  MatIconModule,
   MatOptionModule,
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
 } from '@angular/material';
 
 @NgModule({
   declarations: [],
+
   imports: [
     CommonModule,
     MatMenuModule,
@@ -26,7 +30,10 @@ import {
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    MatAutocompleteModule,
     MatCheckboxModule,
+    MatIconModule,
+    MatButtonToggleModule,
   ],
   exports: [
     MatMenuModule,
@@ -38,7 +45,10 @@ import {
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonToggleModule,
   ],
 })
 export class MaterialImportModule {}
