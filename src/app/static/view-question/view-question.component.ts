@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QUESTIONS } from '../../mock-questions';
 import { RESPONSES } from '../../mock-responses';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view-question',
@@ -9,11 +9,20 @@ import { RESPONSES } from '../../mock-responses';
 })
 export class ViewQuestionComponent implements OnInit {
   //Passing mock dependencies in
-  question = QUESTIONS[1];
   responses = RESPONSES;
-  //mock dependencies done
+
+  allResponses: any[];
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.allResponses = [];
+    for (let i = 0; i < this.responses.length; i++) {
+      this.allResponses.push({
+        expertName: this.responses[i].expertName,
+        date: this.responses[i].date,
+        text: this.responses[i].text,
+      });
+    }
+  }
 }

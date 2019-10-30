@@ -1,10 +1,14 @@
-<mat-toolbar id="navbar">
+<mat-toolbar id="navbar" *ngIf="isLoggedIn$ | async">
   <mat-toolbar-row>
     <button mat-button routerLink="/ask">Ask Questions</button>
     <button mat-button routerLink="/questions">All Questions</button>
     <button mat-button routerLink="/questions">My Activity</button>
     <button mat-button routerLink="/settings">Settings</button>
+<<<<<<< HEAD
     <button mat-button routerLink="/filter-questions">Filter questions</button>
     <button mat-button routerLink="/">Logout</button>
+=======
+    <button mat-button (click)="onLogout()">Logout</button>
+>>>>>>> login-feature
   </mat-toolbar-row>
 </mat-toolbar>

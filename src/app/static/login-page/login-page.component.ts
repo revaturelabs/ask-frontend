@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
-const loginUrl = "";
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -11,38 +9,32 @@ const loginUrl = "";
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-
   form: FormGroup;
-  
+  private formSubmitAttempt: boolean;
+  account: Account;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    ) {}
+    private authService: AuthService) {}
 
-  hide = true;
-
-  onSubmit() {
-    if(this.form.valid) {
-      fetch(loginUrl, {method: "POST", body: JSON.stringify(this.form.value)})
-      .then((response) => {
-        // this.authService.login(this.form.value);
-        return response.json();
-      }).catch(console.log);
-    }
-  }
+    hide = true;
 
   ngOnInit() {
+//remove comment-out when password field is added
     this.form = this.fb.group({
-      id:['']
+      id: ['', Validators.required]
     });
   }
 
   userLogin() {
-    this.router.navigate(['/user-page']);
+    this.authService.userLogin(this.form.value);
+    console.log(this.form.value)
   }
 
   expertLogin() {
-    this.router.navigate(['/expert-page']);
+    this.authService.expertLogin(this.form.value);
+    console.log(this.form.value)
   }
 }
 
