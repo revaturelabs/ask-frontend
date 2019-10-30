@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
-
+const loginUrl = "";
 
 
 @Component({
@@ -10,11 +11,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private router: Router) {}
+
+  form: FormGroup;
+  
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    ) {}
 
   hide = true;
 
-  ngOnInit() {}
+  onSubmit() {
+    if(this.form.valid) {
+      fetch(loginUrl, {method: "POST", body: JSON.stringify(this.form.value)})
+      .then((response) => {
+        // this.authService.login(this.form.value);
+        return response.json();
+      }).catch(console.log);
+    }
+  }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      id:['']
+    });
+  }
 
   userLogin() {
     this.router.navigate(['/user-page']);
