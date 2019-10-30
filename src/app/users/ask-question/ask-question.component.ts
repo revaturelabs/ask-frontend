@@ -18,6 +18,8 @@ import { environment } from 'src/environments/environment'
  * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
  * The current typescript is for Angular Material forms with autocomplete chips & two fields.
  *
+ * This component is built on top of an example found at:
+ * https://material.angular.io/components/chips/overview
  */
 
 // const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
