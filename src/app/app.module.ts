@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FooterComponent } from './static/footer/footer.component';
     routingComponents,
     NavbarComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -42,8 +44,9 @@ import { FooterComponent } from './static/footer/footer.component';
     FormsModule,
     MaterialImportModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
