@@ -1,6 +1,7 @@
+<app-question></app-question>
 <mat-card class="question-card" *ngFor="let response of responses">
     <mat-card-header>
-        <mat-card-title> <h3> Expert Response Title: {{ response.title }}</h3></mat-card-title>
+        <mat-card-title> <h3> Expert Response: {{ response.title }} </h3> </mat-card-title>
         <mat-card-subtitle> Submit Date: {{ response.creationDate | date: 'short' }} </mat-card-subtitle>
         <mat-card-subtitle>Expert ID: {{ response.responderId }}</mat-card-subtitle>
       </mat-card-header>
@@ -8,11 +9,8 @@
           <mat-chip-list class="mat-chip-list-wrapper">
           </mat-chip-list>
           <p>{{ response.body }}</p>
-          <button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button>
-          <button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button>
+          <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button>
+          <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button>
         </mat-card-content>
       </mat-card>
-      <mat-card-actions>
-  </mat-card-actions>
-
   <app-enter-response [currentResponse]="currentResponse" [isEdit]="isEdit" (newResponse)="onNewResponse($event)" (updatedResponse)="onUpdatedResponse($event)"></app-enter-response>
