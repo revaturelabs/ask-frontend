@@ -1,23 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  MatAutocompleteModule,
   MatMenuModule,
   MatButtonModule,
+  MatButtonToggleModule,
   MatToolbarModule,
   MatCardModule,
   MatChipsModule,
   MatFormFieldModule,
   MatInputModule,
+  MatIconModule,
   MatOptionModule,
   MatSelectModule,
   MatCheckboxModule,
 } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatIconModule } from '@angular/material/icon';
-// import {MatInputModule} from '@angular/material/input';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [],
@@ -33,8 +30,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
@@ -50,8 +45,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
