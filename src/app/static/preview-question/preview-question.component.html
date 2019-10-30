@@ -3,7 +3,7 @@
     <!-- Profile avatar would go here -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title>Question: {{ question.title }}</mat-card-title>
-    <mat-card-subtitle>{{ question.date }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ question.date | date : 'short' }}</mat-card-subtitle>
     <mat-card-subtitle>{{ question.username }}</mat-card-subtitle>
   </mat-card-header>
   <!-- Image uploads would go here if we have that implementation -->

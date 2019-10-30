@@ -20,7 +20,7 @@ export class EnterResponseComponent implements OnInit {
 
   addResponse(title, body) {
     if (!title || !body) {
-      alert('Please add Response');
+      alert('Please add a Response');
     } else {
       this.responseService
         .saveResponse({ title, body } as Response)

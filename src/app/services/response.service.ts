@@ -13,6 +13,7 @@ const httpOptions = {
 })
 export class ResponseService {
   constructor(private http: HttpClient) {}
+  
   getResponses(): Observable<Response[]> {
     return this.http.get<Response[]>(environment.responsesUrl);
   }
@@ -28,6 +29,7 @@ export class ResponseService {
     return this.http.put<Response>(url, response, httpOptions);
   }
   removeResponse(response: Response | number): Observable<Response> {
+    // if type of response is number then we grab id and then creates response ...
     const id = typeof response === 'number' ? response : response.id;
     const url = `${environment.responsesUrl}/${id}`;
     return this.http.delete<Response>(url, httpOptions);
