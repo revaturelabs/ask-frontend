@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Response } from 'src/app/models/Response';
 
 @Component({
   selector: 'app-view-question',
@@ -9,9 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./view-question.component.css'],
 })
 export class ViewQuestionComponent implements OnInit {
+  /** For now, ViewQuestionComponent is tightly coupled with the QuestionService
+   * and only displays the question whose id is saved in that service.
+   * This should be a reusable component for displaying arbitrary questions, but
+   * refactoring will take some doing and this works.  So selectedQuestion is
+   * appropriate -- it will only ever be the question selected by the user elsewhere
+   * on the site.
+   */
   selectedQuestion: any;
-
-  allResponses: any[];
+  responses: Response[];
 
   constructor(
     private responseService: ResponseService,
@@ -27,11 +33,9 @@ export class ViewQuestionComponent implements OnInit {
       }
     });
 
-    this.allResponses = [];
-    this.responseService.getResponses().subscribe(response => {
-      for (let r in response) {
-        this.allResponses.push(response[r]);
-      }
+    this.responses = [];
+    this.responseService.getResponses().subscribe(responses => {
+      this.responses = responses;
     });
   }
 }

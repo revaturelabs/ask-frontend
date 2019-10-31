@@ -7,6 +7,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     PreviewQuestionComponent,
     NavbarComponent,
   ],
-  imports: [CommonModule, MaterialImportModule],
+  imports: [
+    CommonModule,
+    MaterialImportModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class StaticModule {}

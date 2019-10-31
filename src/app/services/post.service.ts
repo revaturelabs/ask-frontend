@@ -16,22 +16,22 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(environment.postsUrl);
+    return this.http.get<Post[]>(environment.questionsUri);
   }
 
   savePost(post: Post): Observable<Post> {
-    return this.http.post<Post>(environment.postsUrl, post, httpOptions);
+    return this.http.post<Post>(environment.questionsUri, post, httpOptions);
   }
 
   updatePost(post: Post): Observable<Post> {
-    const url = `${environment.postsUrl}/${post.id}`;
+    const url = `${environment.questionsUri}/${post.id}`;
 
     return this.http.put<Post>(url, post, httpOptions);
   }
 
   removePost(post: Post | number): Observable<Post> {
     const id = typeof post === 'number' ? post : post.id;
-    const url = `${environment.postsUrl}/${id}`;
+    const url = `${environment.questionsUri}/${id}`;
 
     return this.http.delete<Post>(url, httpOptions);
   }

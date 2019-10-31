@@ -9,8 +9,6 @@ import { QuestionListComponent } from './static/question-list/question-list.comp
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'ask', component: AskQuestionComponent },
-  { path: 'user-page', component: AskQuestionComponent },
-  { path: 'expert-page', component: QuestionListComponent },
   { path: 'view-question', component: ViewQuestionComponent },
   { path: 'settings', component: SelfTagsComponent },
   { path: 'questions', component: QuestionListComponent },
@@ -21,4 +19,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const routingComponents = [AskQuestionComponent, QuestionListComponent];
