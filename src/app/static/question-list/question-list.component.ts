@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../../models/Question';
 
 @Component({
@@ -7,7 +7,7 @@ import { Question } from '../../models/Question';
   styleUrls: ['./question-list.component.css'],
 })
 export class QuestionListComponent implements OnInit {
-  questions: Question[];
+  @Input() questions: Question[];
 
   constructor() {}
 
