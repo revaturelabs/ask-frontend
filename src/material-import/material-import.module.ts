@@ -14,6 +14,7 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from '@angular/material';
 
 
@@ -35,6 +36,7 @@ import {
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatMenuModule,
@@ -50,6 +52,7 @@ import {
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialImportModule {}

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tag } from '../../models/Tag';
 import { environment } from '../../../environments/environment';
+import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
+
+
 
 @Component({
   selector: 'app-tag-creation',
@@ -10,20 +13,19 @@ import { environment } from '../../../environments/environment';
 })
 export class TagCreationComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
+  tag: Tag = { id: 0, name: '' };
 
   ngOnInit() {
   }
 
-  tag: Tag = { id: 0, name: '' };
 
   onSubmit() {
-    console.log(this.tag);
+    this._snackBar.open(`Tag Created`);
     this.http.post(environment.tagsUri, this.tag)
     .subscribe(
-      (result) => {console.log(result)}
+      (result) => {
+      }
     );
-    
   }
-
 }
