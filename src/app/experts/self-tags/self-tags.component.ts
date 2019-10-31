@@ -10,7 +10,7 @@ import { TagService } from 'src/app/services/tags.service';
 export class SelfTagsComponent implements OnInit {
   tags: Tag[];
 
-  // userId = 2;
+  userId = 2;
   expertSkills: string[] = [];
   // expertSkills: any[] = [];
 
@@ -22,8 +22,8 @@ export class SelfTagsComponent implements OnInit {
       this.expertSkills.push(id);
     } else {
       console.log(id + ' is unchecked!');
-      // let y = console.log(this.expertSkills.indexOf(id));
-      delete this.expertSkills[this.expertSkills.indexOf(id)];
+      //delete the value and close the empty array slot
+      this.expertSkills.splice([this.expertSkills.indexOf(id)], 1);
     }
     console.log(this.expertSkills);
   }
