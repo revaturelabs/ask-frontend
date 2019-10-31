@@ -11,10 +11,10 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {}
   userLogin() {
-    this.router.navigate(['/user-page']);
+    this.router.navigate(['/ask']);
   }
 
   expertLogin() {
-    this.router.navigate(['/expert-page']);
+    this.router.navigate(['/questions']);
   }
 }

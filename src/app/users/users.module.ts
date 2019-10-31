@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserNavComponent } from './user-nav/user-nav.component';
-import { UserPageComponent } from './user-page/user-page.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    UserNavComponent,
-    UserPageComponent,
-    AskQuestionComponent,
-  ],
+  declarations: [AskQuestionComponent],
   imports: [
     CommonModule,
     MaterialImportModule,
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
-export class UsersModule { }
-
+export class UsersModule {}

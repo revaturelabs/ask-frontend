@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QUESTIONS } from '../../mock-questions';
-import { RESPONSES } from '../../mock-responses';
+import { ResponseService } from '../../services/response.service';
+import { QuestionService } from '../../services/question.service';
+import { Response } from 'src/app/models/Response';
 
 @Component({
   selector: 'app-view-question',
@@ -8,12 +9,33 @@ import { RESPONSES } from '../../mock-responses';
   styleUrls: ['./view-question.component.css'],
 })
 export class ViewQuestionComponent implements OnInit {
-  //Passing mock dependencies in
-  question = QUESTIONS[1];
-  responses = RESPONSES;
-  //mock dependencies done
+  /** For now, ViewQuestionComponent is tightly coupled with the QuestionService
+   * and only displays the question whose id is saved in that service.
+   * This should be a reusable component for displaying arbitrary questions, but
+   * refactoring will take some doing and this works.  So selectedQuestion is
+   * appropriate -- it will only ever be the question selected by the user elsewhere
+   * on the site.
+   */
+  selectedQuestion: any;
+  responses: Response[];
 
-  constructor() {}
+  constructor(
+    private responseService: ResponseService,
+    private questionService: QuestionService,
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.questionService.getQuestions().subscribe(questions => {
+      for (const q in questions) {
+        if (this.questionService.getQuestionId() === questions[q].id) {
+          this.selectedQuestion = questions[q];
+        }
+      }
+    });
+
+    this.responses = [];
+    this.responseService.getResponses().subscribe(responses => {
+      this.responses = responses;
+    });
+  }
 }

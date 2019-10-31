@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tags } from '../../models/Tags';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-tag-creation',
