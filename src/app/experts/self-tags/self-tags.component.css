@@ -1,27 +1,57 @@
-body {
-  background-color: whitesmoke;
+.skill-tag{
+  width: 120px;
+  padding:4px 0;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
 }
-th,
-td {
-  padding: 5px;
-  text-align: left;
-  height: 30px;
-  vertical-align: bottom;
+mat-checkbox{
+  width: 100%;
+  padding:4px 8px 8px 8px;
+  border-radius: 5px;
 }
-table {
-  background-color: white;
-  margin-top: 30px;
-  position: relative;
-  width: 40%;
-  border: 1px solid black;
-  margin-left: 30%;
-  margin-right: 30%;
+mat-checkbox:hover{
+  background-color:#00000011;
+  transition-duration: 2ms;
+}
+mat-card{
+  margin: 25px 100px 0 0;
+  max-width: 648px;
+  padding: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+mat-card-content{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 20px 12px;
+}
+mat-card-header{
+  background-color:#00000014;
+}
+h3{
+  color:#555555;
+  font-weight:normal;
+  margin:6px 0 0 6px;
+}
+.buttons{
+  display:block;
+  align-content:right;
 }
 button {
-  margin-top: 10px;
-  position: relative;
+  /* left: 50%; */
+  margin:10px;
+  width: 100px;
+  /* display: block; */
+  /* margin: 10px; */
+  /* position: relative;
   right: 48%;
   left: 48%;
-  background-color: #42a5f5;
+  background-color: #42a5f5; */
   color: #f5f3fc;
+}
+#cancelButton{
+  background-color:#474C55;
+}
+#saveButton{
+  background-color:#f26925;
 }

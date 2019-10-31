@@ -1,8 +1,26 @@
 <mat-card>
-  <h2 class="head">Please Select Your Area of Interest</h2>
-  <mat-card-content class="card" *ngFor="let tag of tags">
-    <section class="expertise-section">
-      <mat-checkbox class="check-box-margin">{{ tag.name }}</mat-checkbox>
-    </section>
+  <mat-card-header>
+    <mat-card-title>
+      <h3 id="abc">Configure your skillset:</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let tag of tags">
+      <section class="skill-tag">
+        <mat-checkbox
+          color="warn"
+          (change)="toggle($event, tag.name)"
+          id="{{ tag.name }}"
+        >
+          {{ tag.name }}</mat-checkbox
+        >
+      </section>
+    </div>
+    <br />
+    <div class="buttons">
+      <button mat-raised-button id="cancelButton">Cancel</button>
+      <button mat-raised-button id="saveButton">Save</button>
+    </div>{{ a }}<br>{{ tags }}
+    <input [(ngModel)]="a" placeholder="{{ a }}"/>
   </mat-card-content>
 </mat-card>
