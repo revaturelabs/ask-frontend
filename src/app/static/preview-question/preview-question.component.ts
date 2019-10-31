@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-preview-question',
@@ -9,12 +11,17 @@ import { Question } from '../../models/Question';
 })
 export class PreviewQuestionComponent implements OnInit {
   @Input() question: Question;
+  @Input() tag: Tag;
 
-  viewQuestion = () => {
-    this.router.navigate(['/view-question']);
-  };
+  constructor(
+    public router: Router,
+    private questionIdService: QuestionService,
+  ) {}
 
-  constructor(public router: Router) {}
+  viewQuestion = selectQuestionId => {
+    this.questionIdService.setQuestionId(selectQuestionId);
+    this.router.navigate([`/view-question/`]);
+  }
 
   ngOnInit() {}
 }

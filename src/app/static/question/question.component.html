@@ -1,11 +1,14 @@
 <mat-card class="question-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{ question.title }}</mat-card-title>
-    <mat-card-subtitle>{{ question.username }} {{ question.date }}</mat-card-subtitle>
+    <mat-card-title>Question: {{ selectedQuestion.head }}</mat-card-title>
+    <mat-card-subtitle
+      >{{ selectedQuestion.userId }}
+      {{ selectedQuestion.creationDate }}</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-content>
-    <p>{{ question.description }} </p>
+    <p>{{ selectedQuestion.body }}</p>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <mat-chip color="primary" selected>JavaScript</mat-chip>
