@@ -40,9 +40,8 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value)
-    console.log(this.account)
-    
-    // fetch(url, {method: "POST", body: JSON.stringify(this.form.value)})
+    this.userLogin();
+    fetch(url, {method: "POST", body: JSON.stringify(this.form.value)})
     // .then((response)=>{
     //   console.log(response)
     //   return response.json();
@@ -67,12 +66,10 @@ export class LoginPageComponent implements OnInit {
 
   userLogin() {
     this.authService.userLogin(this.form.value);
-    console.log(this.form.value)
   }
 
   expertLogin() {
     this.authService.expertLogin(this.form.value);
-    console.log(this.form.value)
   }
 }
 

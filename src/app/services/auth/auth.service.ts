@@ -24,7 +24,7 @@ export class AuthService {
     //   this.loggedIn.next(true);
     //   this.router.navigate(['/user-page']);
     // }
-    console.log(account.id)
+    console.log(account.expert)
   }
 
   expertLogin(account: Account) {
