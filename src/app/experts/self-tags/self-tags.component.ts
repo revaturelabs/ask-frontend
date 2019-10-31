@@ -9,25 +9,23 @@ import { TagService } from 'src/app/services/tags.service';
 })
 export class SelfTagsComponent implements OnInit {
   tags: Tag[];
-  tagConfig: string[] = [];
 
-  skillset: Object = {
-    userId : 1,
-    tagConfig: [],
-  };
+  // userId = 2;
+  expertSkills: string[] = [];
+  // expertSkills: any[] = [];
 
   constructor(private tagService: TagService) {}
 
   toggle($event, id) {
     if ($event.checked === true) {
       console.log(id + ' is checked!');
-      this.tagConfig.push('hello');
+      this.expertSkills.push(id);
     } else {
       console.log(id + ' is unchecked!');
-      this.tagConfig.push('goodbye');
+      // let y = console.log(this.expertSkills.indexOf(id));
+      delete this.expertSkills[this.expertSkills.indexOf(id)];
     }
-    console.log(this.tagConfig);
-    document.getElementById('abc').innerHTML = JSON.stringify(this.tagConfig);
+    console.log(this.expertSkills);
   }
 
   ngOnInit() {
