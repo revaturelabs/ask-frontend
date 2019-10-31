@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material';
 import {
   MatAutocompleteModule,
   MatMenuModule,
@@ -35,13 +33,8 @@ import {
     MatSelectModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-<<<<<<< HEAD
-    MatFormFieldModule,
-    MatInputModule,
-=======
     MatIconModule,
     MatButtonToggleModule,
->>>>>>> dev
   ],
   exports: [
     MatMenuModule,
@@ -55,13 +48,8 @@ import {
     MatSelectModule,
     MatAutocompleteModule,
     MatCheckboxModule,
-<<<<<<< HEAD
-    MatFormFieldModule,
-    MatInputModule,
-=======
     MatIconModule,
     MatButtonToggleModule,
->>>>>>> dev
   ],
 })
 export class MaterialImportModule {}

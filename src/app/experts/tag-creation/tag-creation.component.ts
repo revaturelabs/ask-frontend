@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tag } from '../../models/Tag';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-tag-creation',
@@ -14,13 +15,15 @@ export class TagCreationComponent implements OnInit {
   ngOnInit() {
   }
 
-  tag: Tags = { id: 0, tagName: '' };
-
-  //need to change Endpoint
-  endpoint: string = "/tag";
+  tag: Tag = { id: 0, name: '' };
 
   onSubmit() {
-    this.http.post(this.endpoint, JSON.stringify(this.tag));
+    console.log(this.tag);
+    this.http.post(environment.tagsUri, this.tag)
+    .subscribe(
+      (result) => {console.log(result)}
+    );
+    
   }
 
 }
