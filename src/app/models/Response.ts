@@ -1,5 +1,7 @@
-export class Response {
-  expertName: string;
-  date: string;
-  text: string;
+export interface Response {
+  id: number;
+  responderId: number;
+  title: string;
+  body: string;
+  creationDate: string;
 }
