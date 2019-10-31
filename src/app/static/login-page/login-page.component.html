@@ -25,16 +25,36 @@
 </form>
 </div> -->
 
+<!--
 <div class="container">
-    <form>
+    <form> 
         <h3>Log in</h3>
           <br><br>
       <mat-form-field>
-      <input id="id" matInput placeholder="Enter your account id: " required>
+      <input id="id" matInput placeholder="Enter your account id: " #id required>
       <mat-icon matSuffix>perm_identity</mat-icon>
       </mat-form-field>
-        <button mat-raised-button id="login" >Login</button>
+        <button mat-raised-button (click)="onSubmit2(id.value)">Login</button>
+        <button mat-raised-button (click)="onSubmit()">Login</button>
     </form>
+</div>
+-->
+
+<div class="container">
+    <!-- <mat-card>
+        <mat-card-content> -->
+            <form [formGroup]="form" id="form">
+                <h3>Log in</h3>
+                <br><br>
+            <mat-form-field>
+            <input id="id" matInput formControlName="id" placeholder="Enter your account id: " #id required>
+            <mat-icon matSuffix>perm_identity</mat-icon>
+            </mat-form-field>
+              <!-- <button mat-raised-button (click)="onSubmit2(id.value)">Login</button> -->
+              <button mat-raised-button (click)="onSubmit()">Login</button>
+            </form>
+        <!-- </mat-card-content>
+    </mat-card> -->
 </div>
 
 

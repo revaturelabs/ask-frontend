@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Account } from 'src/app/models/account';
+
+const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +19,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService) {}
+    private authService: AuthService
+    ) {}
 
     hide = true;
 
@@ -25,6 +29,40 @@ export class LoginPageComponent implements OnInit {
     this.form = this.fb.group({
       id: ['', Validators.required]
     });
+  }
+
+  isFieldInvalid(field: string) { 
+    return (
+      (!this.form.get(field).valid && this.form.get(field).touched) ||
+      (this.form.get(field).untouched && this.formSubmitAttempt)
+    );
+  }
+
+  onSubmit() {
+    console.log(this.form.value)
+    console.log(this.account)
+    
+    // fetch(url, {method: "POST", body: JSON.stringify(this.form.value)})
+    // .then((response)=>{
+    //   console.log(response)
+    //   return response.json();
+    // }).catch(console.log)
+    // if(this.account.expert == false) {
+    //   this.userLogin();
+    // }
+    // else if (this.account.expert == true) {
+    //   this.expertLogin();
+    // }
+    this.formSubmitAttempt = true;
+  }
+
+  login: Object = {
+    
+  }
+
+  onSubmit2 = function(id) {
+    console.log(id)
+
   }
 
   userLogin() {
