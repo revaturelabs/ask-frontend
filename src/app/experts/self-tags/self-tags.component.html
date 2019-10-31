@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <h3 id="abc">Configure your skillset:</h3>
+      <h3>Configure your skillset:</h3>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
@@ -20,7 +20,8 @@
     <div class="buttons">
       <button mat-raised-button id="cancelButton">Cancel</button>
       <button mat-raised-button id="saveButton">Save</button>
-    </div>{{ a }}<br>{{ tags }}
+    </div>
+    <br><p id="abc"></p>{{ a }}{{ skillset }}<br>{{ tags }}
     <input [(ngModel)]="a" placeholder="{{ a }}"/>
   </mat-card-content>
 </mat-card>
