@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
+import { TagService } from '../../services/tags.service';
+import { Tags } from '../../models/Tags';
 
 @Component({
   selector: 'app-question-list',
@@ -9,12 +11,20 @@ import { Question } from '../../models/Question';
 })
 export class QuestionListComponent implements OnInit {
   questions: Question[];
+  tags: Tags[];
 
-  constructor(private questionService: QuestionService) {}
+  constructor(
+    private questionService: QuestionService,
+    private tagService: TagService,
+  ) {}
 
   ngOnInit() {
     this.questionService.getQuestions().subscribe(questions => {
       this.questions = questions;
+    });
+
+    this.tagService.getTags().subscribe(tags => {
+      this.tags = tags;
     });
   }
 }

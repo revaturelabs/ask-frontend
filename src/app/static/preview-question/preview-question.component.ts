@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
+import { Tags } from '../../models/Tags';
 
 @Component({
   selector: 'app-preview-question',
@@ -10,6 +11,7 @@ import { Question } from '../../models/Question';
 })
 export class PreviewQuestionComponent implements OnInit {
   @Input() question: Question;
+  @Input() tag: Tags;
 
   constructor(
     public router: Router,
