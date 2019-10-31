@@ -8,6 +8,7 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { QuestionFilterComponent } from './question-filter/question-filter.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     QuestionListComponent,
     PreviewQuestionComponent,
     NavbarComponent,
+    QuestionFilterComponent,
   ],
   imports: [
     CommonModule,
