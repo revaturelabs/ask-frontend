@@ -12,8 +12,8 @@
   <!-- Image uploads would go here if we have that implementation -->
   <!-- <img mat-card-image src="s3-aws.com/jpg" alt="Code snippet"> -->
   <mat-card-content>
-    <mat-chip-list class="mat-chip-list-wrapper">
-      <!-- <mat-chip color="primary" selected>{{ tag.tagName }}</mat-chip> -->
+    <mat-chip-list class="mat-chip-list-wrapper" *ngFor="let tag of question.associatedTags">
+      <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
     </mat-chip-list>
     <p hidden>
       {{ question.body }}

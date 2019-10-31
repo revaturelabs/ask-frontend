@@ -1,3 +1,5 @@
+import { Tag } from '../models/Tag'
+
 export interface Question {
   id: number;
   username: string;
@@ -6,4 +8,5 @@ export interface Question {
   head: string;
   body: string;
   creationDate: string;
+  associatedTags: Tag[];
 }
