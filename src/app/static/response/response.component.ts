@@ -26,6 +26,7 @@ export class ResponseComponent implements OnInit {
       highlightedResponseId: this.responseId,
     }).subscribe(data => {
       console.log('PATCH successful', data);
+      // Will add snackbar or other notification here
     },
     error => {
       console.log('PATCH ERROR', error);

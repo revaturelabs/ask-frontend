@@ -3,8 +3,7 @@
 </div>
 
 <div class="highlighted-response-component">
-    <!-- [highlight] = "highlightedResponse -->
-  <app-highlighted-response></app-highlighted-response>
+  <app-highlighted-response *ngIf="highlightedResponse" [highlight] = "highlightedResponse"></app-highlighted-response>
 </div>
 
 <div class="response-component" *ngFor="let response of questionResponses">

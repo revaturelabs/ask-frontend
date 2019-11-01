@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
-import { Response } from 'src/app/models/Response';
 
 @Component({
   selector: 'app-view-question',
@@ -21,12 +19,10 @@ export class ViewQuestionComponent implements OnInit {
   questionResponses: any;
 
   constructor(
-    private responseService: ResponseService,
     private questionService: QuestionService,
   ) {}
 
   ngOnInit() {
-
     const selectedQuestionId = this.questionService.getQuestionId();
 
     this.questionService.getQuestions().subscribe(questions => {
@@ -37,25 +33,30 @@ export class ViewQuestionComponent implements OnInit {
       }
     });
 
-    this.questionService.getQuestionById(selectedQuestionId).subscribe(result => {
-      if (result.highlightedResponseId != null) {
-        this.responseService.getResponses().subscribe(highlight => {
-          for (const h in highlight) {
-            let questionId = highlight[h].question.id;
-            if (questionId === selectedQuestionId) {
-              console.log(highlight[h]);
+    // Retrieving the highlighted response for a specified question
+    this.questionService
+      .getQuestionById(selectedQuestionId)
+      .subscribe(result => {
+        if (result.highlightedResponseId != null) {
+          const responsesByQuestion: any = result.responses; // Gets the objects in 'responses' array in the questions JSON
+          // tslint:disable-next-line: forin
+          for (const r in responsesByQuestion) {
+            const responseId: any = responsesByQuestion[r].id; // Sets the response ID
+            if (responseId === result.highlightedResponseId) {
+              // Checks to see if response ID is equal to the highlighted response ID
+              this.highlightedResponse = responsesByQuestion[r];
             }
           }
-        });
-      } else {
-        console.log("No highlighted responses");
-      }
-    });
+        } else {
+          console.log('No highlighted response');
+        }
+      });
 
     // Retrieving responses based on the selected question
-    this.questionService.getQuestionById(selectedQuestionId).subscribe(result => {
-      this.questionResponses = result.responses;
-    });
-
+    this.questionService
+      .getQuestionById(selectedQuestionId)
+      .subscribe(result => {
+        this.questionResponses = result.responses;
+      });
   }
 }
