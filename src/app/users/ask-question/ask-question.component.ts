@@ -93,7 +93,7 @@ export class AskQuestionComponent implements OnInit {
         //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           
-          this._snackBar.open("Tag not recognized!", "OK, i will fix it", {duration: 2000,});
+          this._snackBar.open("Tag not recognized!", "OK, i will fix it", {duration: 4000,});
         } else {
           this.tags.push(value.trim());
         }
@@ -132,37 +132,40 @@ export class AskQuestionComponent implements OnInit {
 
   questionInput: Object = {
     head: null,
-    tags: null,
+    tagList: null,
     body: null,
   };
 
-  submitQuestion = function(event, head, qTags, body) {
+  submitQuestion = function(event, head, tagList, body) {
     event.preventDefault();
     this.questionInput.head = head;
-    this.questionInput.tags = this.tags;
+    this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
     console.log(this.questionInput);
     console.log(this.tags);
     // console.log(this.ts.getTags());
     
     this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
-			(response => {
-        console.log("THE RESPONSEEEEEEEEEE: " + response);
-				if (response.statusCode === "OK") {
-					alert("Posting successful!");
-					window.location.reload();
-				} else {
-					alert("Posting a question was unsuccessful.");
-				}
-			})
-		);
+			response => {
+        window.location.reload();
+        this._snackBar.open("Your question is submitted!", "OK!", {duration: 4000,});
+        
+				// if (HttpClient.statusCode === "OK") {
+				// 	alert("Posting successful!");
+				// 	window.location.reload();
+				// } else {
+					// alert("Posting a question was unsuccessful.");
+        // }
+			}, failed => {
+        this._snackBar.open("Your question failed to submit!", "OK", {duration: 4000,});
+      });
 
   };
 
   ngOnInit() {
     this.form = this.fb.group({
       head: [''],
-      tags: [''],
+      tagList: [''],
       body: [''],
     });
     this.ts.getTags();
