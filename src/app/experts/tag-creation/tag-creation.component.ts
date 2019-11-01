@@ -17,12 +17,12 @@ export class TagCreationComponent implements OnInit {
 
   onSubmit() {
     this.http.post(environment.tagsUri, this.tag).subscribe(
-      (result) => {
-        this._snackBar.open(`Tag Created`);
+      result => {
+        this._snackBar.open(`Tag Created`, `OK`, { duration: 2000 });
       },
-      (error) => {
-        this._snackBar.open(`Failed to Create Tag: ${error}`);
-      }
-      );
+      error => {
+        this._snackBar.open(`Failed to Create Tag`, `OK`, { duration: 2000 });
+      },
+    );
   }
 }
