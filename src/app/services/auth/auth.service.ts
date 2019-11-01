@@ -1,36 +1,45 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Router, UrlSegment } from '@angular/router';
+import { Router } from '@angular/router';
 import { Account } from 'src/app/models/account';
+import { HttpClient } from '@angular/common/http';
 
+const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+  account: any;
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient
+    ) {}
 
-  userLogin(account: Account) {
-    // if (account.username !== '' && account.password !== '')
-    // if (account.id == )
+  userLogin(account: any) {
+    const oUrl = `${url}/${account}`
+    // if (account.id == '' && account.password !== '')
     // {
-    //   // account.id = '1';
     //   this.loggedIn.next(true);
     //   this.router.navigate(['/user-page']);
     // }
-    console.log(account.expert)
+    console.log(this.http.get(oUrl))
+    let observable = this.http.get(oUrl);
+    observable.subscribe((result=>{
+      this.account = result
+    }))
+    console.log(account)
   }
 
   expertLogin(account: Account) {
     // if (account.username !== '' && account.password !== '')
     {
-      // account.id = '2';
       this.loggedIn.next(true);
       this.router.navigate(['/expert-page']);
     }

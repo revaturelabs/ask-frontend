@@ -3,4 +3,5 @@ export interface Account {
     username: String;
     password: String;
     expert: Boolean;
+    subjects: [];
 }

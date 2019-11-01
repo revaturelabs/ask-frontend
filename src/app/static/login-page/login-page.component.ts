@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Account } from 'src/app/models/account';
+import { HttpClient } from '@angular/common/http';
 
 const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
+
 
 @Component({
   selector: 'app-login-page',
@@ -12,14 +14,15 @@ const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  form: FormGroup;
+  private form: FormGroup;
   private formSubmitAttempt: boolean;
-  account: Account;
+  private account: any;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient,
     ) {}
 
     hide = true;
@@ -41,11 +44,11 @@ export class LoginPageComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value)
     this.userLogin();
-    fetch(url, {method: "POST", body: JSON.stringify(this.form.value)})
-    // .then((response)=>{
-    //   console.log(response)
-    //   return response.json();
-    // }).catch(console.log)
+    fetch(url, {method: "GET"})
+    .then((response)=>{
+      // console.log(response.json());
+      return response.json();
+    }).catch(console.log)
     // if(this.account.expert == false) {
     //   this.userLogin();
     // }
@@ -55,17 +58,16 @@ export class LoginPageComponent implements OnInit {
     this.formSubmitAttempt = true;
   }
 
-  login: Object = {
-    
-  }
-
-  onSubmit2 = function(id) {
-    console.log(id)
-
-  }
-
   userLogin() {
+    const oUrl = `${url}/${this.account}`
     this.authService.userLogin(this.form.value);
+    console.log(this.http.get(oUrl));
+    let observable = this.http.get(oUrl);
+    observable.subscribe((result=>{
+      this.account = result;
+      console.log(result)
+      console.log(this.account.expert)
+    }))
   }
 
   expertLogin() {
