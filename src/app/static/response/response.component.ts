@@ -11,13 +11,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent implements OnInit {
-  @Input() response: Response = {
-    id: 0,
-    responderId: 0,
-    questionId: 0,
-    body: '',
-    creationDate: ''
-  };
+  @Input() response: Response;
 
   responseId: number;
 
@@ -39,7 +33,5 @@ export class ResponseComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(`Question ID: ${this.response.questionId}`);
-    console.log(`Response ID: ${this.response.id}`);
   }
 }

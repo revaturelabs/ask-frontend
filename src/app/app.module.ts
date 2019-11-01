@@ -18,6 +18,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FooterComponent } from './static/footer/footer.component';
     SelfTagsComponent,
     NavbarComponent,
     FooterComponent,
+    HighlightedResponseComponent,
   ],
   imports: [
     BrowserModule,

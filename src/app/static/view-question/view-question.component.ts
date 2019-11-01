@@ -39,7 +39,14 @@ export class ViewQuestionComponent implements OnInit {
 
     this.questionService.getQuestionById(selectedQuestionId).subscribe(result => {
       if (result.highlightedResponseId != null) {
-        console.log("Highlighted response");
+        this.responseService.getResponses().subscribe(highlight => {
+          for (const h in highlight) {
+            let questionId = highlight[h].question.id;
+            if (questionId === selectedQuestionId) {
+              console.log(highlight[h]);
+            }
+          }
+        });
       } else {
         console.log("No highlighted responses");
       }
