@@ -120,32 +120,28 @@ export class AskQuestionComponent implements OnInit {
     body: null,
   };
 
+  //Submit Question
   submitQuestion = function(event, head, tagList, body) {
     event.preventDefault();
     this.questionInput.head = head;
     this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
 
+    //Validating if title or question body is empty
     if (head.trim() === "") {
       this._snackBar.open("Title must not be empty or spaces", "OK", {duration: 4000});
     } else if (body.trim() === "") {
       this._snackBar.open("Question body must not be empty or spaces", "OK", {duration: 4000});
-    } else (this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
+    } else {
+      //POST-ing the form
+      this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
 			response => {
         window.location.reload();
         this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
-			}, failed => {
+      }, 
+      failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      }));
-    
-    // this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
-		// 	response => {
-    //     window.location.reload();
-    //     this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
-		// 	}, failed => {
-    //     this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-    //   });
-
+      })};
   };
 
   ngOnInit() {
