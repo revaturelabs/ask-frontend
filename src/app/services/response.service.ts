@@ -13,6 +13,7 @@ const httpOptions = {
 })
 export class ResponseService {
   constructor(private http: HttpClient) {}
+  
   getResponses(): Observable<Response[]> {
     return this.http.get<Response[]>(environment.responsesUri);
   }

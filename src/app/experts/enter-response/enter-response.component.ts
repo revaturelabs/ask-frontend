@@ -1,12 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Response } from '../../models/Response';
+import { ResponseService } from '../../services/response.service';
+import { QuestionService } from '../../services/question.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-enter-response',
   templateUrl: './enter-response.component.html',
   styleUrls: ['./enter-response.component.css'],
 })
-export class EnterResponseComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+export class EnterResponseComponent implements OnInit {
+  @Output() newResponse: EventEmitter<Response> = new EventEmitter();
+  @Output() updatedResponse: EventEmitter<Response> = new EventEmitter();
+  @Input() isEdit: boolean;
+  @Input() response: Response = {
+    id: 3,
+    responderId: 0,
+    questionId: 0,
+    body: '',
+    creationDate: ''
+  };
+
+  constructor(private responseService: ResponseService,
+              private questionService: QuestionService) {}
+    
+    questionId : number;
+
+  ngOnInit() {
+    this.questionId = this.questionService.getQuestionId();
+    console.log(this.questionId);
+  }
+
+  addResponse(body) {
+    if (!body) {
+      alert('Please add a Response');
+    } else {
+      this.response.body = body;
+      this.response.questionId = this.questionId;
+      console.log(this.response);
+      this.responseService
+        .saveResponse({ body } as Response)
+        .subscribe(response => {
+          this.newResponse.emit(response);
+        });
+    }
+  }
+
+  updateResponse() {
+    this.responseService
+      .updateResponse(this.response)
+      .subscribe(response => {
+        console.log(response);
+        this.isEdit = false;
+        this.updatedResponse.emit(response);
+      });
+  }
 }
