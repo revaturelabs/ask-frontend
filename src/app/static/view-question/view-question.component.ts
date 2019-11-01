@@ -17,6 +17,7 @@ export class ViewQuestionComponent implements OnInit {
    * on the site.
    */
   selectedQuestion: any;
+  highlightedResponse: any;
   questionResponses: any;
 
   constructor(
@@ -33,6 +34,14 @@ export class ViewQuestionComponent implements OnInit {
         if (selectedQuestionId === questions[q].id) {
           this.selectedQuestion = questions[q];
         }
+      }
+    });
+
+    this.questionService.getQuestionById(selectedQuestionId).subscribe(result => {
+      if (result.highlightedResponseId != null) {
+        console.log("Highlighted response");
+      } else {
+        console.log("No highlighted responses");
       }
     });
 

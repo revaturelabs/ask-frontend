@@ -10,5 +10,6 @@ export interface Question {
   body: string;
   creationDate: string;
   associatedTags: Tag[];
-  responses: Response;
+  responses: Response[];
+  highlightedResponseId: Response;
 }

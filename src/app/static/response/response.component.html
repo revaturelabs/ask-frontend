@@ -9,4 +9,7 @@
   <mat-card-content>
     <p>{{ response.body }}</p>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
+  </mat-card-actions>
 </mat-card>

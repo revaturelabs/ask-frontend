@@ -5,9 +5,9 @@
     <mat-card-title>Question: {{ question.head }}</mat-card-title>
     <mat-card-subtitle
       >Submit Date:
-      {{ question.creationDate | date: 'medium' }}</mat-card-subtitle
+      {{ question.creationDate | date: 'short' }}</mat-card-subtitle
     >
-    <mat-card-subtitle>User ID: {{ question.questionerId }}</mat-card-subtitle>
+    <mat-card-subtitle>User: {{ question.user.username }}</mat-card-subtitle>
   </mat-card-header>
   <!-- Image uploads would go here if we have that implementation -->
   <!-- <img mat-card-image src="s3-aws.com/jpg" alt="Code snippet"> -->
