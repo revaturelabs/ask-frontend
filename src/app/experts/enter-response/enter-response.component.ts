@@ -16,11 +16,11 @@ export class EnterResponseComponent implements OnInit {
   @Output() updatedResponse: EventEmitter<Response> = new EventEmitter();
   @Input() isEdit: boolean;
   @Input() response: Response = {
-    id: 3,
-    responderId: 0,
-    questionId: 0,
+    id: 0,
+    responderId: 3,
+    questionId: 2,
     body: '',
-    creationDate: ''
+    creationDate: null,
   };
 
   constructor(private responseService: ResponseService,
@@ -41,7 +41,7 @@ export class EnterResponseComponent implements OnInit {
       this.response.questionId = this.questionId;
       console.log(this.response);
       this.responseService
-        .saveResponse({ body } as Response)
+        .saveResponse(this.response)
         .subscribe(response => {
           this.newResponse.emit(response);
         });
