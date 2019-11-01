@@ -36,12 +36,14 @@
   </mat-form-field>
 
   <mat-form-field class="select-dropdown">
-    <mat-label>Select an option</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option value="option1">Option 1</mat-option>
-      <mat-option value="option2">Option 2</mat-option>
+    <mat-label>Containing Tags</mat-label>
+    <mat-select [(value)]="requireAll">
+      <mat-option value="?requireAll=false">Containing One Tag</mat-option>
+      <mat-option value="?requireAll=true">Containting All Tags</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button class="submit-button">Submit</button>
+  <button mat-raised-button class="submit-button" (click)="sortQuestions()">
+    Submit
+  </button>
 </div>

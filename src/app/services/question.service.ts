@@ -13,9 +13,23 @@ const httpOptions = {
 })
 export class QuestionService {
 
+  hasBeenFiltered: boolean;
   questionId: number;
+  filteredUri: string;
 
   constructor(private http: HttpClient) {}
+
+  filterQuestions() {
+    this.hasBeenFiltered = true;
+  }
+
+  setFilterUri(formUri: string) {
+    this.filteredUri = formUri;
+  }
+
+  getFilteredQuestions() {
+    return this.http.get<Question[]>(this.filteredUri);
+  }
 
   getQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(environment.questionsUri);

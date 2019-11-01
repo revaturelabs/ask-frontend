@@ -1,20 +1,27 @@
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
-import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
+import { QuestionService } from 'src/app/services/question.service';
+import { QuestionListComponent } from '../question-list/question-list.component';
 
 /**
  * @title Chips Autocomplete
- * @author Borko Stankovic
+ * @author Borko Stankovic, Kyung Min Lee, Jonathan Gworek
  */
 
 const qUri = environment.tagsUri;
@@ -22,7 +29,7 @@ const qUri = environment.tagsUri;
 @Component({
   selector: 'app-question-filter',
   templateUrl: './question-filter.component.html',
-  styleUrls: ['./question-filter.component.css']
+  styleUrls: ['./question-filter.component.css'],
 })
 export class QuestionFilterComponent implements OnInit {
   visible = true;
@@ -34,13 +41,22 @@ export class QuestionFilterComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
+  requireAll: string;
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private questionService: QuestionService,
+    private router: Router,
+    private questionListComponent: QuestionListComponent,
+  ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -66,7 +82,11 @@ export class QuestionFilterComponent implements OnInit {
         //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
-          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
+          this._snackBar.open(
+            'Tag not recognized! Please choose from the list.',
+            'OK, I will',
+            { duration: 4000 },
+          );
         } else {
           this.tags.push(value.trim());
         }
@@ -102,10 +122,25 @@ export class QuestionFilterComponent implements OnInit {
       tag => tag.toLowerCase().indexOf(filterValue) === 0,
     );
   }
+
   ngOnInit() {
     // this.form = this.fb.group({
     // tags: ['']
     // });
     // this.ts.getTags();
   }
+
+  sortQuestions = function() {
+    this.questionService.filterQuestions();
+    let tags: String = '';
+    let filterTags: string[];
+    this.filterTags = this.tags;
+    for (var i = 0; i < this.filterTags.length; i++) {
+      tags += '&tag=' + this.filterTags[i];
+    }
+    this.questionService.setFilterUri(
+      environment.questionsUri + '/search/' + this.requireAll + tags,
+    );
+    this.questionListComponent.ngOnInit();
+  };
 }

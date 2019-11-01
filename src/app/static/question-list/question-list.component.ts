@@ -1,6 +1,7 @@
 import { QuestionService } from '../../services/question.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../../models/Question';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-question-list',
@@ -12,11 +13,18 @@ export class QuestionListComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit() {
-    this.questionService.getQuestions().subscribe(questions => {
-      this.questions = questions;
-    });
+    if (this.questionService.hasBeenFiltered === true) {
+      this.questionService.getFilteredQuestions().subscribe(questions => {
+        this.questions = questions;
+      });
+    } else {
+      this.questionService.getQuestions().subscribe(questions => {
+        this.questions = questions;
+      });
+    }
   }
 }
