@@ -4,10 +4,16 @@
   </h3>
   <br><br>
 
-  <form>
+  <!-- <form> -->
     <mat-form-field>
       <input matInput placeholder="Title: " #qTitle>
     </mat-form-field>
+
+    <!-- <br> -->
+
+    <!-- <span *ngIf="">
+      Tag not recognized!
+    </span> -->
 
     <mat-form-field #qTags class="tag-chip-list">
       <mat-chip-list #chipList aria-label="Tag selection">
@@ -41,6 +47,8 @@
       </mat-autocomplete>
     </mat-form-field>
 
+    <!-- <br> -->
+
     <mat-form-field>
       <textarea matInput placeholder="Your Question: " #qQuestion></textarea>
     </mat-form-field>
@@ -49,5 +57,5 @@
       <button mat-raised-button id="ask-question-button-submit" (click)="submitQuestion($event, qTitle.value, qTags.value, qQuestion.value)">Submit</button>
     </div>
 
-  </form>
+  <!-- </form> -->
 </div>

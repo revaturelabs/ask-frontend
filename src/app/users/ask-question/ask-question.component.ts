@@ -13,6 +13,12 @@ import { JsonPipe } from '@angular/common';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
 
+//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpClient } from '@angular/common/http';
+
+
+
 // import { PostService } from '../../services/post.service';
 // import { Post } from '../../models/Post';
 
@@ -25,7 +31,7 @@ import { environment } from 'src/environments/environment';
  */
 
 // const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
-const qUrl = environment.tagsUri;
+const qUri = environment.tagsUri;
 
 @Component({
   selector: 'app-ask-question',
@@ -33,6 +39,9 @@ const qUrl = environment.tagsUri;
   styleUrls: ['./ask-question.component.css'],
 })
 export class AskQuestionComponent implements OnInit {
+
+  // submitQuestionUri = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions/create";
+
   form: FormGroup;
   visible = true;
   selectable = true;
@@ -49,7 +58,7 @@ export class AskQuestionComponent implements OnInit {
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService) {
+  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -73,10 +82,18 @@ export class AskQuestionComponent implements OnInit {
       const value = event.value;
 
       // Add our tag
-      //Prevents inputing chips that is not on the list
       if ((value || '').trim()) {
+
+        // for (let index = 0; index < this.tags.length + 1; index ++) {
+        //   if (value == this.tags[index]) {
+        //     alert('No duplicate tags!');
+        //   }
+        // }
+
+        //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
-          alert('Tag not recognized!');
+          
+          this._snackBar.open("Tag not recognized!", "OK, i will fix it", {duration: 2000,});
         } else {
           this.tags.push(value.trim());
         }
@@ -114,27 +131,39 @@ export class AskQuestionComponent implements OnInit {
   }
 
   questionInput: Object = {
-    title: null,
+    head: null,
     tags: null,
-    question: null,
+    body: null,
   };
 
-  submitQuestion = function(event, qTitle, qTags, qQuestion) {
-    console.log('submit question reached');
+  submitQuestion = function(event, head, qTags, body) {
     event.preventDefault();
-    this.questionInput.title = qTitle;
+    this.questionInput.head = head;
     this.questionInput.tags = this.tags;
-    this.questionInput.question = qQuestion;
+    this.questionInput.body = body;
     console.log(this.questionInput);
     console.log(this.tags);
-    console.log(this.ts.getTags());
+    // console.log(this.ts.getTags());
+    
+    this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
+			(response => {
+        console.log("THE RESPONSEEEEEEEEEE: " + response);
+				if (response.statusCode === "OK") {
+					alert("Posting successful!");
+					window.location.reload();
+				} else {
+					alert("Posting a question was unsuccessful.");
+				}
+			})
+		);
+
   };
 
   ngOnInit() {
     this.form = this.fb.group({
-      title: [''],
+      head: [''],
       tags: [''],
-      question: [''],
+      body: [''],
     });
     this.ts.getTags();
   }
