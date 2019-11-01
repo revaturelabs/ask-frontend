@@ -59,10 +59,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   userLogin() {
-    const oUrl = `${url}/${this.account}`
+    const loginUrl = `${url}/${this.account}`
     this.authService.userLogin(this.form.value);
-    console.log(this.http.get(oUrl));
-    let observable = this.http.get(oUrl);
+    console.log(this.http.get(loginUrl));
+    let observable = this.http.get(loginUrl);
     observable.subscribe((result=>{
       this.account = result;
       console.log(result)
