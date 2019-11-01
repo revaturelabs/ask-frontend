@@ -1,43 +1,30 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Router, UrlSegment } from '@angular/router';
-import { Account } from 'src/app/models/account';
+import { Account } from '../../models/account';
+import { BehaviorSubject } from 'rxjs'
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  
+private loggedIn: boolean = false;
+
+constructor() { }
+
+  public account: Account;
 
   get isLoggedIn() {
-    return this.loggedIn.asObservable();
+    return this.loggedIn;
+  }
+  
+  userLogin() {
+    this.loggedIn = true;
   }
 
-  constructor(private router: Router) {}
-
-  userLogin(account: Account) {
-    // if (account.username !== '' && account.password !== '')
-    // if (account.id == )
-    // {
-    //   // account.id = '1';
-    //   this.loggedIn.next(true);
-    //   this.router.navigate(['/user-page']);
-    // }
-    console.log(account.expert)
+  userLogOut() {
+    this.loggedIn = false;
   }
-
-  expertLogin(account: Account) {
-    // if (account.username !== '' && account.password !== '')
-    {
-      // account.id = '2';
-      this.loggedIn.next(true);
-      this.router.navigate(['/expert-page']);
-    }
-  }
-
-  logout() {
-    this.loggedIn.next(false);
-    this.router.navigate(['/']);
-  }
+  
 }

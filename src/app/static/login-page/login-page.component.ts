@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Account } from 'src/app/models/account';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
 
@@ -12,72 +14,48 @@ const url = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/users";
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  form: FormGroup;
-  private formSubmitAttempt: boolean;
-  account: Account;
+  
 
   constructor(
+    private http: HttpClient,
     private router: Router,
-    private fb: FormBuilder,
-    private authService: AuthService
+    private auth: AuthService,
     ) {}
 
-    hide = true;
 
   ngOnInit() {
-//remove comment-out when password field is added
-    this.form = this.fb.group({
-      id: ['', Validators.required]
-    });
-  }
 
-  isFieldInvalid(field: string) { 
-    return (
-      (!this.form.get(field).valid && this.form.get(field).touched) ||
-      (this.form.get(field).untouched && this.formSubmitAttempt)
-    );
   }
+  authService: AuthService = new AuthService();
 
-  onSubmit() {
-    console.log(this.form.value)
-    this.userLogin();
-    fetch(url, {method: "POST", body: JSON.stringify(this.form.value)})
-    // .then((response)=>{
-    //   console.log(response)
-    //   return response.json();
-    // }).catch(console.log)
-    // if(this.account.expert == false) {
-    //   this.userLogin();
-    // }
-    // else if (this.account.expert == true) {
-    //   this.expertLogin();
-    // }
-    this.formSubmitAttempt = true;
-  }
+  
 
-  login: Object = {
-    
-  }
-
-  onSubmit2 = function(id) {
+  onSubmit(id: number) {
     console.log(id)
-
+    this.http.get(`${environment.userUri}${id}`)
+      .subscribe(
+        (account: any) => {
+          this.authService.account = account;
+          if(this.authService.account) {
+            console.log("Hello");
+            this.authService.userLogin();
+            this.router.navigate(['/questions']);
+          }
+        }
+      );
+      
   }
 
-  userLogin() {
-<<<<<<< HEAD
-    this.authService.userLogin(this.form.value);
-  }
+  // onSub() {
+  //   try {
+  //     this.router.navigate(['ask']);
+  //   }
+  //   catch(error) {
+  //     console.log("error")
+  //   }
+  // }
 
-  expertLogin() {
-    this.authService.expertLogin(this.form.value);
-=======
-    this.router.navigate(['/ask']);
-  }
 
-  expertLogin() {
-    this.router.navigate(['/questions']);
->>>>>>> dev
-  }
+  
 }
 

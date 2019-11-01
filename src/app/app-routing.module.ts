@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: 'ask', component: AskQuestionComponent },
   { path: 'view-question', component: ViewQuestionComponent },
   { path: 'settings', component: SelfTagsComponent },
-  { path: 'questions', component: QuestionListComponent },
 ];
 
 @NgModule({
