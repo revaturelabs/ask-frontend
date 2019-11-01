@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Question } from 'src/app/models/Question';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: "app-question",
@@ -9,7 +10,10 @@ import { Question } from 'src/app/models/Question';
 export class QuestionComponent implements OnInit {
   @Input() question: Question;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
+  
 }

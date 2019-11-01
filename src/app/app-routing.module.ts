@@ -11,16 +11,10 @@ import { QuestionFilterComponent } from './static/question-filter/question-filte
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
   { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'user-page', component: AskQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'expert-page', component: QuestionListComponent, canActivate: [AuthGuard]  },
   { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard]  },
   { path: 'settings', component: SelfTagsComponent, canActivate: [AuthGuard]  },
   { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard] },
   { path: 'filter-questions', component: QuestionFilterComponent, canActivate: [AuthGuard]},
-  { path: '', component: LoginPageComponent },
-  { path: 'ask', component: AskQuestionComponent },
-  { path: 'view-question', component: ViewQuestionComponent },
-  { path: 'settings', component: SelfTagsComponent },
 ];
 
 @NgModule({

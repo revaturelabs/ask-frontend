@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Account } from '../../models/account';
-import { BehaviorSubject } from 'rxjs'
 import { Router } from '@angular/router';
 
 
@@ -11,7 +10,7 @@ export class AuthService {
   
 private loggedIn: boolean = false;
 
-constructor() { }
+constructor(private router: Router) { }
 
   public account: Account;
 
@@ -25,6 +24,8 @@ constructor() { }
 
   userLogOut() {
     this.loggedIn = false;
+    this.account = null;
+    this.router.navigate(['/']);
   }
-  
+
 }

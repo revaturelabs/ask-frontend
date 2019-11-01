@@ -1,56 +1,15 @@
-<!-- <mat-card>
-  <mat-card-header><h2>Ask an Expert</h2></mat-card-header>
-  <mat-card-content>
-    <button mat-raised-button id="userButton" class="btn" routerLink="user-page" >User Login</button>
-    <br />
-    <button mat-raised-button id="expertButton" class="btn"  routerLink="expert-page"> Expert Login </button></mat-card-content>
-</mat-card> -->
-
-<!-- <div class="container">
-<form>
-    <h3>Log in</h3>
-      <br><br>
-  <mat-form-field>
-  <input matInput placeholder="Enter your username" required>
-  <mat-icon matSuffix>perm_identity</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-raised-button id="login" >Login</button>
-</form>
-</div> -->
-
-<!--
 <div class="container">
-    <form> 
-        <h3>Log in</h3>
-          <br><br>
-      <mat-form-field>
-      <input id="id" matInput placeholder="Enter your account id: " #id required>
-      <mat-icon matSuffix>perm_identity</mat-icon>
-      </mat-form-field>
-        <button mat-raised-button (click)="onSubmit2(id.value)">Login</button>
-        <button mat-raised-button (click)="onSubmit()">Login</button>
-    </form>
-</div>
--->
-
-<div class="container">
-    <!-- <mat-card>
-        <mat-card-content> -->
     <form #userLoginForm="ngForm" id="form" (ngSubmit)="onSubmit(id)">
         <h3>Log in</h3>
         <br><br>
         <mat-form-field>
-            <input [(ngModel)]="id" matInput placeholder="User ID" name="id">
+            <mat-select [(ngModel)]="id" name="user" placeholder="Select User">
+                <mat-option value="1" name="">User 1 -- Associate</mat-option>
+                <mat-option value="2" >User 2 -- Associate</mat-option>
+                <mat-option value="3" >User 3 -- Expert</mat-option>
+                <mat-option value="4" >User 4 -- Expert</mat-option>
+            </mat-select>
         </mat-form-field>
-        <input type="submit" mat-raised-button>
+        <button id="login" mat-raised-button type="submit" >Submit</button>
     </form>
-    <!-- </mat-card-content>
-    </mat-card> -->
 </div>
