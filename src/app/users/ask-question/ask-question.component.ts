@@ -9,28 +9,24 @@ import {
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
 
-//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
-import {MatSnackBar} from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 
+//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+import {MatSnackBar} from '@angular/material/snack-bar';
 
-
-// import { PostService } from '../../services/post.service';
-// import { Post } from '../../models/Post';
 
 /**
  * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
+ * 
  * The current typescript is for Angular Material forms with autocomplete chips & two fields.
  *
  * This component is built on top of an example found at:
  * https://material.angular.io/components/chips/overview
  */
 
-// const qUrl = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/question";
 const qUri = environment.tagsUri;
 
 @Component({
@@ -39,9 +35,6 @@ const qUri = environment.tagsUri;
   styleUrls: ['./ask-question.component.css'],
 })
 export class AskQuestionComponent implements OnInit {
-
-  // submitQuestionUri = "http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions/create";
-
   form: FormGroup;
   visible = true;
   selectable = true;
@@ -69,8 +62,6 @@ export class AskQuestionComponent implements OnInit {
       for (let index = 0; index < tags.length; index++) {
         this.allTagsFromServer.push(tags[index].name);
       }
-
-      console.log(this.allTagsFromServer);
     });
   }
 
@@ -83,17 +74,10 @@ export class AskQuestionComponent implements OnInit {
 
       // Add our tag
       if ((value || '').trim()) {
-
-        // for (let index = 0; index < this.tags.length + 1; index ++) {
-        //   if (value == this.tags[index]) {
-        //     alert('No duplicate tags!');
-        //   }
-        // }
-
         //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
-          
-          this._snackBar.open("Tag not recognized!", "OK, i will fix it", {duration: 4000,});
+          //Angular Material Snack-bar
+          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 3000});
         } else {
           this.tags.push(value.trim());
         }
@@ -141,23 +125,13 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.head = head;
     this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
-    console.log(this.questionInput);
-    console.log(this.tags);
-    // console.log(this.ts.getTags());
     
     this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
 			response => {
         window.location.reload();
-        this._snackBar.open("Your question is submitted!", "OK!", {duration: 4000,});
-        
-				// if (HttpClient.statusCode === "OK") {
-				// 	alert("Posting successful!");
-				// 	window.location.reload();
-				// } else {
-					// alert("Posting a question was unsuccessful.");
-        // }
+        this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
 			}, failed => {
-        this._snackBar.open("Your question failed to submit!", "OK", {duration: 4000,});
+        this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
       });
 
   };
