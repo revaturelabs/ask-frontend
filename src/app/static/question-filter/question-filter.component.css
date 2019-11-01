@@ -1,5 +1,22 @@
-.chip-list {
-  width: 70%;
+.tag-chip-list {
+  width: 47%;
   position: absolute;
-  padding-left: 15%;
+  padding-left: 9%;
+  top: 13%;
+}
+
+.select-dropdown {
+  width: 18%;
+  position: absolute;
+  margin-left: 50%;
+  padding-left: 8%;
+  top: 13%;
+}
+
+.submit-button {
+  position: absolute;
+  margin-left: 80%;
+  top: 14.5%;
+  background-color: #f26925;
+  color: #ffffff;
 }

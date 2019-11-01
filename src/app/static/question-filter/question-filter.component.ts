@@ -1,15 +1,24 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component, ElementRef, ViewChild, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { TagService } from 'src/app/services/tags.service';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+
+//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 /**
  * @title Chips Autocomplete
  * @author Borko Stankovic
  */
+
+const qUri = environment.tagsUri;
+
 @Component({
   selector: 'app-question-filter',
   templateUrl: './question-filter.component.html',
@@ -23,26 +32,27 @@ export class QuestionFilterComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
-  tags: string[] = ['Java'];
-  allTagsFromServer: string[] = ['Java', 'Angular'];
+  tags: string[] = [];
+  allTagsFromServer: string[] = [];
 
-  @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
+    HTMLInputElement
+  >;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor() {
+  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
-        startWith(null),
-        map((tag: string | null) => tag ? this._filter(tag) : this.allTagsFromServer.slice()));
-    // this.ts.getTags().subscribe((tags) => {
-
-    //       for (let index = 0; index < tags.length; index++) {
-    //         this.allTagsFromServer.push(tags[index].tagName);
-    //       }
-
-    //       console.log(this.allTagsFromServer);
-    //   });
-
+      startWith(null),
+      map((tag: string | null) =>
+        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
+      ),
+    );
+    this.ts.getTags().subscribe(tags => {
+      for (let index = 0; index < tags.length; index++) {
+        this.allTagsFromServer.push(tags[index].name);
       }
+    });
+  }
 
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
@@ -52,10 +62,11 @@ export class QuestionFilterComponent implements OnInit {
       const value = event.value;
 
       // Add our tag
-      // Prevents inputing chips that is not on the list
       if ((value || '').trim()) {
+        //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
-          alert('Tag not recognized!')
+          //Angular Material Snack-bar
+          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
         } else {
           this.tags.push(value.trim());
         }
@@ -87,7 +98,9 @@ export class QuestionFilterComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTagsFromServer.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTagsFromServer.filter(
+      tag => tag.toLowerCase().indexOf(filterValue) === 0,
+    );
   }
   ngOnInit() {
     // this.form = this.fb.group({
