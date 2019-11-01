@@ -1,4 +1,5 @@
-import { Tag } from '../models/Tag'
+import { Tag } from '../models/Tag';
+import { Response } from '../models/Response';
 
 export interface Question {
   id: number;
@@ -9,4 +10,5 @@ export interface Question {
   body: string;
   creationDate: string;
   associatedTags: Tag[];
+  responses: Response;
 }

@@ -29,6 +29,10 @@ export class QuestionService {
     return this.questionId;
   }
 
+  getQuestionById(questionId): Observable<Question> {
+    return this.http.get<Question>(`${environment.questionsUri}/${questionId}`);
+  }
+
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(
       environment.questionsUri,

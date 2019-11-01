@@ -1,9 +1,10 @@
 <div class="question-component">
   <app-question [question]="selectedQuestion"></app-question>
 </div>
-<div class="response-component" *ngFor="let response of responses">
+<div class="response-component" *ngFor="let response of questionResponses">
   <app-response [response]="response"></app-response>
 </div>
+
 
 <div class="submit-response">
   <mat-form-field>

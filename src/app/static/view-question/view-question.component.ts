@@ -17,7 +17,7 @@ export class ViewQuestionComponent implements OnInit {
    * on the site.
    */
   selectedQuestion: any;
-  responses: Response[];
+  questionResponses: any;
 
   constructor(
     private responseService: ResponseService,
@@ -25,17 +25,21 @@ export class ViewQuestionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+
+    const selectedQuestionId = this.questionService.getQuestionId();
+
     this.questionService.getQuestions().subscribe(questions => {
       for (const q in questions) {
-        if (this.questionService.getQuestionId() === questions[q].id) {
+        if (selectedQuestionId === questions[q].id) {
           this.selectedQuestion = questions[q];
         }
       }
     });
 
-    this.responses = [];
-    this.responseService.getResponses().subscribe(responses => {
-      this.responses = responses;
+    // Retrieving responses based on the selected question
+    this.questionService.getQuestionById(selectedQuestionId).subscribe(result => {
+      this.questionResponses = result.responses;
     });
+
   }
 }
