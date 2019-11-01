@@ -65,11 +65,19 @@ export class LoginPageComponent implements OnInit {
   }
 
   userLogin() {
+<<<<<<< HEAD
     this.authService.userLogin(this.form.value);
   }
 
   expertLogin() {
     this.authService.expertLogin(this.form.value);
+=======
+    this.router.navigate(['/ask']);
+  }
+
+  expertLogin() {
+    this.router.navigate(['/questions']);
+>>>>>>> dev
   }
 }
 

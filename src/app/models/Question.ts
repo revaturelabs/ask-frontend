@@ -1,8 +1,9 @@
 export interface Question {
   id: number;
   username: string;
-  title: string;
-  description: string;
-  tags?: string;
-  date?: string;
+  tags?: string[];
+  userId: number;
+  head: string;
+  body: string;
+  creationDate: string;
 }

@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+<<<<<<< HEAD
 import { AppRoutingModule } from './app-routing.module';
+=======
+import { AppRoutingModule} from './app-routing.module';
+>>>>>>> dev
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './static/login-page/login-page.component';
@@ -42,6 +46,7 @@ import { AuthGuard } from './services/auth/auth.guard';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
     MaterialImportModule,
     HttpClientModule,

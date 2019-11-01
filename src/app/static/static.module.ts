@@ -8,6 +8,7 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionFilterComponent } from './question-filter/question-filter.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,11 @@ import { QuestionFilterComponent } from './question-filter/question-filter.compo
     NavbarComponent,
     QuestionFilterComponent,
   ],
-  imports: [CommonModule, MaterialImportModule],
+  imports: [
+    CommonModule,
+    MaterialImportModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
 export class StaticModule {}

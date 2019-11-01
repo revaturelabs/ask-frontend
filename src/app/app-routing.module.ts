@@ -17,6 +17,11 @@ const routes: Routes = [
   { path: 'settings', component: SelfTagsComponent, canActivate: [AuthGuard]  },
   { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard] },
   { path: 'filter-questions', component: QuestionFilterComponent, canActivate: [AuthGuard]},
+  { path: '', component: LoginPageComponent },
+  { path: 'ask', component: AskQuestionComponent },
+  { path: 'view-question', component: ViewQuestionComponent },
+  { path: 'settings', component: SelfTagsComponent },
+  { path: 'questions', component: QuestionListComponent },
 ];
 
 @NgModule({

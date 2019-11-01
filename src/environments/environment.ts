@@ -2,16 +2,15 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const baseUri = 'http://ec2-54-80-244-190.compute-1.amazonaws.com';
+const port = '1337';
+
 export const environment = {
   production: false,
   environmentName: 'Default Environment',
-  localhostUri: 'http://localhost:8080/',
-  postsUrl: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions',
-  tagsUrl: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags',
-  allQuestionsUri:
-    'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions',
-  tagsUri: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/tags',
-  responsesUrl: 'http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/responses'
+  tagsUri: `${baseUri}:${port}/tags`,
+  questionsUri: `${baseUri}:${port}/questions`,
+  responsesUri: `${baseUri}:${port}/responses`,
 };
 
 /*

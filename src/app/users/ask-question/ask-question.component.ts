@@ -1,15 +1,17 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
-import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/autocomplete';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { JsonPipe } from '@angular/common';
 import { TagService } from 'src/app/services/tags.service';
-import { Tags } from 'src/app/models/Tags';
-import { environment } from 'src/environments/environment'
+import { environment } from 'src/environments/environment';
 
 // import { PostService } from '../../services/post.service';
 // import { Post } from '../../models/Post';
@@ -42,22 +44,25 @@ export class AskQuestionComponent implements OnInit {
   tags: string[] = [];
   allTagsFromServer: string[] = [];
 
-  @ViewChild('tagInput', {static: false}) tagInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
+    HTMLInputElement
+  >;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
   constructor(private fb: FormBuilder, private ts: TagService) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
-        startWith(null),
-        map((tag: string | null) => tag ? this._filter(tag) : this.allTagsFromServer.slice()));
-    this.ts.getTags().subscribe((tags) => {
-      
-        for (let index = 0; index < tags.length; index++) {
-          this.allTagsFromServer.push(tags[index].tagName);
-        }
-        
-        console.log(this.allTagsFromServer);
+      startWith(null),
+      map((tag: string | null) =>
+        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
+      ),
+    );
+    this.ts.getTags().subscribe(tags => {
+      for (let index = 0; index < tags.length; index++) {
+        this.allTagsFromServer.push(tags[index].name);
+      }
+
+      console.log(this.allTagsFromServer);
     });
-    
   }
 
   add(event: MatChipInputEvent): void {
@@ -71,11 +76,10 @@ export class AskQuestionComponent implements OnInit {
       //Prevents inputing chips that is not on the list
       if ((value || '').trim()) {
         if (!this.allTagsFromServer.includes(value)) {
-          alert("Tag not recognized!")
-        } 
-        else {
+          alert('Tag not recognized!');
+        } else {
           this.tags.push(value.trim());
-        }  
+        }
       }
 
       // Reset the input value
@@ -104,14 +108,16 @@ export class AskQuestionComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTagsFromServer.filter(tag => tag.toLowerCase().indexOf(filterValue) === 0);
+    return this.allTagsFromServer.filter(
+      tag => tag.toLowerCase().indexOf(filterValue) === 0,
+    );
   }
 
   questionInput: Object = {
-    "title": null,
-    "tags": null,
-    "question": null,
-  }
+    title: null,
+    tags: null,
+    question: null,
+  };
 
   submitQuestion = function(event, qTitle, qTags, qQuestion) {
     console.log('submit question reached');
@@ -121,17 +127,19 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.question = qQuestion;
     console.log(this.questionInput);
     console.log(this.tags);
-    console.log(this.ts.getTags())
-  }
-
+    console.log(this.ts.getTags());
+  };
 
   ngOnInit() {
     this.form = this.fb.group({
       title: [''],
       tags: [''],
-      question: ['']
+      question: [''],
     });
     this.ts.getTags();
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 }
