@@ -77,7 +77,7 @@ export class AskQuestionComponent implements OnInit {
         //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
-          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 3000});
+          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
         } else {
           this.tags.push(value.trim());
         }
@@ -125,14 +125,26 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.head = head;
     this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
-    
-    this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
+
+    if (head.trim() === "") {
+      this._snackBar.open("Title must not be empty or spaces", "OK", {duration: 4000});
+    } else if (body.trim() === "") {
+      this._snackBar.open("Question body must not be empty or spaces", "OK", {duration: 4000});
+    } else (this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
 			response => {
         window.location.reload();
         this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
 			}, failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      });
+      }));
+    
+    // this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
+		// 	response => {
+    //     window.location.reload();
+    //     this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
+		// 	}, failed => {
+    //     this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
+    //   });
 
   };
 
