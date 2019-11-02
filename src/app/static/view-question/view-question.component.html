@@ -5,7 +5,7 @@
   <app-response [response]="response"></app-response>
 </div>
 
-<div class="submit-response">
+<div *ngIf="this.authService.account.expert" class="submit-response">
   <mat-form-field>
     <textarea matInput placeholder="Enter a response"></textarea>
   </mat-form-field>
