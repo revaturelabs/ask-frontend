@@ -11,7 +11,7 @@ export const environment = {
   tagsUri: `${baseUri}:${port}/tags`,
   questionsUri: `${baseUri}:${port}/questions`,
   responsesUri: `${baseUri}:${port}/responses`,
-  userUri: `${baseUri}:${port}/users/`
+  userUri: `${baseUri}:${port}/users`
 };
 
 /*

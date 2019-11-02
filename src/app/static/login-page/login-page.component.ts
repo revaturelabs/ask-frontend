@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
    */
   onSubmit(id: number) {
     this.http
-      .get<Account>(`${environment.userUri}${id}`)
+      .get<Account>(`${environment.userUri}/${id}`)
       .subscribe((account: Account) => {
         this.authService.userLogin(account);
       });
