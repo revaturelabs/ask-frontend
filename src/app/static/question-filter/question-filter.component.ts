@@ -1,5 +1,13 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  OnInit,
+  Output,
+  Input,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {
   MatAutocompleteSelectedEvent,
@@ -15,9 +23,7 @@ import { Router } from '@angular/router';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { QuestionService } from 'src/app/services/question.service';
-import { QuestionListComponent } from '../question-list/question-list.component';
 
 /**
  * @title Chips Autocomplete
@@ -41,7 +47,13 @@ export class QuestionFilterComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
-  requireAll: string = "?requireAll=false";
+  requireAll: string = '?requireAll=false';
+  filteredUri: string;
+  filterTags: string[];
+  filteredStatus: boolean = false;
+
+  @Output() newFilteredStatus: EventEmitter<boolean> = new EventEmitter();
+  @Output() newFilteredUri: EventEmitter<string> = new EventEmitter();
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
@@ -55,7 +67,6 @@ export class QuestionFilterComponent implements OnInit {
     private http: HttpClient,
     private questionService: QuestionService,
     private router: Router,
-    private questionListComponent: QuestionListComponent,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -123,33 +134,27 @@ export class QuestionFilterComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    // this.form = this.fb.group({
-    // tags: ['']
-    // });
-    // this.ts.getTags();
-  }
-
-  sortQuestions = function() {
-    this.questionService.filterQuestions();
+  sortQuestions() {
+    this.filteredStatus = true;
+    this.newFilteredStatus.emit(this.filteredStatus);
     let tags: String = '';
-    let filterTags: string[];
     this.filterTags = this.tags;
     for (var i = 0; i < this.filterTags.length; i++) {
       tags += '&tag=' + this.filterTags[i];
     }
-    this.questionService.setFilterUri(
-      environment.questionsUri + '/search/' + this.requireAll + tags,
-    );
-    this.questionListComponent.ngOnInit();
-  };
+    (this.filteredUri =
+      environment.questionsUri + '/search/' + this.requireAll + tags),
+      this.newFilteredUri.emit(this.filteredUri);
+  }
 
   hasBeenFiltered() {
-    return this.questionService.getFilteredStatus();
+    return this.filteredStatus;
   }
 
   resetSearch() {
-    this.questionService.resetFilter();
-    this.questionListComponent.ngOnInit();
+    this.filteredStatus = false;
+    this.newFilteredStatus.emit(this.filteredStatus);
   }
+
+  ngOnInit() {}
 }
