@@ -14,9 +14,10 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import {MatInputModule} from '@angular/material/input';
+
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonToggleModule,
     MatCheckboxModule,
-
+    MatSnackBarModule,
   ],
   exports: [
     MatMenuModule,
@@ -59,7 +60,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonToggleModule,
     MatCheckboxModule,
-
+    MatSnackBarModule,
   ],
 })
 export class MaterialImportModule {}
