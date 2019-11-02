@@ -15,24 +15,33 @@ export class ResponseComponent implements OnInit {
 
   responseId: number;
 
-  constructor(private http: HttpClient, private questionService: QuestionService) {}
+  constructor(
+    private http: HttpClient,
+    private questionService: QuestionService,
+  ) {}
 
   env = environment.questionsUri;
 
   highlightResponse = (event, selectedResponse) => {
     this.responseId = selectedResponse;
-    console.log(this.responseId);
-    this.http.patch(`${this.env}/${this.response.questionId}`, {
-      highlightedResponseId: this.responseId,
-    }).subscribe(data => {
-      console.log('PATCH successful', data);
-      // Will add snackbar or other notification here
-    },
-    error => {
-      console.log('PATCH ERROR', error);
-    });
-  }
+    this.http
+      .patch(`${this.env}/${this.response.questionId}`, {
+        highlightedResponseId: this.responseId,
+        /* * One issue is that when this PATCH request happens,
+        * it will change the other fields in the Question to null
+        * Possibly, a back end issue? Could be how PATCH is used
+        */
+      })
+      .subscribe(
+        data => {
+          console.log('PATCH successful', data);
+          // Will add snackbar or other notification here
+        },
+        error => {
+          console.log('PATCH ERROR', error);
+        },
+      );
+  };
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
