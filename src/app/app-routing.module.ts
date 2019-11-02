@@ -5,13 +5,16 @@ import { AskQuestionComponent } from './users/ask-question/ask-question.componen
 import { ViewQuestionComponent } from './static/view-question/view-question.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
+import { AuthGuard } from './services/auth/auth.guard';
+import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
-  { path: 'ask', component: AskQuestionComponent },
-  { path: 'view-question', component: ViewQuestionComponent },
-  { path: 'settings', component: SelfTagsComponent },
-  { path: 'questions', component: QuestionListComponent },
+  { path: '', component: LoginPageComponent  },
+  { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard]  },
+  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard]  },
+  { path: 'settings', component: SelfTagsComponent, canActivate: [AuthGuard]  },
+  { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard] },
+  { path: 'filter-questions', component: QuestionFilterComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
