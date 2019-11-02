@@ -41,7 +41,7 @@ export class QuestionFilterComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
-  requireAll: string;
+  requireAll: string = "?requireAll=false";
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
