@@ -7,8 +7,8 @@ import { QuestionListComponent } from './question-list/question-list.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { PreviewQuestionComponent } from './preview-question/preview-question.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { QuestionFilterComponent } from './question-filter/question-filter.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilteredQuestionListComponent } from './filtered-question-list/filtered-question-list.component';
 
 @NgModule({

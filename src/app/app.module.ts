@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
+import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 
@@ -48,8 +49,9 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
     FormsModule,
     MaterialImportModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

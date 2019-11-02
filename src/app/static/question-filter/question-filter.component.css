@@ -28,3 +28,9 @@
   background-color: #f26925;
   color: #ffffff;
 }
+.chip-list {
+  width: 70%;
+  position: absolute;
+  padding-left: 15%;
+}
+
