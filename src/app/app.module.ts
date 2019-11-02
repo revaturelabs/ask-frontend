@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
+import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { QuestionFilterComponent } from './static/question-filter/question-filte
     NavbarComponent,
     FooterComponent,
     QuestionFilterComponent,
+    TagCreationComponent,
   ],
   imports: [
     BrowserModule,
