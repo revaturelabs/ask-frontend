@@ -46,4 +46,6 @@
   <button mat-raised-button class="submit-button" (click)="sortQuestions()">
     Submit
   </button>
+
+  <button *ngIf="hasBeenFiltered()" mat-raised-button class="reset-button" (click)="resetSearch()">Reset Search</button>
 </div>

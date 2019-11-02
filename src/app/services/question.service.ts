@@ -23,6 +23,14 @@ export class QuestionService {
     this.hasBeenFiltered = true;
   }
 
+  resetFilter() {
+    this.hasBeenFiltered = false;
+  }
+
+  getFilteredStatus() {
+    return this.hasBeenFiltered;
+  }
+
   setFilterUri(formUri: string) {
     this.filteredUri = formUri;
   }

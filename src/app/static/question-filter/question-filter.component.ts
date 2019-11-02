@@ -143,4 +143,13 @@ export class QuestionFilterComponent implements OnInit {
     );
     this.questionListComponent.ngOnInit();
   };
+
+  hasBeenFiltered() {
+    return this.questionService.getFilteredStatus();
+  }
+
+  resetSearch() {
+    this.questionService.resetFilter();
+    this.questionListComponent.ngOnInit();
+  }
 }
