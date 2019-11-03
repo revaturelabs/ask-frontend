@@ -23,7 +23,7 @@ export class SelfTagsComponent implements OnInit {
     } else {
       console.log(id + ' is unchecked!');
       //delete the value and close the empty array slot
-      this.expertSkills.splice([this.expertSkills.indexOf(id)], 1);
+      this.expertSkills.splice(this.expertSkills.indexOf(id), 1);
     }
     console.log(this.expertSkills);
   }
