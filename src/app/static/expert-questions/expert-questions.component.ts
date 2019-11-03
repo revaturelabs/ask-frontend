@@ -27,11 +27,11 @@ export class ExpertQuestionsComponent implements OnInit {
       let tags = new Array<string>();
       for (let i = 0; i < this.expert.expertTags.length; i++) {
         tags.splice(i, 0, this.expert.expertTags[i].name);
-        this.filterTags = tags;
+      }
+      this.filterTags = tags;
         for (let j = 0; j < this.filterTags.length; j++) {
           this.uriTags += '&tag=' + this.filterTags[j];
         }
-      }
       this.filteredUri = `${environment.questionsUri}/search/?requireAll=false${this.uriTags}`;
         this.http.get(this.filteredUri).subscribe(filteredResult => {
           this.filteredQuestions = filteredResult;
