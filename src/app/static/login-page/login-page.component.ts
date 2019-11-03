@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Account } from '../../models/Account';
 
 @Component({
   selector: 'app-login-page',
@@ -7,14 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {}
-  userLogin() {
-    this.router.navigate(['/ask']);
-  }
 
-  expertLogin() {
-    this.router.navigate(['/questions']);
+  /**
+   * Takes the id of a user and sends a GET, request for that user to the server,
+   *  then logs in as that user.  Stand-in functionality
+   *
+   * @param id The id of the user to login as
+   */
+  onSubmit(id: number) {
+    this.http
+      .get<Account>(`${environment.userUri}/${id}`)
+      .subscribe((account: Account) => {
+        this.authService.userLogin(account);
+      });
   }
 }

@@ -14,7 +14,9 @@ import {
   MatOptionModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -30,10 +32,14 @@ import {
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatMenuModule,
@@ -45,10 +51,14 @@ import {
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialImportModule {}

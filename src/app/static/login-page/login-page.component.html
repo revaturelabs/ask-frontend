@@ -1,11 +1,15 @@
-<div id="buttons">
-  <div id="userLogin">
-    <h2>Welcome!</h2>
-    <button id="userButton" class="btn" (click)="userLogin()">
-      User Login
-    </button>
-    <button id="expertButton" class="btn" (click)="expertLogin()">
-      Expert Login
-    </button>
-  </div>
+<div class="container">
+  <form #userLoginForm="ngForm" id="form" (ngSubmit)="onSubmit(id)">
+    <h3>Log in</h3>
+    <br /><br />
+    <mat-form-field>
+      <mat-select [(ngModel)]="id" name="user" placeholder="Select User">
+        <mat-option value="1" name="">User 1 -- Associate</mat-option>
+        <mat-option value="2">User 2 -- Associate</mat-option>
+        <mat-option value="3">User 3 -- Expert</mat-option>
+        <mat-option value="4">User 4 -- Expert</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button id="login" mat-raised-button type="submit">Submit</button>
+  </form>
 </div>
