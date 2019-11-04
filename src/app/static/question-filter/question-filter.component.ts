@@ -1,7 +1,12 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {
   MatAutocompleteSelectedEvent,
@@ -12,32 +17,26 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
-
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-
+import { QuestionService } from 'src/app/services/question.service';
 
 /**
- * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
- * 
- * The current typescript is for Angular Material forms with autocomplete chips & two fields.
- *
- * This component is built on top of an example found at:
- * https://material.angular.io/components/chips/overview
+ * @title Chips Autocomplete
+ * @author Borko Stankovic, Kyung Min Lee, Jonathan Gworek
  */
 
 const qUri = environment.tagsUri;
 
 @Component({
-  selector: 'app-ask-question',
-  templateUrl: './ask-question.component.html',
-  styleUrls: ['./ask-question.component.css'],
+  selector: 'app-question-filter',
+  templateUrl: './question-filter.component.html',
+  styleUrls: ['./question-filter.component.css'],
 })
-export class AskQuestionComponent implements OnInit {
-  form: FormGroup;
+export class QuestionFilterComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
@@ -47,13 +46,27 @@ export class AskQuestionComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
+  requireAll: string = '?requireAll=false';
+  filteredUri: string;
+  filterTags: string[];
+  filteredStatus: boolean = false;
+
+  @Output() newFilteredStatus: EventEmitter<boolean> = new EventEmitter();
+  @Output() newFilteredUri: EventEmitter<string> = new EventEmitter();
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private questionService: QuestionService,
+    private router: Router,
+  ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -76,10 +89,14 @@ export class AskQuestionComponent implements OnInit {
 
       // Add our tag
       if ((value || '').trim()) {
-        //Preventing user inputting chips(tags) that are not in the list from the server
+        //Preventing user inputing chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
-          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
+          this._snackBar.open(
+            'Tag not recognized! Please choose from the list.',
+            'OK, I will',
+            { duration: 4000 },
+          );
         } else {
           this.tags.push(value.trim());
         }
@@ -116,46 +133,27 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  questionInput: Object = {
-    questionerId: null,
-    head: null,
-    tagList: null,
-    body: null,
-  };
-
-  //Submit Question
-  submitQuestion = function(event, head, tagList, body) {
-    event.preventDefault();
-    this.questionInput.questionerId = this.authService.account.id;
-    this.questionInput.head = head;
-    this.questionInput.tagList = this.tags;
-    this.questionInput.body = body;
-
-    //Validating if title or question body is empty
-    if (head.trim() === "") {
-      this._snackBar.open("Please enter a title", "OK", {duration: 4000});
-    } else if (body.trim() === "") {
-      this._snackBar.open("Please enter a question", "OK", {duration: 4000});
-    } else {
-      //POST-ing the form
-      this.http.post(environment.questionsUri, this.questionInput).subscribe(
-			response => {
-        window.location.reload();
-        this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
-      }, 
-      failed => {
-        this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      })};
-  };
-
-  ngOnInit() {
-    this.form = this.fb.group({
-      questionerId: null,
-      head: [''],
-      tagList: [''],
-      body: [''],
-    });
-    this.ts.getTags();
+  createFilteredQuestionsUri() {
+    this.filteredStatus = true;
+    this.newFilteredStatus.emit(this.filteredStatus);
+    let tags: String = '';
+    this.filterTags = this.tags;
+    for (var i = 0; i < this.filterTags.length; i++) {
+      tags += '&tag=' + this.filterTags[i];
+    }
+    (this.filteredUri =
+      environment.questionsUri + '/search/' + this.requireAll + tags),
+      this.newFilteredUri.emit(this.filteredUri);
   }
 
+  hasBeenFiltered() {
+    return this.filteredStatus;
+  }
+
+  resetSearch() {
+    this.filteredStatus = false;
+    this.newFilteredStatus.emit(this.filteredStatus);
+  }
+
+  ngOnInit() {}
 }

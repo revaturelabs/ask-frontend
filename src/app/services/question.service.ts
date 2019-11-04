@@ -12,7 +12,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class QuestionService {
-
   questionId: number;
 
   constructor(private http: HttpClient) {}

@@ -1,9 +1,47 @@
-button {
-  padding: 5px;
-  margin: 5px;
+
+.container {
+  display: flex;
+  width: 33%;
+  flex-direction: column;
+  border: 1.5px solid #55698d;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -300px)
 }
 
-#buttons {
-  text-align: center;
-  margin-top: 20%;
+h3 {
+  background: #55698d;
+  padding: 7px 4% 7px 4%;
+  color: #ffffff;
+  position: absolute;
+  width: 92.1%;
+  transform: translate( 0, -20px);
 }
+
+mat-form-field{
+  margin: 0 13% 0 13%;
+  width: 75%;
+}
+mat-form-field input {
+  width: 75%;
+  height: 25px;
+  padding-left: 5px;
+}
+input:focus {
+  outline:none;
+}
+button {
+  padding: 0;
+  margin: 2%;
+  width: 40%;
+  max-width: 200px;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+#login {
+  background-color: #f26925;
+  color: #ffffff;
+}
+
