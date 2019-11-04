@@ -9,8 +9,6 @@ import { QuestionService } from 'src/app/services/question.service';
   styleUrls: ['./filtered-question-list.component.css'],
 })
 export class FilteredQuestionListComponent implements OnInit {
-  newFilteredStatus: boolean;
-  newFilteredUri: string;
   hasBeenFiltered: boolean = false;
   filteredUri: string;
   questions: Question[];
@@ -20,14 +18,14 @@ export class FilteredQuestionListComponent implements OnInit {
     private questionService: QuestionService,
   ) {}
 
-  setFilteredStatus(newFilteredStatus: boolean) {
+  setFilteredStatusAndRefreshQuestions(newFilteredStatus: boolean) {
     this.hasBeenFiltered = newFilteredStatus;
     if (this.hasBeenFiltered === false) {
-      this.ngOnInit();
+      this.refreshQuestions();
     }
   }
 
-  setFilteredUri(newFilteredUri: string) {
+  setQuestionsListWithFilteredUri(newFilteredUri: string) {
     this.filteredUri = newFilteredUri;
     this.http.get<Question[]>(this.filteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
@@ -35,11 +33,10 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   getFilteredQuestions() {
-    console.log(this.newFilteredUri);
-    return this.http.get<Question[]>(this.newFilteredUri);
+    return this.http.get<Question[]>(this.filteredUri);
   }
 
-  ngOnInit() {
+  refreshQuestions() {
     if (this.hasBeenFiltered === true) {
       this.getFilteredQuestions().subscribe(filteredQuestions => {
         this.questions = filteredQuestions;
@@ -49,5 +46,11 @@ export class FilteredQuestionListComponent implements OnInit {
         this.questions = unfilteredQuestions;
       });
     }
+  }
+
+  ngOnInit() {
+    this.questionService.getQuestions().subscribe(unfilteredQuestions => {
+      this.questions = unfilteredQuestions;
+    });
   }
 }

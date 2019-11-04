@@ -133,7 +133,7 @@ export class QuestionFilterComponent implements OnInit {
     );
   }
 
-  sortQuestions() {
+  createFilteredQuestionsUri() {
     this.filteredStatus = true;
     this.newFilteredStatus.emit(this.filteredStatus);
     let tags: String = '';
