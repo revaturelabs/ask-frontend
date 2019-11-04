@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -16,7 +17,8 @@ export class ViewQuestionComponent implements OnInit {
    * appropriate -- it will only ever be the question selected by the user elsewhere
    * on the site.
    */
-  selectedQuestion: any;
+  @Output() selectedQuestion: any;
+  responses: Response[];
   highlightedResponse: any;
   questionResponses: any;
 

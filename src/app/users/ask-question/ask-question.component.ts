@@ -60,8 +60,6 @@ export class AskQuestionComponent implements OnInit {
       for (let index = 0; index < tags.length; index++) {
         this.allTagsFromServer.push(tags[index].name);
       }
-
-      console.log(this.allTagsFromServer);
     });
   }
 
@@ -120,14 +118,10 @@ export class AskQuestionComponent implements OnInit {
   };
 
   submitQuestion = function(event, qTitle, qTags, qQuestion) {
-    console.log('submit question reached');
     event.preventDefault();
     this.questionInput.title = qTitle;
     this.questionInput.tags = this.tags;
     this.questionInput.question = qQuestion;
-    console.log(this.questionInput);
-    console.log(this.tags);
-    console.log(this.ts.getTags());
   };
 
   ngOnInit() {

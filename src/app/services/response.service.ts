@@ -13,6 +13,7 @@ const httpOptions = {
 })
 export class ResponseService {
   constructor(private http: HttpClient) {}
+  
   getResponses(): Observable<Response[]> {
     return this.http.get<Response[]>(environment.responsesUri);
   }
@@ -20,7 +21,7 @@ export class ResponseService {
     return this.http.post<Response>(
       environment.responsesUri,
       response,
-      httpOptions,
+      // httpOptions,
     );
   }
   updateResponse(response: Response): Observable<Response> {

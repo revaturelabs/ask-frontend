@@ -1,4 +1,4 @@
 export interface Account {
-  id: Number;
+  id: number;
   expert: Boolean;
 }
