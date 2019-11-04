@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EnterResponseComponent } from './enter-response/enter-response.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { SelfTagsComponent } from './self-tags/self-tags.component';
+import { TagCreationComponent } from './tag-creation/tag-creation.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     MaterialImportModule,
     SelfTagsComponent,
+    TagCreationComponent,
     ReactiveFormsModule,
     FormsModule,
   ],
