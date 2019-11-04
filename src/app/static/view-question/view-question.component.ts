@@ -25,12 +25,8 @@ export class ViewQuestionComponent implements OnInit {
   ngOnInit() {
     const selectedQuestionId = this.questionService.getQuestionId();
 
-    this.questionService.getQuestions().subscribe(questions => {
-      for (const q in questions) {
-        if (selectedQuestionId === questions[q].id) {
-          this.selectedQuestion = questions[q];
-        }
-      }
+    this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
+      this.selectedQuestion = question;
     });
 
     // Retrieving the highlighted response for a specified question
