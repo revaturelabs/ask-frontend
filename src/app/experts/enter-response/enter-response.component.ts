@@ -3,6 +3,7 @@ import { Response } from '../../models/Response';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 @Component({
@@ -17,21 +18,22 @@ export class EnterResponseComponent implements OnInit {
   @Input() isEdit: boolean;
   @Input() response: Response = {
     id: 0,
-    responderId: 3,
-    questionId: 2,
+    responderId: 0,
+    questionId: 0,
     body: '',
     creationDate: null,
   };
 
   constructor(private responseService: ResponseService,
-              private questionService: QuestionService) {}
+              private questionService: QuestionService,
+              private authService: AuthService) {}
     
     questionId : number;
-    responderId : number;
+    responderId : Number;
 
   ngOnInit() {
     this.questionId = this.questionService.getQuestionId();
-    console.log(this.questionId);
+    this.responderId = this.authService.account.id;
   }
 
   addResponse(body) {

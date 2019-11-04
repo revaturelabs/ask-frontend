@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from 'src/app/services/response.service';
+import { QuestionService } from '../../services/question.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-response',
