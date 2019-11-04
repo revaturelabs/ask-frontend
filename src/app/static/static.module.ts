@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionFilterComponent } from './question-filter/question-filter.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilteredQuestionListComponent } from './filtered-question-list/filtered-question-list.component';
+import { ExpertQuestionsComponent } from './expert-questions/expert-questions.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FilteredQuestionListComponent } from './filtered-question-list/filtered
     NavbarComponent,
     QuestionFilterComponent,
     FilteredQuestionListComponent,
+    ExpertQuestionsComponent,
   ],
   imports: [
     CommonModule,
