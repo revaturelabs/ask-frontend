@@ -33,7 +33,6 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   getFilteredQuestions() {
-    console.log(this.filteredUri);
     return this.http.get<Question[]>(this.filteredUri);
   }
 
