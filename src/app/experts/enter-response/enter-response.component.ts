@@ -17,6 +17,7 @@ export class EnterResponseComponent implements OnInit {
   @Output() updatedResponse: EventEmitter<Response> = new EventEmitter();
   @Input() isEdit: boolean;
   @Input() response: Response = {
+    user: null,
     id: 0,
     responderId: 0,
     questionId: 0,

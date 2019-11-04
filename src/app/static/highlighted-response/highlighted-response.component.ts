@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ResponseService } from '../../services/response.service';
 
 @Component({
   selector: 'app-highlighted-response',
@@ -8,10 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HighlightedResponseComponent implements OnInit {
 
   @Input() highlight: Response;
+  responderName: string;
 
-  constructor() { }
+  constructor(private responseService: ResponseService) { }
 
   ngOnInit() {
+
+    let highlightId = this.highlight.id;
+    this.responseService.getResponseById(highlightId).subscribe(result => {
+      this.responderName = result.user.username;
+    });
   }
 
 }
