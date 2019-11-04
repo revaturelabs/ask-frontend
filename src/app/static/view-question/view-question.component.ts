@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-view-question',
@@ -22,6 +23,7 @@ export class ViewQuestionComponent implements OnInit {
   constructor(
     private responseService: ResponseService,
     private questionService: QuestionService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
