@@ -18,7 +18,7 @@ export class TagService {
     return this.http.get<Tag[]>(environment.tagsUri);
   }
 
-  saveExpertTags(tag: Tag){
+  saveExpertTags(tag: Tag[]){
     const uri = environment.tagsUri;
     return this.http.post<Tag>(uri, tag, httpOptions);
   }

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Tag } from '../../models/Tag';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { SelfTagsComponent } from '../self-tags/self-tags.component';
+
 
 
 /**
@@ -15,6 +16,9 @@ import { SelfTagsComponent } from '../self-tags/self-tags.component';
  * 
  */
 
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-tag-creation',

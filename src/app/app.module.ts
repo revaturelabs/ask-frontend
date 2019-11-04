@@ -21,6 +21,7 @@ import { FooterComponent } from './static/footer/footer.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
+import { SettingsComponent } from './experts/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TagCreationComponent } from './experts/tag-creation/tag-creation.compon
     FooterComponent,
     QuestionFilterComponent,
     TagCreationComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { TagCreationComponent } from './experts/tag-creation/tag-creation.compon
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard], 
   bootstrap: [AppComponent],
 })
 export class AppModule {}
