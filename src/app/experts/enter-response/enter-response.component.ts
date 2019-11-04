@@ -27,6 +27,7 @@ export class EnterResponseComponent implements OnInit {
               private questionService: QuestionService) {}
     
     questionId : number;
+    responderId : number;
 
   ngOnInit() {
     this.questionId = this.questionService.getQuestionId();
@@ -44,6 +45,7 @@ export class EnterResponseComponent implements OnInit {
         .saveResponse(this.response)
         .subscribe(response => {
           this.newResponse.emit(response);
+          alert('Thankyou for your Response');
         });
     }
   }
