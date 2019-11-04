@@ -16,7 +16,6 @@ export class ResponseComponent implements OnInit {
 
   @Input() response: Response;
 
-  responseId: number;
   responses: Response[];
   isEdit: boolean = false;
   responderName: string;

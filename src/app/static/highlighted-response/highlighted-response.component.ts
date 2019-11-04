@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
+import { Response } from '../../models/Response';
 
 @Component({
   selector: 'app-highlighted-response',
