@@ -1,7 +1,12 @@
 <div class="question-component">
   <app-question [question]="selectedQuestion"></app-question>
 </div>
-<div class="response-component" *ngFor="let response of responses">
+
+<div class="highlighted-response-component">
+  <app-highlighted-response *ngIf="highlightedResponse" [highlight] = "highlightedResponse"></app-highlighted-response>
+</div>
+
+<div class="response-component" *ngFor="let response of questionResponses">
   <app-response [response]="response"></app-response>
 </div>
 

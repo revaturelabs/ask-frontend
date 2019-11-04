@@ -28,6 +28,10 @@ export class QuestionService {
     return this.questionId;
   }
 
+  getQuestionById(questionId): Observable<Question> {
+    return this.http.get<Question>(`${environment.questionsUri}/${questionId}`);
+  }
+
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(
       environment.questionsUri,
@@ -40,6 +44,12 @@ export class QuestionService {
     const url = `${environment.questionsUri}/${question.id}`;
 
     return this.http.put<Question>(url, question, httpOptions);
+  }
+
+  highlightResponse(question: Question): Observable<Question> {
+    const url = `${environment.questionsUri}/${question.id}`;
+
+    return this.http.patch<Question>(url, question, httpOptions);
   }
 
   removePost(question: Question | number): Observable<Question> {

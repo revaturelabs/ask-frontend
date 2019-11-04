@@ -18,6 +18,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
@@ -38,6 +39,7 @@ import { ExpertQuestionsComponent } from './static/expert-questions/expert-quest
     SelfTagsComponent,
     NavbarComponent,
     FooterComponent,
+    HighlightedResponseComponent,
     QuestionFilterComponent,
     TagCreationComponent,
     FilteredQuestionListComponent,
