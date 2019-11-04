@@ -4,6 +4,7 @@ import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-response',
@@ -18,30 +19,30 @@ export class ResponseComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private questionService: QuestionService,
+    private _snackBar: MatSnackBar,
   ) {}
 
   env = environment.questionsUri;
 
   highlightResponse = (event, selectedResponse) => {
-    this.responseId = selectedResponse;
     this.http
-      .patch(`${this.env}/${this.response.questionId}`, {
-        highlightedResponseId: this.responseId,
-        /* * One issue is that when this PATCH request happens,
-        * it will change the other fields in the Question to null
-        * Possibly, a back end issue? Could be how PATCH is used
-        */
-      })
+      .patch(`${this.env}/${this.response.questionId}/highlightedResponseId`, selectedResponse
+      )
       .subscribe(
         data => {
           console.log('PATCH successful', data);
-          // Will add snackbar or other notification here
+          this._snackBar.open('Highlighted Answer', 'Close', {
+            duration: 4000,
+          });
         },
         error => {
           console.log('PATCH ERROR', error);
+          this._snackBar.open('Error', 'Close', { duration: 4000 });
         },
       );
   };
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.response);
+  }
 }
