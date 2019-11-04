@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './static/login-page/login-page.component';
@@ -19,6 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
+import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
+import { AuthGuard } from './services/auth/auth.guard';
+import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
+import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,9 @@ import { HighlightedResponseComponent } from '../app/static/highlighted-response
     NavbarComponent,
     FooterComponent,
     HighlightedResponseComponent,
+    QuestionFilterComponent,
+    TagCreationComponent,
+    FilteredQuestionListComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +51,9 @@ import { HighlightedResponseComponent } from '../app/static/highlighted-response
     FormsModule,
     MaterialImportModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

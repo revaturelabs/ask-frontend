@@ -1,4 +1,3 @@
-import { QuestionService } from '../../services/question.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Question } from '../../models/Question';
 
@@ -10,13 +9,7 @@ import { Question } from '../../models/Question';
 export class QuestionListComponent implements OnInit {
   @Input() questions: Question[];
 
-  constructor(
-    private questionService: QuestionService,
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.questionService.getQuestions().subscribe(questions => {
-      this.questions = questions;
-    });
-  }
+  ngOnInit() {}
 }

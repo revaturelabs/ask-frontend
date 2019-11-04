@@ -1,0 +1,10 @@
+<div class="container">
+    <mat-card>
+        <h2>Create New Tag</h2>
+        <br><br>
+        <mat-form-field>
+            <input [(ngModel)]="this.tag.name" matInput placeholder="New Tag Name" />
+        </mat-form-field>
+        <button id="submit" (click)="onSubmit()" mat-raised-button type="submit">Submit</button>
+    </mat-card>
+</div>
