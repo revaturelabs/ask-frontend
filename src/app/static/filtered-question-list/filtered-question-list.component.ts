@@ -3,6 +3,8 @@ import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-filtered-question-list',
   templateUrl: './filtered-question-list.component.html',
@@ -16,6 +18,7 @@ export class FilteredQuestionListComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private questionService: QuestionService,
+    private _snackBar: MatSnackBar,
   ) {}
 
   setFilteredStatusAndRefreshQuestions(newFilteredStatus: boolean) {
@@ -29,6 +32,9 @@ export class FilteredQuestionListComponent implements OnInit {
     this.filteredUri = newFilteredUri;
     this.http.get<Question[]>(this.filteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
+      if(this.questions.length == 0) {
+        this._snackBar.open("No results!", "OK", {duration: 3000});
+      }
     });
   }
 

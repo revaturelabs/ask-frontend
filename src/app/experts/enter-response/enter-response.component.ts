@@ -4,6 +4,7 @@ import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class EnterResponseComponent implements OnInit {
 
   constructor(private responseService: ResponseService,
               private questionService: QuestionService,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private _snackBar: MatSnackBar) {}
     
     questionId : number;
 
@@ -36,17 +38,16 @@ export class EnterResponseComponent implements OnInit {
 
   addResponse(body) {
     if (!body) {
-      alert('Please add a Response');
+      this._snackBar.open("Please add a Response!", "OK!", {duration: 3000});
     } else {
       this.response.body = body;
       this.response.questionId = this.questionId;
       this.response.responderId = this.authService.account.id;
-      console.log(this.response);
       this.responseService
         .saveResponse(this.response)
         .subscribe(response => {
           this.newResponse.emit(response);
-          alert('Thank you for your Response');
+          this._snackBar.open("Thank you for your Response", " ", {duration: 3000});
         });
     }
   }
@@ -55,7 +56,6 @@ export class EnterResponseComponent implements OnInit {
     this.responseService
       .updateResponse(this.response)
       .subscribe(response => {
-        console.log(response);
         this.isEdit = false;
         this.updatedResponse.emit(response);
       });
