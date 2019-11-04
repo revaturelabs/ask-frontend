@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
@@ -15,7 +16,9 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
 
 
 /**
@@ -51,7 +54,7 @@ export class AskQuestionComponent implements OnInit {
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient, private authService: AuthService, private router: Router) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -74,7 +77,7 @@ export class AskQuestionComponent implements OnInit {
 
       // Add our tag
       if ((value || '').trim()) {
-        //Preventing user inputing chips(tags) that are not in the list from the server
+        //Preventing user inputting chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
           this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
@@ -115,6 +118,7 @@ export class AskQuestionComponent implements OnInit {
   }
 
   questionInput: Object = {
+    questionerId: null,
     head: null,
     tagList: null,
     body: null,
@@ -123,21 +127,22 @@ export class AskQuestionComponent implements OnInit {
   //Submit Question
   submitQuestion = function(event, head, tagList, body) {
     event.preventDefault();
+    this.questionInput.questionerId = this.authService.account.id;
     this.questionInput.head = head;
     this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
 
     //Validating if title or question body is empty
     if (head.trim() === "") {
-      this._snackBar.open("Title must not be empty or spaces", "OK", {duration: 4000});
+      this._snackBar.open("Please enter a title", "OK", {duration: 4000});
     } else if (body.trim() === "") {
-      this._snackBar.open("Question body must not be empty or spaces", "OK", {duration: 4000});
+      this._snackBar.open("Please enter a question", "OK", {duration: 4000});
     } else {
       //POST-ing the form
-      this.http.post(environment.createQuestionUri, this.questionInput).subscribe(
+      this.http.post(environment.questionsUri, this.questionInput).subscribe(
 			response => {
-        window.location.reload();
         this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
+        this.clearForm();
       }, 
       failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
@@ -145,11 +150,17 @@ export class AskQuestionComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.clearForm();
+    // this.ts.getTags();
+  }
+
+  clearForm() {
     this.form = this.fb.group({
+      questionerId: null,
       head: [''],
       tagList: [''],
       body: [''],
     });
-    this.ts.getTags();
+    this.tags = [];
   }
 }
