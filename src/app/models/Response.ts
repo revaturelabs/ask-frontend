@@ -6,5 +6,4 @@ export interface Response {
   questionId: number;
   body: string;
   creationDate: string;
-  question: Question[];
 }

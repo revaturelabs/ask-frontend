@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Response } from '../../models/Response';
-import { ResponseService } from '../../services/response.service';
+import { ResponseService } from 'src/app/services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -12,37 +12,61 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent implements OnInit {
-  @Input() response: Response;
-
-  responseId: number;
-
-  constructor(
-    private http: HttpClient,
-    private questionService: QuestionService,
-    private _snackBar: MatSnackBar,
-  ) {}
-
-  env = environment.questionsUri;
-
-  highlightResponse = (event, selectedResponse) => {
-    this.http
-      .patch(`${this.env}/${this.response.questionId}/highlightedResponseId`, selectedResponse
-      )
-      .subscribe(
-        data => {
-          console.log('PATCH successful', data);
-          this._snackBar.open('Highlighted Answer', '', {
-            duration: 2000,
-          });
-        },
-        error => {
-          console.log('PATCH ERROR', error);
-          this._snackBar.open('Error', '', { duration: 2000 });
-        },
-      );
+  responses: Response[];
+  @Input() response: Response = {
+    id: 0,
+    responderId: 0,
+    questionId: 0,
+    body: '',
+    creationDate: ''
   }
+    isEdit: boolean = false;
+  ;
 
-  ngOnInit() {
-    console.log(this.response);
+  constructor(private responseService: ResponseService) { }
+
+  ngOnInit() {  
+    this.responseService.getResponses().subscribe(responses => {
+      this.responses = responses;
+    });
   }
-}
+  
+  onNewResponse(response: Response) {
+    this.responses.unshift(response);
+  }
+  
+  editResponse(response: Response) {
+    this.response = response;
+    this.isEdit = true;
+  }
+  
+  onUpdatedResponse(response: Response) {
+    this.responses.forEach((cur, index) => {
+      if(response.id === cur.id) {
+        this.responses.splice(index, 1);
+        this.responses.unshift(response);
+        this.isEdit = false;
+        this.response = {
+          id: 0,
+          responderId: 0,
+          questionId: 0,
+          body: '',
+          creationDate: ''
+        }
+      }
+    });
+  }
+  
+  removeResponse(response: Response) {
+    if(confirm('Are You Sure ?')) {
+      this.responseService.removeResponse(response.id).subscribe(() => {
+        this.responses.forEach((cur, index) => {
+          if(response.id === cur.id) {
+            this.responses.splice(index, 1);  
+          }
+        });
+      });
+    }
+  }
+  
+  }
