@@ -43,7 +43,6 @@ export class EnterResponseComponent implements OnInit {
       this.response.body = body;
       this.response.questionId = this.questionId;
       this.response.responderId = this.authService.account.id;
-      console.log(this.response);
       this.responseService
         .saveResponse(this.response)
         .subscribe(response => {
@@ -57,7 +56,6 @@ export class EnterResponseComponent implements OnInit {
     this.responseService
       .updateResponse(this.response)
       .subscribe(response => {
-        console.log(response);
         this.isEdit = false;
         this.updatedResponse.emit(response);
       });
