@@ -9,10 +9,7 @@
   <mat-card-content>
     <p>{{ response.body }}</p>
   </mat-card-content>
-  <!-- Will use ngIf to display for -->
-  <div id="highlight-response-button">
   <mat-card-actions>
-    <button mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
+    <button *ngIf="this.currentQuestionerId == this.currentUserId" mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
   </mat-card-actions>
-</div>
 </mat-card>

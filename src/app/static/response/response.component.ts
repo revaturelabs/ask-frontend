@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,9 +17,15 @@ export class ResponseComponent implements OnInit {
 
   responseId: number;
 
+  // Only the user who asked the question can highlight a response
+  currentQuestionerId: number;
+  currentUserId: any;
+  currentQuestionObject: any;
+
   constructor(
     private http: HttpClient,
     private questionService: QuestionService,
+    private authService: AuthService,
     private _snackBar: MatSnackBar,
   ) {}
 
@@ -37,12 +44,16 @@ export class ResponseComponent implements OnInit {
         },
         error => {
           console.log('PATCH ERROR', error);
-          this._snackBar.open('Error', '', { duration: 2000 });
         },
       );
   }
 
   ngOnInit() {
-    console.log(this.response);
+    let observable = this.http.get(`${environment.questionsUri}/${this.questionService.getQuestionId()}`);
+    observable.subscribe(result=>{
+      this.currentQuestionObject = result;
+      this.currentQuestionerId = this.currentQuestionObject.questionerId;
+      this.currentUserId = this.authService.account.id;
+    })
   }
 }
