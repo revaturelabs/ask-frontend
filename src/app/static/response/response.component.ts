@@ -45,13 +45,12 @@ export class ResponseComponent implements OnInit {
       )
       .subscribe(
         data => {
-          console.log('PATCH successful', data);
-          this._snackBar.open('Highlighted Answer', '', {
+          this._snackBar.open('Highlighted Answer', 'OK', {
             duration: 2000,
           });
         },
         error => {
-          console.log('PATCH ERROR', error);
+          this._snackBar.open("Highlight unsuccessful", "OK", {duration: 3000});
         },
       );
   }
