@@ -8,11 +8,10 @@
   </mat-card-header>
   <mat-card-content>
     <p>{{ response.body }}</p>
+    <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
+    <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
   </mat-card-content>
-  <!-- Will use ngIf to display for -->
-  <div id="highlight-response-button">
   <mat-card-actions>
-    <button mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
+    <button *ngIf="this.currentQuestionerId == this.currentUserId" mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
   </mat-card-actions>
-</div>
 </mat-card>
