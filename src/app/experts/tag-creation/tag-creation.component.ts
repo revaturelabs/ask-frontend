@@ -5,6 +5,17 @@ import { environment } from '../../../environments/environment';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { SelfTagsComponent } from '../self-tags/self-tags.component';
 
+
+/**
+ * @author: Zach Marshello, Alec Thavychith, Nick Brinson
+ * 
+ * Expert input new tag and click submit. POST request is created, and response is handled 
+ * based on success or failure. Submission reinitializes SelfTagsComponent to reveal
+ * updated list of tags.
+ * 
+ */
+
+
 @Component({
   selector: 'app-tag-creation',
   templateUrl: './tag-creation.component.html',
