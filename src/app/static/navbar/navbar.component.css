@@ -2,3 +2,6 @@ mat-toolbar {
   background-color: #474c55;
   color: whitesmoke;
 }
+button:hover{
+  background-color:#ffffff15;
+}

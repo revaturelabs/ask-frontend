@@ -1,8 +1,14 @@
+.container{
+  background-color: #ffffff;
+  height: 75px;
+  /* border-bottom: 1px solid #666a74; */
+  box-shadow: 0 0 1px 1px #00000044;
+}
 .tag-chip-list {
   width: 47%;
   position: absolute;
   padding-left: 9%;
-  top: 13%;
+  top: 10%;
 }
 
 .select-dropdown {
@@ -10,13 +16,13 @@
   position: absolute;
   margin-left: 50%;
   padding-left: 8%;
-  top: 13%;
+  top: 10%;
 }
 
 .submit-button {
   position: absolute;
   margin-left: 80%;
-  top: 14.5%;
+  top: 11.5%;
   background-color: #f26925;
   color: #ffffff;
 }
@@ -24,7 +30,7 @@
 .reset-button {
   position: absolute;
   margin-left: 87%;
-  top: 14.5%;
+  top: 11.5%;
   background-color: #f26925;
   color: #ffffff;
 }
