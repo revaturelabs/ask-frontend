@@ -21,6 +21,7 @@ import { FooterComponent } from './static/footer/footer.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
+import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TagCreationComponent } from './experts/tag-creation/tag-creation.compon
     FooterComponent,
     QuestionFilterComponent,
     TagCreationComponent,
+    FilteredQuestionListComponent,
   ],
   imports: [
     BrowserModule,

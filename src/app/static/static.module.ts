@@ -9,6 +9,7 @@ import { PreviewQuestionComponent } from './preview-question/preview-question.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionFilterComponent } from './question-filter/question-filter.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FilteredQuestionListComponent } from './filtered-question-list/filtered-question-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     PreviewQuestionComponent,
     NavbarComponent,
     QuestionFilterComponent,
+    FilteredQuestionListComponent,
   ],
   imports: [
     CommonModule,
