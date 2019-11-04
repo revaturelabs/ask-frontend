@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 
@@ -53,7 +54,7 @@ export class AskQuestionComponent implements OnInit {
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient, private authService: AuthService, private router: Router) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -140,8 +141,8 @@ export class AskQuestionComponent implements OnInit {
       //POST-ing the form
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
 			response => {
-        window.location.reload();
         this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
+        this.clearForm();
       }, 
       failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
@@ -149,13 +150,18 @@ export class AskQuestionComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.clearForm();
+    // this.ts.getTags();
+  }
+
+  clearForm() {
     this.form = this.fb.group({
       questionerId: null,
       head: [''],
       tagList: [''],
       body: [''],
     });
-    this.ts.getTags();
+    this.tags = [];
   }
 
 }

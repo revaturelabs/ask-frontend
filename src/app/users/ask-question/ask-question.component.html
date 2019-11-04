@@ -7,11 +7,13 @@
 
   <!-- Angular Material form, input field for Title -->
   <mat-form-field>
-    <input matInput #qTitle placeholder="Title: ">
+    <input matInput [(ngModel)]="this.form.head" #qTitle placeholder="Title: ">
   </mat-form-field>
 
   <!-- Angular Material Chips -->
-  <mat-form-field #qTags class="tag-chip-list">
+  <mat-form-field #qTags class="tag-chip-list" >
+    <mat-icon matSuffix>search</mat-icon>
+
     <mat-chip-list #chipList aria-label="Tag selection">
       <mat-chip
         *ngFor="let tag of tags"
@@ -47,7 +49,7 @@
 
   <!-- Angular Material form, input field (texarea) for Question -->
   <mat-form-field>
-    <textarea matInput #qQuestion placeholder="Your Question: "></textarea>
+    <textarea matInput [(ngModel)]="this.form.body" #qQuestion placeholder="Your Question: "></textarea>
   </mat-form-field>
   
   <!-- Submit button -->
