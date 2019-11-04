@@ -5,12 +5,14 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
+      <!-- <mat-checkbox color="warn" id="test" *ngIf="1==1">test</mat-checkbox> -->
     <div *ngFor="let tag of tags">
       <section class="skill-tag">
         <mat-checkbox
           color="warn"
           (change)="toggle($event, tag.name)"
           id="{{ tag.name }}"
+          [(ngModel)] = "isChecked"
         >
           {{ tag.name }}</mat-checkbox
         >

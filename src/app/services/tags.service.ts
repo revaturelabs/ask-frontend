@@ -22,4 +22,8 @@ export class TagService {
     const uri = environment.tagsUri;
     return this.http.post<Tag>(uri, tag, httpOptions);
   }
+
+  getExpertTags(expertId: number): Observable<any[]>{
+    return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
+  }
 }
