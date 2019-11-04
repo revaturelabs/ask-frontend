@@ -29,11 +29,9 @@ export class EnterResponseComponent implements OnInit {
               private authService: AuthService) {}
     
     questionId : number;
-    responderId : Number;
 
   ngOnInit() {
     this.questionId = this.questionService.getQuestionId();
-    this.responderId = this.authService.account.id;
   }
 
   addResponse(body) {
@@ -42,6 +40,7 @@ export class EnterResponseComponent implements OnInit {
     } else {
       this.response.body = body;
       this.response.questionId = this.questionId;
+      this.response.responderId = this.authService.account.id;
       console.log(this.response);
       this.responseService
         .saveResponse(this.response)

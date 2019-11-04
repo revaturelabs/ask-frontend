@@ -10,7 +10,7 @@ import { Question } from 'src/app/models/Question';
   styleUrls: ['./expert-questions.component.css'],
 })
 export class ExpertQuestionsComponent implements OnInit {
-  expertId: Number;
+  expertId: number;
   expert: any;
   filteredUri: string;
   filterTags: string[];
