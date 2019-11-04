@@ -50,10 +50,10 @@ export class ResponseComponent implements OnInit {
 
   ngOnInit() {
     let observable = this.http.get(`${environment.questionsUri}/${this.questionService.getQuestionId()}`);
-    observable.subscribe(result=>{
+    observable.subscribe(result => {
       this.currentQuestionObject = result;
       this.currentQuestionerId = this.currentQuestionObject.questionerId;
       this.currentUserId = this.authService.account.id;
-    })
+    });
   }
 }
