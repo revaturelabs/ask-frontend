@@ -11,6 +11,11 @@
     <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
     <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
   </mat-card-content>
+  <mat-chip-list class="mat-chip-list-wrapper">
+    <div class = "mat-chips" *ngFor="let tag of expertTags">
+      <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
+    </div>
+  </mat-chip-list>
   <mat-card-actions>
     <button *ngIf="this.currentQuestionerId == this.currentUserId" mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
   </mat-card-actions>

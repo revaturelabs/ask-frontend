@@ -19,6 +19,7 @@ export class ResponseComponent implements OnInit {
   responses: Response[];
   isEdit: boolean = false;
   responderName: string;
+  expertTags = [];
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -97,6 +98,7 @@ export class ResponseComponent implements OnInit {
 
     this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
+      this.expertTags = result.user.expertTags;
     });
 
     let observable = this.http.get(`${environment.questionsUri}/${this.questionService.getQuestionId()}`);
