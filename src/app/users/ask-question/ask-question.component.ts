@@ -74,7 +74,7 @@ export class AskQuestionComponent implements OnInit {
 
       // Add our tag
       if ((value || '').trim()) {
-        //Preventing user inputing chips(tags) that are not in the list from the server
+        //Preventing user inputting chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
           this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
