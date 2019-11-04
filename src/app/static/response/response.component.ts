@@ -31,16 +31,16 @@ export class ResponseComponent implements OnInit {
       .subscribe(
         data => {
           console.log('PATCH successful', data);
-          this._snackBar.open('Highlighted Answer', 'Close', {
-            duration: 4000,
+          this._snackBar.open('Highlighted Answer', '', {
+            duration: 2000,
           });
         },
         error => {
           console.log('PATCH ERROR', error);
-          this._snackBar.open('Error', 'Close', { duration: 4000 });
+          this._snackBar.open('Error', '', { duration: 2000 });
         },
       );
-  };
+  }
 
   ngOnInit() {
     console.log(this.response);
