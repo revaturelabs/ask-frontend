@@ -1,5 +1,5 @@
 <app-question-filter
-  (newFilteredUri)="setFilteredUri($event)"
-  (newFilteredStatus)="setFilteredStatus($event)"
+  (newFilteredUri)="setQuestionsListWithFilteredUri($event)"
+  (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"
 ></app-question-filter>
 <app-question-list [questions]="questions"></app-question-list>
