@@ -1,7 +1,10 @@
 <mat-card class="highlight-response-card">
   <mat-card-header>
-    <mat-card-subtitle>Responder ID: {{ highlight.responderId }}</mat-card-subtitle>
-    <mat-card-subtitle>{{ highlight.creationDate | date: 'short' }}</mat-card-subtitle>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Response ID: {{ highlight.id }}</mat-card-title>
+    <mat-card-subtitle>Question ID: {{ highlight.questionId }}</mat-card-subtitle>
+    <mat-card-subtitle> {{ responderName }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ highlight.creationDate | date: 'mediumDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>{{ highlight.body }}</p>

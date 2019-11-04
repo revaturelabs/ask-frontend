@@ -14,16 +14,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ResponseComponent implements OnInit {
 
-  @Input() response: Response = {
-    id: 0,
-    responderId: 0,
-    questionId: 0,
-    body: '',
-    creationDate: ''
-  }
-  responseId: number;
+  @Input() response: Response;
+
   responses: Response[];
   isEdit: boolean = false;
+  responderName: string;
+  expertTags = [];
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -45,13 +41,12 @@ export class ResponseComponent implements OnInit {
       )
       .subscribe(
         data => {
-          console.log('PATCH successful', data);
-          this._snackBar.open('Highlighted Answer', '', {
+          this._snackBar.open('Highlighted Answer', 'OK', {
             duration: 2000,
           });
         },
         error => {
-          console.log('PATCH ERROR', error);
+          this._snackBar.open("Highlight unsuccessful", "OK", {duration: 3000});
         },
       );
   }
@@ -59,35 +54,36 @@ export class ResponseComponent implements OnInit {
   onNewResponse(response: Response) {
     this.responses.unshift(response);
   }
-  
+
   editResponse(response: Response) {
     this.response = response;
     this.isEdit = true;
   }
-  
+
   onUpdatedResponse(response: Response) {
     this.responses.forEach((cur, index) => {
-      if(response.id === cur.id) {
+      if (response.id === cur.id) {
         this.responses.splice(index, 1);
         this.responses.unshift(response);
         this.isEdit = false;
         this.response = {
+          user: null,
           id: 0,
           responderId: 0,
           questionId: 0,
           body: '',
           creationDate: ''
-        }
+        };
       }
     });
   }
-  
+
   removeResponse(response: Response) {
-    if(confirm('Are You Sure ?')) {
+    if (confirm('Are You Sure ?')) {
       this.responseService.removeResponse(response.id).subscribe(() => {
         this.responses.forEach((cur, index) => {
-          if(response.id === cur.id) {
-            this.responses.splice(index, 1);  
+          if (response.id === cur.id) {
+            this.responses.splice(index, 1);
           }
         });
       });
@@ -98,6 +94,12 @@ export class ResponseComponent implements OnInit {
     this.responseService.getResponses().subscribe(responses => {
       this.responses = responses;
     });
+
+    this.responseService.getResponseById(this.response.id).subscribe(result => {
+      this.responderName = result.user.username;
+      this.expertTags = result.user.expertTags;
+    });
+
     let observable = this.http.get(`${environment.questionsUri}/${this.questionService.getQuestionId()}`);
     observable.subscribe(result => {
       this.currentQuestionObject = result;
