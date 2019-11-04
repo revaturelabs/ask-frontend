@@ -46,7 +46,7 @@ export class EnterResponseComponent implements OnInit {
         .saveResponse(this.response)
         .subscribe(response => {
           this.newResponse.emit(response);
-          alert('Thankyou for your Response');
+          alert('Thank you for your Response');
         });
     }
   }

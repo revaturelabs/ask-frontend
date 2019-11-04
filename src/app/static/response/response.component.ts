@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from 'src/app/services/response.service';
 import { QuestionService } from '../../services/question.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent implements OnInit {
-  responses: Response[];
+
   @Input() response: Response = {
     id: 0,
     responderId: 0,
@@ -20,17 +21,41 @@ export class ResponseComponent implements OnInit {
     body: '',
     creationDate: ''
   }
-    isEdit: boolean = false;
-  ;
+  responseId: number;
+  responses: Response[];
+  isEdit: boolean = false;
 
-  constructor(private responseService: ResponseService) { }
+  // Only the user who asked the question can highlight a response
+  currentQuestionerId: number;
+  currentUserId: any;
+  currentQuestionObject: any;
+  env = environment.questionsUri;
 
-  ngOnInit() {  
-    this.responseService.getResponses().subscribe(responses => {
-      this.responses = responses;
-    });
+  constructor(
+    private http: HttpClient,
+    private questionService: QuestionService,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private responseService: ResponseService,
+  ) {}
+
+  highlightResponse = (event, selectedResponse) => {
+    this.http
+      .patch(`${this.env}/${this.response.questionId}/highlightedResponseId`, selectedResponse
+      )
+      .subscribe(
+        data => {
+          console.log('PATCH successful', data);
+          this._snackBar.open('Highlighted Answer', '', {
+            duration: 2000,
+          });
+        },
+        error => {
+          console.log('PATCH ERROR', error);
+        },
+      );
   }
-  
+
   onNewResponse(response: Response) {
     this.responses.unshift(response);
   }
@@ -68,5 +93,16 @@ export class ResponseComponent implements OnInit {
       });
     }
   }
-  
+
+  ngOnInit() {
+    this.responseService.getResponses().subscribe(responses => {
+      this.responses = responses;
+    });
+    let observable = this.http.get(`${environment.questionsUri}/${this.questionService.getQuestionId()}`);
+    observable.subscribe(result => {
+      this.currentQuestionObject = result;
+      this.currentQuestionerId = this.currentQuestionObject.questionerId;
+      this.currentUserId = this.authService.account.id;
+    });
   }
+}
