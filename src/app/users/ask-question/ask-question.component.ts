@@ -176,11 +176,8 @@ export class AskQuestionComponent implements OnInit {
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
-      .subscribe(response => {
-        alert("Successfully uploaded photo!")
-        console.log(response);  
-      },
-      (err) =>{alert("Invalid submission");})
+      .subscribe(response => {},
+      (err) =>{console.log(err);})
   }
 
   ngOnInit() {
