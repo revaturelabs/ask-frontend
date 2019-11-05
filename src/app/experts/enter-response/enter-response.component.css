@@ -19,6 +19,7 @@ button {
   padding: 0;
   margin: 2%;
   width: 40%;
+  min-width: 120px;
   max-width: 200px;
   margin-left: 30%;
   margin-right: 30%;
