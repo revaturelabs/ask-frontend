@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Tag } from '../../models/Tag';
 import { TagService } from 'src/app/services/tags.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,15 @@ import { TagService } from 'src/app/services/tags.service';
 })
 export class SelfTagsComponent implements OnInit {
   tags: Tag[];
+  isChecked: boolean = false;
 
-  userId = 2;
+  userId = this.authService.account.id;
   // expertStartingTags: Tag[];
-  expertStartingTags: any[] = [];
+  expertStartingTags: string[];
   expertSkills: Tag[] = [];
+  currentExpert: any;
 
-  constructor(private tagService: TagService) {}
+  constructor(private tagService: TagService, private authService: AuthService) { }
 
   // eval = this.evaluation();
   // evaluation() {
@@ -42,18 +45,38 @@ export class SelfTagsComponent implements OnInit {
     console.log(this.expertSkills);
   }
 
+  onSubmit() {
+    console.log("blah");
+    this.tagService.saveExpertTags(this.expertSkills);
+  }
+
+  checkExpertTags(tagName) {
+    this.currentExpert.expertTags.forEach(element => {
+      if (element.name==tagName) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
   ngOnInit() {
     this.tagService.getTags().subscribe(tags => {
       this.tags = tags;
+      console.log(tags);
+    });
+
+    this.tagService.getExpertTags(this.userId).subscribe((expert) => {
+      this.currentExpert = expert;
+      console.log(this.currentExpert.expertTags[0].name);
+      console.log(this.authService.account);
+      // console.log(expert.expertTags);
       // var a = 'hello from ts';
       // this.skillset = this.tags;
       // document.getElementById('abc').innerHTML=a;
     });
   }
-    
-  onSubmit() {
-    this.tagService.saveExpertTags(this.expertSkills);
-  }
 
-  
+
+
 }

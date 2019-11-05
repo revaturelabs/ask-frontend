@@ -11,7 +11,9 @@
           <mat-checkbox
             color="warn"
             (change)="toggle($event, tag.name)"
-            id="{{ tag.name }}"
+            id="tag.name"
+            (ngModelChange) = "checkExpertTags(this.tag.name)"
+            [ngModel] = "isChecked"
           >
             {{ tag.name }}</mat-checkbox
           >
@@ -29,5 +31,5 @@
   
 </mat-card>
 <p>
-    {{ expertSkills.selectedOptions }}Hello
+    {{ expertStartingTags.expertTags[0].name}}Hello
   </p>
