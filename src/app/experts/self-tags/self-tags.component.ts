@@ -74,6 +74,12 @@ export class SelfTagsComponent implements OnInit {
     
   }
 
+  
+
+  reloadTagList() {
+    
+  }
+
 
 
 }

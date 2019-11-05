@@ -2,6 +2,7 @@
   width: 120px;
   padding:4px 0;
 }
+
 mat-checkbox{
   width: 100%;
   padding:4px 8px 8px 8px;
@@ -31,18 +32,17 @@ h3{
   font-weight:normal;
   margin:6px 0 0 6px;
 }
-.buttons{
-  display:block;
-  align-content:right;
-}
+
 button {
-  margin:10px;
-  width: 100px;
-  color: #f5f3fc;
+  padding: 0;
+  margin: 2%;
+  width: 90%;
+  max-width: 200px;
+  margin-left: 30%;
+  margin-right: 30%;
 }
-#cancelButton{
-  background-color:#474C55;
-}
+
 #saveButton{
   background-color:#f26925;
+  color: #ffffff;
 }

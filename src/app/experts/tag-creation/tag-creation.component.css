@@ -3,7 +3,7 @@
   width: 33%;
   flex-direction: column;
   border: 1.5px solid #55698d;
-  position: absolute;
+  border-radius: 5px;
   top: 65%;
   left: 50%;
   transform: translate(-50%, -300px);

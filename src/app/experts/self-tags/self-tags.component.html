@@ -1,28 +1,29 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <h3>Configure your skillset:</h3>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div #expertSkills>
-      <div *ngFor="let tag of tags">
-        <section class="skill-tag">
-          <mat-checkbox
-            color="warn"
-            (change)="toggle($event, tag.name)"
-            id="{{ tag.name }}"
-            [checked]="tag.checked"
-          >
-            {{ tag.name }}</mat-checkbox
-          >
-        </section>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>Configure your skillset:</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div #expertSkills>
+        <div *ngFor="let tag of tags">
+          <section class="skill-tag">
+            <mat-checkbox
+              color="warn"
+              (change)="toggle($event, tag.name)"
+              id="{{ tag.name }}"
+              [checked]="tag.checked"
+            >
+              {{ tag.name }}</mat-checkbox
+            >
+          </section>
+        </div>
+        <br />
+        <button id="saveButton" mat-raised-button (click)="onSubmit()">
+          Update Tags
+        </button>
       </div>
-      <br>
-      <div class="buttons">
-        <button (click)="onSubmit()">clickme</button>
-
-      </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
