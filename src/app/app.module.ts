@@ -24,6 +24,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
+import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ExpertQuestionsComponent } from './static/expert-questions/expert-quest
     QuestionFilterComponent,
     TagCreationComponent,
     FilteredQuestionListComponent,
-    ExpertQuestionsComponent
+    ExpertQuestionsComponent,
+    UserQuestionsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { QuestionFilterComponent } from './question-filter/question-filter.compo
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilteredQuestionListComponent } from './filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './expert-questions/expert-questions.component';
+import { UserQuestionsComponent } from './user-questions/user-questions.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ExpertQuestionsComponent } from './expert-questions/expert-questions.co
     QuestionFilterComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
+    UserQuestionsComponent,
   ],
   imports: [
     CommonModule,
