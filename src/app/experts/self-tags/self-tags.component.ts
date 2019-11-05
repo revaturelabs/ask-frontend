@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
  * 
  * Populate list of available tags to associate with expert. Expert checks and unchecks tag names based on his or her skillset.
  * Expert clicks submit to update associated tags in database.
+ * Self tags component listens for event emitter from tag creation component to add new tag to tag array.
  * 
  */
 
@@ -74,11 +75,10 @@ export class SelfTagsComponent implements OnInit {
     
   }
 
-  
-
-  reloadTagList() {
-    
+  addNewTag() {
+    this.tagService.getTags().subscribe((tagsUpdate) => {this.tags.push(tagsUpdate[tagsUpdate.length - 1])})
   }
+
 
 
 
