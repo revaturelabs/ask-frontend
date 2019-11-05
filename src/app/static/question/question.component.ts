@@ -20,10 +20,10 @@ export class QuestionComponent implements OnInit {
     ) {}
 
   image: any;
-  questionImagesUri: string = ' http://ec2-54-80-244-190.compute-1.amazonaws.com:1337/questions';
 
   getPhotos() {
-    let observable = this.httpClient.get(`${this.questionImagesUri}/${this.questionService.getQuestionId()}/images`);
+    let questionId: number = this.questionService.getQuestionId();
+    let observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe((result: any) => {
       let imageURL = 'data:image/jpeg;base64,' + result[0].image;
       this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
