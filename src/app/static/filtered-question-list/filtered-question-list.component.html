@@ -1,5 +1,9 @@
-<app-question-filter
-  (newFilteredUri)="setQuestionsListWithFilteredUri($event)"
-  (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"
-></app-question-filter>
+
+<app-question-filter (newFilteredUri)="setQuestionsListWithFilteredUri($event)" (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"></app-question-filter>
 <app-question-list [questions]="questions"></app-question-list>
+<div>
+    <button *ngIf="this.hasBeenFiltered && onNextPage()" mat-raised-button class="pagination-prev" (click)="previousPage()">Prev</button>
+    <button *ngIf="this.hasBeenFiltered && !onNextPage()" mat-raised-button class="pagination-prev" disabled>Prev</button>
+    <button *ngIf="this.hasBeenFiltered" mat-raised-button class="page-number" disabled>Page: {{this.pageNumber+1}}</button>
+    <button *ngIf="this.hasBeenFiltered" mat-raised-button class="pagination-next" (click)="nextPage()">Next</button>
+</div>

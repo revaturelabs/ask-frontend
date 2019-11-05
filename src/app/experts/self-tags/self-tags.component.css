@@ -1,27 +1,49 @@
-body {
-  background-color: whitesmoke;
+.skill-tag{
+  width: 120px;
+  padding:4px 0;
 }
-th,
-td {
-  padding: 5px;
-  text-align: left;
-  height: 30px;
-  vertical-align: bottom;
+mat-checkbox{
+  width: 100%;
+  padding:4px 8px 8px 8px;
+  border-radius: 5px;
 }
-table {
-  background-color: white;
-  margin-top: 30px;
-  position: relative;
-  width: 40%;
-  border: 1px solid black;
-  margin-left: 30%;
-  margin-right: 30%;
+mat-checkbox:hover{
+  background-color:#00000011;
+  transition-duration: 2ms;
+}
+mat-card{
+  margin: 25px 100px 0 0;
+  max-width: 648px;
+  padding: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 1.5px solid #55698d;
+}
+mat-card-content{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 20px 4px;
+}
+mat-card-header{
+  background-color:#55698d;
+}
+h3{
+  color:#ffffff;
+  font-weight:normal;
+  margin:6px 0 0 6px;
+}
+.button-div{
+  width:100%;
 }
 button {
-  margin-top: 10px;
-  position: relative;
-  right: 48%;
-  left: 48%;
-  background-color: #42a5f5;
-  color: #f5f3fc;
+  margin: 10px 0 4px 0;
+  padding: 0;
+  width: 160px;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+#saveButton{
+  background-color:#f26925;
+  color: #ffffff;
 }

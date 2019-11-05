@@ -1,10 +1,12 @@
-<div class="container">
-    <mat-card>
-        <h2>Create New Tag</h2>
-        <br><br>
-        <mat-form-field>
-            <input [(ngModel)]="this.tag.name" matInput placeholder="New Tag Name" />
-        </mat-form-field>
-        <button id="submit" (click)="onSubmit()" mat-raised-button type="submit">Submit</button>
-    </mat-card>
-</div>
+<mat-card>
+  <h3>Create New Tag</h3>
+  <br /><br />
+  <form>
+    <mat-form-field>
+      <input matInput [(ngModel)]="this.tag.name" placeholder="New Tag Name" name="tagInput"/>
+    </mat-form-field>
+    <button id="submit" (click)="onSubmit()" mat-raised-button type="submit" [disabled]="!tag.name">
+      Submit
+    </button>
+  </form>
+</mat-card>

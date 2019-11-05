@@ -1,9 +1,30 @@
-<mat-card>
-  <h2 class="head">Please Select Your Area of Interest</h2>
-  <mat-card-content class="card" *ngFor="let tag of tags">
-    <section class="expertise-section">
-      <mat-checkbox class="check-box-margin">{{ tag.name }}</mat-checkbox>
-    </section>
-  </mat-card-content>
-</mat-card>
-<app-tag-creation></app-tag-creation>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>Configure your skillset:</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngFor="let tag of tags">
+        <section class="skill-tag">
+          <mat-checkbox
+            color="warn"
+            (change)="toggle($event, tag.name)"
+            id="{{ tag.name }}"
+            [checked]="tag.checked"
+          >
+            {{ tag.name }}</mat-checkbox
+          >
+        </section>
+      </div>
+      <br />
+      <div class="button-div">
+        <button id="saveButton" mat-raised-button (click)="onSubmit()">
+          Update Tags
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<app-tag-creation (tagCreated)="addNewTag($event)"></app-tag-creation>

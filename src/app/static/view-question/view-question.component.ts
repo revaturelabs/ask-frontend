@@ -4,6 +4,14 @@ import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
+/**
+ * @author: Alec Thavychith
+ *
+ * Displaying the full question body based on the selected question with
+ * with its responses
+ *
+ */
+
 @Component({
   selector: 'app-view-question',
   templateUrl: './view-question.component.html',
@@ -28,11 +36,13 @@ export class ViewQuestionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Getting the selected question ID from the QuestionService that was set in the PreviewQuestionComponent
     const selectedQuestionId = this.questionService.getQuestionId();
 
     this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
       this.selectedQuestion = question;
     });
+
 
     // Retrieving the highlighted response for a specified question
     this.questionService

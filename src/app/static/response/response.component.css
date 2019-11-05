@@ -1,37 +1,55 @@
-.response-card {
-  width: 65%;
+mat-card {
+  width: 70%;
   margin-left: auto;
+  display: hidden;
   margin-right: 9%;
-  padding-bottom: 2.5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-.example-header-image {
-  background-image: url("https://i.pinimg.com/originals/f0/f5/71/f0f571798064a435756428f0e3003506.png");
-  background-size: cover;
+mat-card-subtitle {
+  font-size: 0.9em;
+  margin: 0 0 8px 0;
 }
-.submit-response {
+p {
+  margin-left: 12px;
+  margin-right: 12px;
+  line-height: 1.5;
+}
+button {
+  background: linear-gradient(#ebebeb 50%, #e4e4e4 50.1%, #d3d3d3);
+  color: #656565;
+  font-weight: normal;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  height: 32px;
+  font-size: 12px;
+}
+button:hover {
+  background: linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d);
+  color: #222222;
+}
+.mat-chip-list-wrapper,
+.skillset {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  border: 2px solid #474C55;
-  padding: 2%;
-  text-align: center;
-  margin-bottom: 2.5%;
+  flex-direction: row-reverse;
+  align-items: flex-end;
 }
-
-.submit-response > * {
-  width: 100%;
+mat-chip-list {
+  margin: 0 24px 0 16px;
+  right: 0;
+  height: 100%;
 }
-
-.mat-button {
-    border: 2px solid #474C55;
-    color : #673AB7;
+.mat-basic-chip {
+  border-radius: 4px;
+  padding: 4px;
+  color: #ffffff;
+  background-color: #9f9f9f;
+  margin: 4px;
 }
-  
+mat-chip-list mat-card-subtitle {
+  color: #979797;
+  margin: 0 8px 0 0;
+  font-style: italic;
+}

@@ -7,24 +7,20 @@
   flex-direction: column;
   justify-content: center;
 }
-
 mat-card-content {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 16px;
 }
-
-.example-header-image {
-  background-image: url("https://i.pinimg.com/originals/f0/f5/71/f0f571798064a435756428f0e3003506.png");
-  background-size: cover;
+mat-card-subtitle{
+  margin: 10px 0 12px 0;
 }
-
+p{
+  line-height: 1.5;
+}
 .mat-chip-list-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
-
-mat-chip {
+/* mat-chip {
   font-size: 0.75em;
-}
+} */
