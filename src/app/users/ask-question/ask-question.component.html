@@ -55,5 +55,7 @@
   <!-- Submit button -->
   <div>
     <button mat-raised-button id="ask-question-button-submit" (click)="submitQuestion($event, qTitle.value, qTags.value, qQuestion.value)">Submit</button>
+    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" #fileInput>
   </div>
+  
 </div>

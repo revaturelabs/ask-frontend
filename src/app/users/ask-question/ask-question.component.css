@@ -1,13 +1,21 @@
 .ask-question-container {
-  display: flex;
+  display: inline-flex;
   min-height: 40%;
-  width: 50%;
+  min-width: 550px;
   flex-direction: column;
   border: 1.5px solid #55698d;
   position: absolute;
   top: 65%;
   left: 50%;
   transform: translate(-50%, -300px);
+}
+
+@media only screen and (max-height: 600px) {
+  .ask-question-container {
+    overflow: scroll;
+    height: 200px;
+    transform: translate(-50%, -80%);
+  }
 }
 
 textarea {
