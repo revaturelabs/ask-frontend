@@ -18,6 +18,10 @@ mat-card-actions {
   flex-direction: column;
   align-items: flex-end;
 }
+
 mat-chip {
   font-size: 0.75em;
+  margin: -2px;
 }
+
+

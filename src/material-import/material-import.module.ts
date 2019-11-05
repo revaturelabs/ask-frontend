@@ -38,7 +38,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
-    MatCheckboxModule,
     MatSnackBarModule,
   ],
   exports: [
@@ -57,7 +56,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatIconModule,
     MatButtonToggleModule,
-    MatCheckboxModule,
     MatSnackBarModule,
   ],
 })

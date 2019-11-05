@@ -7,11 +7,12 @@
   position: absolute;
   top: 65%;
   left: 50%;
-  transform: translate(-50%, -300px)
+  transform: translate(-50%, -300px);
 }
 
 textarea {
-  max-height: 150px;
+  max-height: 125px;
+  min-height: 90px;
 }
 
 h3 {
