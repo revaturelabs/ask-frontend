@@ -10,7 +10,7 @@ import { Question } from 'src/app/models/Question';
   styleUrls: ['./expert-questions.component.css'],
 })
 export class ExpertQuestionsComponent implements OnInit {
-  expertId: number;
+  expertId: Number;
   expert: any;
   filteredUri: string;
   filterTags: string[];
@@ -18,7 +18,7 @@ export class ExpertQuestionsComponent implements OnInit {
   filteredQuestions: any;
   questions: Question[];
 
-  constructor(private authService: AuthService, private http: HttpClient) {}
+  constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
     this.expertId = this.authService.account.id;
@@ -29,15 +29,15 @@ export class ExpertQuestionsComponent implements OnInit {
         tags.splice(i, 0, this.expert.expertTags[i].name);
       }
       this.filterTags = tags;
-        for (let j = 0; j < this.filterTags.length; j++) {
-          this.uriTags += '&tag=' + this.filterTags[j];
-        }
+      for (let j = 0; j < this.filterTags.length; j++) {
+        this.uriTags += '&tag=' + this.filterTags[j];
+      }
       this.filteredUri = `${environment.questionsUri}/search/?requireAll=false${this.uriTags}`;
-        this.http.get(this.filteredUri).subscribe(filteredResult => {
-          this.filteredQuestions = filteredResult;
-          this.questions = this.filteredQuestions;
+      this.http.get(this.filteredUri).subscribe(filteredResult => {
+        this.filteredQuestions = filteredResult;
+        this.questions = this.filteredQuestions;
 
-        })
+      })
     });
   }
 }
