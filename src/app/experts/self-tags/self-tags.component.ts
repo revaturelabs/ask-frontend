@@ -2,6 +2,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Tag } from '../../models/Tag';
 import { TagService } from 'src/app/services/tags.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { MatSnackBar} from '@angular/material/snack-bar';
+
 
 /**
  * @author Zach Marshello, Adam Shipe, Nick Brinson
@@ -31,6 +33,7 @@ export class SelfTagsComponent implements OnInit {
   constructor(
     private tagService: TagService,
     private authService: AuthService,
+    private snackBar: MatSnackBar,
   ) {}
 
   // Check and uncheck tags use toggle to add and remove tags from list of expert associated tags to be updated
@@ -40,8 +43,7 @@ export class SelfTagsComponent implements OnInit {
     } else {
       //delete the value and close the empty array slot
       this.expertSkills.splice(this.expertSkills.indexOf(id), 1);
-    }
-    console.log(this.expertSkills);
+    };
   }
 
   onSubmit() {
@@ -52,7 +54,8 @@ export class SelfTagsComponent implements OnInit {
         }),
         this.authService.account.id,
       )
-      .subscribe(console.log, console.error);
+      .subscribe();
+      this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
   }
 
   // For initialization, currentExpert associated tags are prechecked in list of tags
