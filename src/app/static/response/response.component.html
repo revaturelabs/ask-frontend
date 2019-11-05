@@ -1,10 +1,13 @@
-<mat-card class="response-card">
+<mat-card
+  class="response-card"
+  (mouseenter)="hoverToggle = !hoverToggle"
+  (mouseleave)="hoverToggle = !hoverToggle"
+>
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Response ID: {{ response.id }}</mat-card-title>
-    <mat-card-subtitle>Question ID: {{ response.questionId }}</mat-card-subtitle>
-    <mat-card-subtitle>Username: {{ responderName }}</mat-card-subtitle>
-    <mat-card-subtitle>{{ response.creationDate | date: 'mediumDate' }}</mat-card-subtitle>
+    <mat-card-subtitle
+      >{{ responderName }},
+      {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-content>
     <p>{{ response.body }}</p>
@@ -12,11 +15,23 @@
     <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
-    <div class = "mat-chips" *ngFor="let tag of expertTags">
-      <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
+    <mat-card-subtitle>{{ responderName }}'s skillset:</mat-card-subtitle>
+    <div class="mat-chips" *ngFor="let tag of expertTags">
+      <mat-basic-chip selected>{{ tag.name }}</mat-basic-chip>
     </div>
   </mat-chip-list>
   <mat-card-actions>
-    <button *ngIf="this.currentQuestionerId == this.currentUserId" mat-button (click)="highlightResponse($event, response.id)">Highlight Answer</button>
+    <button
+      id="btn{{ response.id }}"
+      *ngIf="this.currentQuestionerId == this.currentUserId && hoverToggle"
+      mat-stroked-button
+      (click)="highlightResponse($event, response.id)"
+      matTooltip="Was this response the most helpful?"
+      [matTooltipPosition]="'above'"
+      [matTooltipShowDelay]="500"
+      [matTooltipHideDelay]="100"
+    >
+      Highlight Answer
+    </button>
   </mat-card-actions>
 </mat-card>

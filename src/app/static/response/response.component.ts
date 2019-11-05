@@ -20,6 +20,7 @@ export class ResponseComponent implements OnInit {
   isEdit: boolean = false;
   responderName: string;
   expertTags = [];
+  hoverToggle: boolean = false;
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;

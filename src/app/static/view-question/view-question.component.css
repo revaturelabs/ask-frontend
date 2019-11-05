@@ -4,7 +4,7 @@ div {
 
 .question-component {
     height: 25%;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
 }
 
 .submit-response {

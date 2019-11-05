@@ -1,4 +1,4 @@
-<div>
+<mat-toolbar>
   <!-- Angular Material Chips -->
   <mat-form-field #qTags class="tag-chip-list">
     <mat-icon matSuffix>search</mat-icon>
@@ -13,7 +13,7 @@
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
-        placeholder="Select a category tags: "
+        placeholder="Select category tags: "
         #tagInput
         [formControl]="tagCtrl"
         [matAutocomplete]="auto"
@@ -35,17 +35,37 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field class="select-dropdown">
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="requireAll" color="warn">
+    <mat-radio-button value="?requireAll=false"
+      >Containing at least One tag</mat-radio-button
+    >
+    <mat-radio-button value="?requireAll=true"
+      >Containing ALL tags</mat-radio-button
+    >
+  </mat-radio-group>
+
+  <!-- <mat-form-field class="select-dropdown">
     <mat-label>Containing Tags</mat-label>
     <mat-select [(value)]="requireAll">
       <mat-option value="?requireAll=false">Containing At Least One Tag</mat-option>
       <mat-option value="?requireAll=true">Containing All Tags</mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
 
-  <button mat-raised-button class="submit-button" (click)="createFilteredQuestionsUri()">
-    Submit
+  <button
+    mat-raised-button
+    class="filter-button"
+    (click)="createFilteredQuestionsUri()"
+  >
+    Filter
   </button>
 
-  <button *ngIf="hasBeenFiltered()" mat-raised-button class="reset-button" (click)="resetSearch()">Reset Search</button>
-</div>
+  <button
+    *ngIf="hasBeenFiltered()"
+    mat-raised-button
+    class="reset-button"
+    (click)="resetSearch()"
+  >
+    Reset
+  </button>
+</mat-toolbar>
