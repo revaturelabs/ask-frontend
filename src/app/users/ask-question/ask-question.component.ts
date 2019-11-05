@@ -48,7 +48,7 @@ export class AskQuestionComponent implements OnInit {
   tags: string[] = [];
   allTagsFromServer: string[] = [];
 
-  //images
+  //image file
   selectedFile: File = null;
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
@@ -126,7 +126,7 @@ export class AskQuestionComponent implements OnInit {
     body: null,
   };
 
-  //images
+  //selected image
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
   }
@@ -162,7 +162,7 @@ export class AskQuestionComponent implements OnInit {
 
   }
 
-  //images
+  //submitting the images
   onUpload(questionId) {
     event.preventDefault();
     const formData = new FormData();
