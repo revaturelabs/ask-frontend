@@ -14,6 +14,7 @@ export class FilteredQuestionListComponent implements OnInit {
   hasBeenFiltered: boolean = false;
   filteredUri: string;
   questions: Question[];
+  pageNumber: number = 0;
 
   constructor(
     private http: HttpClient,
@@ -51,6 +52,34 @@ export class FilteredQuestionListComponent implements OnInit {
       this.questionService.getQuestions().subscribe(unfilteredQuestions => {
         this.questions = unfilteredQuestions;
       });
+    }
+  }
+
+  nextPage() {
+    this.pageNumber++;
+    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+      this.questions = filteredQuestions;
+      if(this.questions.length == 0) {
+        this._snackBar.open("No more results!", "OK", {duration: 3000});
+      }
+    });
+  }
+
+  previousPage() {
+    this.pageNumber--;
+    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+        this.questions = filteredQuestions;
+        if(this.questions.length == 0) {
+          this._snackBar.open("No more results!", "OK", {duration: 3000});
+        }
+      });
+    }
+
+  onNextPage() {
+    if(this.pageNumber > 0) {
+      return true;
+    } else {
+      return false;
     }
   }
 
