@@ -11,25 +11,18 @@
           <mat-checkbox
             color="warn"
             (change)="toggle($event, tag.name)"
-            id="tag.name"
-            (ngModelChange) = "checkExpertTags(this.tag.name)"
-            [ngModel] = "isChecked"
+            id="{{ tag.name }}"
+            [checked]="tag.checked"
           >
             {{ tag.name }}</mat-checkbox
           >
         </section>
       </div>
-      <br />
+      <br>
       <div class="buttons">
-        <button mat-raised-button id="cancelButton">Cancel</button>
-        <button mat-raised-button id="saveButton" (click)="onSubmit()">
-          Save
-        </button>
+        <button (click)="onSubmit()">clickme</button>
+
       </div>
     </div>
   </mat-card-content>
-  
 </mat-card>
-<p>
-    {{ expertStartingTags.expertTags[0].name}}Hello
-  </p>
