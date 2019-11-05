@@ -19,11 +19,9 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-
-
 /**
  * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
- * 
+ *
  * The current typescript is for Angular Material forms with autocomplete chips & two fields.
  *
  * This component is built on top of an example found at:
@@ -54,7 +52,14 @@ export class AskQuestionComponent implements OnInit {
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  constructor(private fb: FormBuilder, private ts: TagService, private _snackBar: MatSnackBar, private http: HttpClient, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+  ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -80,7 +85,11 @@ export class AskQuestionComponent implements OnInit {
         //Preventing user inputting chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
           //Angular Material Snack-bar
-          this._snackBar.open("Tag not recognized! Please choose from the list.", "OK, I will", {duration: 4000});
+          this._snackBar.open(
+            'Tag not recognized! Please choose from the list.',
+            'OK, I will',
+            { duration: 4000 },
+          );
         } else {
           this.tags.push(value.trim());
         }
@@ -133,20 +142,27 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.body = body;
 
     //Validating if title or question body is empty
-    if (head.trim() === "") {
-      this._snackBar.open("Please enter a title", "OK", {duration: 4000});
-    } else if (body.trim() === "") {
-      this._snackBar.open("Please enter a question", "OK", {duration: 4000});
+    if (head.trim() === '') {
+      this._snackBar.open('Please enter a title', 'OK', { duration: 4000 });
+    } else if (body.trim() === '') {
+      this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
       //POST-ing the form
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
-			response => {
-        this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
-        this.clearForm();
-      }, 
-      failed => {
-        this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      })};
+        response => {
+          this._snackBar.open('Your question is submitted!', 'OK!', {
+            duration: 3000,
+          });
+          this.clearForm();
+          this.router.navigate(['/user-questions']);
+        },
+        failed => {
+          this._snackBar.open('Your question failed to submit!', 'OK', {
+            duration: 3000,
+          });
+        },
+      );
+    }
   };
 
   ngOnInit() {
