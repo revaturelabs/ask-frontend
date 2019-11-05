@@ -2,7 +2,6 @@
   width: 120px;
   padding:4px 0;
 }
-
 mat-checkbox{
   width: 100%;
   padding:4px 8px 8px 8px;
@@ -18,28 +17,30 @@ mat-card{
   padding: 0;
   left: 50%;
   transform: translate(-50%, 0);
+  border: 1.5px solid #55698d;
 }
 mat-card-content{
   display: flex;
   flex-wrap: wrap;
-  padding: 8px 20px 12px;
+  padding: 8px 20px 4px;
 }
 mat-card-header{
-  background-color:#00000014;
+  background-color:#55698d;
 }
 h3{
-  color:#555555;
+  color:#ffffff;
   font-weight:normal;
   margin:6px 0 0 6px;
 }
-
+.button-div{
+  width:100%;
+}
 button {
+  margin: 10px 0 4px 0;
   padding: 0;
-  margin: 2%;
-  width: 90%;
-  max-width: 200px;
-  margin-left: 30%;
-  margin-right: 30%;
+  width: 160px;
+  left: 50%;
+  transform: translate(-50%,0);
 }
 
 #saveButton{

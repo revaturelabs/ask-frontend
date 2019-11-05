@@ -1,12 +1,11 @@
-.container {
-  display: flex;
-  width: 33%;
-  flex-direction: column;
+mat-card {
+  margin: 20px 100px 30px 0;
+  max-width: 648px;
+  padding: 0;
   border: 1.5px solid #55698d;
-  border-radius: 5px;
-  top: 65%;
+  border-radius: 3px;
   left: 50%;
-  transform: translate(-50%, -300px);
+  transform: translate(-50%, 0);
 }
 h3 {
   background: #55698d;
@@ -14,7 +13,6 @@ h3 {
   color: #ffffff;
   position: absolute;
   width: 92.1%;
-  transform: translate(0, -20px);
 }
 mat-form-field {
   margin: 0 13% 0 13%;
@@ -30,13 +28,16 @@ input:focus {
 }
 button {
   padding: 0;
-  margin: 2%;
-  width: 40%;
-  max-width: 200px;
-  margin-left: 30%;
-  margin-right: 30%;
+  width: 160px;
+  left: 50%;
+  transform: translate(-50%,0);
+  margin: -4px 0 8px 0;
 }
 #submit {
   background-color: #f26925;
   color: #ffffff;
+}
+#submit:disabled {
+  background-color: #747474;
+  color: #c2c2c2;
 }
