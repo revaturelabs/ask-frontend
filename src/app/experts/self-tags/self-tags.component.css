@@ -1,8 +1,6 @@
 .skill-tag{
   width: 120px;
   padding:4px 0;
-  /* overflow: hidden;
-  text-overflow: ellipsis; */
 }
 mat-checkbox{
   width: 100%;
@@ -38,15 +36,8 @@ h3{
   align-content:right;
 }
 button {
-  /* left: 50%; */
   margin:10px;
   width: 100px;
-  /* display: block; */
-  /* margin: 10px; */
-  /* position: relative;
-  right: 48%;
-  left: 48%;
-  background-color: #42a5f5; */
   color: #f5f3fc;
 }
 #cancelButton{
