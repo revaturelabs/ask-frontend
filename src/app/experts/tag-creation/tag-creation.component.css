@@ -10,6 +10,7 @@ mat-card {
 h3 {
   background: #55698d;
   padding: 7px 4% 7px 4%;
+  font-weight: normal;
   color: #ffffff;
   position: absolute;
   width: 92.1%;
