@@ -8,8 +8,8 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <img *ngIf ="image" mat-card-image [src]='image' alt='Image Not Found'/>
     <p>{{ question.body }}</p>
+    <img *ngIf ="image" mat-card-image [src]='image' alt='Image Not Found'/>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <div class="mat-chips" *ngFor="let tag of question.associatedTags">

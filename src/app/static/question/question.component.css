@@ -24,3 +24,9 @@ p{
 /* mat-chip {
   font-size: 0.75em;
 } */
+img{
+  max-width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
