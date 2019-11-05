@@ -7,16 +7,18 @@
   height: 25%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding:12px 0 0 0;
 }
-.details{
-  /* color: red; */
-  right: 100px;
-  /* position: absolute;
-  text-align: right; */
+mat-card-title{
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+mat-card-title:hover{
+  text-decoration: underline;
 }
 .mat-chip-list-wrapper {
   top: 10px;

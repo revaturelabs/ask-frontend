@@ -1,4 +1,4 @@
-<div class="container">
+<mat-toolbar>
   <!-- Angular Material Chips -->
   <mat-form-field #qTags class="tag-chip-list">
     <mat-icon matSuffix>search</mat-icon>
@@ -43,9 +43,9 @@
     </mat-select>
   </mat-form-field>
 
-  <button mat-raised-button class="submit-button" (click)="createFilteredQuestionsUri()">
-    Submit
+  <button mat-raised-button class="filter-button" (click)="createFilteredQuestionsUri()">
+    Filter
   </button>
 
-  <button *ngIf="hasBeenFiltered()" mat-raised-button class="reset-button" (click)="resetSearch()">Reset Search</button>
-</div>
+  <button *ngIf="hasBeenFiltered()" mat-raised-button class="reset-button" (click)="resetSearch()">Reset</button>
+</mat-toolbar>

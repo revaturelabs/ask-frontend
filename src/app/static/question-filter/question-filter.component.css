@@ -1,42 +1,48 @@
-.container{
+mat-toolbar{
   background-color: #ffffff;
-  height: 75px;
-  /* border-bottom: 1px solid #666a74; */
+  top: 50px;
   box-shadow: 0 0 1px 1px #00000044;
 }
 .tag-chip-list {
   width: 47%;
-  position: absolute;
+  margin: 4px 8px;
+  /* position: absolute;
   padding-left: 9%;
-  top: 10%;
+  top: 72px; */
 }
 
 .select-dropdown {
   width: 18%;
-  position: absolute;
+  margin: 4px;
+  /* position: absolute;
   margin-left: 50%;
   padding-left: 8%;
-  top: 10%;
+  top: 72px; */
 }
 
-.submit-button {
-  position: absolute;
+.filter-button {
+  width: 68px;
+  margin: 4px;
+  /* position: absolute;
   margin-left: 80%;
-  top: 11.5%;
+  top: 76px; */
   background-color: #f26925;
   color: #ffffff;
 }
 
 .reset-button {
-  position: absolute;
+  width: 68px;
+  margin: 4px;
+  /* position: absolute;
   margin-left: 87%;
-  top: 11.5%;
-  background-color: #f26925;
+  top: 76px; */
+  background-color: #474C55;
   color: #ffffff;
 }
 .chip-list {
   width: 70%;
-  position: absolute;
-  padding-left: 15%;
+  margin: 4px;
+  /* position: absolute;
+  padding-left: 15%; */
 }
 

@@ -20,6 +20,8 @@ export class ResponseComponent implements OnInit {
   isEdit: boolean = false;
   responderName: string;
   expertTags = [];
+  // resp: number = null;
+  hoverToggle: boolean = false;
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -89,6 +91,12 @@ export class ResponseComponent implements OnInit {
       });
     }
   }
+
+  // revealButton(resp){
+  //   console.log(resp);
+  //   console.log(document.getElementById(`btn${resp}`).id);
+  //   document.getElementById(`btn${resp}`).setAttribute('visibility', 'visible');
+  // }
 
   ngOnInit() {
     this.responseService.getResponses().subscribe(responses => {
