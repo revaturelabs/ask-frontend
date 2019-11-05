@@ -1,0 +1,17 @@
+.page-number {
+    font-weight: bolder;
+}
+.page-number:disabled{
+    color: #000000;
+    background-color: #ffff0000;
+}
+div{
+    margin: 18px 0 0 0;
+    width:240px;
+    left:50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+button{
+    width: 80px;
+}

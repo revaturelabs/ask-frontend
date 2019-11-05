@@ -18,10 +18,14 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
+import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
 import { SettingsComponent } from './experts/settings/settings.component';
+import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
+import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
+import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +41,13 @@ import { SettingsComponent } from './experts/settings/settings.component';
     SelfTagsComponent,
     NavbarComponent,
     FooterComponent,
+    HighlightedResponseComponent,
     QuestionFilterComponent,
     TagCreationComponent,
     SettingsComponent,
+    FilteredQuestionListComponent,
+    ExpertQuestionsComponent,
+    UserQuestionsComponent
   ],
   imports: [
     BrowserModule,

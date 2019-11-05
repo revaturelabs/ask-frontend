@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Response } from '../../models/Response';
+import { ResponseService } from '../../services/response.service';
+import { QuestionService } from '../../services/question.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enter-response',
@@ -6,7 +13,60 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./enter-response.component.css'],
 })
 export class EnterResponseComponent implements OnInit {
-  constructor() {}
+  @Output() newResponse: EventEmitter<Response> = new EventEmitter();
+  @Output() updatedResponse: EventEmitter<Response> = new EventEmitter();
+  @Input() isEdit: boolean;
+  @Input() response: Response = {
+    user: null,
+    id: 0,
+    responderId: 0,
+    questionId: 0,
+    body: '',
+    creationDate: null,
+  };
 
-  ngOnInit() {}
+  constructor(
+    private responseService: ResponseService,
+    private questionService: QuestionService,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private router: Router,
+  ) {}
+
+  questionId: number;
+
+  ngOnInit() {
+    this.questionId = this.questionService.getQuestionId();
+  }
+
+  addResponse(body) {
+    if (!body) {
+      this._snackBar.open('Please add a Response!', 'OK!', { duration: 3000 });
+    } else {
+      this.response.body = body;
+      this.response.questionId = this.questionId;
+      this.response.responderId = this.authService.account.id;
+      this.responseService.saveResponse(this.response).subscribe(
+        response => {
+          this.newResponse.emit(response);
+          this._snackBar.open('Thank you for your Response', ' ', {
+            duration: 3000,
+          });
+          this.router.navigate(['/expert-questions']);
+        },
+        failure => {
+          this._snackBar.open('Response Submission Failed', ' ', {
+            duration: 3000,
+          });
+        },
+      );
+    }
+  }
+
+  updateResponse() {
+    this.responseService.updateResponse(this.response).subscribe(response => {
+      this.isEdit = false;
+      this.updatedResponse.emit(response);
+    });
+  }
 }

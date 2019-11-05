@@ -1,1 +1,8 @@
-<p>enter-response works!</p>
+<div class="submit-response">
+    <mat-form-field>
+      <textarea matInput class="form-control" [(ngModel)]="response.body " name="body" #body placeholder="Enter a response"></textarea>
+    </mat-form-field>
+    <mat-card-actions>
+        <button id="submit"  mat-raised-button (click)="addResponse(body.value)">Add Response</button>
+    </mat-card-actions>
+  </div>
