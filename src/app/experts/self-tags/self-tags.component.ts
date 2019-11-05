@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   providedIn: 'root'
 })
 
+//God help you
 @Component({
   selector: 'app-self-tags',
   templateUrl: './self-tags.component.html',
@@ -19,7 +20,7 @@ export class SelfTagsComponent implements OnInit {
   userId = this.authService.account.id;
   // expertStartingTags: Tag[];
   expertStartingTags: string[];
-  expertSkills: Tag[] = [];
+  expertSkills: string[] = [];
   currentExpert: any;
 
   constructor(private tagService: TagService, private authService: AuthService) { }
@@ -47,17 +48,22 @@ export class SelfTagsComponent implements OnInit {
 
   onSubmit() {
     console.log("blah");
-    this.tagService.saveExpertTags(this.expertSkills);
+    this.tagService.saveExpertTags(this.expertSkills.map<Tag>(t=>{return {"name":t, "id":0}}), this.authService.account.id).subscribe(
+      console.log, console.error
+    );
   }
 
-  checkExpertTags(tagName) {
-    this.currentExpert.expertTags.forEach(element => {
-      if (element.name==tagName) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+  checkExpertTags() {
+    for (let i = 0; i < this.tags.length; i++) {
+      this.currentExpert.expertTags.forEach(element => {
+        if (element.name==this.tags[i].name) {
+          this.toggle({checked:true}, this.tags[i].name);
+          this.tags[i].checked = true;
+        } else {
+          return false;
+        }
+      });
+    }
   }
 
   ngOnInit() {
@@ -68,13 +74,15 @@ export class SelfTagsComponent implements OnInit {
 
     this.tagService.getExpertTags(this.userId).subscribe((expert) => {
       this.currentExpert = expert;
-      console.log(this.currentExpert.expertTags[0].name);
+      //console.log(this.currentExpert.expertTags[0].name);
       console.log(this.authService.account);
       // console.log(expert.expertTags);
       // var a = 'hello from ts';
       // this.skillset = this.tags;
       // document.getElementById('abc').innerHTML=a;
+      this.checkExpertTags();
     });
+    
   }
 
 
