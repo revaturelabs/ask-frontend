@@ -19,6 +19,7 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -40,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatListModule,
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,
@@ -60,6 +62,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatListModule,
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,

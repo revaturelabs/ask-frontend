@@ -22,6 +22,7 @@ import { HighlightedResponseComponent } from '../app/static/highlighted-response
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
+import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
@@ -43,6 +44,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     HighlightedResponseComponent,
     QuestionFilterComponent,
     TagCreationComponent,
+    SettingsComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent
@@ -57,7 +59,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard], 
   bootstrap: [AppComponent],
 })
 export class AppModule {}
