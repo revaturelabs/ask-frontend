@@ -7,9 +7,10 @@
     <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
     <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
   </mat-card-content>
+  <mat-card-subtitle class="skillset">{{ responderName }}'s skillset:</mat-card-subtitle>
   <mat-chip-list class="mat-chip-list-wrapper">
     <div class="mat-chips" *ngFor="let tag of expertTags">
-      <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
+      <mat-chip selected>{{ tag.name }}</mat-chip>
     </div>
   </mat-chip-list>
   <mat-card-actions>

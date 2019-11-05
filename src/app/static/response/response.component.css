@@ -38,3 +38,18 @@ button:hover{
   /* background:linear-gradient(#ffde71 50%, #ffd753 50.1%, #ffd13b); */
   /* background:linear-gradient(#ffd13b, #ffde71, #ffd13b); */
 }
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+  font-size:.8em;
+  border-radius: 4px;
+  height: 16px;
+  padding: 0 8px;
+  background-color:#555555;
+  /* background:linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d); */
+  /* background-color:#55698d; */
+  /* padding: 20px; */
+}
