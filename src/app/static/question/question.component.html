@@ -8,8 +8,7 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <!-- Image uploads would go here if we have that implementation -->
-    <!-- <img mat-card-image src="s3-aws.com/jpg" alt="Code snippet"> -->
+    <img *ngIf ="image" mat-card-image [src]='image' alt='Image Not Found'/>
     <p>{{ question.body }}</p>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">

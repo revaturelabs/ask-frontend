@@ -32,6 +32,10 @@ export class QuestionService {
     return this.http.get<Question>(`${environment.questionsUri}/${questionId}`);
   }
 
+  getQuestionImages(questionId): Observable<Question> {
+    return this.http.get<Question>(`${environment.questionsUri}/${questionId}/images`);
+  }
+
   saveQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(
       environment.questionsUri,
