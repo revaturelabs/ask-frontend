@@ -4,40 +4,30 @@ mat-toolbar{
   box-shadow: 0 0 1px 1px #00000044;
 }
 .tag-chip-list {
+  top: 8px;
+  font-size: 0.8em;
   width: 47%;
-  margin: 4px 8px;
-  /* position: absolute;
-  padding-left: 9%;
-  top: 72px; */
+  margin: 12px;
+  /* padding: 12px; */
 }
 
 .select-dropdown {
   width: 18%;
   margin: 4px;
-  /* position: absolute;
-  margin-left: 50%;
-  padding-left: 8%;
-  top: 72px; */
 }
 
 .filter-button {
-  width: 68px;
-  margin: 4px;
-  /* position: absolute;
-  margin-left: 80%;
-  top: 76px; */
   background-color: #f26925;
   color: #ffffff;
 }
 
 .reset-button {
-  width: 68px;
-  margin: 4px;
-  /* position: absolute;
-  margin-left: 87%;
-  top: 76px; */
   background-color: #474C55;
   color: #ffffff;
+}
+button{
+  width: 68px;
+  margin: 12px;
 }
 .chip-list {
   width: 70%;
@@ -45,4 +35,13 @@ mat-toolbar{
   /* position: absolute;
   padding-left: 15%; */
 }
-
+mat-radio-group{
+  display: flex;
+  flex-direction: column;
+  color: #555555;
+  font-size: .8em;
+  margin: 0 12px;
+}
+mat-radio-button{
+  margin: -5px 0 0 0;
+}

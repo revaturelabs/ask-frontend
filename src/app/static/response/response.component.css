@@ -3,53 +3,53 @@ mat-card {
   margin-left: auto;
   display: hidden;
   margin-right: 9%;
-  /* padding-bottom: 2.5%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-mat-card-subtitle{
-  font-size: .9em;
+mat-card-subtitle {
+  font-size: 0.9em;
   margin: 0 0 8px 0;
 }
-p{
+p {
   margin-left: 12px;
   margin-right: 12px;
   line-height: 1.5;
 }
-button{
-  background:linear-gradient(#ebebeb 50%, #e4e4e4 50.1%, #d3d3d3);
-  /* visibility: hidden; */
-  /* display: none; */
-  /* background:linear-gradient(to right, #ffd13b, #ffde71, #ffd13b); */
+button {
+  background: linear-gradient(#ebebeb 50%, #e4e4e4 50.1%, #d3d3d3);
   color: #656565;
   font-weight: normal;
-  position:absolute;
+  position: absolute;
   right: 16px;
   top: 8px;
   height: 32px;
   font-size: 12px;
 }
-button:hover{
-  /* background:linear-gradient(#ffffff 50%, #f4f4f4 50.1%, #eeeeee); */
-  background:linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d);
-  /* background:linear-gradient(#ffe389 50%, #ffdb64 50.1%, #e4c358); */
-  color:#222222;
-  /* background:linear-gradient(#ffde71 50%, #ffd753 50.1%, #ffd13b); */
-  /* background:linear-gradient(#ffd13b, #ffde71, #ffd13b); */
+button:hover {
+  background: linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d);
+  color: #222222;
 }
-.mat-chip-list-wrapper {
+.mat-chip-list-wrapper,
+.skillset {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   align-items: flex-end;
 }
-.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
-  font-size:.8em;
+mat-chip-list {
+  margin: 0 24px 0 16px;
+  right: 0;
+  height: 100%;
+}
+.mat-basic-chip {
   border-radius: 4px;
-  height: 16px;
-  padding: 0 8px;
-  background-color:#7c7c7c;
-  /* background:linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d); */
-  /* background-color:#55698d; */
-  /* padding: 20px; */
+  padding: 4px;
+  color: #ffffff;
+  background-color: #9f9f9f;
+  margin: 4px;
+}
+mat-chip-list mat-card-subtitle {
+  color: #979797;
+  margin: 0 8px 0 0;
+  font-style: italic;
 }
