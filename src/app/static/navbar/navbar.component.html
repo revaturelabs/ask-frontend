@@ -1,9 +1,10 @@
 <mat-toolbar id="navbar" *ngIf="this.authService.isLoggedIn">
-  <mat-toolbar-row>
-    <button mat-button routerLink="/ask" *ngIf="!this.authService.account.expert">Ask Questions</button>
-    <button mat-button routerLink="/questions" >All Questions</button>
-    <button mat-button routerLink="/expert-questions" *ngIf="this.authService.account.expert">Your Questions</button>
-    <button mat-button routerLink="/settings" *ngIf="this.authService.account.expert">Settings</button>
-    <button mat-button (click)="onLogout()">Logout</button>
-  </mat-toolbar-row>
+    <mat-toolbar-row>
+        <button mat-button routerLink="/ask" *ngIf="!this.authService.account.expert">Ask Questions</button>
+        <button mat-button routerLink="/questions">All Questions</button>
+        <button mat-button routerLink="/expert-questions" *ngIf="this.authService.account.expert">Assigned Questions</button>
+        <button mat-button routerLink="/user-questions" *ngIf="!this.authService.account.expert">Your Questions</button>
+        <button mat-button routerLink="/settings" *ngIf="this.authService.account.expert">Settings</button>
+        <button mat-button (click)="onLogout()">Logout</button>
+    </mat-toolbar-row>
 </mat-toolbar>
