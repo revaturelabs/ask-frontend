@@ -9,9 +9,11 @@
   </mat-card-header>
   <mat-card-content>
     <p>{{ question.body }}</p>
+    <!-- displays the image relevant to the question, if it exists -->
     <img *ngIf ="image" mat-card-image [src]='image' alt='Image Not Found'/>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
+    <!-- retrieves a list of all of tags associated with the question -->
     <div class="mat-chips" *ngFor="let tag of question.associatedTags">
       <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
     </div>

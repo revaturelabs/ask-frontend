@@ -8,12 +8,26 @@ import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+/**
+ * @author: Alec Thavychith, Justin Yang, Edward Sams
+ *
+ * Displaying the full details of a specific response
+ * that corresponds to the selected question
+ *
+ */
+
 @Component({
   selector: 'app-response',
   templateUrl: './response.component.html',
   styleUrls: ['./response.component.css'],
 })
 export class ResponseComponent implements OnInit {
+  /** The purpose of the ResponseComponent is to display the complete
+   * details of a response that corresponds to a selected question. As a result,
+   * it is not only tightly coupled to the QuestionComponent, but also to the
+   * View-QuestionComponent, since the ResponseComponent is actually instantiated within
+   * the View-QuestionComponent.
+   */
   @Input() response: Response;
 
   responses: Response[];
@@ -37,8 +51,6 @@ export class ResponseComponent implements OnInit {
     private router: Router,
   ) {}
 
-  // Using a PATCH method to update the question with a highlighted response
-  // Only one highlighted response per question
   highlightResponse = (event, selectedResponse) => {
     this.http
       .patch(
@@ -104,15 +116,11 @@ export class ResponseComponent implements OnInit {
       this.responses = responses;
     });
 
-    // Retrieves the response ID for each ResponseComponent
-    // Used for displaying the expert's username that entered the response and their tags
     this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
       this.expertTags = result.user.expertTags;
     });
 
-    // Retrieves the selected question ID
-    // Used for coupling the highlighted response to its question
     let observable = this.http.get(
       `${environment.questionsUri}/${this.questionService.getQuestionId()}`,
     );
