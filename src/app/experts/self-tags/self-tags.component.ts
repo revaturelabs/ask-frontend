@@ -74,12 +74,16 @@ export class SelfTagsComponent implements OnInit {
 
   ngOnInit() {
     this.tagService.getTags().subscribe(tags => {
-      this.tags = tags;
-    });
-
-    this.tagService.getExpertTags(this.expertId).subscribe(expert => {
-      this.currentExpert = expert;
-      this.checkExpertTags();
+      this.tagService.getExpertTags(this.expertId).subscribe(expert => {
+        this.tags = tags;
+        this.currentExpert = expert;
+        this.checkExpertTags();
+      },
+      error => {
+        //still populate tags even if getting the expert tags fails
+        this.tags = tags;
+        console.error(error);
+      });
     });
   }
 
