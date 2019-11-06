@@ -37,6 +37,8 @@ export class ResponseComponent implements OnInit {
     private router: Router,
   ) {}
 
+  // Using a PATCH method to update the question with a highlighted response
+  // Only one highlighted response per question
   highlightResponse = (event, selectedResponse) => {
     this.http
       .patch(
@@ -102,11 +104,15 @@ export class ResponseComponent implements OnInit {
       this.responses = responses;
     });
 
+    // Retrieves the response ID for each ResponseComponent
+    // Used for displaying the expert's username that entered the response and their tags
     this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
       this.expertTags = result.user.expertTags;
     });
 
+    // Retrieves the selected question ID
+    // Used for coupling the highlighted response to its question
     let observable = this.http.get(
       `${environment.questionsUri}/${this.questionService.getQuestionId()}`,
     );
