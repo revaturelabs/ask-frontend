@@ -17,15 +17,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 /**
- * @author: Kyung Min Lee, Nathan Cross, Nick Brinson
+ * @title Ask Question
+ * @author Kyung Min Lee, Nathan Cross, Nick Brinson
  *
  * The current typescript is for Angular Material forms with autocomplete chips & two fields.
  *
  * This component is built on top of an example found at:
  * https://material.angular.io/components/chips/overview
  */
-
-const qUri = environment.tagsUri;
 
 @Component({
   selector: 'app-ask-question',
@@ -51,6 +50,7 @@ export class AskQuestionComponent implements OnInit {
     HTMLInputElement
   >;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef<HTMLInputElement>;
 
   constructor(
     private fb: FormBuilder,
@@ -135,6 +135,7 @@ export class AskQuestionComponent implements OnInit {
 
   //selected image
   onFileSelected(event) {
+    event.preventDefault();
     this.selectedFile = <File>event.target.files[0];
   }
 
@@ -156,10 +157,14 @@ export class AskQuestionComponent implements OnInit {
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
 
 			response => {
-        this.onUpload(response.id);
+        //uploads the picture with form if there is one
+        if (this.selectedFile !== null) {
+          this.onUpload(response.id);
+        }
+        //clears the form
         this.clearForm();
+        //custom snackbar message
         this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
-        this.router.navigate(['/user-questions']);
       }, 
       failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
@@ -176,15 +181,21 @@ export class AskQuestionComponent implements OnInit {
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
-      .subscribe(response => {},
-      (err) =>{console.log(err);})
+      .subscribe(response => {
+        console.log("Image successfully uploaded with the question");
+        //clears the image name of input field
+        this.fileInput.nativeElement.value = '';
+      },
+      (err) => {
+        console.log("Image upload was unsuccessful" + err);
+      })
   }
 
   ngOnInit() {
     this.clearForm();
-    // this.ts.getTags();
   }
 
+  //clears the form, chips(tags) and selected file of image
   clearForm() {
     this.form = this.fb.group({
       questionerId: null,
@@ -193,5 +204,6 @@ export class AskQuestionComponent implements OnInit {
       body: [''],
     });
     this.tags = [];
+    this.selectedFile = null;
   }
 }

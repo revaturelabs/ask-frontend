@@ -25,11 +25,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { QuestionService } from 'src/app/services/question.service';
 
 /**
- * @title Chips Autocomplete
+ * @title Filter questions
  * @author Borko Stankovic, Kyung Min Lee, Jonathan Gworek
  */
-
-const qUri = environment.tagsUri;
 
 @Component({
   selector: 'app-question-filter',
