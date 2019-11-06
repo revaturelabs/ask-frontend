@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { QuestionService } from '../../services/question.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -17,20 +16,22 @@ export class QuestionComponent implements OnInit {
     private httpClient: HttpClient,
     private questionService: QuestionService,
     private domSanitizer: DomSanitizer,
-    ) {}
+  ) {}
 
   image: any;
+  imageSize: boolean = false;
 
   getPhotos() {
     let questionId: number = this.questionService.getQuestionId();
     let observable = this.questionService.getQuestionImages(questionId);
-    observable.subscribe((result: any) => {
-      let imageURL = 'data:image/jpeg;base64,' + result[0].image;
-      this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
-    },
-      (err) => {
+    observable.subscribe(
+      (result: any) => {
+        let imageURL = 'data:image/jpeg;base64,' + result[0].image;
+        this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
+      },
+      err => {
         console.log('Invalid');
-      }
+      },
     );
   }
 
