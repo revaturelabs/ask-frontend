@@ -6,6 +6,7 @@ mat-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 16px 16px 12px 16px;
 }
 mat-card-subtitle {
   font-size: 0.9em;
@@ -37,7 +38,7 @@ button:hover {
   align-items: flex-end;
 }
 mat-chip-list {
-  margin: 0 24px 0 16px;
+  margin: 0 8px 0 16px;
   right: 0;
   height: 100%;
 }
@@ -46,10 +47,14 @@ mat-chip-list {
   padding: 4px;
   color: #ffffff;
   background-color: #9f9f9f;
-  margin: 4px;
+  margin: -2px;
 }
 mat-chip-list mat-card-subtitle {
   color: #979797;
+  /* margin: 0 8px 0 0; */
   margin: 0 8px 0 0;
   font-style: italic;
+}
+div.mat-chips{
+  margin: 4px;
 }

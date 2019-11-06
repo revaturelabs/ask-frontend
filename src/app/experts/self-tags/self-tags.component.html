@@ -13,6 +13,10 @@
             (change)="toggle($event, tag.name)"
             id="{{ tag.name }}"
             [checked]="tag.checked"
+            matTooltip="{{ tag.name }}"
+            [matTooltipPosition]="'above'"
+            [matTooltipShowDelay]="300"
+            [matTooltipHideDelay]="100"
           >
             {{ tag.name }}</mat-checkbox
           >
