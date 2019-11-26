@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const baseUri = 'http://ec2-52-23-219-175.compute-1.amazonaws.com/';
+const baseUri = 'http://ec2-52-23-219-175.compute-1.amazonaws.com';
 const port = '1337';
 
 export const environment = {
