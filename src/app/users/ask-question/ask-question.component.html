@@ -50,8 +50,8 @@
   <!-- Angular Material form, input field (texarea) for Question -->
   <mat-form-field>
     <angular-markdown-editor textareaId="questionbody" [options]="editorOptions">
+      <textarea matInput [(ngModel)]="this.form.body" #qQuestion id="questionbody" placeholder="Your Question: "></textarea>
     </angular-markdown-editor>
-    <textarea matInput [(ngModel)]="this.form.body" #qQuestion id="questionbody" placeholder="Your Question: "></textarea>
   </mat-form-field>
   
   <!-- Submit button -->
