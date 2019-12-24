@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
+import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,8 +60,12 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
+    AngularMarkdownEditorModule.forRoot({
+      iconlibrary: 'glyph'
+    }),
+    MarkdownModule.forRoot()
   ],
-  providers: [AuthGuard], 
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -24,10 +24,17 @@
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "angular-markdown-editor": "2.0.2",
+    "bootstrap": "^3.3.7",
+    "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "ngx-markdown": "^8.1.1",
+    "rxjs-compat": "^6.0.0-rc.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.6",
+    "@angular-devkit/build-angular": "~0.803.21",
     "@angular/cli": "~8.3.6",
     "@angular/compiler-cli": "~8.2.8",
     "@angular/language-service": "~8.2.8",
@@ -47,6 +54,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "handlebars": "^4.5.3"
   }
 }

@@ -15,6 +15,8 @@ import { environment } from 'src/environments/environment';
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { EditorOption, EditorInstance } from 'angular-markdown-editor';
+import { MarkdownService } from 'ngx-markdown';
 
 /**
  * @title Ask Question
@@ -42,8 +44,10 @@ export class AskQuestionComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
+  editorOptions: EditorOption;
+  bsEditorInstance: EditorInstance;
 
-  //image file
+  // image file
   selectedFile: File = null;
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
@@ -59,6 +63,7 @@ export class AskQuestionComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
+    private markdownService: MarkdownService,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -193,6 +198,26 @@ export class AskQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.clearForm();
+    this.editorOptions = {
+      autofocus: false,
+      iconlibrary: 'fa',
+      savable: false,
+      onShow: (e) => this.bsEditorInstance = e,
+      parser: (val) => this.parse(val)
+    };
+  }
+
+  parse(inputValue: string) {
+    const markedOutput = this.markdownService.compile(inputValue.trim());
+    this.highlight();
+
+    return markedOutput;
+  }
+
+  highlight() {
+    setTimeout(() => {
+      this.markdownService.highlight();
+    });
   }
 
   //clears the form, chips(tags) and selected file of image
