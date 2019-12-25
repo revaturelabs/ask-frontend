@@ -26,6 +26,8 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
+    LMarkdownEditorModule,
+    MarkdownModule.forRoot()
   ],
   providers: [AuthGuard], 
   bootstrap: [AppComponent],
