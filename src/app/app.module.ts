@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
-import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +26,8 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -60,9 +60,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AngularMarkdownEditorModule.forRoot({
-      iconlibrary: 'glyph'
-    }),
+    LMarkdownEditorModule,
     MarkdownModule.forRoot()
   ],
   providers: [AuthGuard],

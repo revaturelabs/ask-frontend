@@ -1,6 +1,16 @@
 <div class="submit-response">
     <mat-form-field>
-      <textarea matInput class="form-control" [(ngModel)]="response.body " name="body" #body placeholder="Enter a response"></textarea>
+      <textarea hidden matInput class="form-control" [(ngModel)]="response.body " name="body" #body placeholder="Enter a response"></textarea>
+      <md-editor name="Content" 
+  [upload]="doUpload" 
+  [preRender]="preRenderFunc" 
+  [(ngModel)]="response.body" 
+  [height]="'200px'" 
+  [mode]="mode" 
+  [options]="options" 
+  required 
+  maxlength="500">
+</md-editor>
     </mat-form-field>
     <mat-card-actions>
         <button id="submit"  mat-raised-button (click)="addResponse(body.value)">Submit Response</button>
