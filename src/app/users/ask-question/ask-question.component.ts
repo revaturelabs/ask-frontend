@@ -12,10 +12,11 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
-//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+// Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MarkedjsOption } from 'ngx-markdown-editor';
+// Markdowns
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 /**
  * @title Ask Question
@@ -43,31 +44,12 @@ export class AskQuestionComponent implements OnInit {
   filteredTags: Observable<string[]>;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
-  editorOptions: EditorOption;
-  bsEditorInstance: EditorInstance;
 
   // image file
   selectedFile: File = null;
 
-  
-  options: {
-    showPreviewPanel?: boolean    // Show preview panel, Default is true
-    showBorder?: boolean          // Show editor component's border. Default is true
-    hideIcons?: Array<string>     // ['Bold', 'Italic', 'Heading', 'Refrence', 'Link', 'Image', 'Ul', 'Ol', 'Code', 'TogglePreview', 'FullScreen']. Default is empty
-    usingFontAwesome5?: boolean   // Using font awesome with version 5, Default is false
-    scrollPastEnd?: number        // The option for ace editor. Default is 0
-    enablePreviewContentClick?: boolean  // Allow user fire the click event on the preview panel, like href etc. Default is false
-    resizable?: boolean           // Allow resize the editor
-    markedjsOpt?: MarkedjsOption  // The markedjs option, see https://marked.js.org/#/USING_ADVANCED.md#options
-    customRender?: {              // Custom markedjs render
-      image?: Function     // Image Render
-      table?: Function     // Table Render
-      code?: Function      // Code Render
-      listitem?: Function  // Listitem Render
-    }
-  };
-    
-  public mode: string = 'editor';
+  options: Markdownoptions = new Markdownoptions();
+  public mode = 'editor';
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
@@ -82,7 +64,6 @@ export class AskQuestionComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private markdownService: MarkdownService,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -95,6 +76,8 @@ export class AskQuestionComponent implements OnInit {
         this.allTagsFromServer.push(tags[index].name);
       }
     });
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
   }
 
   add(event: MatChipInputEvent): void {
@@ -177,6 +160,7 @@ export class AskQuestionComponent implements OnInit {
     } else if (body.trim() === '') {
       this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
+      /*
       //POST-ing the form
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
 
@@ -192,7 +176,7 @@ export class AskQuestionComponent implements OnInit {
       }, 
       failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      })};
+      })*/};
   };
 
   sendImage() {
@@ -212,31 +196,11 @@ export class AskQuestionComponent implements OnInit {
       },
       (err) => {
         console.log("Image upload was unsuccessful" + err);
-      })
+      });
   }
 
   ngOnInit() {
     this.clearForm();
-    this.editorOptions = {
-      autofocus: false,
-      iconlibrary: 'fa',
-      savable: false,
-      onShow: (e) => this.bsEditorInstance = e,
-      parser: (val) => this.parse(val)
-    };
-  }
-
-  parse(inputValue: string) {
-    const markedOutput = this.markdownService.compile(inputValue.trim());
-    this.highlight();
-
-    return markedOutput;
-  }
-
-  highlight() {
-    setTimeout(() => {
-      this.markdownService.highlight();
-    });
   }
 
   //clears the form, chips(tags) and selected file of image

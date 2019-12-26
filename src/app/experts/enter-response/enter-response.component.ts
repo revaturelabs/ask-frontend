@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MarkedjsOption } from 'ngx-markdown-editor';
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 @Component({
   selector: 'app-enter-response',
@@ -25,26 +26,9 @@ export class EnterResponseComponent implements OnInit {
     body: '',
     creationDate: null,
   };
+  private options: Markdownoptions;
+  public mode = 'editor';
 
-  options: {
-    showPreviewPanel?: boolean    // Show preview panel, Default is true
-    showBorder?: boolean          // Show editor component's border. Default is true
-    hideIcons?: Array<string>     // ['Bold', 'Italic', 'Heading', 'Refrence', 'Link', 'Image', 'Ul', 'Ol', 'Code', 'TogglePreview', 'FullScreen']. Default is empty
-    usingFontAwesome5?: boolean   // Using font awesome with version 5, Default is false
-    scrollPastEnd?: number        // The option for ace editor. Default is 0
-    enablePreviewContentClick?: boolean  // Allow user fire the click event on the preview panel, like href etc. Default is false
-    resizable?: boolean           // Allow resize the editor
-    markedjsOpt?: MarkedjsOption  // The markedjs option, see https://marked.js.org/#/USING_ADVANCED.md#options
-    customRender?: {              // Custom markedjs render
-      image?: Function     // Image Render
-      table?: Function     // Table Render
-      code?: Function      // Code Render
-      listitem?: Function  // Listitem Render
-    }
-  };
-    
-  public mode: string = 'editor';
-  
   constructor(
     private responseService: ResponseService,
     private questionService: QuestionService,

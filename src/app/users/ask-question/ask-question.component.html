@@ -34,17 +34,18 @@
 
   <!-- Angular Material form, input field (texarea) for Question -->
   <mat-form-field>
-    <textarea  matInput [(ngModel)]="this.form.body" #qQuestion placeholder="Ask Question"></textarea>
-    <!--<md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="content" [height]="'200px'"
+    <textarea hidden matInput [(ngModel)]="this.form.body" #qQuestion placeholder="Ask Question:"></textarea>
+    <br/>
+    <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
       [mode]="mode" [options]="options" required maxlength="500">
-    </md-editor>-->
+    </md-editor>
   </mat-form-field>
 
   <!-- Submit button -->
   <div>
+    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" #fileInput>
     <button mat-raised-button id="ask-question-button-submit"
       (click)="submitQuestion($event, qTitle.value, qTags.value, qQuestion.value)">Submit</button>
-    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" #fileInput>
   </div>
 
 </div>
