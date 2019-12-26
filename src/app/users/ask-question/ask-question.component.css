@@ -1,23 +1,31 @@
 .ask-question-container {
-  display: inline-flex;
+  display: flex;
   min-height: 40%;
-  min-width: 550px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  /*min-width: 550px;
+  max-width: 90%;*/
+
   flex-direction: column;
   border: 1.5px solid #55698d;
   background-color:#ffffff;
-  position: absolute;
+  position: relative;
   top: 65%;
-  left: 50%;
-  transform: translate(-50%, -300px);
+  
+  /*transform: translate(-50%, -300px); */
 }
 
+/*
 @media only screen and (max-height: 600px) {
   .ask-question-container {
     overflow: scroll;
     height: 250px;
     transform: translate(-50%, -90%);
   }
-}
+} */
 
 textarea {
   max-height: 125px;

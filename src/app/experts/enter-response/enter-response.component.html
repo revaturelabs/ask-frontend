@@ -1,8 +1,7 @@
 <div class="submit-response">
   <mat-form-field>
-    <textarea matInput hidden [(ngModel)]="response.body " name="body" #body
-      placeholder="Enter a response"></textarea>
-    <br>
+    <span class="mat-button-wrapper mockplaceholder">Enter a response.</span>
+    <textarea matInput hidden [(ngModel)]="response.body " name="body" #body></textarea>
     <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="response.body"
       [height]="'200px'" [mode]="mode" [options]="options" required maxlength="500">
     </md-editor>

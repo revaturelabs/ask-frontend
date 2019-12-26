@@ -160,7 +160,6 @@ export class AskQuestionComponent implements OnInit {
     } else if (body.trim() === '') {
       this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
-      /*
       //POST-ing the form
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
 
@@ -176,7 +175,7 @@ export class AskQuestionComponent implements OnInit {
       }, 
       failed => {
         this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      })*/};
+      })};
   };
 
   sendImage() {

@@ -34,8 +34,8 @@
 
   <!-- Angular Material form, input field (texarea) for Question -->
   <mat-form-field>
-    <textarea hidden matInput [(ngModel)]="this.form.body" #qQuestion placeholder="Ask Question:"></textarea>
-    <br/>
+    <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
+    <textarea hidden matInput [(ngModel)]="this.form.body" #qQuestion></textarea>
     <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
       [mode]="mode" [options]="options" required maxlength="500">
     </md-editor>
