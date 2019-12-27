@@ -1,14 +1,14 @@
-import { AppPage } from './answer.po';
+import { AnswerPage } from './answer.po';
 import { browser, logging } from 'protractor';
 import { callbackify } from 'util';
 
 describe('answer a question as an expert', () => {
-  let page: AppPage;
+  let page: AnswerPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new AnswerPage();
     page.navigateTo();
-    page.login();
+    page.login(3); // 3 is the third user. An expert.
   });
 
   it('should add a new question', () => {

@@ -1,17 +1,6 @@
 import { browser, by, element } from 'protractor';
+import { AppPage } from '../app.po';
 
-export class AppPage {
-  navigateTo() {
-    return browser.get(browser.baseUrl) as Promise<any>;
-  }
+export class AnswerPage extends AppPage {
 
-  login() {
-    element(by.css('[placeholder="Select User"]')).click();
-    element(by.css('[value="3"]')).click();
-    element(by.css('[type="submit"]')).click();
-  }
-
-  getTitleText() {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
-  }
 }
