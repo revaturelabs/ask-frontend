@@ -1,6 +1,7 @@
 ###Angular
 .DS_STORE
 
+/coverage/
 /dist/
 /bazel-out
 /integration/bazel/bazel-*

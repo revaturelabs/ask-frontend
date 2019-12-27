@@ -1,5 +1,12 @@
 import { MarkedjsOption } from 'ngx-markdown-editor';
 
+// ****************************************************
+// * Source for the Markdown Editor
+// * https://www.npmjs.com/package/ngx-markdown-editor
+// * Markdown tag
+// * https://www.npmjs.com/package/ngx-markdown
+// ****************************************************
+
 export class Markdownoptions {
     showPreviewPanel?: boolean;    // Show preview panel, Default is true
     showBorder?: boolean;          // Show editor component's border. Default is true
@@ -15,8 +22,6 @@ export class Markdownoptions {
       image?: Function;     // Image Render
       // tslint:disable-next-line: ban-types
       table?: Function;     // Table Render
-      // tslint:disable-next-line: ban-types
-      code?: Function;      // Code Render
       // tslint:disable-next-line: ban-types
       listitem?: Function;  // Listitem Render
     };
