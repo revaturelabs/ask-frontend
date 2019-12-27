@@ -1,5 +1,12 @@
+const baseUri = 'http://ec2-52-23-219-175.compute-1.amazonaws.com';
+const port = '1337';
+
 export const environment = {
   production: false,
-  environmentName: 'Dev Environment',
-  localhostUri: 'http://localhost:8080/',
+  environmentName: 'Default Dev Environment',
+  tagsUri: `${baseUri}:${port}/tags`,
+  questionsUri: `${baseUri}:${port}/questions`,
+  // createQuestionUri: `${baseUri}:${port}/questions/create`,
+  responsesUri: `${baseUri}:${port}/responses`,
+  userUri: `${baseUri}:${port}/users`,
 };
