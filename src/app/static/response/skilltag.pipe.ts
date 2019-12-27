@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Tag } from 'src/app/models/Tag';
 
 /*
 this pipe allows only a certain amount of an expert's skills to be explicitly displayed on a response
@@ -9,7 +10,7 @@ this pipe allows only a certain amount of an expert's skills to be explicitly di
 })
 export class SkilltagPipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
+  transform(value: Tag[]): Tag[] {
     const tags = [];
 
     for (let i = 0; i <= 3; i++) {

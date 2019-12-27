@@ -4,16 +4,14 @@
       {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ response.body }}</p> <!-- why are these commented out? are these necessary for something? -->
-    <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
-    <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
+    <p>{{ response.body }}</p>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <mat-card-subtitle>{{ responderName }}'s skillset:</mat-card-subtitle>
     <div class="mat-chips" *ngFor="let tag of expertTags | skilltag; let i = index">
       <!-- index allows for collapse of skills -->
       <mat-basic-chip *ngIf="i <= 2" selected>{{ tag.name }}</mat-basic-chip>
-      <mat-basic-chip *ngIf="i == 3">+{{ expertTags.length - i }}</mat-basic-chip>
+      <mat-basic-chip *ngIf="i == 3" (hover)="showTagList(i)">+{{ expertTags.length - i }}</mat-basic-chip>
     </div>
   </mat-chip-list>
   <mat-card-actions>

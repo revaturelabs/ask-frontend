@@ -66,19 +66,6 @@ export class SelfTagsComponent implements OnInit {
 
   // For initialization, currentExpert associated tags are prechecked in list of tags
   checkExpertTags() {
-    /* OLD CODE WRITTEN BY AUTHORS
-    for (let i = 0; i < this.tags.length; i++) {
-      this.currentExpert.expertTags.forEach(element => {
-        if (element.name == this.tags[i].name) {
-          this.toggle({ checked: true }, this.tags[i].name);
-          this.tags[i].checked = true;
-        } else {
-          return false;
-        }
-      });
-    }
-    */
-   // NEW CODE: SHORTER, TSLINT-APPROVED (MORE READABLE), SAME FUNCTIONALITY
     for (const t of this.tags) {
       this.currentExpert.expertTags.forEach(element => {
         if (element.name === t.name) {

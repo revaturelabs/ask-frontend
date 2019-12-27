@@ -97,6 +97,12 @@ export class ResponseComponent implements OnInit {
     }
   }
 
+  showTagsList(startIndex: number) {
+    for (let i = startIndex; i < this.expertTags.length; i++) {
+      // stuff
+    }
+  }
+
   ngOnInit() {
     this.responseService.getResponses().subscribe(responses => {
       this.responses = responses;
