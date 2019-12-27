@@ -38,3 +38,7 @@ mat-chip {
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
   background-color:#55698d;
 }
+
+.high {
+  color: red;
+}

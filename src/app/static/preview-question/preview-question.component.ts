@@ -33,4 +33,12 @@ export class PreviewQuestionComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  sethigh(){
+    let classes = {
+      question: true,
+      high: this.question.highlightedResponseId != null
+    }
+    return classes;
+  }
 }
