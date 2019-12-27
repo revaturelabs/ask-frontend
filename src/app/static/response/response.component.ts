@@ -48,7 +48,6 @@ export class ResponseComponent implements OnInit {
           this._snackBar.open('Highlighted Answer', 'OK', {
             duration: 2000,
           });
-          this.router.navigate(['/user-questions']);
         },
         error => {
           this._snackBar.open('Highlight unsuccessful', 'OK', {
