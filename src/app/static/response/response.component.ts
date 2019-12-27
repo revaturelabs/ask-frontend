@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-response',
@@ -21,6 +22,7 @@ export class ResponseComponent implements OnInit {
   responderName: string;
   expertTags = [];
   hoverToggle = false;
+  hiddenExpertTags: Tag[];
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -98,9 +100,11 @@ export class ResponseComponent implements OnInit {
   }
 
   showTagsList(startIndex: number) {
+    const tagsList = [];
     for (let i = startIndex; i < this.expertTags.length; i++) {
-      // stuff
+      tagsList.push(this.expertTags[i]);
     }
+    this.hiddenExpertTags = tagsList;
   }
 
   ngOnInit() {
@@ -121,5 +125,7 @@ export class ResponseComponent implements OnInit {
       this.currentQuestionerId = this.currentQuestionObject.questionerId;
       this.currentUserId = this.authService.account.id;
     });
+
+    this.hiddenExpertTags = [];
   }
 }

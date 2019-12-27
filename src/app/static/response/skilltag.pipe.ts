@@ -13,7 +13,7 @@ export class SkilltagPipe implements PipeTransform {
   transform(value: Tag[]): Tag[] {
     const tags = [];
 
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i <= 3 && i < value.length; i++) {
       tags.push(value[i]);
     }
 

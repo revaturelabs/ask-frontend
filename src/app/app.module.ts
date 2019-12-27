@@ -27,6 +27,7 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SkilltagPipe } from './static/response/skilltag.pipe';
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
