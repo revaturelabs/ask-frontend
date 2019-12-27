@@ -17,10 +17,10 @@ export class ResponseComponent implements OnInit {
   @Input() response: Response;
 
   responses: Response[];
-  isEdit: boolean = false;
+  isEdit = false;
   responderName: string;
   expertTags = [];
-  hoverToggle: boolean = false;
+  hoverToggle = false;
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -86,7 +86,7 @@ export class ResponseComponent implements OnInit {
   }
 
   removeResponse(response: Response) {
-    if (confirm('Are You Sure ?')) {
+    if (confirm('Are You Sure?')) {
       this.responseService.removeResponse(response.id).subscribe(() => {
         this.responses.forEach((cur, index) => {
           if (response.id === cur.id) {
@@ -107,7 +107,7 @@ export class ResponseComponent implements OnInit {
       this.expertTags = result.user.expertTags;
     });
 
-    let observable = this.http.get(
+    const observable = this.http.get(
       `${environment.questionsUri}/${this.questionService.getQuestionId()}`,
     );
     observable.subscribe(result => {

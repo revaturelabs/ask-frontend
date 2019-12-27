@@ -26,6 +26,8 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
+// import { StaticModule } from './static/static.module';
+import { SkilltagPipe } from './static/response/skilltag.pipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     SettingsComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
-    UserQuestionsComponent
+    UserQuestionsComponent,
+    SkilltagPipe
   ],
   imports: [
     BrowserModule,
@@ -58,8 +61,9 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
+    // StaticModule
   ],
-  providers: [AuthGuard], 
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
