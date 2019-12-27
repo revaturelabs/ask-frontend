@@ -7,13 +7,11 @@ describe('answer a question as an expert', () => {
 
   beforeEach(() => {
     page = new AnswerPage();
-    page.navigateTo();
-    page.login(3); // 3 is the third user. An expert.
+    page.navigateToAnswerQuestion();
   });
 
   it('should add a new question', () => {
-    // page.navigateTo();
-    console.log('hello');
+    page.selectQuestion(1);
     expect('').toBe('');
     browser.sleep(5000);
   });
