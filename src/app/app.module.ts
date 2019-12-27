@@ -26,7 +26,7 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
-// import { StaticModule } from './static/static.module';
+import { StaticModule } from './static/static.module';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 
 @NgModule({
