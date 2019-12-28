@@ -3,6 +3,7 @@ import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
 
+import { environment } from '../../../environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -15,6 +16,7 @@ export class FilteredQuestionListComponent implements OnInit {
   filteredUri: string;
   questions: Question[];
   pageNumber: number = 0;
+  moreResults: boolean = true;;
 
   constructor(
     private http: HttpClient,
@@ -33,7 +35,7 @@ export class FilteredQuestionListComponent implements OnInit {
     this.filteredUri = newFilteredUri;
     this.http.get<Question[]>(this.filteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
-      if(this.questions.length == 0) {
+      if (this.questions.length === 0) {
         this._snackBar.open("No results!", "OK", {duration: 3000});
       }
     });
@@ -55,6 +57,18 @@ export class FilteredQuestionListComponent implements OnInit {
     }
   }
 
+  loadMore() {
+    this.pageNumber += 1;
+    this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
+      this.questions.push.apply( this.questions, questionsRes);
+      if (questionsRes.length === 0) {
+        this._snackBar.open('No more results!', 'OK', { duration: 3000 });
+        this.moreResults = false;
+        this.pageNumber = 0;
+      }
+    });
+
+  }
   nextPage() {
     this.pageNumber++;
     this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
