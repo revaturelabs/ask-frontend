@@ -29,6 +29,8 @@ export class ViewQuestionComponent implements OnInit {
   responses: Response[];
   highlightedResponse: any;
   questionResponses: any;
+  totalMsgCount: number = 0; // count the messages of the responses. initialize to 0;
+
 
   constructor(
     private questionService: QuestionService,
@@ -68,6 +70,7 @@ export class ViewQuestionComponent implements OnInit {
       .getQuestionById(selectedQuestionId)
       .subscribe(result => {
         this.questionResponses = result.responses;
+        this.totalMsgCount = result.responses.length;
       });
   }
 }

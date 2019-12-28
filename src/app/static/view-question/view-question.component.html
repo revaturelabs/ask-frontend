@@ -2,6 +2,9 @@
   <app-question [question]="selectedQuestion"></app-question>
 </div>
 
+<br>
+<div class = "msg-count"> total responses: {{totalMsgCount}}</div>
+
 <div class="highlighted-response-component">
   <app-highlighted-response *ngIf="highlightedResponse" [highlight] = "highlightedResponse"></app-highlighted-response>
 </div>
