@@ -73,8 +73,8 @@ export class FilteredQuestionListComponent implements OnInit {
     this.pageNumber++;
     this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
-      if(this.questions.length == 0) {
-        this._snackBar.open("No more results!", "OK", {duration: 3000});
+      if (this.questions.length === 0) {
+        this._snackBar.open('No more results', 'OK', {duration: 3000});
       }
     });
   }
