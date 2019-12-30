@@ -10,7 +10,7 @@ describe('answer a question as an expert', () => {
     page = new AnswerPage();
     page.navigateToAnswerQuestion();
   });
-  it('should add a new answer', () => {
+  it('should add a new answer and stay on page', () => {
     page.selectQuestion(1);
     responces = element.all(by.css('.response-card')).count();
     expect(page.getAnswerBody().getText()).toBe('');
@@ -19,10 +19,6 @@ describe('answer a question as an expert', () => {
     page.selectSubmit();
     browser.sleep(5000);
     expect(page.getAnswerBody().getText()).toBe('');
-  });
-
-  it('should find an answer', () => {
-    page.selectQuestion(1);
     expect(element.all(by.css('.response-card')).count()).toBeGreaterThan(responces);
   });
   // afterEach(async () => {
