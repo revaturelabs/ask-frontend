@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-response',
@@ -17,10 +18,11 @@ export class ResponseComponent implements OnInit {
   @Input() response: Response;
 
   responses: Response[];
-  isEdit: boolean = false;
+  isEdit = false;
   responderName: string;
   expertTags = [];
-  hoverToggle: boolean = false;
+  hoverToggle = false;
+  hiddenExpertTags: Tag[];
 
   // Only the user who asked the question can highlight a response
   currentQuestionerId: number;
@@ -85,7 +87,7 @@ export class ResponseComponent implements OnInit {
   }
 
   removeResponse(response: Response) {
-    if (confirm('Are You Sure ?')) {
+    if (confirm('Are You Sure?')) {
       this.responseService.removeResponse(response.id).subscribe(() => {
         this.responses.forEach((cur, index) => {
           if (response.id === cur.id) {
@@ -94,6 +96,14 @@ export class ResponseComponent implements OnInit {
         });
       });
     }
+  }
+
+  showTagsList(startIndex: number) {
+    const tagsList = [];
+    for (let i = startIndex; i < this.expertTags.length; i++) {
+      tagsList.push(this.expertTags[i]);
+    }
+    this.hiddenExpertTags = tagsList;
   }
 
   ngOnInit() {
@@ -106,7 +116,7 @@ export class ResponseComponent implements OnInit {
       this.expertTags = result.user.expertTags;
     });
 
-    let observable = this.http.get(
+    const observable = this.http.get(
       `${environment.questionsUri}/${this.questionService.getQuestionId()}`,
     );
     observable.subscribe(result => {
@@ -114,5 +124,7 @@ export class ResponseComponent implements OnInit {
       this.currentQuestionerId = this.currentQuestionObject.questionerId;
       this.currentUserId = this.authService.account.id;
     });
+
+    this.hiddenExpertTags = [];
   }
 }

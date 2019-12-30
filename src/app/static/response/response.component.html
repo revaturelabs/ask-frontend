@@ -1,36 +1,32 @@
-<mat-card
-  class="response-card"
-  (mouseenter)="hoverToggle = !hoverToggle"
-  (mouseleave)="hoverToggle = !hoverToggle"
->
+<mat-card class="response-card" (mouseenter)="hoverToggle = !hoverToggle" (mouseleave)="hoverToggle = !hoverToggle">
   <mat-card-header>
-    <mat-card-subtitle
-      >{{ responderName }},
-      {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle
-    >
+    <mat-card-subtitle>{{ responderName }},
+      {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>{{ response.body }}</p>
-    <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
-    <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <mat-card-subtitle>{{ responderName }}'s skillset:</mat-card-subtitle>
-    <div class="mat-chips" *ngFor="let tag of expertTags">
-      <mat-basic-chip selected>{{ tag.name }}</mat-basic-chip>
+    <div class="mat-chips" *ngFor="let tag of expertTags | skilltag; let i = index">
+      <!-- index allows for collapse of skills -->
+      <mat-basic-chip *ngIf="i <= 2" selected>{{ tag.name }}</mat-basic-chip>
+      <ng-template #popContent>
+        <ng-container *ngFor="let t of hiddenExpertTags">
+          <br><mat-basic-chip class="need-space">{{ t.name }}</mat-basic-chip>
+        </ng-container>
+      </ng-template>
+      <mat-basic-chip *ngIf="i == 3" triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)"
+        [ngbPopover]="popContent">
+        +{{ expertTags.length - i }}
+      </mat-basic-chip>
     </div>
   </mat-chip-list>
   <mat-card-actions>
-    <button
-      id="btn{{ response.id }}"
-      *ngIf="this.currentQuestionerId == this.currentUserId && hoverToggle"
-      mat-stroked-button
-      (click)="highlightResponse($event, response.id)"
-      matTooltip="Was this response the most helpful?"
-      [matTooltipPosition]="'above'"
-      [matTooltipShowDelay]="500"
-      [matTooltipHideDelay]="100"
-    >
+    <button id="btn{{ response.id }}" *ngIf="this.currentQuestionerId == this.currentUserId && hoverToggle"
+      mat-stroked-button (click)="highlightResponse($event, response.id)"
+      matTooltip="Was this response the most helpful?" [matTooltipPosition]="'above'" [matTooltipShowDelay]="500"
+      [matTooltipHideDelay]="100">
       Highlight Answer
     </button>
   </mat-card-actions>
