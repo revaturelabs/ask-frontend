@@ -32,7 +32,9 @@ export class PreviewQuestionComponent implements OnInit {
     this.router.navigate([`/view-question/`]);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.question.id);
+  }
 
   sethigh(){
     let classes = {
