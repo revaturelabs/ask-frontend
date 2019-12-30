@@ -1,6 +1,7 @@
-import { AnswerPage } from './answer.po';
-import { browser, logging } from 'protractor';
+import { AnswerPage } from './load-more.po';
+import { browser, logging, element } from 'protractor';
 import { callbackify } from 'util';
+import { FilteredQuestionListComponent } from '../../../src/app/static/filtered-question-list/filtered-question-list.component';
 
 describe('answer a question as an expert', () => {
   let page: AnswerPage;
@@ -10,9 +11,8 @@ describe('answer a question as an expert', () => {
     page.navigateToAnswerQuestion();
   });
 
-  it('should add a new question', () => {
-    page.selectQuestion(1);
-    expect('').toBe('');
+  it('should show all results', () => {
+    expect(30).toBeGreaterThan(20);
     browser.sleep(5000);
   });
 
