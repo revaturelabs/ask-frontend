@@ -1,5 +1,5 @@
 import { AnswerPage } from './load-more.po';
-import { browser, logging, element } from 'protractor';
+import { browser, logging, element, by } from 'protractor';
 import { callbackify } from 'util';
 import { FilteredQuestionListComponent } from '../../../src/app/static/filtered-question-list/filtered-question-list.component';
 
@@ -12,7 +12,18 @@ describe('answer a question as an expert', () => {
   });
 
   it('should show all results', () => {
-    expect(30).toBeGreaterThan(20);
+    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title'));
+
+    expect(ele.isPresent()).toBe(true);
+
+    browser.sleep(5000);
+  });
+
+  it('should not give you more than 40 after ', () =>{
+    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
+
+    expect(ele.isPresent()).toBe(false);
+
     browser.sleep(5000);
   });
 
