@@ -32,7 +32,7 @@ h3 {
   color: #ffffff;
   position: absolute;
   width: 100%;
-  transform: translate( -15px, -21px);
+  transform: translate( -15px, -0px);
   font-weight: normal;
 }
 mat-form-field{

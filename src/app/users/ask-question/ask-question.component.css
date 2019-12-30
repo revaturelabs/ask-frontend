@@ -40,7 +40,6 @@ h3 {
   color: #ffffff;
   position: absolute;
   width: 100%;
-  transform: translate( 0, -20px);
 }
 
 mat-form-field{
