@@ -47,7 +47,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     SettingsComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
-    UserQuestionsComponent
+    UserQuestionsComponent,
   ],
   imports: [
     BrowserModule,

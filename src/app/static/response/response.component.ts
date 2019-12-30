@@ -99,7 +99,12 @@ export class ResponseComponent implements OnInit {
 
   ngOnInit() {
     this.responseService.getResponses().subscribe(responses => {
+      // for(let i=0;i<responses.length;i++){
+      //   if(responses[i].responderId === )
+      //     this.responses[i] = responses[i];
+      // }
       this.responses = responses;
+      
     });
 
     this.responseService.getResponseById(this.response.id).subscribe(result => {
