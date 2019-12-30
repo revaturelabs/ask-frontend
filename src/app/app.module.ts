@@ -28,6 +28,8 @@ import { ExpertQuestionsComponent } from './static/expert-questions/expert-quest
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
+import { SkilltagPipe } from './static/response/skilltag.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { MarkdownModule } from 'ngx-markdown';
     SettingsComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
-    UserQuestionsComponent
+    UserQuestionsComponent,
+    SkilltagPipe
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { MarkdownModule } from 'ngx-markdown';
     HttpClientModule,
     ReactiveFormsModule,
     LMarkdownEditorModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    NgbModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

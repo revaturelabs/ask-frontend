@@ -11,8 +11,14 @@ import { MatSnackBar} from '@angular/material/snack-bar';
  * Populate list of available tags to associate with expert. Expert checks and unchecks tag names based on his or her skillset.
  * Expert clicks submit to update associated tags in database.
  * Self tags component listens for event emitter from tag creation component to add new tag to tag array.
- * 
+ *
  */
+
+ /**
+  * MODIFIED BY Sierra Nicholes, Tanguy Bousole
+  *
+  * Modifications for more readable code, added ability for "+number of skills" tag to show up when expert's tag list is too large to fit.
+  */
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +30,7 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 })
 export class SelfTagsComponent implements OnInit {
   tags: Tag[];
-  isChecked: boolean = false;
+  isChecked = false;
 
   expertId = this.authService.account.id;
   expertSkills: string[] = [];
@@ -41,9 +47,9 @@ export class SelfTagsComponent implements OnInit {
     if ($event.checked === true) {
       this.expertSkills.push(id);
     } else {
-      //delete the value and close the empty array slot
+      // delete the value and close the empty array slot
       this.expertSkills.splice(this.expertSkills.indexOf(id), 1);
-    };
+    }
   }
 
   onSubmit() {
@@ -55,20 +61,20 @@ export class SelfTagsComponent implements OnInit {
         this.authService.account.id,
       )
       .subscribe();
-      this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
+    this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
   }
 
   // For initialization, currentExpert associated tags are prechecked in list of tags
   checkExpertTags() {
-    for (let i = 0; i < this.tags.length; i++) {
+    for (const t of this.tags) {
       this.currentExpert.expertTags.forEach(element => {
-        if (element.name == this.tags[i].name) {
-          this.toggle({ checked: true }, this.tags[i].name);
-          this.tags[i].checked = true;
+        if (element.name === t.name) {
+          this.toggle({checked: true}, t.name);
+          t.checked = true;
         } else {
           return false;
         }
-      });
+      })
     }
   }
 
@@ -80,7 +86,7 @@ export class SelfTagsComponent implements OnInit {
         this.checkExpertTags();
       },
       error => {
-        //still populate tags even if getting the expert tags fails
+        // still populate tags even if getting the expert tags fails
         this.tags = tags;
         console.error(error);
       });
@@ -88,10 +94,6 @@ export class SelfTagsComponent implements OnInit {
   }
 
   addNewTag() {
-    this.tagService.getTags().subscribe((tagsUpdate) => {this.tags.push(tagsUpdate[tagsUpdate.length - 1])})
+    this.tagService.getTags().subscribe((tagsUpdate) => { this.tags.push(tagsUpdate[tagsUpdate.length - 1]); });
   }
-
-
-
-
 }
