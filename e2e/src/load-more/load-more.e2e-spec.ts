@@ -8,21 +8,33 @@ describe('answer a question as an expert', () => {
 
   beforeEach(() => {
     page = new AnswerPage();
-    page.navigateToAnswerQuestion();
+
+
   });
 
+
   it('should show all results', () => {
+    page.loadingMoreQuestions();
     var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(true);
 
-    browser.sleep(5000);
+    //browser.sleep(5000);
   });
 
-  it('should not give you more than 40 after ', () =>{
+  it('should not give you more than 40', () => {
+    page.loadingMoreQuestions();
     var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(false);
+
+    //browser.sleep(5000);
+  });
+
+  it('should give us filtered results', () => {
+    page.filterInput();
+    
+    expect(page.arr.length).toBe(page.amt);
 
     browser.sleep(5000);
   });
