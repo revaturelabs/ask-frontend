@@ -6,8 +6,6 @@
   margin-right: auto;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
-  /*min-width: 550px;
-  max-width: 90%;*/
 
   flex-direction: column;
   border: 1.5px solid #55698d;
@@ -17,17 +15,7 @@
 
   border-radius: 3px;
   
-  /*transform: translate(-50%, -300px); */
 }
-
-/*
-@media only screen and (max-height: 600px) {
-  .ask-question-container {
-    overflow: scroll;
-    height: 250px;
-    transform: translate(-50%, -90%);
-  }
-} */
 
 textarea {
   max-height: 125px;
@@ -46,13 +34,25 @@ mat-form-field{
   margin: 0 10% 0 10%;
 }
 
+.bunched {
+  width: 100%;
+}
+
 button {
   padding: 0;
-  margin: 2%;
+  margin-right: 10%;
+  margin-bottom: 2.5%;
   width: 40%;
-  left: 69%;
+  float: right;
   max-width: 120px;
 }
+
+input {
+  margin-left: 10%;
+  margin-top: .8%;
+  margin-bottom: .8%;
+}
+
 
 #ask-question-button-submit {
   background-color: #f26925;
