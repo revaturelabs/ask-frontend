@@ -18,7 +18,7 @@
             <mat-basic-chip class="need-space">{{ t.name }}</mat-basic-chip>
           </ng-container>
         </ng-template>
-        <mat-basic-chip *ngIf="i == limit" triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)"
+        <mat-basic-chip *ngIf="i == limit" id="skillTagPopover_{{response.id}}" triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)"
           [ngbPopover]="popContent">
           +{{ expertTags.length - i }}
         </mat-basic-chip>
