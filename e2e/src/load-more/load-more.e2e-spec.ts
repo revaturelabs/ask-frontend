@@ -12,7 +12,7 @@ describe('answer a question as an expert', () => {
   });
 
   it('should show all results', () => {
-    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title'));
+    const ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(true);
 
@@ -20,7 +20,7 @@ describe('answer a question as an expert', () => {
   });
 
   it('should not give you more than 40 after ', () =>{
-    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
+    const ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(false);
 
