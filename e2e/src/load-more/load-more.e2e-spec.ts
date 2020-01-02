@@ -31,7 +31,7 @@ describe('answer a question as an expert', () => {
   });
 
   it('should give us filtered results', () => {
-    //counts all the mat-chip's that have "JavaScript" in the text
+    
     page.filterInput();
     
     expect(element.all(by.cssContainingText('.mat-chips > .mat-chip', 'JavaScript')).count())
@@ -41,7 +41,7 @@ describe('answer a question as an expert', () => {
 
 
   afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
+   
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
