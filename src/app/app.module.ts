@@ -26,6 +26,10 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
+import { SkilltagPipe } from './static/response/skilltag.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent,
+    SkilltagPipe
   ],
   imports: [
     BrowserModule,
@@ -58,8 +63,11 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
     MaterialImportModule,
     HttpClientModule,
     ReactiveFormsModule,
+    LMarkdownEditorModule,
+    MarkdownModule.forRoot(),
+    NgbModule,
   ],
-  providers: [AuthGuard], 
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
