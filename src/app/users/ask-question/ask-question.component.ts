@@ -12,9 +12,11 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
-//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+// Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+// Markdowns
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 /**
  * @title Ask Question
@@ -43,8 +45,11 @@ export class AskQuestionComponent implements OnInit {
   tags: string[] = [];
   allTagsFromServer: string[] = [];
 
-  //image file
+  // image file
   selectedFile: File = null;
+
+  options: Markdownoptions = new Markdownoptions();
+  public mode = 'editor';
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
     HTMLInputElement
@@ -71,6 +76,8 @@ export class AskQuestionComponent implements OnInit {
         this.allTagsFromServer.push(tags[index].name);
       }
     });
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
   }
 
   add(event: MatChipInputEvent): void {
@@ -188,7 +195,7 @@ export class AskQuestionComponent implements OnInit {
       },
       (err) => {
         console.log("Image upload was unsuccessful" + err);
-      })
+      });
   }
 
   ngOnInit() {

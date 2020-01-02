@@ -32,5 +32,13 @@ export class PreviewQuestionComponent implements OnInit {
     this.router.navigate([`/view-question/`]);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  sethigh(){
+    let classes = {
+      question: true,
+      high: this.question.highlightedResponseId != null
+    }
+    return classes;
+  }
 }

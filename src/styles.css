@@ -11,6 +11,10 @@ body {
     background-color: #f5f5f5;
 }
 
+.mockplaceholder {
+    color: #9a9a9a;
+}
+
 .need-space {
     margin:5px 0px;
 }

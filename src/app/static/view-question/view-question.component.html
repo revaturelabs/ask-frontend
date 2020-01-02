@@ -9,4 +9,4 @@
 <div class="response-component" *ngFor="let response of questionResponses">
   <app-response [response]="response"></app-response>
 </div>
-  <app-enter-response *ngIf="this.authService.account.expert"></app-enter-response>
+  <app-enter-response (newResponse)="refreshPage()" *ngIf="this.authService.account.expert"></app-enter-response>
