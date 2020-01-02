@@ -17,13 +17,14 @@
           <!-- index allows for collapse of skills -->
           <mat-basic-chip *ngIf="i < limit" selected>{{ tag.name }}</mat-basic-chip>
           <ng-template #popContent>
-            <ng-container *ngFor="let t of hiddenExpertTags">
-              <br>
-              <mat-basic-chip class="need-space">{{ t.name }}</mat-basic-chip>
-            </ng-container>
+            <mat-chip-list dense class="mat-chip-list-stacked skillsetPopover" aria-orientation="vertical">
+              <ng-container *ngFor="let t of hiddenExpertTags">
+                <mat-basic-chip class="need-space">{{ t.name }}</mat-basic-chip>
+              </ng-container>
+            </mat-chip-list>
           </ng-template>
-          <mat-basic-chip *ngIf="i == limit" id="skillTagPopover_{{response.id}}" triggers="mouseenter:mouseleave"
-            (mouseover)="showTagsList(i)" [ngbPopover]="popContent">
+          <mat-basic-chip *ngIf="i == limit" id="skillTagPopover_{{response.id}}" data-placement="top"
+            triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)" [ngbPopover]="popContent">
             +{{ expertTags.length - i }}
           </mat-basic-chip>
         </div>
@@ -36,5 +37,6 @@
           Highlight Answer
         </button>
       </mat-card-actions>
+    </mat-card-content>
   </div>
 </mat-card>
