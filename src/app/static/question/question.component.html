@@ -13,7 +13,7 @@
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <div class="mat-chips" *ngFor="let tag of question.associatedTags">
-      <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
+      <mat-chip id="singleChip" color="primary" selected>{{ tag.name }}</mat-chip>
     </div>
   </mat-chip-list>
 </mat-card>
