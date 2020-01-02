@@ -4,9 +4,7 @@
       {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content  [id]="'r='+response.id">
-    <p>{{ response.body }}</p>
-    <!-- <button mat-button (click)="removeResponse(response)" class="btn btn-danger"><i class="fa fa-remove">Remove</i></button> -->
-    <!-- <button mat-button (click)="editResponse(response)" class="btn btn-light"><i class="fa fa-pencil">Edit</i></button> -->
+    <p><maekdown>{{ response.body }}</maekdown></p>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <mat-card-subtitle>{{ responderName }}'s skillset:</mat-card-subtitle>
