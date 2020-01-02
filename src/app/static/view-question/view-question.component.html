@@ -7,6 +7,6 @@
 </div>
 
 <div class="response-component" *ngFor="let response of questionResponses">
-  <app-response (click)="ngOnInit()" [response]="response"></app-response>
+  <app-response (click)="refreshPage()" [response]="response"></app-response>
 </div>
   <app-enter-response *ngIf="this.authService.account.expert"></app-enter-response>

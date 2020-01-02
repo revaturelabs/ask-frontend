@@ -57,7 +57,7 @@ export class ResponseComponent implements OnInit {
           });
         },
       );
-  };
+  }
 
   onNewResponse(response: Response) {
     this.responses.unshift(response);

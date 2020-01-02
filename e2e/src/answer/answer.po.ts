@@ -16,11 +16,13 @@ export class AnswerPage extends AppPage {
     element(by.id('q=' + question)).click();
   }
   highlightResponse(response: number) {
+    browser.waitForAngularEnabled(false);
     browser
       .actions()
       .mouseMove(element(by.id('r=' + response)))
       .perform();
     browser.sleep(1000);
-    element(by.id('btn7')).click();
+    element(by.id('btn' + response)).click();
+    element(by.id('r=' + response)).click();
   }
 }
