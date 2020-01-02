@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
+    "angular-material-protractor": "^3.2.0",
     "bootstrap": "^4.4.1",
     "brace": "^0.11.1",
     "font-awesome": "^4.7.0",

@@ -13,7 +13,6 @@ describe('answer a question as an expert', () => {
   it('should add a new question', () => {
     page.selectQuestion(1);
     expect('').toBe('');
-    browser.sleep(5000);
   });
 
   afterEach(async () => {
