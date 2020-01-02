@@ -73,9 +73,4 @@ export class EnterResponseComponent implements OnInit {
       this.updatedResponse.emit(response);
     });
   }
-
-  // *****************
-  // * Testing Stuff
-  // *****************
-
 }
