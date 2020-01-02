@@ -33,9 +33,12 @@ export class ViewQuestionComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.refreshPage();
+  }
+  refreshPage() {
     // Getting the selected question ID from the QuestionService that was set in the PreviewQuestionComponent
     const selectedQuestionId = this.questionService.getQuestionId();
 
