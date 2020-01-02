@@ -56,7 +56,8 @@ export class EnterResponseComponent implements OnInit {
           this._snackBar.open('Thank you for your Response', ' ', {
             duration: 3000,
           });
-          this.router.navigate(['/expert-questions']);
+          this.response.body = null;
+          this.router.navigate(['/view-question']);
         },
         failure => {
           this._snackBar.open('Response Submission Failed', ' ', {
