@@ -19,7 +19,7 @@ describe('answer a question as an expert', () => {
 
     expect(ele.isPresent()).toBe(true);
 
-    //browser.sleep(5000);
+    
   });
 
   it('should not give you more than 40', () => {
@@ -28,16 +28,17 @@ describe('answer a question as an expert', () => {
 
     expect(ele.isPresent()).toBe(false);
 
-    //browser.sleep(5000);
   });
 
   it('should give us filtered results', () => {
+    //counts all the mat-chip's that have "JavaScript" in the text
     page.filterInput();
     
-    expect(page.arr.length).toBe(page.amt);
-
-    browser.sleep(5000);
+    expect(element.all(by.cssContainingText('.mat-chips > .mat-chip', 'JavaScript')).count())
+      .toBe(element.all(by.css('.question-card')).count());
   });
+
+
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
