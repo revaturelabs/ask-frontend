@@ -6,6 +6,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 @Component({
   selector: 'app-enter-response',
@@ -24,6 +25,8 @@ export class EnterResponseComponent implements OnInit {
     body: '',
     creationDate: null,
   };
+  private options = new Markdownoptions();
+  public mode = 'editor';
 
   constructor(
     private responseService: ResponseService,
@@ -37,6 +40,7 @@ export class EnterResponseComponent implements OnInit {
 
   ngOnInit() {
     this.questionId = this.questionService.getQuestionId();
+    this.options.hideIcons = ['FullScreen'];
   }
 
   addResponse(body) {
