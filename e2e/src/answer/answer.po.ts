@@ -12,9 +12,6 @@ export class AnswerPage extends AppPage {
     this.login(1);
     element(by.css('[routerlink="/user-questions"]')).click();
   }
-  selectQuestion(question: number) {
-    element(by.id('q=' + question)).click();
-  }
   highlightResponse(response: number) {
     browser.waitForAngularEnabled(false);
     browser
@@ -24,5 +21,17 @@ export class AnswerPage extends AppPage {
     browser.sleep(1000);
     element(by.id('btn' + response)).click();
     element(by.id('r=' + response)).click();
+  }
+  selectQuestion(question: number) {
+    element(by.id('q=' + question)).click();
+  }
+  getAnswerBody() {
+    return element(by.css('textarea[name="body"]'));
+  }
+  enterTestData() {
+    element(by.css('textarea[name="body"]')).sendKeys('Test');
+  }
+  selectSubmit() {
+    element(by.css('mat-card-actions>button>span')).click();
   }
 }

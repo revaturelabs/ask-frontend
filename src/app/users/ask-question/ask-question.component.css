@@ -1,22 +1,20 @@
 .ask-question-container {
-  display: inline-flex;
+  display: flex;
   min-height: 40%;
-  min-width: 550px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+
   flex-direction: column;
   border: 1.5px solid #55698d;
   background-color:#ffffff;
-  position: absolute;
+  position: relative;
   top: 65%;
-  left: 50%;
-  transform: translate(-50%, -300px);
-}
 
-@media only screen and (max-height: 600px) {
-  .ask-question-container {
-    overflow: scroll;
-    height: 200px;
-    transform: translate(-50%, -80%);
-  }
+  border-radius: 3px;
+  
 }
 
 textarea {
@@ -29,21 +27,32 @@ h3 {
   padding: 7px 4% 7px 4%;
   color: #ffffff;
   position: absolute;
-  width: 92.1%;
-  transform: translate( 0, -20px);
+  width: 100%;
 }
 
 mat-form-field{
   margin: 0 10% 0 10%;
 }
 
+.bunched {
+  width: 100%;
+}
+
 button {
   padding: 0;
-  margin: 2%;
+  margin-right: 10%;
+  margin-bottom: 2.5%;
   width: 40%;
-  left: 69%;
+  float: right;
   max-width: 120px;
 }
+
+input {
+  margin-left: 10%;
+  margin-top: .8%;
+  margin-bottom: .8%;
+}
+
 
 #ask-question-button-submit {
   background-color: #f26925;
