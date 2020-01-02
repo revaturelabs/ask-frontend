@@ -12,7 +12,6 @@ describe('FilteredQuestionListComponent', () => {
 
   let component: FilteredQuestionListComponent;
   let fixture: ComponentFixture<FilteredQuestionListComponent>;
-  let questionServiceStub: Partial<QuestionService>;
 
   class QuestionServiceStub {
     questionId: 0;
@@ -21,9 +20,6 @@ describe('FilteredQuestionListComponent', () => {
     }
   }
 
-  questionServiceStub = {
-    questionId: 0
-  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FilteredQuestionListComponent],
