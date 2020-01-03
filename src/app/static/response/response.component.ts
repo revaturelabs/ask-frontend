@@ -44,7 +44,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     private router: Router,
   ) {}
 
-  highlightResponse = (event, selectedResponse) => {
+  highlightResponse(event, selectedResponse) {
     this.http
       .patch(
         `${this.env}/${this.response.questionId}/highlightedResponseId`,
@@ -175,25 +175,24 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     const plusHidden = 40;
 
     let index = 0;
+    this.limit = this.expertTags.length;
 
     let roomForSkills;
 
     if (respName) {
       if (respName.offsetWidth) {
         roomForSkills = (responseWidth - respName.offsetWidth - plusHidden);
+        for (const et of this.expertTags) {
+          chipWidth += ((et.name.length * letter) + padding + margin);
+          if (chipWidth < roomForSkills) {
+            index++;
+          } else {
+            this.hiddenExpertTags.push(et);
+          }
+        }
+        this.limit = index;
       }
     }
-
-    for (const et of this.expertTags) {
-      chipWidth += ((et.name.length * letter) + padding + margin);
-      if (chipWidth < roomForSkills) {
-        index++;
-      } else {
-        this.hiddenExpertTags.push(et);
-      }
-    }
-
-    this.limit = index;
     this.showTagsList(index);
   }
 }
