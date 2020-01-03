@@ -13,7 +13,7 @@ describe('workspace-project App', () => {
   it('should show total response equivalence', () => {
 
     
-    page.getTitleText().then(function(text)
+    page.getMsgCountText().then(function(text)
     { 
       //console.log(text)
       var fetchNumStr = text.split(':')[1];
