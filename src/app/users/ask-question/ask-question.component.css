@@ -48,11 +48,13 @@ button {
 }
 
 input {
-  margin-left: 10%;
   margin-top: .8%;
   margin-bottom: .8%;
 }
 
+#ask-question-button-upload {
+  margin-left: 10%;
+}
 
 #ask-question-button-submit {
   background-color: #f26925;
