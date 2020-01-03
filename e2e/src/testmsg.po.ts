@@ -12,7 +12,7 @@ login(user: number) {
   element(by.css('[type="submit"]')).click();
 }
 
-  getTitleText() {
+  getMsgCountText() {
    return element(by.css('app-view-question .msg-count')).getText() as Promise<string>;
 
   }
