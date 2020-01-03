@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FilteredQuestionListComponent implements OnInit {
   hasBeenFiltered: boolean = false;
+  loadMoreEnable: boolean = true;
   filteredUri: string;
   questions: Question[];
   pageNumber: number = 0;
@@ -25,6 +26,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   setFilteredStatusAndRefreshQuestions(newFilteredStatus: boolean) {
     this.pageNumber = 0;
+    this.loadMoreEnable = true;
     this.hasBeenFiltered = newFilteredStatus;
     if (this.hasBeenFiltered === false) {
       this.refreshQuestions();
@@ -63,8 +65,8 @@ export class FilteredQuestionListComponent implements OnInit {
       this.questions.push.apply( this.questions, questionsRes);
       if (questionsRes.length === 0) {
         this._snackBar.open('No more results!', 'OK', { duration: 3000 });
+        this.loadMoreEnable = false;
         this.pageNumber = 0;
-        (document.getElementById('loadMore') as HTMLInputElement).disabled = true
       }
     });
 
