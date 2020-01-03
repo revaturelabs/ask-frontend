@@ -7,19 +7,16 @@
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title [id]="'q2='+question.id" (click)="viewQuestion(question.id)" > {{ question.head }}</mat-card-title>
     <mat-card-subtitle>
-      Posted by {{ question.user.username }} on {{ question.creationDate | date: 'shortDate' }}</mat-card-subtitle>
+      Posted by {{ question.user.username }} on {{ question.creationDate | date: 'shortDate' }}<br> <span> Total Responses: {{question.responses.length}}</span></mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-chip-list class="mat-chip-list-wrapper">
-      <div class = "mat-chips" *ngFor="let tag of question.associatedTags">
-        <mat-chip selected>{{ tag.name }}</mat-chip>
-      </div>
-    </mat-chip-list>
-    <p hidden>
-      {{ question.body }}
-    </p>
+      <mat-chip-list class="mat-chip-list-wrapper">
+        <div class="mat-chips" *ngFor="let tag of question.associatedTags">
+          <mat-chip selected>{{ tag.name }}</mat-chip>
+        </div>
+      </mat-chip-list>
+      <p hidden>
+        {{ question.body }}
+      </p>
   </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button (click)="viewQuestion(question.id)">VIEW</button>
-  </mat-card-actions> -->
 </mat-card>

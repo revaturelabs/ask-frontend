@@ -13,12 +13,4 @@ describe('workspace-project App', () => {
     console.log(page.getTitleText());
     expect(page.getTitleText()).toEqual('Select User');
   });
-
-  // afterEach(async () => {
-  //   // Assert that there are no errors emitted from the browser
-  //   const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-  //   expect(logs).not.toContain(jasmine.objectContaining({
-  //     level: logging.Level.SEVERE,
-  //   } as logging.Entry));
-  // });
 });
