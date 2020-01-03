@@ -17,7 +17,7 @@ login(user: number) {
 
   }
 
-  //count all the response elements this figure will compare with response variable for testing
+  // count all the response elements this figure will compare with response variable for testing
   getListofAllResponses(){
     var respElements = element.all(by.css('.response-component'));
     return respElements;
