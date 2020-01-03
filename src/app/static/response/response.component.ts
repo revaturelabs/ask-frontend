@@ -148,7 +148,13 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     // these represent the actual entire response element and get the width so
     // that we can find how much room is available to display skills on one line
     const respDiv = document.getElementById('responseCard_' + this.response.id) as HTMLDivElement;
-    const responseWidth = respDiv.offsetWidth;
+    let responseWidth;
+
+    if (respDiv) {
+      if (respDiv.offsetWidth) {
+        responseWidth = respDiv.offsetWidth;
+      }
+    }
 
     // this represents the text that shows the name of the expert who posted the
     // response and signifies their skillset "Zach Marshello's skillset:"
@@ -170,7 +176,13 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
 
     let index = 0;
 
-    const roomForSkills = (responseWidth - respName.offsetWidth - plusHidden);
+    let roomForSkills;
+
+    if (respName) {
+      if (respName.offsetWidth) {
+        roomForSkills = (responseWidth - respName.offsetWidth - plusHidden);
+      }
+    }
 
     for (const et of this.expertTags) {
       chipWidth += ((et.name.length * letter) + padding + margin);
