@@ -9,15 +9,14 @@ export class QuestionPage extends AppPage {
     element(by.css('button[routerlink="/ask"]')).click();
   }
   enterAskQuestionTitle(title: string) {
-    // const titleElement = element(by.css('[placeholder="Title: "]'));
-    // AMPtor.clickElementByModel('input-element').click();
-    // titleElement.sendKeys(title);
-    // titleElement.click();
-    // titleElement.sendKeys(title);
+    const titleElement = element(by.css('[placeholder="Title: "]'));
+    titleElement.sendKeys(title);
+    titleElement.click();
+    titleElement.sendKeys(title);
   }
   enterAskQuestionCategory(category: string) {
     element(by.css('[placeholder="Select category tags: "]')).click();
-    element(by.css('mat-option[ng-reflect-value="' + category + '"] > .mat-option-text'));
+    element(by.css('mat-option[ng-reflect-value="' + category + '"]')).click();
   }
   enterAskQuestionBody(question: string) {
     element(by.css('.ace_text')).click();
