@@ -7,6 +7,7 @@ export interface Question {
   username: string;
   tags?: string[];
   userId: number;
+  user?: User;
   head: string;
   body: string;
   creationDate: string;

@@ -11,14 +11,6 @@ import { By } from '@angular/platform-browser';
 import { Tag } from 'src/app/models/Tag';
 import { User } from 'src/app/models/User';
 
-// const MockResponse: Response = {
-//   user: 'Mock',
-//   id: 4,
-//   responderId: 1,
-//   questionId: 2,
-//   body: 'Mock Body',
-//   creationDate: 'Mock Date'
-// };
 const MockUser: User = {
   id: 1,
   username: 'string',
@@ -32,9 +24,10 @@ const MockQuestion: Question = {
   username: null,
   tags: ['Java' , 'Angular'],
   userId: 203,
+  user: MockUser,
   head: 'Mock Header',
   body: 'Mock Body',
-  creationDate: 'Mock Date',
+  creationDate: '2015-12-17',
   associatedTags: [],
   responses: [],
   highlightedResponseId: null
@@ -94,16 +87,20 @@ describe('PreviewQuestionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PreviewQuestionComponent);
     component = fixture.componentInstance;
-    // const questionDe  = fixture.debugElement.query(By.css('.question'));
-    // const questionEl = questionDe.nativeElement;
     component.question = MockQuestion;
     component.tag = MockTag;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    console.log(component);
     expect(component).toBeTruthy();
   });
+
+  it('should test click for viewQuestion', () => {
+    const el = fixture.debugElement.query(By.css('mat-card-title'));
+    el.triggerEventHandler('click', {});
+    fixture.detectChanges();
+    expect(component.viewQuestion).toBeDefined();
+});
 
 });
