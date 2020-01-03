@@ -58,3 +58,9 @@ mat-chip-list mat-card-subtitle {
 div.mat-chips{
   margin: 4px;
 }
+.skillsetPopover {
+  margin:0px;
+}
+.need-space {
+  margin: 2px;
+}

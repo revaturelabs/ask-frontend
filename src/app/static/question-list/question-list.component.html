@@ -1,6 +1,7 @@
 <div class="preview-questions">
   <app-preview-question
-    *ngFor="let question of questions"
+    *ngFor="let question of questions; let i = index"
     [question]="question"
+    id="previewquestion_{{i}}"
   ></app-preview-question>
 </div>

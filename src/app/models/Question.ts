@@ -1,5 +1,6 @@
-import { Tag } from '../models/Tag';
-import { Response } from '../models/Response';
+import { Tag } from './Tag';
+import { Response } from './Response';
+import { Image } from './Image';
 
 export interface Question {
   id: number;
@@ -12,4 +13,5 @@ export interface Question {
   associatedTags: Tag[];
   responses: Response[];
   highlightedResponseId: Response;
+  images: Image[];
 }
