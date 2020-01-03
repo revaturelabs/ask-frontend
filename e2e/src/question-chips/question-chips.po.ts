@@ -9,9 +9,7 @@ export class QuestionChips extends AppPage {
   //EX: a java related question should have Java chip
   getToQuestionPage() {
     this.navigateTo();
-    this.login(3);
-    element(by.css('div.preview-questions > app-preview-question:nth-of-type(17) .mat-card-title')).click();
-   // browser.sleep(2000);
+    this.login(2);
   }
 
   

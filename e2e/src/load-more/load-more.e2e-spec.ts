@@ -13,9 +13,9 @@ describe('answer a question as an expert', () => {
   });
 
 
-  it('should show all results', () => {
+  it('should show more results when load more is clicked', () => {
     page.loadingMoreQuestions();
-    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title'));
+    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(21) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(true);
 

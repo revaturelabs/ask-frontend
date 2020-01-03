@@ -8,7 +8,7 @@ export class AnswerPage extends AppPage {
     element(by.css('[routerlink="/expert-questions"]')).click();
   }
   selectQuestion(question: number) {
-    element(by.id('q=' + question)).click();
+    element(by.css('div.preview-questions > app-preview-question:nth-of-type('+question+') .mat-card-title')).click();
   }
   getAnswerBody() {
     return element(by.css('textarea[name="body"]'));

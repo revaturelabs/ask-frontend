@@ -26,8 +26,8 @@ export class QuestionComponent implements OnInit {
     let observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
       (result: any) => {
-        let imageURL = 'data:image/jpeg;base64,' + result[0].image;
-        this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
+       /* let imageURL = 'data:image/jpeg;base64,' + result[0].image;
+        this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);*/
       },
       err => {
         console.log('Invalid');
