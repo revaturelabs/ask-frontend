@@ -13,7 +13,7 @@ describe('count large expert skill set', () => {
 
     it('move the mouse to the hover button and show the expert hidden skills', () => {
         page.selectQuestion(1);
-        let hoverSkillSet = element(by.id('skillTagPopover_' + 2));
+        const hoverSkillSet = element(by.id('skillTagPopover_' + 2));
         browser.actions().mouseMove(hoverSkillSet).perform();
         browser.sleep(10000);
     });
