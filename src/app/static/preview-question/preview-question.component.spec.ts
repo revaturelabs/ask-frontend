@@ -30,7 +30,8 @@ const MockQuestion: Question = {
   creationDate: '2015-12-17',
   associatedTags: [],
   responses: [],
-  highlightedResponseId: null
+  highlightedResponseId: null,
+  images: null
 };
 const MockTag: Tag = {
   id: 1,
