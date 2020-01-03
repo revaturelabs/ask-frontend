@@ -6,18 +6,30 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/models/Question';
 import { Response } from 'src/app/models/Response';
+import { Observable } from 'rxjs';
+import { By } from '@angular/platform-browser';
+import { Tag } from 'src/app/models/Tag';
+import { User } from 'src/app/models/User';
 
-const MockResponse: Response = {
-  user: 'Mock',
-  id: 4,
-  responderId: 1,
-  questionId: 2,
-  body: 'Mock Body',
-  creationDate: 'Mock Date'
+// const MockResponse: Response = {
+//   user: 'Mock',
+//   id: 4,
+//   responderId: 1,
+//   questionId: 2,
+//   body: 'Mock Body',
+//   creationDate: 'Mock Date'
+// };
+const MockUser: User = {
+  id: 1,
+  username: 'string',
+  isExpert: false,
+  expertTags: [],
+  questions: [],
+  responses: []
 };
-const MockQuestionService: Question = {
+const MockQuestion: Question = {
   id: 201,
-  username: 'Mock',
+  username: null,
   tags: ['Java' , 'Angular'],
   userId: 203,
   head: 'Mock Header',
@@ -25,9 +37,43 @@ const MockQuestionService: Question = {
   creationDate: 'Mock Date',
   associatedTags: [],
   responses: [],
-  highlightedResponseId: MockResponse
+  highlightedResponseId: null
 };
-const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+const MockTag: Tag = {
+  id: 1,
+  name: 'Mock Tag'
+};
+class MockQuestionService {
+  id = 1;
+  getQuestions(): Observable<Question[]> {
+    return new Observable<Question[]>();
+  }
+  setQuestionId(questionId) {
+    this.id = questionId;
+  }
+  getQuestionId() {
+    return this.id;
+  }
+  getQuestionById(questionId): Observable<Question> {
+    return new Observable<Question>();
+  }
+  getQuestionImages(questionId): Observable<Question> {
+    return new Observable<Question>();
+  }
+  saveQuestion(question: Question): Observable<Question> {
+    return new Observable<Question>();
+  }
+  updateQuestion(question: Question): Observable<Question> {
+    return new Observable<Question>();
+  }
+  highlightResponse(question: Question): Observable<Question> {
+    return new Observable<Question>();
+  }
+  removePost(question: Question | number): Observable<Question> {
+    return new Observable<Question>();
+  }
+}
+const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
 describe('PreviewQuestionComponent', () => {
   let component: PreviewQuestionComponent;
@@ -37,7 +83,7 @@ describe('PreviewQuestionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ PreviewQuestionComponent ],
       providers: [
-        {provide: QuestionService, useValue: MockQuestionService},
+        {provide: QuestionService, useClass: MockQuestionService},
         {provide: Router, useValue: routerSpy}
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -48,11 +94,15 @@ describe('PreviewQuestionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PreviewQuestionComponent);
     component = fixture.componentInstance;
-    component.question = MockQuestionService;
+    // const questionDe  = fixture.debugElement.query(By.css('.question'));
+    // const questionEl = questionDe.nativeElement;
+    component.question = MockQuestion;
+    component.tag = MockTag;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    console.log(component);
     expect(component).toBeTruthy();
   });
 

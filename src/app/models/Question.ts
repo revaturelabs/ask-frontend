@@ -1,5 +1,6 @@
 import { Tag } from '../models/Tag';
 import { Response } from '../models/Response';
+import { User } from './User';
 
 export interface Question {
   id: number;
