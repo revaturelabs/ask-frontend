@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
+import { Question } from 'src/app/models/Question';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 /**
@@ -25,7 +26,7 @@ export class ViewQuestionComponent implements OnInit {
    * appropriate -- it will only ever be the question selected by the user elsewhere
    * on the site.
    */
-  @Output() selectedQuestion: any;
+  @Output() selectedQuestion: Question;
   responses: Response[];
   highlightedResponse: any;
   questionResponses: any;
@@ -38,14 +39,16 @@ export class ViewQuestionComponent implements OnInit {
   ngOnInit() {
     this.refreshPage();
   }
+
   refreshPage() {
     // Getting the selected question ID from the QuestionService that was set in the PreviewQuestionComponent
     const selectedQuestionId = this.questionService.getQuestionId();
 
-    this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
-      this.selectedQuestion = question;
+    setTimeout(() => {
+      this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
+       this.selectedQuestion = question;
+      });
     });
-
 
     // Retrieving the highlighted response for a specified question
     this.questionService
@@ -67,10 +70,12 @@ export class ViewQuestionComponent implements OnInit {
       });
 
     // Retrieving responses based on the selected question
+    setTimeout(() => {
     this.questionService
       .getQuestionById(selectedQuestionId)
       .subscribe(result => {
         this.questionResponses = result.responses;
       });
+    });
   }
 }
