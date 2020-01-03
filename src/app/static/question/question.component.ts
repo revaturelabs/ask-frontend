@@ -19,14 +19,14 @@ export class QuestionComponent implements OnInit {
   ) {}
 
   image: any;
-  imageSize: boolean = false;
+  imageSize = false;
 
   getPhotos() {
-    let questionId: number = this.questionService.getQuestionId();
-    let observable = this.questionService.getQuestionImages(questionId);
+    const questionId: number = this.questionService.getQuestionId();
+    const observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
       (result: any) => {
-        let imageURL = 'data:image/jpeg;base64,' + result[0].image;
+        const imageURL = 'data:image/jpeg;base64,' + result[0].image;
         this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
       },
       err => {
