@@ -46,10 +46,8 @@ export class ViewQuestionComponent implements OnInit {
     // Getting the selected question ID from the QuestionService that was set in the PreviewQuestionComponent
     const selectedQuestionId = this.questionService.getQuestionId();
 
-    setTimeout(() => {
-      this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
-       this.selectedQuestion = question;
-      });
+    this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
+      this.selectedQuestion = question;
     });
 
     // Retrieving the highlighted response for a specified question

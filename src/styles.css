@@ -13,6 +13,14 @@ body {
 
 .mockplaceholder {
     color: #9a9a9a;
+    margin: 0 10% 0 10%;
+    width: 100%;
+    text-align: left;
+}
+
+md-editor{
+    margin: 0 10% 0 10%;
+    text-align: left;
 }
 
 .need-space {

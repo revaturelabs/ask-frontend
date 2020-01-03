@@ -3,9 +3,8 @@
   <h3>
     Ask an Expert
   </h3>
-  <br><br><br>
-
   <!-- Angular Material form, input field for Title -->
+  
   <mat-form-field>
     <input matInput [(ngModel)]="this.form.head" #qTitle placeholder="Title: ">
   </mat-form-field>
@@ -32,20 +31,17 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <!-- Angular Material form, input field (texarea) for Question -->
-  <mat-form-field>
+  <!-- Markdown Editor for Question -->
     <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-    <textarea hidden matInput [(ngModel)]="this.form.body" #qQuestion></textarea>
     <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
       [mode]="mode" [options]="options" required maxlength="500">
     </md-editor>
-  </mat-form-field>
 
   <!-- Submit button -->
   <div class="bunched">
     <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" #fileInput>
     <button mat-raised-button id="ask-question-button-submit"
-      (click)="submitQuestion($event, qTitle.value, qTags.value, qQuestion.value)">Submit</button>
+      (click)="submitQuestion($event, qTitle.value, qTags.value, this.form.body)">Submit</button>
   </div>
-
+  
 </div>

@@ -15,25 +15,25 @@ describe('highlighting answer and checking question preview has a border in "/qu
         page.selectResponse(6);
         page.clickHighlight(6);
         browser.sleep(1000);
-        page.navigateToAllQuestions();
+        page.navigateToUserQuestions();
         expect(element(by.id('q1=16')).getAttribute('class')).toContain('high');
         browser.sleep(2000);
     });
 
     it('should not highlight question preview that does not have a highlighted response', () => {
-        page.navigateToAllQuestions();
+        page.navigateToUserQuestions();
         expect(element(by.id('q1=6')).getAttribute('class')).toEqual('question-card mat-card question');
         browser.sleep(2000);
     });
 
     afterEach(async () => {
         // Assert that there are no errors emitted from the browser
-        const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+       const logs = await browser.manage().logs().get(logging.Type.BROWSER);
 
-        expect(logs).not.toContain(jasmine.objectContaining({
-            level: logging.Level.SEVERE,
+       expect(logs).not.toContain(jasmine.objectContaining({
+           level: logging.Level.SEVERE,
 
-        } as logging.Entry));
+       } as logging.Entry));
     });
 
 });
