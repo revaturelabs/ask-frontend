@@ -8,8 +8,8 @@ export class Highlight extends AppPage{
         this.login(1);
         element(by.css('[routerlink="/user-questions"')).click();
     }
-    navigateToAllQuestions(){
-        element(by.css('[routerlink="/questions"')).click();
+    navigateToUserQuestions(){
+        element(by.css('[routerlink="/user-questions"')).click();
     }
 
     selectQuestion(question: number) {
