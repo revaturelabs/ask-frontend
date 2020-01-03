@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'src/app/models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from '../../services/question.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-question',
@@ -18,16 +18,22 @@ export class QuestionComponent implements OnInit {
     private domSanitizer: DomSanitizer,
   ) {}
 
-  image: any;
-  imageSize: boolean = false;
+  images: SafeUrl[];
+  imageSize = false;
 
   getPhotos() {
-    let questionId: number = this.questionService.getQuestionId();
-    let observable = this.questionService.getQuestionImages(questionId);
+    const questionId: number = this.questionService.getQuestionId();
+    const observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
-      (result: any) => {
-        let imageURL = 'data:image/jpeg;base64,' + result[0].image;
-        this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);
+      result => {
+        if (result) {
+          for (const img of result) {
+            const imageURL = 'data:image/jpeg;base64,' + img.image;
+            this.images.push(this.domSanitizer.bypassSecurityTrustUrl(imageURL));
+          }
+        } else {
+          this.images = [];
+        }
       },
       err => {
         console.log('Invalid');

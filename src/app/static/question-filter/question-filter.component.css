@@ -2,6 +2,7 @@ mat-toolbar{
   background-color: #ffffff;
   top: 50px;
   box-shadow: 0 0 1px 1px #00000044;
+  padding-top: 7px;
 }
 .tag-chip-list {
   top: 8px;
