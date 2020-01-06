@@ -34,7 +34,7 @@
   <!-- Markdown Editor for Question -->
     <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
     <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
-      [mode]="mode" [options]="options" required maxlength="500">
+      [mode]="mode" [options]="options" required maxlength="500" *ngIf="cleanMarkdown">
     </md-editor>
 
   <!-- Submit button -->
