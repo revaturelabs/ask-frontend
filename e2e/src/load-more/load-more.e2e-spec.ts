@@ -38,7 +38,7 @@ describe('answer a question as an expert', () => {
       .toBe(element.all(by.css('.question-card')).count());
   });
 
-  it('should give us more questions even when we filter', () => {
+  it('should give us more questions even when we filter and click load more', () => {
     page.filterALot();
     const got = element(by.css('#loadMore')).click().then(()=>{return true;});
     expect(got).toBeTruthy();
