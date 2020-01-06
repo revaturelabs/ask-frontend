@@ -44,6 +44,7 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   filtTags: string[] = [];
+  firstfilt: boolean;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
   cleanMarkdown = true;
@@ -75,6 +76,7 @@ export class AskQuestionComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) {
+    this.firstfilt = true;
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
@@ -171,7 +173,7 @@ export class AskQuestionComponent implements OnInit {
   // selected image
   onFileSelected(event) {
     event.preventDefault();
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = event.target.files[0] as File;
   }
 
   // Submit Question
@@ -193,8 +195,8 @@ export class AskQuestionComponent implements OnInit {
         response => {
         // uploads the picture with form if there is one
         if (this.selectedFile !== null) {
-          this.onUpload(response.id);
-        }
+         this.onUpload(response.id);
+           }
         // clears the form
         this.clearForm();
         // custom snackbar message
