@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewInit, AfterViewChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from 'src/app/services/response.service';
 import { QuestionService } from '../../services/question.service';
@@ -16,6 +16,7 @@ import { Tag } from '../../models/Tag';
 })
 export class ResponseComponent implements OnInit, AfterViewChecked {
   @Input() response: Response;
+  @Output() highlighted = new EventEmitter<boolean>();
 
   responses: Response[];
   isEdit = false;
@@ -53,6 +54,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
       )
       .subscribe(
         data => {
+          this.highlighted.emit(true);
           this._snackBar.open('Highlighted Answer', 'OK', {
             duration: 2000,
           });
