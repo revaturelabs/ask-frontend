@@ -9,6 +9,8 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <p><markdown>{{ highlight.body }}</markdown></p>
+    <!--<p><md-editor name="Content" [(ngModel)]="highlight.body" [mode]="mode" [options]="options" required maxlength="500">
+    </md-editor></p>-->
+    <p [innerHTML]="highlight.body | markdown"></p>
   </mat-card-content>
 </mat-card>
