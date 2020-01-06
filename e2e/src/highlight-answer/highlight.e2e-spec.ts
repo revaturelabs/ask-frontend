@@ -16,6 +16,7 @@ describe('highlighting answer and checking question preview has a border in "/qu
         page.clickHighlight(6);
         browser.sleep(1000);
         page.navigateToUserQuestions();
+        browser.sleep(1000);
         expect(element(by.id('q1=16')).getAttribute('class')).toContain('high');
         browser.sleep(2000);
     });

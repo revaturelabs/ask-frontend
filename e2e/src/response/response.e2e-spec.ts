@@ -11,8 +11,8 @@ describe('highlight a response from a question', () => {
   });
 
   it('should not leave the page after highlighting a response', () => {
-    page.selectQuestion(16);
-    page.highlightResponse(6);
+    page.selectQuestion(6);
+    page.highlightResponse(5);
     expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/view-question');
     browser.sleep(3000);
   });
