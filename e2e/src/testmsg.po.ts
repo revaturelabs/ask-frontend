@@ -28,8 +28,7 @@ login(user: number) {
   navigateToResponse() {
     this.navigateTo();
     this.login(3);
-   // browser.sleep(2* 1000);
     element(by.cssContainingText('.mat-card-title', ' Java Collections')).click();
-    browser.sleep(1 *  1000);
+    browser.sleep(1000);
   }
 }
