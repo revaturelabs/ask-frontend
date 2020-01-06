@@ -9,23 +9,23 @@ export class Highlight extends AppPage {
         element(by.css('[routerlink="/user-questions"')).click();
     }
 
-    navigateToUserQuestions(){
+    navigateToUserQuestions() {
+        browser.sleep(1000);
         element(by.css('[routerlink="/user-questions"')).click();
     }
     selectQuestion(question: number) {
         element(by.id('q2=' + question)).click();
       }
     selectResponse(response: number) {
+        browser.sleep(2000);
         browser.waitForAngularEnabled(false);
         browser
             .actions()
             .mouseMove(element(by.id('r=' + response)))
             .perform();
-        browser.sleep(1000);
-        element(by.id('btn' + response)).click();
-        element(by.id('r=' + response)).click();
     }
     clickHighlight(response: number) {
+        browser.sleep(1000);
         element(by.id( 'btn' + response)).click();
     }
 }
