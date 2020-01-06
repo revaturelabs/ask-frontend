@@ -8,7 +8,7 @@
     >
   </mat-card-header>
   <mat-card-content>
-    <p><markdown>{{ question?.body }}</markdown></p>
+    <p [innerHTML]="question?.body | markdown"></p>
     <ng-container *ngFor ="let image of images">
       <img mat-card-image [src]='image' alt='Image Not Found' [class]="imageSize" (click)="imageSize=!imageSize"/>
     </ng-container>

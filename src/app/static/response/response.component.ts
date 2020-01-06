@@ -62,6 +62,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
           });
         },
       );
+    this.resizedPage();
   }
 
   onNewResponse(response: Response) {
