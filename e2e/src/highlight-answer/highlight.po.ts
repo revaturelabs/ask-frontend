@@ -16,7 +16,14 @@ export class Highlight extends AppPage {
         element(by.id('q2=' + question)).click();
       }
     selectResponse(response: number) {
-        browser.actions().mouseMove(element(by.id('r=' + response))).perform();
+        browser.waitForAngularEnabled(false);
+        browser
+            .actions()
+            .mouseMove(element(by.id('r=' + response)))
+            .perform();
+        browser.sleep(1000);
+        element(by.id('btn' + response)).click();
+        element(by.id('r=' + response)).click();
     }
     clickHighlight(response: number) {
         element(by.id( 'btn' + response)).click();

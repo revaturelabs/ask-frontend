@@ -13,7 +13,7 @@ describe('highlighting answer and checking question preview has a border in "/qu
     it('should highlight question preview if an answer is highlighted', () => {
         page.selectQuestion(16);
         page.selectResponse(6);
-        page.clickHighlight(6);
+        // page.clickHighlight(6);
         browser.sleep(1000);
         page.navigateToUserQuestions();
         expect(element(by.id('q1=16')).getAttribute('class')).toContain('high');
