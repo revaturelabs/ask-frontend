@@ -8,8 +8,9 @@ export class Highlight extends AppPage {
         this.login(1);
         element(by.css('[routerlink="/user-questions"')).click();
     }
-    navigateToAllQuestions() {
-        element(by.css('[routerlink="/questions"')).click();
+
+    navigateToUserQuestions(){
+        element(by.css('[routerlink="/user-questions"')).click();
     }
     selectQuestion(question: number) {
         element(by.id('q2=' + question)).click();
@@ -18,7 +19,6 @@ export class Highlight extends AppPage {
         browser.actions().mouseMove(element(by.id('r=' + response))).perform();
     }
     clickHighlight(response: number) {
-
-        element(by.id('btn' + response)).click();
+        element(by.id( 'btn' + response)).click();
     }
 }
