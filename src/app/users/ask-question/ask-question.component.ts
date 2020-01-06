@@ -34,6 +34,29 @@ import { Markdownoptions } from 'src/app/models/markdownoptions';
   styleUrls: ['./ask-question.component.css'],
 })
 export class AskQuestionComponent implements OnInit {
+
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
+      startWith(null),
+      map((tag: string | null) =>
+        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
+      ),
+    );
+    this.ts.getTags().subscribe(tags => {
+      for (let index = 0; index < tags.length; index++) {
+        this.allTagsFromServer.push(tags[index].name);
+      }
+    });
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
+  }
   form: FormGroup;
   visible = true;
   selectable = true;
@@ -58,28 +81,12 @@ export class AskQuestionComponent implements OnInit {
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef<HTMLInputElement>;
 
-  constructor(
-    private fb: FormBuilder,
-    private ts: TagService,
-    private _snackBar: MatSnackBar,
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router,
-  ) {
-    this.filteredTags = this.tagCtrl.valueChanges.pipe(
-      startWith(null),
-      map((tag: string | null) =>
-        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
-      ),
-    );
-    this.ts.getTags().subscribe(tags => {
-      for (let index = 0; index < tags.length; index++) {
-        this.allTagsFromServer.push(tags[index].name);
-      }
-    });
-    this.options.hideIcons = ['FullScreen'];
-    this.options.showPreviewPanel = false;
-  }
+  questionInput: Object = {
+    questionerId: null,
+    head: null,
+    tagList: null,
+    body: null,
+  };
 
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
@@ -90,9 +97,9 @@ export class AskQuestionComponent implements OnInit {
 
       // Add our tag
       if ((value || '').trim()) {
-        //Preventing user inputting chips(tags) that are not in the list from the server
+        // Preventing user inputting chips(tags) that are not in the list from the server
         if (!this.allTagsFromServer.includes(value)) {
-          //Angular Material Snack-bar
+          // Angular Material Snack-bar
           this._snackBar.open(
             'Tag not recognized! Please choose from the list.',
             'OK, I will',
@@ -134,20 +141,13 @@ export class AskQuestionComponent implements OnInit {
     );
   }
 
-  questionInput: Object = {
-    questionerId: null,
-    head: null,
-    tagList: null,
-    body: null,
-  };
-
-  //selected image
+  // selected image
   onFileSelected(event) {
     event.preventDefault();
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = event.target.files[0] as File;
   }
 
-  //Submit Question
+  // Submit Question
   submitQuestion = function(event, head, tagList, body) {
     event.preventDefault();
     this.questionInput.questionerId = this.authService.account.id;
@@ -155,47 +155,43 @@ export class AskQuestionComponent implements OnInit {
     this.questionInput.tagList = this.tags;
     this.questionInput.body = body;
 
-    //Validating if title or question body is empty
+    // Validating if title or question body is empty
     if (head.trim() === '') {
       this._snackBar.open('Please enter a title', 'OK', { duration: 4000 });
     } else if (body.trim() === '') {
       this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
-      //POST-ing the form
+      // POST-ing the form
       this.http.post(environment.questionsUri, this.questionInput).subscribe(
-
-			response => {
-        //uploads the picture with form if there is one
+        response => {
+        // uploads the picture with form if there is one
         if (this.selectedFile !== null) {
-          this.onUpload(response.id);
-        }
+         this.onUpload(response.id);
+           }
         //clears the form
         this.clearForm();
-        //custom snackbar message
-        this._snackBar.open("Your question is submitted!", "OK!", {duration: 3000});
+        // custom snackbar message
+        this._snackBar.open('Your question is submitted!', 'OK!', {duration: 3000});
       }, 
       failed => {
-        this._snackBar.open("Your question failed to submit!", "OK", {duration: 3000});
-      })};
+        this._snackBar.open('Your question failed to submit!', 'OK', {duration: 3000});
+      });
+    }
   };
 
-  sendImage() {
-
-  }
-
-  //submitting the images
+  // submitting the images
   onUpload(questionId) {
     event.preventDefault();
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
       .subscribe(response => {
-        console.log("Image successfully uploaded with the question");
-        //clears the image name of input field
+        console.log('Image successfully uploaded with the question');
+        // clears the image name of input field
         this.fileInput.nativeElement.value = '';
       },
       (err) => {
-        console.log("Image upload was unsuccessful" + err);
+        console.log('Image upload was unsuccessful' + err);
       });
   }
 
@@ -203,7 +199,7 @@ export class AskQuestionComponent implements OnInit {
     this.clearForm();
   }
 
-  //clears the form, chips(tags) and selected file of image
+  // clears the form, chips(tags) and selected file of image
   clearForm() {
     this.form = this.fb.group({
       questionerId: null,
