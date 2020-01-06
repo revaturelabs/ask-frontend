@@ -70,13 +70,11 @@ export class ViewQuestionComponent implements OnInit {
       });
 
     // Retrieving responses based on the selected question
-    setTimeout(() => {
     this.questionService
       .getQuestionById(selectedQuestionId)
       .subscribe(result => {
         this.questionResponses = result.responses;
         this.totalMsgCount = result.responses.length;
       });
-    });
   }
 }

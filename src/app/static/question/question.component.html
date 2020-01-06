@@ -13,7 +13,7 @@
       <img mat-card-image [src]='image' alt='Image Not Found' [class]="imageSize" (click)="imageSize=!imageSize"/>
     </ng-container>
   </mat-card-content>
-  <br/>
+  <br>
   <mat-chip-list class="mat-chip-list-wrapper">
     <div class="mat-chips" *ngFor="let tag of question?.associatedTags">
       <mat-chip color="primary" selected>{{ tag.name }}</mat-chip>
