@@ -1,7 +1,4 @@
-<mat-card [id]="'q1='+question.id" class="question-card" [ngClass]="sethigh()">
-  <!-- <div *ngIf="sethigh().high">
-<p>High</p>
-  </div> -->
+<mat-card [id]="'q1='+question.id" class="question-card" [ngClass]="sethigh()" (window:resize)="resizedPage()">
   <mat-card-header>
     <!-- Profile avatar would go here -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -11,8 +8,20 @@
   </mat-card-header>
   <mat-card-content>
       <mat-chip-list class="mat-chip-list-wrapper">
-        <div class="mat-chips" *ngFor="let tag of question.associatedTags">
-          <mat-chip selected>{{ tag.name }}</mat-chip>
+        <div class="mat-chips" *ngFor="let tag of question.associatedTags | skilltag: limit; let i = index">
+          <!-- index allows for collapse of tags -->
+          <mat-chip selected *ngIf="i < limit" selected>{{ tag.name }}</mat-chip>
+          <ng-template #popContent>
+            <mat-chip-list dense class="mat-chip-list-stacked" aria-orientation="vertical">
+              <ng-container *ngFor="let t of hiddenTags">
+                <mat-chip selected class="need-space">{{ t.name }}</mat-chip>
+              </ng-container>
+            </mat-chip-list>
+          </ng-template>
+          <mat-chip selected *ngIf="i == limit" id="associatedTagPopover_{{question.id}}" data-placement="top"
+            triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)" [ngbPopover]="popContent">
+            +{{ this.question.associatedTags.length - i }}
+          </mat-chip>
         </div>
       </mat-chip-list>
       <p hidden>
