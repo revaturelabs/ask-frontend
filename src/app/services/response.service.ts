@@ -25,8 +25,7 @@ export class ResponseService {
   saveResponse(response: Response): Observable<Response> {
     return this.http.post<Response>(
       environment.responsesUri,
-      response,
-      // httpOptions,
+      response
     );
   }
   updateResponse(response: Response): Observable<Response> {

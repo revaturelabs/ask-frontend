@@ -15,7 +15,5 @@ export class AnswerPage extends AppPage {
 
     // element(by.css('#loadMore')).click();
     //element(by.css('div.preview-questions > app-preview-question:nth-of-type(22) .mat-card-title')).click();
-    
-    
   }
 }

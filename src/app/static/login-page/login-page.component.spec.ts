@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
-  var authServiceStub: Partial<AuthService>;
+  let authServiceStub: Partial<AuthService>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
