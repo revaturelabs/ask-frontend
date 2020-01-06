@@ -4,7 +4,7 @@ import { callbackify } from 'util';
 
 describe('count large expert skill set', () => {
     let page: SkillsetPage;
-
+    browser.manage().timeouts().implicitlyWait(30000);
 
     beforeEach(() => {
         page = new SkillsetPage();
@@ -15,7 +15,7 @@ describe('count large expert skill set', () => {
         page.selectQuestion(1);
         const hoverSkillSet = element(by.id('skillTagPopover_' + 2));
         browser.actions().mouseMove(hoverSkillSet).perform();
-        browser.sleep(10000);
+        // browser.sleep(10000);
     });
 
     afterEach(async () => {
