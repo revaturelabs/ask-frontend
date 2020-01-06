@@ -44,7 +44,7 @@ describe('answer a question as an expert', () => {
     expect(got).toBeTruthy();
   });
 
-  it('should not give us more questions when we load all available questions',()=>{
+  it('should not give us more questions when we load all available questions using filters',()=>{
     page.filterALot();
     element(by.css('#loadMore')).click();
     element(by.css('#loadMore')).click();
