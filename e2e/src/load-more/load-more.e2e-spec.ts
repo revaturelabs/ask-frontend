@@ -38,7 +38,20 @@ describe('answer a question as an expert', () => {
       .toBe(element.all(by.css('.question-card')).count());
   });
 
+  it('should give us more questions even when we filter', () => {
+    page.filterALot();
+    const got = element(by.css('#loadMore')).click().then(()=>{return true;});
+    expect(got).toBeTruthy();
+  });
 
+  it('should not give us more questions when we load all available questions',()=>{
+    page.filterALot();
+    element(by.css('#loadMore')).click();
+    element(by.css('#loadMore')).click();
+    
+     expect(element(by.css('#loadMore')).isPresent()).toBeFalsy();
+ 
+  });
 
   afterEach(async () => {
    

@@ -2,12 +2,17 @@
 <app-question-filter (newFilteredUri)="setQuestionsListWithFilteredUri($event)" (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"></app-question-filter>
 <app-question-list [questions]="questions"></app-question-list>
 <div>
-
+    <!--
     <button *ngIf="this.hasBeenFiltered && onNextPage()" mat-raised-button class="pagination-prev" (click)="previousPage()">Prev</button>
+    
     <button *ngIf="this.hasBeenFiltered && !onNextPage()" mat-raised-button class="pagination-prev" disabled>Prev</button>
     <button *ngIf="this.hasBeenFiltered" mat-raised-button class="page-number" disabled>Page: {{this.pageNumber+1}}</button>
-    <button *ngIf="this.hasBeenFiltered" mat-raised-button class="pagination-next" (click)="nextPage()">Next</button>
+    <button *ngIf="this.hasBeenFiltered  && loadMoreEnable" mat-raised-button class="pagination-next" (click)="nextPage()">Next</button>
+    <button *ngIf="this.hasBeenFiltered  && !loadMoreEnable" mat-raised-button class="pagination-next" disabled>Next</button> -->
+
+    
+    
     <div class="load-more" >
-        <button id="loadMore" *ngIf="!hasBeenFiltered && loadMoreEnable" mat-raised-button (click)="loadMore()">Load More</button>
+        <button id="loadMore" *ngIf="loadMoreEnable" mat-raised-button (click)="loadMore()">Load More</button>
     </div>
 </div>
