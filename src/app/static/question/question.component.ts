@@ -42,6 +42,7 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.images = [];
     this.getPhotos();
   }
 }
