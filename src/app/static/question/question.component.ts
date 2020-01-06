@@ -25,11 +25,6 @@ export class QuestionComponent implements OnInit {
     const questionId: number = this.questionService.getQuestionId();
     const observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
-<<<<<<< HEAD
-      (result: any) => {
-       /* let imageURL = 'data:image/jpeg;base64,' + result[0].image;
-        this.image = this.domSanitizer.bypassSecurityTrustUrl(imageURL);*/
-=======
       result => {
         if (result) {
           for (const img of result) {
@@ -39,7 +34,6 @@ export class QuestionComponent implements OnInit {
         } else {
           this.images = [];
         }
->>>>>>> f8d6733dc33ec408c18b348697dd72a1961f98cb
       },
       err => {
         console.log('Invalid');
