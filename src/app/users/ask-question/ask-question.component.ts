@@ -44,7 +44,6 @@ export class AskQuestionComponent implements OnInit {
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
   filtTags: string[] = [];
-  firstfilt: boolean;
   tags: string[] = [];
   allTagsFromServer: string[] = [];
   cleanMarkdown = true;
@@ -76,7 +75,6 @@ export class AskQuestionComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
   ) {
-    this.firstfilt = true;
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
