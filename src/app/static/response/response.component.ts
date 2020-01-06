@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from 'src/app/services/response.service';
 import { QuestionService } from '../../services/question.service';
@@ -42,6 +42,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     private _snackBar: MatSnackBar,
     private responseService: ResponseService,
     private router: Router,
+    private cdRef: ChangeDetectorRef,
   ) {}
 
   highlightResponse(event, selectedResponse) {
@@ -138,9 +139,8 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
   // allows the page to load the view before resizedPage checks the width of
   // elements in the DOM. it can't get these widths until the view is checked.
   ngAfterViewChecked() {
-    setTimeout(() => {
-      this.resizedPage();
-    });
+    this.resizedPage();
+    this.cdRef.detectChanges();
   }
 
   // this is called both after the view check by angular and every time the page
