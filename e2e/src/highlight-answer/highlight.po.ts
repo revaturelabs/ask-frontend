@@ -12,6 +12,7 @@ export class Highlight extends AppPage {
     navigateToUserQuestions() {
         browser.sleep(1000);
         element(by.css('[routerlink="/user-questions"')).click();
+        browser.sleep(1000);
     }
     selectQuestion(question: number) {
         element(by.id('q2=' + question)).click();
