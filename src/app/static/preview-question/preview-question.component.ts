@@ -66,7 +66,7 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     const classes = {
       question: true,
       high: this.question.highlightedResponseId != null
-    }
+    };
     return classes;
   }
 

@@ -2,10 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PreviewQuestionComponent } from './preview-question.component';
 import { QuestionService } from 'src/app/services/question.service';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/models/Question';
-import { Response } from 'src/app/models/Response';
 import { Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { Tag } from 'src/app/models/Tag';
@@ -78,7 +77,8 @@ describe('PreviewQuestionComponent', () => {
       declarations: [ PreviewQuestionComponent ],
       providers: [
         {provide: QuestionService, useClass: MockQuestionService},
-        {provide: Router, useValue: routerSpy}
+        {provide: Router, useValue: routerSpy},
+        {provide: ChangeDetectorRef}
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
