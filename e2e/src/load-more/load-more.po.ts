@@ -78,6 +78,11 @@ export class AnswerPage extends AppPage {
     browser.actions().sendKeys(Key.ARROW_DOWN).perform();
 
     browser.actions().sendKeys(Key.ENTER).perform();
+    element(by.css('#catInput')).sendKeys('Spring');
+
+    browser.actions().sendKeys(Key.ARROW_DOWN).perform();
+
+    browser.actions().sendKeys(Key.ENTER).perform();
 
 
     element(by.css('#filterBtn')).click();

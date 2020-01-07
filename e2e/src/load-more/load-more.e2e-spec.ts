@@ -3,7 +3,7 @@ import { browser, logging, element, by } from 'protractor';
 import { callbackify } from 'util';
 import { FilteredQuestionListComponent } from '../../../src/app/static/filtered-question-list/filtered-question-list.component';
 
-describe('answer a question as an expert', () => {
+describe('questions list page', () => {
   let page: AnswerPage;
 
   beforeEach(() => {
@@ -46,7 +46,6 @@ describe('answer a question as an expert', () => {
 
   it('should not give us more questions when we load all available questions using filters',()=>{
     page.filterALot();
-    element(by.css('#loadMore')).click();
     element(by.css('#loadMore')).click();
     
      expect(element(by.css('#loadMore')).isPresent()).toBeFalsy();
