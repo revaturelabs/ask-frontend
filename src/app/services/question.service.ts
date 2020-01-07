@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from '../models/Question';
 import { environment } from '../../environments/environment';
+import { Image } from '../models/Image';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -32,8 +33,8 @@ export class QuestionService {
     return this.http.get<Question>(`${environment.questionsUri}/${questionId}`);
   }
 
-  getQuestionImages(questionId): Observable<Question> {
-    return this.http.get<Question>(`${environment.questionsUri}/${questionId}/images`);
+  getQuestionImages(questionId): Observable<Image[]> {
+    return this.http.get<Image[]>(`${environment.questionsUri}/${questionId}/images`);
   }
 
   saveQuestion(question: Question): Observable<Question> {

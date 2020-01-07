@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
-
-import { environment } from '../../../environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-filtered-question-list',
@@ -13,6 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class FilteredQuestionListComponent implements OnInit {
   hasBeenFiltered: boolean = false;
+  loadMoreEnable: boolean = true;
   filteredUri: string;
   questions: Question[];
   pageNumber: number = 0;
@@ -25,6 +25,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   setFilteredStatusAndRefreshQuestions(newFilteredStatus: boolean) {
     this.pageNumber = 0;
+    this.loadMoreEnable = true;
     this.hasBeenFiltered = newFilteredStatus;
     if (this.hasBeenFiltered === false) {
       this.refreshQuestions();
@@ -36,7 +37,7 @@ export class FilteredQuestionListComponent implements OnInit {
     this.http.get<Question[]>(this.filteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
       if (this.questions.length === 0) {
-        this._snackBar.open("No results!", "OK", {duration: 3000});
+        this._snackBar.open('No results!', 'OK', {duration: 3000});
       }
     });
   }
@@ -63,8 +64,8 @@ export class FilteredQuestionListComponent implements OnInit {
       this.questions.push.apply( this.questions, questionsRes);
       if (questionsRes.length === 0) {
         this._snackBar.open('No more results!', 'OK', { duration: 3000 });
+        this.loadMoreEnable = false;
         this.pageNumber = 0;
-        (document.getElementById('loadMore') as HTMLInputElement).disabled = true;
       }
     });
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
+import { Question } from 'src/app/models/Question';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 /**
@@ -25,10 +26,12 @@ export class ViewQuestionComponent implements OnInit {
    * appropriate -- it will only ever be the question selected by the user elsewhere
    * on the site.
    */
-  @Output() selectedQuestion: any;
+  @Output() selectedQuestion: Question;
   responses: Response[];
   highlightedResponse: any;
   questionResponses: any;
+  totalMsgCount: number = 0; // count the messages of the responses. initialize to 0;
+
 
   constructor(
     private questionService: QuestionService,
@@ -38,6 +41,7 @@ export class ViewQuestionComponent implements OnInit {
   ngOnInit() {
     this.refreshPage();
   }
+
   refreshPage() {
     // Getting the selected question ID from the QuestionService that was set in the PreviewQuestionComponent
     const selectedQuestionId = this.questionService.getQuestionId();
@@ -45,7 +49,6 @@ export class ViewQuestionComponent implements OnInit {
     this.questionService.getQuestionById(selectedQuestionId).subscribe(question => {
       this.selectedQuestion = question;
     });
-
 
     // Retrieving the highlighted response for a specified question
     this.questionService
@@ -71,6 +74,7 @@ export class ViewQuestionComponent implements OnInit {
       .getQuestionById(selectedQuestionId)
       .subscribe(result => {
         this.questionResponses = result.responses;
+        this.totalMsgCount = result.responses.length;
       });
   }
 }
