@@ -12,14 +12,14 @@
           <!-- index allows for collapse of tags -->
           <mat-chip selected *ngIf="i < limit" selected>{{ tag.name }}</mat-chip>
           <ng-template #popContent>
-            <mat-chip-list dense class="mat-chip-list-stacked" aria-orientation="vertical">
+            <mat-chip-list dense class="mat-chip-list-stacked tagPopover" aria-orientation="vertical">
               <ng-container *ngFor="let t of hiddenTags">
                 <mat-chip selected class="need-space">{{ t.name }}</mat-chip>
               </ng-container>
             </mat-chip-list>
           </ng-template>
           <mat-chip selected *ngIf="i == limit" id="associatedTagPopover_{{question.id}}" data-placement="top"
-            triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)" [ngbPopover]="popContent">
+            triggers="mouseenter:click,touchstart:touchstart" (mouseover)="showTagsList(i)" [ngbPopover]="popContent" popoverClass="tagPopover">
             +{{ this.question.associatedTags.length - i }}
           </mat-chip>
         </div>

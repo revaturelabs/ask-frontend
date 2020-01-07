@@ -88,8 +88,8 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     let chipWidth = 0;
 
     // these are constants representing extra space around/between chips
-    const padding = 8;
-    const margin = 4;
+    const padding = 12;
+    const margin = 9;
 
     // this is the average width in pixels of a character in a chip
     const letter = 8;
