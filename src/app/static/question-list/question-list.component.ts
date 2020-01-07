@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Question } from '../../models/Question';
+import { QuestionService } from 'src/app/services/question.service';
+import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-question-list',
@@ -8,8 +12,11 @@ import { Question } from '../../models/Question';
 })
 export class QuestionListComponent implements OnInit {
   @Input() questions: Question[];
+  pageNumber = 0;
 
-  constructor() {}
+  constructor(private questionService: QuestionService,  private http: HttpClient, private _snackBar: MatSnackBar) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+ 
 }
