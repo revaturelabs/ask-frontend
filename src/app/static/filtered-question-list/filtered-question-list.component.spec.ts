@@ -25,7 +25,7 @@ describe('ResponseService', () => {
     const service: ResponseService = TestBed.get(ResponseService);
     expect(service).toBeTruthy();
   });
-
+  /*
   it('should return expected Response (HttpClient called once)', () => {
     const expectedResponse: Response = {
       user: 'Adam Shipe',
@@ -63,6 +63,7 @@ describe('ResponseService', () => {
     );
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
+  */
 
 });
 

@@ -1,12 +1,101 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ResponseService } from './response.service';
-import { defer } from 'rxjs';
 import { Response } from 'src/app/models/Response';
+import { asyncData } from '../../test';
 
 describe('ResponseService', () => {
-  let responseDummyData: Response[];
+  const responseDummyData: Response[] = [{
+    id: 1,
+    responderId: 3,
+    body: 'Collections is a framework that is designed to store the objects and manipulate the design to store the objects.',
+    creationDate: '2019-10-29T04:00:00.000+0000',
+    questionId: 1,
+    user: {
+      id: 3,
+      username: 'Zach Marshello',
+      expertTags: [
+        {
+          id: 15,
+          name: 'Architecture'
+        },
+        {
+          id: 3,
+          name: 'Java'
+        },
+        {
+          id: 31,
+          name: 'CSS'
+        },
+        {
+          id: 1,
+          name: 'JavaScript'
+        }
+      ],
+      expert: true
+    }
+  },
+  {
+    id: 2,
+    responderId: 4,
+    body: 'Collections are any objects that implement the Interface Collection.',
+    creationDate: '2019-10-31T04:00:00.000+0000',
+    questionId: 1,
+    user: {
+      id: 3,
+      username: 'Zach Marshello',
+      expertTags: [
+        {
+          id: 15,
+          name: 'Architecture'
+        },
+        {
+          id: 3,
+          name: 'Java'
+        },
+        {
+          id: 31,
+          name: 'CSS'
+        },
+        {
+          id: 1,
+          name: 'JavaScript'
+        }
+      ],
+      expert: true
+    }
+  },
+  {
+    id: 3,
+    responderId: 6,
+    body: 'Collections is a utility class in Java to work with objects that implement the Interface Collection.',
+    creationDate: '2019-10-30T04:00:00.000+0000',
+    questionId: 1,
+    user: {
+      id: 3,
+      username: 'Zach Marshello',
+      expertTags: [
+        {
+          id: 15,
+          name: 'Architecture'
+        },
+        {
+          id: 3,
+          name: 'Java'
+        },
+        {
+          id: 31,
+          name: 'CSS'
+        },
+        {
+          id: 1,
+          name: 'JavaScript'
+        }
+      ],
+      expert: true
+    }
+  }
+  ];
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule]
   }));
@@ -15,101 +104,8 @@ describe('ResponseService', () => {
   let responseService: ResponseService;
 
   beforeEach(() => {
-    // TODO: spy on other methods too
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
     responseService = new ResponseService(httpClientSpy as any);
-
-    responseDummyData = [{
-      id: 1,
-      responderId: 3,
-      body: 'Collections is a framework that is designed to store the objects and manipulate the design to store the objects.',
-      creationDate: '2019-10-29T04:00:00.000+0000',
-      questionId: 1,
-      user: {
-        id: 3,
-        username: 'Zach Marshello',
-        expertTags: [
-          {
-            id: 15,
-            name: 'Architecture'
-          },
-          {
-            id: 3,
-            name: 'Java'
-          },
-          {
-            id: 31,
-            name: 'CSS'
-          },
-          {
-            id: 1,
-            name: 'JavaScript'
-          }
-        ],
-        expert: true
-      }
-    },
-    {
-      id: 2,
-      responderId: 4,
-      body: 'Collections are any objects that implement the Interface Collection.',
-      creationDate: '2019-10-31T04:00:00.000+0000',
-      questionId: 1,
-      user: {
-        id: 3,
-        username: 'Zach Marshello',
-        expertTags: [
-          {
-            id: 15,
-            name: 'Architecture'
-          },
-          {
-            id: 3,
-            name: 'Java'
-          },
-          {
-            id: 31,
-            name: 'CSS'
-          },
-          {
-            id: 1,
-            name: 'JavaScript'
-          }
-        ],
-        expert: true
-      }
-    },
-    {
-      id: 3,
-      responderId: 6,
-      body: 'Collections is a utility class in Java to work with objects that implement the Interface Collection.',
-      creationDate: '2019-10-30T04:00:00.000+0000',
-      questionId: 1,
-      user: {
-        id: 3,
-        username: 'Zach Marshello',
-        expertTags: [
-          {
-            id: 15,
-            name: 'Architecture'
-          },
-          {
-            id: 3,
-            name: 'Java'
-          },
-          {
-            id: 31,
-            name: 'CSS'
-          },
-          {
-            id: 1,
-            name: 'JavaScript'
-          }
-        ],
-        expert: true
-      }
-    }
-    ];
   });
 
   it('should be created', () => {
@@ -153,7 +149,9 @@ describe('ResponseService', () => {
   it('should delete a response (HttpClient called once)', () => {
     httpClientSpy.delete.and.returnValue(asyncData(1));
     responseService.removeResponse(1).subscribe(
-        value => expect(value.id).toBeUndefined()
+      (result: any) => {
+        expect(result).toBe(1);
+    }
       );
     expect(httpClientSpy.delete.calls.count()).toBe(1, 'one call');
   });
@@ -169,10 +167,3 @@ describe('ResponseService', () => {
   });
 
 });
-
-function asyncData<T>(data: T) {
-  return defer(() => Promise.resolve(data));
-}
-function asyncError<T>(errorObject: any) {
-  return defer(() => Promise.reject(errorObject));
-}
