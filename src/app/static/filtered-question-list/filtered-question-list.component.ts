@@ -68,7 +68,6 @@ export class FilteredQuestionListComponent implements OnInit {
         this.pageNumber = 0;
       }
     });
-
   }
   nextPage() {
     this.pageNumber++;

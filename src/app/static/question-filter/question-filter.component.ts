@@ -131,6 +131,9 @@ export class QuestionFilterComponent implements OnInit {
     );
   }
 
+  // Uri format for local host tags are case sensitive
+  // get all questions that hava tag Java
+  // http://localhost:1337/questions/search/?requireAll=false&tag=Java
   createFilteredQuestionsUri() {
     this.filteredStatus = true;
     this.newFilteredStatus.emit(this.filteredStatus);
