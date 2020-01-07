@@ -35,28 +35,6 @@ import { Markdownoptions } from 'src/app/models/markdownoptions';
 })
 export class AskQuestionComponent implements OnInit {
 
-  constructor(
-    private fb: FormBuilder,
-    private ts: TagService,
-    private _snackBar: MatSnackBar,
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router,
-  ) {
-    this.filteredTags = this.tagCtrl.valueChanges.pipe(
-      startWith(null),
-      map((tag: string | null) =>
-        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
-      ),
-    );
-    this.ts.getTags().subscribe(tags => {
-      for (let index = 0; index < tags.length; index++) {
-        this.allTagsFromServer.push(tags[index].name);
-      }
-    });
-    this.options.hideIcons = ['FullScreen'];
-    this.options.showPreviewPanel = false;
-  }
   form: FormGroup;
   visible = true;
   selectable = true;
@@ -65,6 +43,7 @@ export class AskQuestionComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
+  filtTags: string[] = [];
   tags: string[] = [];
   allTagsFromServer: string[] = [];
   cleanMarkdown = true;
@@ -88,6 +67,30 @@ export class AskQuestionComponent implements OnInit {
     body: null,
   };
 
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private _snackBar: MatSnackBar,
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
+      startWith(null),
+      map((tag: string | null) =>
+        tag ? this._filter(tag) : this.filtTags,
+      ),
+    );
+    this.ts.getTags().subscribe(tags => {
+      for (let index = 0; index < tags.length; index++) {
+        this.allTagsFromServer.push(tags[index].name);
+      }
+      this.filterTags();
+    });
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
+  }
+
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
@@ -98,15 +101,24 @@ export class AskQuestionComponent implements OnInit {
       // Add our tag
       if ((value || '').trim()) {
         // Preventing user inputting chips(tags) that are not in the list from the server
-        if (!this.allTagsFromServer.includes(value)) {
+        if (!this.filtTags.includes(value)) {
           // Angular Material Snack-bar
-          this._snackBar.open(
-            'Tag not recognized! Please choose from the list.',
-            'OK, I will',
-            { duration: 4000 },
-          );
+          if (this.allTagsFromServer.includes(value)) {
+            this._snackBar.open(
+              'Tag already chosen! No need to choose it again.',
+              'OK',
+              { duration: 4000 },
+            );
+          } else {
+            this._snackBar.open(
+              'Tag not recognized! Please choose from the list.',
+              'OK, I will',
+              { duration: 4000 },
+            );
+          }
         } else {
           this.tags.push(value.trim());
+          this.filterTags();
         }
       }
 
@@ -119,24 +131,39 @@ export class AskQuestionComponent implements OnInit {
     }
   }
 
+  filterTags(): void {
+    let i = 0;
+    let j = 0;
+    this.filtTags = [];
+    this.allTagsFromServer.forEach(el => {
+      this.filtTags.push(el);
+    });
+    for (i; i < this.tags.length; i++) {
+      j = this.filtTags.indexOf(this.tags[i]);
+      this.filtTags.splice(j, 1);
+    }
+  }
+
   remove(tag: string): void {
     const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);
+      this.filterTags();
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
+    this.filterTags();
     this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTagsFromServer.filter(
+    return this.filtTags.filter(
       tag => tag.toLowerCase().indexOf(filterValue) === 0,
     );
   }
@@ -168,11 +195,11 @@ export class AskQuestionComponent implements OnInit {
         if (this.selectedFile !== null) {
          this.onUpload(response.id);
            }
-        //clears the form
+        // clears the form
         this.clearForm();
         // custom snackbar message
         this._snackBar.open('Your question is submitted!', 'OK!', {duration: 3000});
-      }, 
+      },
       failed => {
         this._snackBar.open('Your question failed to submit!', 'OK', {duration: 3000});
       });
@@ -209,6 +236,7 @@ export class AskQuestionComponent implements OnInit {
     });
     this.cleanMarkdown = false;
     this.tags = [];
+    this.filterTags();
     this.selectedFile = null;
     setTimeout(() =>
       this.cleanMarkdown = true, );
