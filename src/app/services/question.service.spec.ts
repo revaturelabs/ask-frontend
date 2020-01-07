@@ -52,6 +52,7 @@ describe('QuestionService', () => {
                         expert: true
                     }
                 }],
+                images: [],
             },
             {
                 id: 14,
@@ -71,7 +72,8 @@ describe('QuestionService', () => {
                         name: 'Java'
                     }
                 ],
-                responses: []
+                responses: [],
+                images: [],
             },
             {
                 id: 13,
@@ -90,7 +92,8 @@ describe('QuestionService', () => {
                         name: 'Angular'
                     }
                 ],
-                responses: []
+                responses: [],
+                images: [],
             }];
 
     beforeEach(() => TestBed.configureTestingModule({
