@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Tag } from '../models/Tag';
 import { TagService } from './tags.service';
 import { asyncData } from '../../test';
+import { User } from '../models/User';
 
 describe('TagsService', () => {
     const tagDummyData: Tag[] = [
@@ -49,6 +50,31 @@ describe('TagsService', () => {
             name: 'PostgreSQL'
         }];
 
+    const userDummyData: User = {
+    id: 3,
+    username: 'Zach Marshello',
+    expertTags: [
+        {
+            id: 15,
+            name: 'Architecture'
+        },
+        {
+            id: 3,
+            name: 'Java'
+        },
+        {
+            id: 31,
+            name: 'CSS'
+        },
+        {
+            id: 1,
+            name: 'JavaScript'
+        }
+    ],
+    questions: [],
+    responses: [],
+    isExpert: true};
+
     beforeEach(() => TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]
     }));
@@ -75,15 +101,14 @@ describe('TagsService', () => {
         expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
     });
 
-    /*
     it('should get all tags from a expert (HttpClient called once)', () => {
-        httpClientSpy.get.and.returnValue(asyncData(tagDummyData));
-        tagService.getTags().subscribe(
-            response => expect(response).toEqual(tagDummyData, 'expected response'),
-            fail
+        httpClientSpy.get.and.returnValue(asyncData(userDummyData));
+        tagService.getExpertTags(3).subscribe(
+            (result: any) => {
+                expect(result).toBe(userDummyData);
+            }
         );
         expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
     });
-    */
 });
 
