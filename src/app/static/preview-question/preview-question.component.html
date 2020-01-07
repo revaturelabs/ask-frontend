@@ -2,6 +2,7 @@
   <mat-card-header>
     <!-- Profile avatar would go here -->
     <!-- <div mat-card-avatar class="example-header-image"></div> -->
+
     <mat-card-title [id]="'q2='+question.id" (click)="viewQuestion(question.id)" > {{ question.head }}</mat-card-title>
     <mat-card-subtitle>
       Posted by {{ question.user.username }} on {{ question.creationDate | date: 'shortDate' }}<br> <span> Total Responses: {{question.responses.length}}</span></mat-card-subtitle>
