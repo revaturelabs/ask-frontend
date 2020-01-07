@@ -1,7 +1,7 @@
 h1{
   color: #efefef;
   background-color: #474c55;
-  padding: 12px 12px 12px 32px;
+  padding: 12px 12px 52px 32px;
   top: 0;
   font-weight: 400;
   margin: 0;
@@ -31,8 +31,8 @@ h3 {
   padding: 7px 4% 7px 4%;
   color: #ffffff;
   position: absolute;
-  width: 92.1%;
-  transform: translate( 0, -20px);
+  width: 298px;
+  transform: translate( -15px, -1px);
   font-weight: normal;
 }
 mat-form-field{
