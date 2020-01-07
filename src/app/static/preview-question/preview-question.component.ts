@@ -12,7 +12,7 @@ import { Tag } from '../../models/Tag';
  */
 
 /**
- * modified by: Alejandra Huayanca, Manisha Gurung, Seirra Nicholes
+ * Modified by: Alejandra Huayanca, Manisha Gurung, Seirra Nicholes
  */
 
 @Component({
@@ -66,6 +66,8 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     this.hiddenTags = tagsList;
   }
 
+  // this is called to check and highlight the question, if it has a highlighted response
+  // high is a class in css which changes the border for question
   sethigh() {
     const classes = {
       question: true,
