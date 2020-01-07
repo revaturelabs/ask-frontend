@@ -3,8 +3,8 @@
     <mat-card-subtitle>{{ responderName }},
       {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <p>{{ response.body }}</p>
+  <mat-card-content  [id]="'r='+response.id">
+    <p><markdown>{{ response.body }}</markdown></p>
   </mat-card-content>
   <mat-chip-list class="mat-chip-list-wrapper">
     <mat-card-subtitle>{{ responderName }}'s skillset:</mat-card-subtitle>
