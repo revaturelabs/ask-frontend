@@ -12,6 +12,7 @@ describe('workspace-project App', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('Select User');
   });
+<<<<<<< HEAD
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
@@ -20,4 +21,6 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     } as logging.Entry));
   });
+=======
+>>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
 });

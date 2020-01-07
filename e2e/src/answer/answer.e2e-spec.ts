@@ -22,4 +22,17 @@ describe('answer a question as an expert', () => {
     expect(page.getAnswerBody().getText()).toBe('');
     expect(element.all(by.css('.response-card')).count()).toBeGreaterThan(responces);
   });
+<<<<<<< HEAD
+=======
+
+  
+ afterEach(async () => {
+  
+   const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+   expect(logs).not.toContain(jasmine.objectContaining({
+     level: logging.Level.SEVERE,
+   } as logging.Entry));
+ });
+ 
+>>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
 });

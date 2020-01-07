@@ -9,6 +9,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { compileNgModule } from '@angular/compiler';
 import { asyncData } from 'src/test';
+
 describe('FilteredQuestionListComponent', () => {
   let component: FilteredQuestionListComponent;
   let fixture: ComponentFixture<FilteredQuestionListComponent>;
@@ -199,12 +200,20 @@ describe('FilteredQuestionListComponent', () => {
     );
   });
 
-  it('should refresh questions', () => {
+  it('should refresh filtered questions', () => {
     component.hasBeenFiltered = true;
-    spyOn(component, 'getFilteredQuestions');
+    spyOn(component, 'getFilteredQuestions').and.returnValue(asyncData(questionServiceDummyData));
     component.refreshQuestions();
     expect(component.getFilteredQuestions).toHaveBeenCalled();
   });
+
+  it('should refresh unfiltered questions', () => {
+    component.hasBeenFiltered = false;
+    spyOn(questionService, 'getQuestions').and.returnValue(asyncData(questionServiceDummyData));
+    component.refreshQuestions();
+    expect(questionService.getQuestions).toHaveBeenCalled();
+  });
+
 
 
 });

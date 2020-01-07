@@ -42,6 +42,7 @@ export class QuestionFilterComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
+  filtTags: string[] = [];
   tags: string[] = [];
   allTagsFromServer: string[] = [];
   requireAll: string = '?requireAll=false';
@@ -68,13 +69,14 @@ export class QuestionFilterComponent implements OnInit {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
-        tag ? this._filter(tag) : this.allTagsFromServer.slice(),
+        tag ? this._filter(tag) : this.filtTags,
       ),
     );
     this.ts.getTags().subscribe(tags => {
       for (let index = 0; index < tags.length; index++) {
         this.allTagsFromServer.push(tags[index].name);
       }
+      this.filterInputTags();
     });
   }
 
@@ -88,15 +90,24 @@ export class QuestionFilterComponent implements OnInit {
       // Add our tag
       if ((value || '').trim()) {
         //Preventing user inputing chips(tags) that are not in the list from the server
-        if (!this.allTagsFromServer.includes(value)) {
+        if (!this.filtTags.includes(value)) {
           //Angular Material Snack-bar
-          this._snackBar.open(
-            'Tag not recognized! Please choose from the list.',
-            'OK, I will',
-            { duration: 4000 },
-          );
+          if (this.allTagsFromServer.includes(value)) {
+            this._snackBar.open(
+              'Tag already chosen! No need to choose it again.',
+              'OK',
+              { duration: 4000 },
+            );
+          } else {
+            this._snackBar.open(
+              'Tag not recognized! Please choose from the list.',
+              'OK, I will',
+              { duration: 4000 },
+            );
+          }
         } else {
           this.tags.push(value.trim());
+          this.filterInputTags();
         }
       }
 
@@ -114,19 +125,21 @@ export class QuestionFilterComponent implements OnInit {
 
     if (index >= 0) {
       this.tags.splice(index, 1);
+      this.filterInputTags();
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
+    this.filterInputTags();
     this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allTagsFromServer.filter(
+    return this.filtTags.filter(
       tag => tag.toLowerCase().indexOf(filterValue) === 0,
     );
   }
@@ -134,6 +147,18 @@ export class QuestionFilterComponent implements OnInit {
   // Uri format for local host tags are case sensitive
   // get all questions that hava tag Java
   // http://localhost:1337/questions/search/?requireAll=false&tag=Java
+  filterInputTags(): void {
+    let i = 0;
+    let j = 0;
+    this.filtTags = [];
+    this.allTagsFromServer.forEach(el => {
+      this.filtTags.push(el)});
+    for (i; i < this.tags.length; i++) {
+      j = this.filtTags.indexOf(this.tags[i]);
+      this.filtTags.splice(j, 1);
+    }
+  }
+
   createFilteredQuestionsUri() {
     this.filteredStatus = true;
     this.newFilteredStatus.emit(this.filteredStatus);
