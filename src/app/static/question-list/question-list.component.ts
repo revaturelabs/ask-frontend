@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Question } from '../../models/Question';
+
 
 @Component({
   selector: 'app-question-list',
@@ -9,7 +10,7 @@ import { Question } from '../../models/Question';
 export class QuestionListComponent implements OnInit {
   @Input() questions: Question[];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
