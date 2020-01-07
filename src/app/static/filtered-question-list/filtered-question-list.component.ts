@@ -45,10 +45,10 @@ export class FilteredQuestionListComponent implements OnInit {
         this._snackBar.open('No results!', 'OK', { duration: 3000 });
         this.loadMoreEnable = false;
       }
-      if(this.questions.length >= 20){
+      if (this.questions.length >= 20) {
         this.loadMoreEnable = true;
       }
-      
+
     });
   }
 
@@ -85,19 +85,17 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   loadMore() {
-    
+
     console.log(environment.questionsUri);
-      this.pageNumber += 1;
-      this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
-        this.questions.push.apply(this.questions, questionsRes);
-        if (questionsRes.length === 0) {
-          this._snackBar.open('No more results!', 'OK', { duration: 3000 });
-          this.loadMoreEnable = false;
-          this.pageNumber = 0;
-        }
-      });
-
-
+    this.pageNumber += 1;
+    this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
+      this.questions.push.apply(this.questions, questionsRes);
+      if (questionsRes.length === 0) {
+        this._snackBar.open('No more results!', 'OK', { duration: 3000 });
+        this.loadMoreEnable = false;
+        this.pageNumber = 0;
+      }
+    });
   }
 
 

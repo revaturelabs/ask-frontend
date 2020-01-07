@@ -47,6 +47,7 @@ describe('questions list page', () => {
   it('should not give us more questions when we load all available questions using filters',()=>{
     page.filterALot();
     element(by.css('#loadMore')).click();
+    element(by.css('#loadMore')).click();
     
      expect(element(by.css('#loadMore')).isPresent()).toBeFalsy();
  
