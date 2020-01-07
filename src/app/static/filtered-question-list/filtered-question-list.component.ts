@@ -2,15 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
-<<<<<<< HEAD
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-=======
-
-import { environment } from '../../../environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
->>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
 
 @Component({
   selector: 'app-filtered-question-list',
@@ -47,12 +40,8 @@ export class FilteredQuestionListComponent implements OnInit {
     this.http.get<Question[]>(newFilteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
       if (this.questions.length === 0) {
-<<<<<<< HEAD
-        this._snackBar.open('No results!', 'OK', {duration: 3000});
-=======
         this._snackBar.open('No results!', 'OK', { duration: 3000 });
         this.loadMoreEnable = false;
->>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
       }
       if (this.questions.length >= 20) {
         this.loadMoreEnable = true;
@@ -106,7 +95,6 @@ export class FilteredQuestionListComponent implements OnInit {
       }
     });
   }
-<<<<<<< HEAD
   nextPage() {
     this.pageNumber++;
     this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
@@ -134,9 +122,6 @@ export class FilteredQuestionListComponent implements OnInit {
       return false;
     }
   }
-=======
-
->>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
 
   ngOnInit() {
     this.questionService.getQuestions().subscribe(unfilteredQuestions => {

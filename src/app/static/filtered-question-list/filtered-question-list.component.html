@@ -3,11 +3,7 @@
 <app-question-list [questions]="questions"></app-question-list>
 <div>
     <div class="load-more" >
-<<<<<<< HEAD
-        <button id="loadMore" *ngIf="!hasBeenFiltered && loadMoreEnable" mat-raised-button (click)="loadMore()">Load More</button>
-=======
         <button id="loadMore" *ngIf="loadMoreEnable && !hasBeenFiltered" mat-raised-button (click)="loadMore()">Load More</button>
         <button id="loadMore" *ngIf="loadMoreEnable && hasBeenFiltered" mat-raised-button (click)="filterLoadMore()">Load More</button>
->>>>>>> 5a35f0dcf27c68a203250883caf8bd0875956f03
     </div>
 </div>
