@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
-
-import { environment } from '../../../environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 
