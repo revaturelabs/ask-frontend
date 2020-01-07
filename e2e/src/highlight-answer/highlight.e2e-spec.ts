@@ -31,6 +31,7 @@ describe('highlighting answer and checking question preview has a border in "/qu
 
     it('should not highlight question preview that does not have a highlighted response', () => {
         page.navigateToUserQuestions();
+        browser.sleep(1000);
         expect(element(by.id('q1=6')).getAttribute('class')).toEqual('question-card mat-card question');
         browser.sleep(2000);
     });

@@ -10,6 +10,7 @@ export class Highlight extends AppPage {
     navigateToHighlightAnswer() {
         this.navigateTo();
         this.login(1);
+        browser.sleep(1000);
         element(by.css('[routerlink="/user-questions"')).click();
     }
 
