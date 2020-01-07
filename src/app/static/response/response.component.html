@@ -22,7 +22,7 @@
           </mat-chip-list>
         </ng-template>
         <mat-basic-chip *ngIf="i == limit" id="skillTagPopover_{{response.id}}" data-placement="top"
-          triggers="mouseenter:mouseleave" (mouseover)="showTagsList(i)" [ngbPopover]="popContent">
+          triggers="mouseenter:click,touchstart:touchstart" (mouseover)="showTagsList(i)" [ngbPopover]="popContent" popoverClass="skillsetPopover">
           +{{ expertTags.length - i }}
         </mat-basic-chip>
       </div>

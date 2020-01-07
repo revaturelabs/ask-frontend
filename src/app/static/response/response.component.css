@@ -51,7 +51,6 @@ mat-chip-list {
 }
 mat-chip-list mat-card-subtitle {
   color: #979797;
-  /* margin: 0 8px 0 0; */
   margin: 0 8px 0 0;
   font-style: italic;
 }
@@ -60,6 +59,14 @@ div.mat-chips{
 }
 .skillsetPopover {
   margin:0px;
+  border:0px;
+  padding:5px;
+  background-color:none;
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:flex;
+  max-height:398px;
+  flex-wrap:wrap;
 }
 .need-space {
   margin: 2px;

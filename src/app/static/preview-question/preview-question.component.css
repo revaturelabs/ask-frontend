@@ -34,6 +34,17 @@ mat-chip {
   margin: -2px;
 }
 
+.tagPopover {
+  margin:0px;
+  border:0px;
+  padding:5px 20px 5px 5px;
+  background-color:none;
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:flex;
+  max-height:200px;
+  flex-wrap:wrap;
+}
 
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
   background-color:#55698d;
