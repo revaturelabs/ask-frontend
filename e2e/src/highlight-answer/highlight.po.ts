@@ -1,6 +1,10 @@
 import { AppPage } from '../app.po';
 import { element, by, browser } from 'protractor';
 
+/**
+ * @author Alejandra Huayanca, Manisha Gurung
+ *
+ */
 
 export class Highlight extends AppPage {
     navigateToHighlightAnswer() {

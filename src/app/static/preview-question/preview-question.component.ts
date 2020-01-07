@@ -11,6 +11,10 @@ import { Tag } from '../../models/Tag';
  *
  */
 
+/**
+ * modified by: Alejandra Huayanca, Manisha Gurung, Seirra Nicholes
+ */
+
 @Component({
   selector: 'app-preview-question',
   templateUrl: './preview-question.component.html',
@@ -34,6 +38,8 @@ export class PreviewQuestionComponent implements OnInit {
 
   ngOnInit() { }
 
+  // this is called to check and highlight the question, if it has a highlighted response
+  // high is a class in css which changes the border for question
   sethigh(){
     let classes = {
       question: true,

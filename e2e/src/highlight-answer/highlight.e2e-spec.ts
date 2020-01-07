@@ -1,6 +1,14 @@
 import { Highlight } from './highlight.po';
 import { browser, logging, element, by } from 'protractor';
 import { checkServerIdentity } from 'tls';
+
+/**
+ * @author Alejandra Huayanca, Manisha Gurung
+ *
+ * Protractor test
+ *
+ */
+
 describe('highlighting answer and checking question preview has a border in "/questions"', () =>
 {
     let page: Highlight;
