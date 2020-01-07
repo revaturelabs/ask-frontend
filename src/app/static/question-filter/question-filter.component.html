@@ -13,6 +13,7 @@
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
+        id="catInput"
         placeholder="Select category tags: "
         #tagInput
         [formControl]="tagCtrl"
@@ -45,6 +46,7 @@
   </mat-radio-group>
 
   <button
+    id="filterBtn"
     mat-raised-button
     class="filter-button"
     (click)="createFilteredQuestionsUri()"
