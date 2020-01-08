@@ -23,13 +23,3 @@ describe('ExpertQuestionsComponent', () => {
     expect(component).toBeDefined();
   });
 });
-
-
-
-
-
-
-
-
-
-
