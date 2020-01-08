@@ -19,7 +19,6 @@ describe('questions list page', () => {
 
     expect(ele.isPresent()).toBe(true);
 
-    
   });
 
   it('should not give you more than 40', () => {
@@ -31,30 +30,30 @@ describe('questions list page', () => {
   });
 
   it('should give us filtered results', () => {
-    
+
     page.filterInput();
-    
+
     expect(element.all(by.cssContainingText('.mat-chips > .mat-chip', 'JavaScript')).count())
       .toBe(element.all(by.css('.question-card')).count());
   });
 
   it('should give us more questions even when we filter and click load more', () => {
     page.filterALot();
-    const got = element(by.css('#loadMore')).click().then(()=>{return true;});
+    const got = element(by.css('#loadMore')).click().then(() => { return true; });
     expect(got).toBeTruthy();
   });
 
-  it('should not give us more questions when we load all available questions using filters',()=>{
+  it('should not give us more questions when we load all available questions using filters', () => {
     page.filterALot();
     element(by.css('#loadMore')).click();
     element(by.css('#loadMore')).click();
-    
-     expect(element(by.css('#loadMore')).isPresent()).toBeFalsy();
- 
+
+    expect(element(by.css('#loadMore')).isPresent()).toBeFalsy();
+
   });
 
   afterEach(async () => {
-   
+
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,

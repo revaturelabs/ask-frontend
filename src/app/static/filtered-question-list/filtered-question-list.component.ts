@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
-
-import { environment } from '../../../environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-filtered-question-list',
@@ -37,7 +35,6 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   setQuestionsListWithFilteredUri(newFilteredUri: string) {
-    console.log(this.questions);
     this.filteredUri = newFilteredUri;
     this.http.get<Question[]>(newFilteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
@@ -85,8 +82,6 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   loadMore() {
-
-    console.log(environment.questionsUri);
     this.pageNumber += 1;
     this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
       this.questions.push.apply(this.questions, questionsRes);
@@ -97,7 +92,33 @@ export class FilteredQuestionListComponent implements OnInit {
       }
     });
   }
+  nextPage() {
+    this.pageNumber++;
+    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+      this.questions = filteredQuestions;
+      if (this.questions.length === 0) {
+        this._snackBar.open('No more results', 'OK', {duration: 3000});
+      }
+    });
+  }
 
+  previousPage() {
+    this.pageNumber--;
+    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+        this.questions = filteredQuestions;
+        if(this.questions.length == 0) {
+          this._snackBar.open("No more results!", "OK", {duration: 3000});
+        }
+      });
+    }
+
+  onNextPage() {
+    if(this.pageNumber > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   ngOnInit() {
     this.questionService.getQuestions().subscribe(unfilteredQuestions => {
