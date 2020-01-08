@@ -2,14 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PreviewQuestionComponent } from './preview-question.component';
 import { QuestionService } from 'src/app/services/question.service';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/models/Question';
-import { Response } from 'src/app/models/Response';
 import { Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { Tag } from 'src/app/models/Tag';
 import { User } from 'src/app/models/User';
+import { SkilltagPipe } from '../response/skilltag.pipe';
 
 const MockUser: User = {
   id: 1,
@@ -19,6 +19,20 @@ const MockUser: User = {
   questions: [],
   responses: []
 };
+const MockTags: Tag[] = [
+  {
+    id: 1,
+    name: 'Mock Tag 1'
+  },
+  {
+    id: 2,
+    name: 'Mock Tag 2'
+  },
+  {
+    id: 3,
+    name: 'Mock Tag 3'
+  }
+];
 const MockQuestion: Question = {
   id: 201,
   username: null,
@@ -28,7 +42,7 @@ const MockQuestion: Question = {
   head: 'Mock Header',
   body: 'Mock Body',
   creationDate: '2015-12-17',
-  associatedTags: [],
+  associatedTags: MockTags,
   responses: [],
   highlightedResponseId: null,
   images: null
@@ -75,12 +89,12 @@ describe('PreviewQuestionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PreviewQuestionComponent ],
+      declarations: [ PreviewQuestionComponent, SkilltagPipe ],
       providers: [
         {provide: QuestionService, useClass: MockQuestionService},
         {provide: Router, useValue: routerSpy}
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -102,6 +116,21 @@ describe('PreviewQuestionComponent', () => {
     el.triggerEventHandler('click', {});
     fixture.detectChanges();
     expect(component.viewQuestion).toBeDefined();
-});
+  });
+
+  it('should test resizedPage() with a small number of question.associatedTags, hiddenTags should finish with length 0', () => {
+    component.resizedPage();
+    fixture.detectChanges();
+    expect(component.hiddenTags.length).toBe(0);
+  });
+
+  it('should test resizedPage() with a large number of question.associatedTags, hiddenTags should finish with length > 0', () => {
+    for (let i = 0; i < 20; i++) {
+      component.question.associatedTags.push({id: (i + 4), name: 'Mock Tag ' + (i + 4)});
+    }
+    component.resizedPage();
+    fixture.detectChanges();
+    expect(component.hiddenTags.length).toBeGreaterThan(0);
+  });
 
 });
