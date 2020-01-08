@@ -35,7 +35,6 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   setQuestionsListWithFilteredUri(newFilteredUri: string) {
-    console.log(this.questions);
     this.filteredUri = newFilteredUri;
     this.http.get<Question[]>(newFilteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
@@ -83,8 +82,6 @@ export class FilteredQuestionListComponent implements OnInit {
   }
 
   loadMore() {
-
-    console.log(environment.questionsUri);
     this.pageNumber += 1;
     this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
       this.questions.push.apply(this.questions, questionsRes);

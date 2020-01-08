@@ -188,18 +188,6 @@ describe('FilteredQuestionListComponent', () => {
     expect(component.refreshQuestions).toHaveBeenCalled();
   });
 
-  it('should populate the question list with filtered question data', () => {
-    let question: Question[] = [];
-    httpClientSpy.get.and.returnValue(asyncData(questionServiceDummyData));
-    component.setQuestionsListWithFilteredUri('Java');
-    component.getFilteredQuestions().subscribe(
-      data => {
-        question = data;
-        expect(question.length).toBeGreaterThan(0);
-      }
-    );
-  });
-
   it('should refresh filtered questions', () => {
     component.hasBeenFiltered = true;
     spyOn(component, 'getFilteredQuestions').and.returnValue(asyncData(questionServiceDummyData));
@@ -207,13 +195,10 @@ describe('FilteredQuestionListComponent', () => {
     expect(component.getFilteredQuestions).toHaveBeenCalled();
   });
 
-  it('should refresh unfiltered questions', () => {
-    component.hasBeenFiltered = false;
-    spyOn(questionService, 'getQuestions').and.returnValue(asyncData(questionServiceDummyData));
-    component.refreshQuestions();
-    expect(questionService.getQuestions).toHaveBeenCalled();
+  it('should load more questions', () => {
+    httpClientSpy.get.and.returnValue(asyncData(questionServiceDummyData));
+    spyOn(component, 'loadMore').and.callThrough();
+    component.loadMore();
+    expect(component.pageNumber).toBeGreaterThanOrEqual(1);
   });
-
-
-
 });
