@@ -34,7 +34,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.6",
+    "@angular-devkit/build-angular": "^0.803.23",
     "@angular/cli": "^8.3.21",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.2.14",
@@ -42,6 +42,11 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.2.1",
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-nodeunit": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-protractor-coverage": "^0.2.18",
     "handlebars": "^4.5.3",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -51,6 +56,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.1",
     "ngx-spec": "^2.1.4",
+    "nyc": "^15.0.0",
     "prettier": "1.18.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",

@@ -8,9 +8,9 @@ const { SpecReporter } = require('jasmine-spec-reporter');
  * @type { import("protractor").Config }
  */
 exports.config = {
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 60000,
   specs: [
-    
+
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
@@ -21,7 +21,7 @@ exports.config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 600000,
     print: function() {}
   },
   onPrepare() {
