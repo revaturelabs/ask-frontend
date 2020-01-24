@@ -2,7 +2,7 @@ mat-card {
   margin: 20px 100px 30px 0;
   max-width: 648px;
   padding: 0;
-  border: 1.5px solid #55698d;
+  border: 2px solid #55698d;
   border-radius: 3px;
   left: 50%;
   transform: translate(-50%, 0);

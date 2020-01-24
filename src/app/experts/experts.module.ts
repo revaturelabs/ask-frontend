@@ -6,6 +6,8 @@ import { SelfTagsComponent } from './self-tags/self-tags.component';
 import { TagCreationComponent } from './tag-creation/tag-creation.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
+import {LMarkdownEditorModule} from 'ngx-markdown-editor';
+import {AppModule} from '../app.module';
 
 @NgModule({
   declarations: [EnterResponseComponent, SelfTagsComponent, SettingsComponent],
@@ -16,6 +18,8 @@ import { SettingsComponent } from './settings/settings.component';
     TagCreationComponent,
     ReactiveFormsModule,
     FormsModule,
+    LMarkdownEditorModule,
+    AppModule,
   ],
 })
 export class ExpertsModule {}

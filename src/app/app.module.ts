@@ -18,7 +18,7 @@ import { MaterialImportModule } from '../material-import/material-import.module'
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
-import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
+import { HighlightedResponseComponent } from './static/highlighted-response/highlighted-response.component';
 import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
@@ -30,44 +30,49 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginPageComponent,
-    QuestionListComponent,
-    PreviewQuestionComponent,
-    ViewQuestionComponent,
-    QuestionComponent,
-    ResponseComponent,
-    AskQuestionComponent,
-    EnterResponseComponent,
-    SelfTagsComponent,
-    NavbarComponent,
-    FooterComponent,
-    HighlightedResponseComponent,
-    QuestionFilterComponent,
-    TagCreationComponent,
-    SettingsComponent,
-    FilteredQuestionListComponent,
-    ExpertQuestionsComponent,
-    UserQuestionsComponent,
-    SkilltagPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialImportModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    LMarkdownEditorModule,
-    MarkdownModule.forRoot(),
-    NgbModule,
-  ],
-  providers: [AuthGuard],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginPageComponent,
+        QuestionListComponent,
+        PreviewQuestionComponent,
+        ViewQuestionComponent,
+        QuestionComponent,
+        ResponseComponent,
+        AskQuestionComponent,
+        EnterResponseComponent,
+        SelfTagsComponent,
+        NavbarComponent,
+        FooterComponent,
+        HighlightedResponseComponent,
+        QuestionFilterComponent,
+        TagCreationComponent,
+        SettingsComponent,
+        FilteredQuestionListComponent,
+        ExpertQuestionsComponent,
+        UserQuestionsComponent,
+        SkilltagPipe
+    ],
+    imports: [
+        BrowserModule,
+        InfiniteScrollModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MaterialImportModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        LMarkdownEditorModule,
+        MarkdownModule.forRoot(),
+        NgbModule,
+    ],
+    providers: [AuthGuard],
+    bootstrap: [AppComponent],
+    exports: [
+        TagCreationComponent
+    ]
 })
 export class AppModule {}

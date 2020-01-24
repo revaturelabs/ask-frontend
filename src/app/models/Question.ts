@@ -1,5 +1,5 @@
-import { Tag } from '../models/Tag';
-import { Response } from '../models/Response';
+import { Tag } from './Tag';
+import { Response } from './Response';
 import { User } from './User';
 import { Image } from './Image';
 

@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  
-private loggedIn: boolean = false;
+
+private loggedIn = false;
 
 constructor(private router: Router) { }
 
@@ -17,13 +17,13 @@ constructor(private router: Router) { }
   get isLoggedIn() {
     return this.loggedIn;
   }
-  
+
   /**
    * Logs in as the account argument.
-   * 
+   *
    * Part of stand-in login functionality.
    * Http logic should possibly go here in the future.
-   * 
+   *
    * @param account the account retrieved from the server upon login
    */
   userLogin(account: Account) {
