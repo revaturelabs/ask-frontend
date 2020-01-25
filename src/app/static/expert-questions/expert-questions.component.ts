@@ -10,11 +10,11 @@ import { Question } from 'src/app/models/Question';
   styleUrls: ['./expert-questions.component.css'],
 })
 export class ExpertQuestionsComponent implements OnInit {
-  expertId: Number;
+  expertId: number;
   expert: any;
   filteredUri: string;
   filterTags: string[];
-  uriTags: string = '';
+  uriTags = '';
   filteredQuestions: any;
   questions: Question[];
 
@@ -24,7 +24,7 @@ export class ExpertQuestionsComponent implements OnInit {
     this.expertId = this.authService.account.id;
     this.http.get(`${environment.userUri}/${this.expertId}`).subscribe(result => {
       this.expert = result;
-      let tags = new Array<string>();
+      const tags = new Array<string>();
       for (let i = 0; i < this.expert.expertTags.length; i++) {
         tags.splice(i, 0, this.expert.expertTags[i].name);
       }
@@ -37,7 +37,7 @@ export class ExpertQuestionsComponent implements OnInit {
         this.filteredQuestions = filteredResult;
         this.questions = this.filteredQuestions;
 
-      })
+      });
     });
   }
 }

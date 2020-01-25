@@ -30,7 +30,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -57,7 +57,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ],
     imports: [
         BrowserModule,
-        InfiniteScrollModule,
+        NgxPaginationModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,

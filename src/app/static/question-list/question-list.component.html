@@ -1,7 +1,9 @@
 <div class="preview-questions">
   <app-preview-question
-    *ngFor="let question of questions; let i = index"
+    *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"
     [question]="question"
     id="previewquestion_{{i}}"
   ></app-preview-question>
 </div>
+
+<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
