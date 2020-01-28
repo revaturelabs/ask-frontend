@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Question } from '../../models/Question';
 
-
 @Component({
   selector: 'app-question-list',
   templateUrl: './question-list.component.html',
@@ -10,7 +9,8 @@ import { Question } from '../../models/Question';
 export class QuestionListComponent implements OnInit {
   @Input() questions: Question[];
 
-  constructor() { }
+  p = 1;
+  collection: any[] = this.questions;
 
   ngOnInit() { }
 }

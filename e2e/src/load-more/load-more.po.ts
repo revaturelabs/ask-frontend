@@ -2,7 +2,7 @@ import { browser, by, element, Key } from 'protractor';
 import { AppPage } from '../app.po';
 
 export class AnswerPage extends AppPage {
- 
+
 
   loadingMoreQuestions() {
     this.navigateTo();

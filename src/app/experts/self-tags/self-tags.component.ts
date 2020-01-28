@@ -74,7 +74,7 @@ export class SelfTagsComponent implements OnInit {
         } else {
           return false;
         }
-      })
+      });
     }
   }
 
@@ -93,7 +93,7 @@ export class SelfTagsComponent implements OnInit {
     });
   }
 
-  addNewTag() {
+     addNewTag($event: Tag) {
     this.tagService.getTags().subscribe((tagsUpdate) => { this.tags.push(tagsUpdate[tagsUpdate.length - 1]); });
   }
 }

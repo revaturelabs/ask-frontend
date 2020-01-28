@@ -18,12 +18,12 @@ export class AnswerPage extends AppPage {
       .actions()
       .mouseMove(element(by.id('r=' + response)))
       .perform();
-    browser.sleep(1000);
+    browser.sleep(5000);
     element(by.id('btn' + response)).click();
     element(by.id('r=' + response)).click();
   }
   selectQuestion(question: number) {
-    element(by.id('q2=' + question)).click();
+    element(by.id('q1=' + question)).click();
   }
   getAnswerBody() {
     return element(by.css('textarea[name="body"]'));
