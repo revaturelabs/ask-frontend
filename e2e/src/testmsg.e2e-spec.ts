@@ -12,20 +12,19 @@ describe('workspace-project App', () => {
 
   it('should show total response equivalence', () => {
 
-    
-    page.getMsgCountText().then(function(text)
-    { 
-      //console.log(text)
-      var fetchNumStr = text.split(':')[1];
+
+    page.getMsgCountText().then(function (text) {
+      // console.log(text);
+      const fetchNumStr = text.split(':')[1];
       // console.log("fet inside function ");
       // console.log(fetchNumStr);
       // console.log("preparing to test this one");
-      var intNumStr = parseInt(fetchNumStr,10);
-      var getElementCount = page.getListofAllResponses();
-    expect(getElementCount.count()).toBe(intNumStr);
-   
-    });  
-  
+      const intNumStr = parseInt(fetchNumStr, 10);
+      const getElementCount = page.getListofAllResponses();
+      expect(getElementCount.count()).toBe(intNumStr);
+
+    });
+
   });
 
 

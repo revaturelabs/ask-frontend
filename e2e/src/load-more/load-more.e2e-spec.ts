@@ -15,7 +15,7 @@ describe('questions list page', () => {
 
   it('should show more results when load more is clicked', () => {
     page.loadingMoreQuestions();
-    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(21) .mat-card-title'));
+    const ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(21) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(true);
 
@@ -23,7 +23,7 @@ describe('questions list page', () => {
 
   it('should not give you more than 40', () => {
     page.loadingMoreQuestions();
-    var ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
+    const ele = element(by.css('div.preview-questions > app-preview-question:nth-of-type(41) .mat-card-title'));
 
     expect(ele.isPresent()).toBe(false);
 
@@ -39,7 +39,7 @@ describe('questions list page', () => {
 
   it('should give us more questions even when we filter and click load more', () => {
     page.filterALot();
-    const got = element(by.css('#loadMore')).click().then(() => { return true; });
+    const got = element(by.css('#loadMore')).click().then(() => true);
     expect(got).toBeTruthy();
   });
 

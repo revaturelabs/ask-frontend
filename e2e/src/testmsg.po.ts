@@ -18,18 +18,18 @@ login(user: number) {
   }
 
   // count all the response elements this figure will compare with response variable for testing
-  getListofAllResponses(){
-    var respElements = element.all(by.css('.response-component'));
+  getListofAllResponses() {
+    const respElements = element.all(by.css('.response-component'));
     return respElements;
   }
 
 
   // add this new navigation to a certain topic question in order to test total responses
   navigateToResponse() {
-    const second = 1000;
+    const second = 5000;
     this.navigateTo();
     this.login(3);
     element(by.cssContainingText('.mat-card-title', ' Java Collections')).click();
-    browser.sleep(1*second);
+    browser.sleep(second);
   }
 }

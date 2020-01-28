@@ -21,6 +21,6 @@ export class UserQuestionsComponent implements OnInit {
     this.http.get(`${environment.userUri}/${this.userId}/questions`).subscribe(result => {
       this.userQuestions = result;
       this.questions = this.userQuestions;
-    })
+    });
   }
 }

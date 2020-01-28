@@ -30,7 +30,7 @@ export class ViewQuestionComponent implements OnInit {
   responses: Response[];
   highlightedResponse: any;
   questionResponses: any;
-  totalMsgCount: number = 0; // count the messages of the responses. initialize to 0;
+  totalMsgCount = 0; // count the messages of the responses. initialize to 0;
 
 
   constructor(

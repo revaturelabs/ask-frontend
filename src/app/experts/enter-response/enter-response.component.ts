@@ -32,7 +32,7 @@ export class EnterResponseComponent implements OnInit {
     private responseService: ResponseService,
     private questionService: QuestionService,
     private authService: AuthService,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private router: Router,
   ) {}
 
@@ -45,7 +45,7 @@ export class EnterResponseComponent implements OnInit {
 
   addResponse(body) {
     if (!body) {
-      this._snackBar.open('Please add a Response!', 'OK!', { duration: 3000 });
+      this.snackBar.open('Please add a Response!', 'OK!', { duration: 3000 });
     } else {
       this.response.body = body;
       this.response.questionId = this.questionId;
@@ -53,14 +53,14 @@ export class EnterResponseComponent implements OnInit {
       this.responseService.saveResponse(this.response).subscribe(
         response => {
           this.newResponse.emit(response);
-          this._snackBar.open('Thank you for your Response', ' ', {
+          this.snackBar.open('Thank you for your Response', ' ', {
             duration: 3000,
           });
           this.response.body = null;
           this.router.navigate(['/view-question']);
         },
         failure => {
-          this._snackBar.open('Response Submission Failed', ' ', {
+          this.snackBar.open('Response Submission Failed', ' ', {
             duration: 3000,
           });
         },

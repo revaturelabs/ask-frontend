@@ -18,12 +18,12 @@ export class TagService {
     return this.http.get<Tag[]>(environment.tagsUri);
   }
 
-  saveExpertTags(tags: Tag[], expertId: Number){
+  saveExpertTags(tags: Tag[], expertId: number) {
     const uri = `${environment.userUri}/${expertId}/tags`;
-    return this.http.put<Tag>(uri, {"expertTags":tags}, httpOptions);
+    return this.http.put<Tag>(uri, {expertTags: tags}, httpOptions);
   }
 
-  getExpertTags(expertId: Number): Observable<any[]>{
+  getExpertTags(expertId: number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
   }
 }

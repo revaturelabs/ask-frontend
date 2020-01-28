@@ -2,3 +2,11 @@
   position: relative;
   margin-top: 10%;
 } */
+
+.my-pagination /deep/ .ngx-pagination .current {
+  margin-top: 20px;
+}
+
+.my-pagination {
+  text-align: center;
+}

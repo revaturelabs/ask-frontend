@@ -9,8 +9,7 @@ import { checkServerIdentity } from 'tls';
  *
  */
 
-describe('highlighting answer and checking question preview has a border in "/questions"', () =>
-{
+describe('highlighting answer and checking question preview has a border in "/questions"', () => {
     let page: Highlight;
 
     beforeEach(() => {

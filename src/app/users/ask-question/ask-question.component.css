@@ -2,19 +2,16 @@
   display: flex;
   min-height: 40%;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5%;
-  margin-bottom: 2.5%;
+  margin: 2.5% auto;
 
   flex-direction: column;
-  border: 1.5px solid #55698d;
+  border: 2px solid #55698d;
   background-color:#ffffff;
   position: relative;
   top: 65%;
 
   border-radius: 3px;
-  
+
 }
 
 textarea {
