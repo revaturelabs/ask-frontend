@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Tag } from 'src/app/models/Tag';
+import { TagService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-topic-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicPageComponent implements OnInit {
 
-  constructor() { }
+  tag: Tag[];
+
+  constructor(
+    private tagService : TagService
+    ) { }
 
   ngOnInit() {
+    this.tagService.getTags().subscribe(tag => {
+      this.tag = tag;
+    });
   }
 
 }
