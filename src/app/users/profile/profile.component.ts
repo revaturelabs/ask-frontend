@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
     this.options.showPreviewPanel = false;
   }
 
+  isAssociate = () : boolean => false;
+
   ngOnInit() {
   }
 
