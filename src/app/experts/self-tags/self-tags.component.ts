@@ -32,7 +32,7 @@ export class SelfTagsComponent implements OnInit {
   tags: Tag[];
   isChecked = false;
 
-  expertId = this.authService.account.id;
+  expertId = this.authService.user.id;
   expertSkills: string[] = [];
   currentExpert: any;
 
@@ -58,7 +58,7 @@ export class SelfTagsComponent implements OnInit {
         this.expertSkills.map<Tag>(t => {
           return { name: t, id: 0 };
         }),
-        this.authService.account.id,
+        this.authService.user.id,
       )
       .subscribe();
     this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
