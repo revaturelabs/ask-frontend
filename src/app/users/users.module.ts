@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [AskQuestionComponent],
+  declarations: [AskQuestionComponent, ProfileComponent],
   imports: [
     CommonModule,
     MaterialImportModule,
