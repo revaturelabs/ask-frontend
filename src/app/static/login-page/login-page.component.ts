@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -22,10 +22,6 @@ export class LoginPageComponent implements OnInit {
    * @param id The id of the user to login as
    */
   onSubmit(id: number) {
-    this.http
-      .get<Account>(`${environment.userUri}/${id}`)
-      .subscribe((account: Account) => {
-        this.authService.userLogin(account);
-      });
+    this.authService.submitted(id);
   }
 }
