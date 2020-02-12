@@ -4,6 +4,7 @@ import { User } from '../../models/User';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Image } from 'src/app/models/Image';
 
 
 @Injectable({
@@ -44,6 +45,13 @@ export class AuthService {
     this.account = null;
     this.user = null;
     this.router.navigate(['/']);
+  }
+
+  userProfilePic(profilePic: FormData) {
+    this.http.patch(`${environment.userProfile}/${this.user.id}`, profilePic)
+    .subscribe((imageLink: string)=> {
+      this.user.profilePic = imageLink;
+    })
   }
 
   login(id: number) {
