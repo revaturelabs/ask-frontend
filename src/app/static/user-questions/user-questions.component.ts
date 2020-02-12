@@ -17,7 +17,7 @@ export class UserQuestionsComponent implements OnInit {
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.userId = this.authService.account.id;
+    this.userId = this.authService.user.id;
     this.http.get(`${environment.userUri}/${this.userId}/questions`).subscribe(result => {
       this.userQuestions = result;
       this.questions = this.userQuestions;
