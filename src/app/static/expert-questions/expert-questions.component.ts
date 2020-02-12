@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Question } from 'src/app/models/Question';
+import { TagService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-expert-questions',
@@ -10,19 +10,19 @@ import { Question } from 'src/app/models/Question';
   styleUrls: ['./expert-questions.component.css'],
 })
 export class ExpertQuestionsComponent implements OnInit {
-  expertId: Number;
+  expertId: number;
   expert: any;
   filteredUri: string;
   filterTags: string[];
   uriTags: string = '';
-  filteredQuestions: any;
+  filteredQuestions: Question[];
   questions: Question[];
 
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  constructor(private authService: AuthService, private tagService: TagService) { }
 
   ngOnInit() {
     this.expertId = this.authService.account.id;
-    this.http.get(`${environment.userUri}/${this.expertId}`).subscribe(result => {
+    this.authService.getExpert(this.expertId).subscribe(result => {
       this.expert = result;
       let tags = new Array<string>();
       for (let i = 0; i < this.expert.expertTags.length; i++) {
@@ -33,10 +33,9 @@ export class ExpertQuestionsComponent implements OnInit {
         this.uriTags += '&tag=' + this.filterTags[j];
       }
       this.filteredUri = `${environment.questionsUri}/search/?requireAll=false${this.uriTags}`;
-      this.http.get(this.filteredUri).subscribe(filteredResult => {
+      this.tagService.filterQuestionTags(this.filteredUri).subscribe(filteredResult => {
         this.filteredQuestions = filteredResult;
         this.questions = this.filteredQuestions;
-
       })
     });
   }

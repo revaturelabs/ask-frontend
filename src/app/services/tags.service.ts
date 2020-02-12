@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tag } from '../models/Tag';
 import { environment } from '../../environments/environment';
+import { Question } from '../models/Question';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -25,5 +26,9 @@ export class TagService {
 
   getExpertTags(expertId: Number): Observable<any[]>{
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
+  }
+
+  filterQuestionTags(filteredUri:string): Observable<Question[]>{
+    return this.http.get<Question[]>(filteredUri);
   }
 }
