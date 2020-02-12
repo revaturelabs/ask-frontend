@@ -30,7 +30,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AssociateProfileComponent } from './users/associateprofile/associateprofile.component';
+import { ProfileComponent } from './users/profile/profile.component';
 import { ExpertProfileComponent } from './users/expert-profile/expert-profile.component';
 
 @NgModule({
@@ -55,7 +55,7 @@ import { ExpertProfileComponent } from './users/expert-profile/expert-profile.co
     ExpertQuestionsComponent,
     UserQuestionsComponent,
     SkilltagPipe,
-    AssociateProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
