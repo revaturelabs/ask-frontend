@@ -12,10 +12,14 @@ import { Image } from 'src/app/models/Image';
 })
 export class AuthService {
 
+  //RIGHT NOW WE HAVE A USER AND A ACCOUNT OBJECT
+  //FRONT END IS MAKING TWO CALLS WHEN LOGGING IN
+  //THIS NEEDS TO BE CHANGED
   private loggedIn: boolean = false;
   public account: Account;
+  public user: User;
 
-  constructor(private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   get isLoggedIn() {
     return this.loggedIn;
@@ -31,12 +35,15 @@ export class AuthService {
   userLogin(account: Account) {
     this.loggedIn = true;
     this.account = account;
+    this.login(this.account.id);
     this.router.navigate(['/questions']);
+    console.log(this.account);
   }
 
   userLogOut() {
     this.loggedIn = false;
     this.account = null;
+    this.user = null;
     this.router.navigate(['/']);
   }
 
@@ -47,4 +54,24 @@ export class AuthService {
     })
   }
 
+  login(id: number) {
+    this.http
+      .get<User>(`${environment.userUri}/${id}`)
+      .subscribe((user: User) => {
+        if (user != null) {
+          this.loggedIn = true;
+          this.user = user;
+          console.log(this.user);
+          this.router.navigate(['/questions']);
+        }
+      });
+  }
+
+  submitted(id: number){
+    this.http
+      .get<Account>(`${environment.userUri}/${id}`)
+      .subscribe((account: Account) => {
+        this.userLogin(account);
+      });
+  }
 }

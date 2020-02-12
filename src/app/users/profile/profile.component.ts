@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 @Component({
   selector: 'app-profile',
@@ -8,12 +9,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
+  }
+
+  options: Markdownoptions = new Markdownoptions();
+
+  isAssociate = () : boolean => false;
 
   ngOnInit() {
   }
 
-  selectedFile: File
+  selectedFile: File;
 
   onFileChange(event) {
     this.selectedFile = event.target.files[0];
