@@ -21,7 +21,7 @@ export class ExpertQuestionsComponent implements OnInit {
   constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.expertId = this.authService.account.id;
+    this.expertId = this.authService.user.id;
     this.http.get(`${environment.userUri}/${this.expertId}`).subscribe(result => {
       this.expert = result;
       let tags = new Array<string>();

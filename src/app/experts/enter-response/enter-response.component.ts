@@ -49,7 +49,7 @@ export class EnterResponseComponent implements OnInit {
     } else {
       this.response.body = body;
       this.response.questionId = this.questionId;
-      this.response.responderId = this.authService.account.id;
+      this.response.responderId = this.authService.user.id;
       this.responseService.saveResponse(this.response).subscribe(
         response => {
           this.newResponse.emit(response);
