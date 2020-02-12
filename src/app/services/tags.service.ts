@@ -27,8 +27,4 @@ export class TagService {
   getExpertTags(expertId: Number): Observable<any[]>{
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
   }
-
-  filterQuestionTags(filteredUri:string): Observable<Question[]>{
-    return this.http.get<Question[]>(filteredUri);
-  }
 }

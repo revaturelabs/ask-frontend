@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 import { Question } from 'src/app/models/Question';
-import { TagService } from 'src/app/services/tags.service';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-expert-questions',
@@ -18,7 +18,7 @@ export class ExpertQuestionsComponent implements OnInit {
   filteredQuestions: Question[];
   questions: Question[];
 
-  constructor(private authService: AuthService, private tagService: TagService) { }
+  constructor(private authService: AuthService, private questionService: QuestionService) { }
 
   ngOnInit() {
     this.expertId = this.authService.account.id;
@@ -33,7 +33,7 @@ export class ExpertQuestionsComponent implements OnInit {
         this.uriTags += '&tag=' + this.filterTags[j];
       }
       this.filteredUri = `${environment.questionsUri}/search/?requireAll=false${this.uriTags}`;
-      this.tagService.filterQuestionTags(this.filteredUri).subscribe(filteredResult => {
+      this.questionService.getFilteredQuestions(this.filteredUri).subscribe(filteredResult => {
         this.filteredQuestions = filteredResult;
         this.questions = this.filteredQuestions;
       })

@@ -63,4 +63,8 @@ export class QuestionService {
 
     return this.http.delete<Question>(url, httpOptions);
   }
+
+  getFilteredQuestions(filteredUri:string): Observable<Question[]>{
+    return this.http.get<Question[]>(filteredUri);
+  }
 }
