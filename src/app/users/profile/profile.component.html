@@ -35,6 +35,20 @@
           </md-editor>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <md-editor name="Content"
+            [upload]="doUpload"
+            [preRender]="preRenderFunc"
+            [(ngModel)]="content"
+            [height]="'200px'"
+            [mode]="mode"
+            [options]="options"
+            required
+            maxlength="500">
+          </md-editor>
+        </div>
+      </div>
     </div>
   </div>
 </div>

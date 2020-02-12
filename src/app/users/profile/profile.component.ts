@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { Markdownoptions } from 'src/app/models/markdownoptions';
+import { Markdownoptions } from 'src/app/models/markdownoptions';
 
 @Component({
   selector: 'app-profile',
@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  options: Markdownoptions = new Markdownoptions();
+
+  constructor() {
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
+  }
 
   ngOnInit() {
   }
