@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener, EventEmitter } from '@angular/core';
 import { Question } from '../../models/Question';
 
 
@@ -9,8 +9,13 @@ import { Question } from '../../models/Question';
 })
 export class QuestionListComponent implements OnInit {
   @Input() questions: Question[];
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() { }
+
+  giveChange(event) {
+    this.change.emit(3);
+  }
 }

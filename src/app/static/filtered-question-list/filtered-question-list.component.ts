@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './filtered-question-list.component.html',
   styleUrls: ['./filtered-question-list.component.css'],
 })
-export class FilteredQuestionListComponent implements OnInit {
+export class FilteredQuestionListComponent implements OnInit, OnChanges {
   hasBeenFiltered: boolean = false;
   loadMoreEnable: boolean = true;
   moreQuestions: boolean = true;
@@ -18,6 +18,7 @@ export class FilteredQuestionListComponent implements OnInit {
   questions: Question[];
   pageNumber: number = 0;
   tags: string[] = [];
+  selectedQuestion: Question;
 
   constructor(
     private http: HttpClient,
@@ -125,5 +126,21 @@ export class FilteredQuestionListComponent implements OnInit {
       this.questions = unfilteredQuestions;
 
     });
+  }
+
+  ngOnChanges() {
+    if(this.questionService.getQuestionId()) {
+      this.questionService.getQuestionById(this.questionService.getQuestionId()).subscribe((data)=>{
+        this.selectedQuestion = data;
+      });
+      console.log(this.selectedQuestion);
+    } else {
+      console.log("onChange fired without right id.")
+    }
+  }
+
+  questionChange(event) {
+    this.ngOnChanges();
+    window.scrollTo(0,0);
   }
 }

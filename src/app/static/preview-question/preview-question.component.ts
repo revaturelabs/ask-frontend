@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
@@ -24,12 +24,14 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   @Input() question: Question;
   @Input() tag: Tag;
 
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+
   // stores associated tags that don't fit on the preview-question element to be shown in popover
   hiddenTags: Tag[];
 
   // represents how many tags from the tags can fit across the preview-question
   limit: number;
-
+  
   constructor(
     public router: Router,
     private questionIdService: QuestionService,
@@ -39,8 +41,10 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   // On click of the 'View' button, it sets the question ID of the selected question
   viewQuestion = selectQuestionId => {
     // Stores selected question ID in the QuestionService for use in the ViewQuestionComponent
+    console.log("Before click: " + this.questionIdService.getQuestionId());
     this.questionIdService.setQuestionId(selectQuestionId);
-    this.router.navigate([`/view-question/`]);
+    console.log("This got clicked for :" + selectQuestionId);
+    this.change.emit(3);
   }
 
   ngOnInit() {
@@ -48,6 +52,7 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
       this.limit = this.question.associatedTags.length;
     }
     this.hiddenTags = [];
+    this.questionIdService.setQuestionId(undefined);
   }
 
   // using this angular lifecycle method allows the page to load the view
