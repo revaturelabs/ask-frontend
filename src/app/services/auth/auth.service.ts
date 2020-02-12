@@ -14,9 +14,7 @@ export class AuthService {
   private loggedIn: boolean = false;
   public account: Account;
 
-  constructor(private http: HttpClient, private router: Router) { }
-
-  public user: User;
+  constructor(private router: Router) { }
 
   get isLoggedIn() {
     return this.loggedIn;
@@ -29,20 +27,6 @@ export class AuthService {
    * 
    * @param user the user retrieved from the server upon login
    */
-  // userLogin(id: number) {
-  //   this.http
-  //     .get<User>(`${environment.userUri}/${id}`)
-  //     .subscribe((account: User) => {
-  //       if (account != null) {
-  //         this.loggedIn = true;
-  //         this.user = account;
-  //         this.router.navigate(['/questions']);
-  //       }
-  //     });
-
-  //     console.log(this.user);
-  //     console.log(this.loggedIn);
-  // }
 
   userLogin(account: Account) {
     this.loggedIn = true;
@@ -53,7 +37,6 @@ export class AuthService {
   userLogOut() {
     this.loggedIn = false;
     this.account = null;
-    this.user = null;
     this.router.navigate(['/']);
   }
 
