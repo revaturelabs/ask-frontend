@@ -15,7 +15,7 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit() { }
 
-  giveChange(event) {
-    this.change.emit(3);
+  giveChange(value: number) {
+    this.change.emit(value);
   }
 }

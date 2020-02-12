@@ -2,8 +2,8 @@
 <app-question-filter (newFilteredUri)="setQuestionsListWithFilteredUri($event)" (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"></app-question-filter>
 
 
-<app-view-question *ngIf="questionService.questionId"></app-view-question>
-<app-question-list (change)="questionChange()" [questions]="questions"></app-question-list>
+<app-view-question *ngIf="selectedQuestion" [selectedQuestion]="selectedQuestion"></app-view-question>
+<app-question-list (change)="questionChange($event)" [questions]="questions"></app-question-list>
 
 
 <div class="load-more" >

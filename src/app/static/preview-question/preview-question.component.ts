@@ -39,12 +39,9 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   ) {}
 
   // On click of the 'View' button, it sets the question ID of the selected question
-  viewQuestion = selectQuestionId => {
-    // Stores selected question ID in the QuestionService for use in the ViewQuestionComponent
-    console.log("Before click: " + this.questionIdService.getQuestionId());
-    this.questionIdService.setQuestionId(selectQuestionId);
-    console.log("This got clicked for :" + selectQuestionId);
-    this.change.emit(3);
+  viewQuestion(selectedQuestionId) {
+    //Outputs id of selected question to parent.
+    this.change.emit(selectedQuestionId);
   }
 
   ngOnInit() {

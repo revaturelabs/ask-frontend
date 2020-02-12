@@ -18,6 +18,7 @@ export class FilteredQuestionListComponent implements OnInit, OnChanges {
   questions: Question[];
   pageNumber: number = 0;
   tags: string[] = [];
+  selectedQuestionId: number;
   selectedQuestion: Question;
 
   constructor(
@@ -124,13 +125,13 @@ export class FilteredQuestionListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.questionService.getQuestions().subscribe(unfilteredQuestions => {
       this.questions = unfilteredQuestions;
-
     });
+    this.selectedQuestionId = null;
   }
 
   ngOnChanges() {
-    if(this.questionService.getQuestionId()) {
-      this.questionService.getQuestionById(this.questionService.getQuestionId()).subscribe((data)=>{
+    if(this.selectedQuestionId) {
+      this.questionService.getQuestionById(this.selectedQuestionId).subscribe((data)=>{
         this.selectedQuestion = data;
       });
       console.log(this.selectedQuestion);
@@ -139,7 +140,9 @@ export class FilteredQuestionListComponent implements OnInit, OnChanges {
     }
   }
 
-  questionChange(event) {
+  questionChange(value: number) {
+    console.log("ID CHANGED TO " + value + " from " + this.selectedQuestionId);
+    this.selectedQuestionId = value;
     this.ngOnChanges();
     window.scrollTo(0,0);
   }
