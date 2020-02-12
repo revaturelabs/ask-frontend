@@ -21,8 +21,7 @@ export class LoginPageComponent implements OnInit {
    * @param id The id of the user to login as
    */
   onSubmit(id: number) {
-    this.http
-      .get<Account>(`${environment.userUri}/${id}`)
+    this.authService.getAccountById(id)
       .subscribe((account: Account) => {
         this.authService.userLogin(account);
       });

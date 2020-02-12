@@ -3,6 +3,8 @@ import { Account } from '../../models/Account';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/models/User';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +41,11 @@ constructor(private router: Router, private http: HttpClient) { }
     this.router.navigate(['/']);
   }
 
-  getExpert(expertId:number){
-    return this.http.get(`${environment.userUri}/${expertId}`)
+  getUserById(id:number):Observable<User>{
+    return this.http.get<User>(`${environment.userUri}/${id}`)
+  }
+
+  getAccountById(id:number){
+    return this.http.get<Account>(`${environment.userUri}/${id}`)
   }
 }
