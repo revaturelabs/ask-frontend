@@ -131,7 +131,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     observable.subscribe(result => {
       this.currentQuestionObject = result;
       this.currentQuestionerId = this.currentQuestionObject.questionerId;
-      this.currentUserId = this.authService.user.id;
+      this.currentUserId = this.authService.account.id;
     });
 
     this.hiddenExpertTags = [];

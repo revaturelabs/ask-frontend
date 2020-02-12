@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { environment } from '../../../environments/environment';
+import { Account } from '../../models/Account';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -8,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -19,7 +22,11 @@ export class LoginPageComponent implements OnInit {
    * @param id The id of the user to login as
    */
   onSubmit(id: number) {
-    this.authService.userLogin(id);
+    this.http
+      .get<Account>(`${environment.userUri}/${id}`)
+      .subscribe((account: Account) => {
+        this.authService.userLogin(account);
+      });
   }
 
 }
