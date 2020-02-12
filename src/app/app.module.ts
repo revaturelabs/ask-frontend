@@ -30,6 +30,12 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
+import { SpecificTagInfoComponent } from './static/topic-info/specific-tag-info.component';
+import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
+import { TopicAMAComponent } from './static/topic-ama/topic-ama.component';
+import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
+import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +58,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent,
-    SkilltagPipe
+    SkilltagPipe,
+    TopicPageComponent,
+    SpecificTagInfoComponent,
+    TopicExpertsComponent,
+    TopicAMAComponent,
+    TopicQuestionsComponent,
+    TopicWebinarsComponent
   ],
   imports: [
     BrowserModule,
