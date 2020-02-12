@@ -13,4 +13,4 @@
 <div class="response-component" *ngFor="let response of selectedQuestion.responses">
   <app-response (highlighted)="ngOnChanges(null)" [response]="response"></app-response>
 </div>
-<app-enter-response (newResponse)="ngOnChanges(null)" *ngIf="this.authService.account.expert"></app-enter-response>
+<app-enter-response (newResponse)="ngOnChanges(null)" *ngIf="this.authService.account.expert" [question]="selectedQuestion"></app-enter-response>
