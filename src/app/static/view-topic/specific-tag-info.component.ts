@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Tag } from 'src/app/models/Tag';
+import { TagService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-specific-tag-info',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecificTagInfoComponent implements OnInit {
 
-  constructor() { }
+  tag: Tag[];
+  
+
+  constructor(
+    private tagService : TagService
+  ) { }
 
   ngOnInit() {
+    const selectedTagId = this.tagService.getTagId();
+    this.tagService.getTagsById(selectedTagId).subscribe(tag => {
+      this.tag = tag;
+    });
   }
+
+
 
 }
