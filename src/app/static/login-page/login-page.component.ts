@@ -12,6 +12,8 @@ import { Account } from '../../models/Account';
 export class LoginPageComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
+  option : number;
+
   ngOnInit() {}
 
   /**
@@ -20,9 +22,9 @@ export class LoginPageComponent implements OnInit {
    *
    * @param id The id of the user to login as
    */
-  onSubmit(id: number) {
+  onSubmit() {
     this.http
-      .get<Account>(`${environment.userUri}/${id}`)
+      .get<Account>(`${environment.userUri}/${this.option}`)
       .subscribe((account: Account) => {
         this.authService.userLogin(account);
       });
