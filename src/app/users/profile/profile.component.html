@@ -8,8 +8,8 @@
     </li>
   </ul>
   <div class="row">
-    <h2 *ngIf="isAssociate()">Associate</h2>
-    <h2 *ngIf="false">Expert</h2>
+    <h2 *ngIf="!this.authService.account.expert">Associate</h2>
+    <h2 *ngIf="this.authService.account.expert">Expert</h2>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -78,12 +78,6 @@
         </div>
       </div>
     </div>
-
-    <p>{{ this.authService.user.username }}</p>
-    <p>
-      is Expert? <span *ngIf="this.authService.account.expert">Yes</span>
-      <span *ngIf="!this.authService.account.expert">No</span>
-    </p>
 
     <mat-chip-list *ngIf="this.authService.user.expertTags.length > 0">
       <h2>Tags</h2>
