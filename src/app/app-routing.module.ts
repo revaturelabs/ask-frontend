@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'topics', component: TopicPageComponent, canActivate: [AuthGuard] },
-  { path: 'view-topic', component: SpecificTagInfoComponent, canActivate: [AuthGuard] }
+  { path: '**', component: SpecificTagInfoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
