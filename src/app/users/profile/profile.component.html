@@ -19,22 +19,64 @@
       <div class="col-md-12">
         <form>
           <div class="form-group users-profile-interests">
-            <input type="email" class="form-control" id="userProfile" placeholder="Interests">
+            <input
+              type="email"
+              class="form-control"
+              id="userProfile"
+              placeholder="Interests"
+            />
             <button type="submit" class="btn btn-primary">Add</button>
           </div>
-          <div class="btn users-profile-interests__interest-btn">interest 1</div>
-          <div class="btn users-profile-interests__interest-btn">interest 2</div>
-          <div class="btn users-profile-interests__interest-btn">interest 3</div>
+          <div class="btn users-profile-interests__interest-btn">
+            interest 1
+          </div>
+          <div class="btn users-profile-interests__interest-btn">
+            interest 2
+          </div>
+          <div class="btn users-profile-interests__interest-btn">
+            interest 3
+          </div>
         </form>
       </div>
       <div class="row">
         <div class="col-md-12">
           <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-          <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
-            [mode]="mode" [options]="options" required maxlength="500" *ngIf="cleanMarkdown">
+          <md-editor
+            name="Content"
+            [upload]="doUpload"
+            [preRender]="preRenderFunc"
+            [(ngModel)]="this.form.body"
+            [height]="'200px'"
+            [mode]="mode"
+            [options]="options"
+            required
+            maxlength="500"
+            *ngIf="cleanMarkdown"
+          >
           </md-editor>
         </div>
       </div>
     </div>
+
+    <p>{{ this.authService.user.username }}</p>
+    <p>
+      is Expert? <span *ngIf="this.authService.user.isExpert">Yes</span>
+      <span *ngIf="!this.authService.user.isExpert">No</span>
+    </p>
+
+        <h2>Tags</h2>
+        <mat-chip-list *ngIf="this.authService.user.expertTags">
+            <mat-chip >
+              {{ tags[0].name }}
+            </mat-chip>
+          </mat-chip-list>
+    
+    <div *ngIf="this.authService.user.questions.length > 0">
+      <app-user-questions></app-user-questions>
+    </div>
+    <div *ngIf="this.authService.user.responses.length > 0">
+      <app-expert-questions></app-expert-questions>
+    </div>
+    <p>{{ this.authService.user | json }}</p>
   </div>
 </div>
