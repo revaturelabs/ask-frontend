@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
-  { path: 'associate-profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
