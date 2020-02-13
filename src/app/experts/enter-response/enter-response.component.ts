@@ -57,7 +57,9 @@ export class EnterResponseComponent implements OnInit {
             duration: 3000,
           });
           this.response.body = null;
-          this.router.navigate(['/view-question']);
+          this.router.navigate(['/questions']); //Currently routes to settings because it does
+          //not refresh the page if something is submitted, so person will have to navigate
+          //back to see changes.
         },
         failure => {
           this._snackBar.open('Response Submission Failed', ' ', {

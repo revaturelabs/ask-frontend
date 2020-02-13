@@ -16,18 +16,15 @@ import { Response } from '../../models/Response';
 })
 export class HighlightedResponseComponent implements OnInit {
 
-  @Input() highlight: Response;
-  responderName: string;
-
+  @Input() highnum: number;
+  private highlight: Response;
   constructor(private responseService: ResponseService) { }
-
+  
   ngOnInit() {
-
-    // Used for displaying the username of the expert who responded
-    let highlightId = this.highlight.id;
-    this.responseService.getResponseById(highlightId).subscribe(result => {
-      this.responderName = result.user.username;
-    });
+    this.responseService.getResponseById(this.highnum).subscribe((data) =>{
+      this.highlight = data;
+    })
+    console.log("THE ZBODY: " + this.highlight.body);  
   }
 
 }

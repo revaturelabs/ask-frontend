@@ -28,7 +28,6 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
    */
   @Input() selectedQuestion: Question;
   responses: Response[];
-  highlightedResponse: Response;
 
   constructor(
     private questionService: QuestionService,
@@ -40,11 +39,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.selectedQuestion.highlightedResponseId) {
-      this.highlightedResponse = this.selectedQuestion.highlightedResponseId;
-    } else {
-      console.log('No highlighted response.');
-    }
+    
   }
 
 }
