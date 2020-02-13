@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
+import { Tag } from '../../models/Tag';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit {
   editModeText: string;
 
   ngOnInit() {
+    console.log(this.authService.user.isExpert);
   }
 
   onFileChange(event) {

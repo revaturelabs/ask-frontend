@@ -32,6 +32,11 @@
   flex-direction: column;
 }
 
+.chip {
+  background-color: #55698d;
+  color: white;
+}
+
 a, a:hover {
   text-decoration: underline;
   color: blue;
