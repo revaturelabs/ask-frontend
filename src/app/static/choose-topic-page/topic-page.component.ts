@@ -26,8 +26,7 @@ export class TopicPageComponent implements OnInit {
   }
 
   viewTopic = selectTagId => {
-    this.tagService.setTagId(selectTagId);
-    this.router.navigate([`/view-topic/`]);
+    this.router.navigate([`/view-topic/${selectTagId}`]);
   }
 
 }
