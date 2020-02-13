@@ -1,49 +1,45 @@
+<div class="container-fluid">
+  <ul class="nav">
+    <li class="nav-item">
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-success" (click)="editMode()">{{editModeText}} &rarr;</button>
+    </li>
+  </ul>
+  <div class="row">
+    <h2 *ngIf="isAssociate()">Associate</h2>
+    <h2 *ngIf="false">Expert</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <img class="profilePic" src="http://placekitten.com/g/200/300" alt="bianca !<3s cats">
+        <!-- <img class="profilePic" src={{user.profilePic}}> -->
 
-<!-- Jesse Image -->
-<label class="image-upload-container btn btn-bwm">
-    <span>Choose Image</span>
-    <input
-            type="file"
-            accept="image/*"
-            (change)="onFileChange($event)">
-    </label>
-<!-- Jesse Image -->
-
-<div class="container">
-  <div class="container-fluid">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="questions">&larr; Back</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Personalize &rarr;</a>
-      </li>
-    </ul>
-    <div class="row">
-      <h2 *ngIf="isAssociate()">Associate</h2>
-      <h2 *ngIf="false">Expert</h2>
-    </div>
-    <div class="row">
-      <div class="col-md-3">
-        <img src="http://placekitten.com/g/200/300" alt="bianca !<3s cats">
-      </div>
-      <div class="col-md-9">
-        <form>
-          <div class="form-group">
-            <label for="profileInputUsername">Username</label>
-            <input type="email" class="form-control" id="profileInputUsername">
-          </div>
-          <div class="form-group">
-            <label for="profileInputEmail">Email</label>
-            <input type="email" class="form-control" id="profileInputEmail">
-          </div>
-        </form>
+      <div class="centered">
+        <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
     </div>
+    <div class="col-md-8">
+      <form>
+        <div class="form-group">
+          <label for="profileInputUsername">Username: </label>
+          <span> {{user.username}}</span>
+          <input type="email" class="form-control" id="profileInputUsername" placeholder="New Username"
+            *ngIf=inEditMode>
+        </div>
+        <div class="form-group">
+          <label for="profileInputEmail">Email: </label>
+          <span> {{user.email}}</span>
+          <input type="email" class="form-control" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container">
     <div class="row">
       <div class="col-md-12">
         <form>
-          <div class="form-group users-profile-interests">
+          <div class="form-group users-profile-interests" *ngIf="inEditMode">
             <input type="email" class="form-control" id="userProfile" placeholder="Interests">
             <button type="submit" class="btn btn-primary">Add</button>
           </div>
@@ -56,15 +52,8 @@
     <div class="row users-profile-wysiwyg--row">
       <div class="col-md-12 users-profile-wysiwyg--wrapper">
         <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-        <md-editor name="Content"
-          [upload]="doUpload"
-          [preRender]="preRenderFunc"
-          [(ngModel)]="content"
-          [height]="'200px'"
-          [mode]="mode"
-          [options]="options"
-          required
-          maxlength="500">
+        <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="content"
+          [height]="'200px'" [mode]="mode" [options]="options" required maxlength="500">
         </md-editor>
       </div>
     </div>
@@ -77,7 +66,8 @@
           <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
           <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
+            aria-disabled="true">Vestibulum at eros</a>
         </div>
       </div>
     </div>

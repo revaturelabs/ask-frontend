@@ -5,7 +5,9 @@ export class User {
     id: number;
     username: string;
     isExpert: boolean;
-    profilePic: string
+    email: string;
+    bio: string;
+    profilePic: string;
     expertTags: Tag[];
     questions: Question[];
     responses: Response[];
