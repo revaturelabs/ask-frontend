@@ -1,12 +1,8 @@
-
 <!-- Jesse Image -->
 <label class="image-upload-container btn btn-bwm">
-    <span>Choose Image</span>
-    <input
-            type="file"
-            accept="image/*"
-            (change)="onFileChange($event)">
-    </label>
+  <span>Choose Image</span>
+  <input type="file" accept="image/*" (change)="onFileChange($event)" />
+</label>
 <!-- Jesse Image -->
 
 <div class="container">
@@ -25,17 +21,21 @@
     </div>
     <div class="row">
       <div class="col-md-3">
-        <img src="http://placekitten.com/g/200/300" alt="bianca !<3s cats">
+        <img src="http://placekitten.com/g/200/300" alt="bianca !<3s cats" />
       </div>
       <div class="col-md-9">
         <form>
           <div class="form-group">
             <label for="profileInputUsername">Username</label>
-            <input type="email" class="form-control" id="profileInputUsername">
+            <input
+              type="email"
+              class="form-control"
+              id="profileInputUsername"
+            />
           </div>
           <div class="form-group">
             <label for="profileInputEmail">Email</label>
-            <input type="email" class="form-control" id="profileInputEmail">
+            <input type="email" class="form-control" id="profileInputEmail" />
           </div>
         </form>
       </div>
@@ -67,7 +67,8 @@
     <div class="row users-profile-wysiwyg--row">
       <div class="col-md-12 users-profile-wysiwyg--wrapper">
         <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-        <md-editor name="Content"
+        <md-editor
+          name="Content"
           [upload]="doUpload"
           [preRender]="preRenderFunc"
           [(ngModel)]="content"
@@ -75,7 +76,8 @@
           [mode]="mode"
           [options]="options"
           required
-          maxlength="500">
+          maxlength="500"
+        >
         </md-editor>
       </div>
     </div>
@@ -85,33 +87,52 @@
           <a href="#" class="list-group-item list-group-item-action active">
             Cras justo odio
           </a>
-          <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+          <a href="#" class="list-group-item list-group-item-action"
+            >Dapibus ac facilisis in</a
+          >
+          <a href="#" class="list-group-item list-group-item-action"
+            >Morbi leo risus</a
+          >
+          <a href="#" class="list-group-item list-group-item-action"
+            >Porta ac consectetur ac</a
+          >
+          <a
+            href="#"
+            class="list-group-item list-group-item-action disabled"
+            tabindex="-1"
+            aria-disabled="true"
+            >Vestibulum at eros</a
+          >
         </div>
       </div>
     </div>
 
     <p>{{ this.authService.user.username }}</p>
     <p>
-      is Expert? <span *ngIf="this.authService.user.isExpert">Yes</span>
-      <span *ngIf="!this.authService.user.isExpert">No</span>
+      is Expert? <span *ngIf="this.authService.account.expert">Yes</span>
+      <span *ngIf="!this.authService.account.expert">No</span>
     </p>
 
-        <h2>Tags</h2>
-        <mat-chip-list *ngIf="this.authService.user.expertTags">
-            <mat-chip >
-              {{ tags[0].name }}
-            </mat-chip>
-          </mat-chip-list>
-    
+    <mat-chip-list *ngIf="this.authService.user.expertTags.length > 0">
+      <h2>Tags</h2>
+      <div *ngFor="let tag of this.authService.user.expertTags">
+        <mat-chip class="chip">
+          {{ tag.name }}
+        </mat-chip>
+      </div>
+    </mat-chip-list>
+
     <div *ngIf="this.authService.user.questions.length > 0">
       <app-user-questions></app-user-questions>
     </div>
     <div *ngIf="this.authService.user.responses.length > 0">
       <app-expert-questions></app-expert-questions>
     </div>
-    <p>{{ this.authService.user | json }}</p>
+    <div *ngIf="this.authService.user.responses.length > 0">
+      <div *ngFor="let response of this.authService.user.responses">
+        <p>{{ response.body }}</p>
+        <p>{{ response.creationDate }}</p>
+      </div>
+    </div>
   </div>
 </div>

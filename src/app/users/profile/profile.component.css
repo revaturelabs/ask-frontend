@@ -31,3 +31,8 @@
 .users-profile-wysiwyg--wrapper {
   flex-direction: column;
 }
+
+.chip {
+  background-color: #55698d;
+  color: white;
+}
