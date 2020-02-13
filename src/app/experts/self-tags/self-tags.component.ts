@@ -95,5 +95,6 @@ export class SelfTagsComponent implements OnInit {
 
   addNewTag() {
     this.tagService.getTags().subscribe((tagsUpdate) => { this.tags.push(tagsUpdate[tagsUpdate.length - 1]); });
+    console.log(this.tags);
   }
 }
