@@ -12,6 +12,7 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
+import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
-  { path: 'topics', component: TopicPageComponent, canActivate: [AuthGuard] }
+  { path: 'topics', component: TopicPageComponent, canActivate: [AuthGuard] },
+  { path: 'view-topic', component: SpecificTagInfoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

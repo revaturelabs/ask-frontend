@@ -31,11 +31,12 @@ import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
-import { SpecificTagInfoComponent } from './static/topic-info/specific-tag-info.component';
+import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
 import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
 import { TopicAMAComponent } from './static/topic-ama/topic-ama.component';
 import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
 import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.component';
+import { TopicFilterComponent } from './static/topic-filter/topic-filter.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.c
     TopicExpertsComponent,
     TopicAMAComponent,
     TopicQuestionsComponent,
-    TopicWebinarsComponent
+    TopicWebinarsComponent,
+    TopicFilterComponent
   ],
   imports: [
     BrowserModule,

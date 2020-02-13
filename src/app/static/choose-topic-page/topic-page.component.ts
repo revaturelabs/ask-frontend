@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Tag } from 'src/app/models/Tag';
 import { TagService } from 'src/app/services/tags.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topic-page',
@@ -10,15 +11,23 @@ import { TagService } from 'src/app/services/tags.service';
 export class TopicPageComponent implements OnInit {
 
   tag: Tag[];
+  
 
   constructor(
-    private tagService : TagService
+    public router: Router,
+    private tagService : TagService,
+    private cdRef: ChangeDetectorRef
     ) { }
 
   ngOnInit() {
     this.tagService.getTags().subscribe(tag => {
       this.tag = tag;
     });
+  }
+
+  viewTopic = selectTagId => {
+    this.tagService.setTagId(selectTagId);
+    this.router.navigate([`/view-topic/`]);
   }
 
 }

@@ -1,0 +1,39 @@
+mat-toolbar{
+    background-color: #ffffff;
+    top: 50px;
+    box-shadow: 0 0 1px 1px #00000044;
+    padding-top: 7px;
+  }
+  .tag-chip-list {
+    top: 8px;
+    font-size: 0.8em;
+    width: 47%;
+    margin: 12px;
+    /* padding: 12px; */
+  }
+  
+  .select-dropdown {
+    width: 18%;
+    margin: 4px;
+  }
+  
+  .filter-button {
+    background-color: #f26925;
+    color: #ffffff;
+  }
+  
+  .reset-button {
+    background-color: #474C55;
+    color: #ffffff;
+  }
+  button{
+    width: 68px;
+    margin: 12px;
+  }
+  .chip-list {
+    width: 70%;
+    margin: 4px;
+    /* position: absolute;
+    padding-left: 15%; */
+  }
+  
