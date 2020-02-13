@@ -1,5 +1,11 @@
+/* {
+  border: 1px solid red;
+} */
+
 .container-fluid .nav,
-.form-group.users-profile-interests {
+.form-group.users-profile-interests,
+.users-profile-wysiwyg--row,
+.users-profile-wysiwyg--wrapper {
   display: flex;
 }
 
@@ -15,4 +21,13 @@
 
 .btn.users-profile-interests__interest-btn:last-child {
   margin-right: 0;
+}
+
+/* WYSIWYG EDITOR */
+.editor-container {
+  width: 100%;
+}
+
+.users-profile-wysiwyg--wrapper {
+  flex-direction: column;
 }
