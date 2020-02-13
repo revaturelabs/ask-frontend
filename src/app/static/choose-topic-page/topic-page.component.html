@@ -1,7 +1,8 @@
+
 <div class="container">
-        <div *ngFor="let tag of tag">
+        <button class="btn text-light col-md-2" *ngFor="let tag of tag" (click)="viewTopic(tag.id)">
               {{ tag.name }}
-        </div>
+        </button>
   </div>
 
 
