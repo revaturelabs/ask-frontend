@@ -1,0 +1,41 @@
+#ama-container{
+    min-height : 200px;
+    padding : 20px;
+    border : 1px solid #55698d;
+}
+
+input {
+    width : 80%;
+}
+
+#send {
+    min-width : fit-content;
+    background-color: #f26925;
+    color : white;
+    border-radius : 4px;
+}
+
+#input-container {
+    width : 100%;
+    padding-top : 10px;
+}
+
+#close {
+    background-color: #55698d;
+    color : white;
+    border : none;
+    border-right : 1px solid lightgrey;
+}
+
+#top-bar {
+    height : 30px;
+    background-color: #55698d;
+    color : white;
+    padding : 2px;
+}
+
+#ama {
+    max-width : 40%;
+    box-shadow: 1px 1px 5px grey;
+  }
+

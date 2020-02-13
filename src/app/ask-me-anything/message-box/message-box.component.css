@@ -1,0 +1,7 @@
+#message-box-container {
+    border : 1px solid grey;
+    border-radius : 2px;
+    min-height : 300px;
+    max-height : 400px;
+    overflow-y : scroll;
+}

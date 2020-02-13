@@ -1,1 +1,15 @@
-<p>ask-me-anything-page works!</p>
+<div id="ama">
+    <div id="top-bar">
+        <button id="close">x</button>
+    </div>
+    <div id="ama-container">
+        <h1>Ask Me Anything!</h1>
+        <h3>TRAINER NAME | TOPIC</h3>
+        <app-message-box #messageBox [messages] = "messages"></app-message-box>
+        <div id="input-container">
+            <input #inputBox type="text" placeholder="Send Message" (keydown.enter)="action(inputBox.value); inputBox.value = ''">
+            <button id="send" class="btn-light" (click) = "action(inputBox.value)">SEND</button>
+        </div>
+    </div>
+</div>
+
