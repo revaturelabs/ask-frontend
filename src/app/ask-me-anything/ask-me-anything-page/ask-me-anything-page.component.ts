@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
 import { MessageBoxComponent } from '../message-box/message-box.component';
+import { ChatMessage } from 'src/app/static/chat-message/chat-message';
 
 @Component({
   selector: 'app-ask-me-anything-page',
@@ -16,7 +17,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   expertDisplayName : string = 'EXPERT NAME';
   topicDisplayName : string = 'TOPIC NAME';
 
-  messages : string[] = [
+  messages : ChatMessage[] = [
   ]
 
   @Input()
@@ -30,13 +31,14 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   }
 
   @Output()
-  action(text : string, event){
+  inputText(text : string, event){
     
     if (event.keyCode == 13) {
       event.preventDefault();
   }
     if(text){
-      this.messages.push(text);
+      //temporary post line, send to server here
+      this.messages.push(new ChatMessage('Mr. Bean', text, new Date()));
     }
   }
 

@@ -7,6 +7,10 @@
     position : absolute;
 }
 
+#messages-table {
+    width : 100%;
+}
+
 #container {
     position : relative;
     height : 300px;
@@ -23,6 +27,3 @@
     padding-bottom: 0px;
 }
 
-td {
-    word-wrap: break-word;
-}
