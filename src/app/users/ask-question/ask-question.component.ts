@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 //Angular Material Modal imports
-import { NavbarComponent } from '../../static/navbar/navbar.component';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+//import { NavbarComponent } from '../../static/navbar/navbar.component';
+//import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 /**
  * @title Ask Question
