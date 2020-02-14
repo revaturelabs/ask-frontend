@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'question/:id', component: QuestionRouteComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

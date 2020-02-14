@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content:L flex-start;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+}
+
+.card-body--pagenotfound {
+  /* width: 45em; */
+}
+
+h5.card-title {
+  font-size: 2em;
+}

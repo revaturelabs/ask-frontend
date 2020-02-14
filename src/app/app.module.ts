@@ -32,6 +32,7 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionRouteComponent } from './static/question-route/question-route.component';
+import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { QuestionRouteComponent } from './static/question-route/question-route.c
     ExpertQuestionsComponent,
     UserQuestionsComponent,
     SkilltagPipe,
-    QuestionRouteComponent
+    QuestionRouteComponent,
+    PageNotFoundComponent
   ],
   imports: [
     SharedModule,
