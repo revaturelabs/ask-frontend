@@ -25,7 +25,7 @@
         <div class="form-group">
           <label for="profileInputUsername">Username: </label>
           <span> {{user.username}}</span>
-          <input type="email" class="form-control" id="profileInputUsername" placeholder="New Username"
+          <input type="username" class="form-control" id="profileInputUsername" placeholder="New Username"
             *ngIf=inEditMode>
         </div>
         <div class="form-group">
@@ -33,54 +33,31 @@
           <span> {{user.email}}</span>
           <input type="email" class="form-control" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
         </div>
+        <div class="form-group">
+          <label for="profileInputBio"></label>
+          <span> {{user.bio}}</span>
+          <input type="textarea" class="form-control" id="profileInputBio" placeholder="Bio" *ngIf=inEditMode>
+        </div>
       </form>
     </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <!-- Being able to add Tags should go here-->
+        <!--
         <form>
           <div class="form-group users-profile-interests" *ngIf="inEditMode">
             <input type="email" class="form-control" id="userProfile" placeholder="Interests">
             <button type="submit" class="btn btn-primary">Add</button>
           </div>
-          <div class="btn users-profile-interests__interest-btn">
-            interest 1
-          </div>
-          <div class="btn users-profile-interests__interest-btn">
-            interest 2
-          </div>
-          <div class="btn users-profile-interests__interest-btn">
-            interest 3
-          </div>
         </form>
+        -->
       </div>
     </div>
-    <div class="row users-profile-wysiwyg--row">
-      <div class="col-md-12 users-profile-wysiwyg--wrapper">
-        <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-        <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="content"
-          [height]="'200px'" [mode]="mode" [options]="options" required maxlength="500">
-        </md-editor>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active">
-            Cras justo odio
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1"
-            aria-disabled="true">Vestibulum at eros</a>
-        </div>
-      </div>
-    </div>
-
-    <mat-chip-list *ngIf="this.authService.user.expertTags.length > 0">
-      <h2>Tags</h2>
+    <mat-chip-list>
+      <h2 *ngIf="!this.authService.account.expert">Interests</h2>
+      <h2 *ngIf="this.authService.account.expert">Skills</h2>
       <div *ngFor="let tag of this.authService.user.expertTags">
         <mat-chip class="chip">
           {{ tag.name }}
