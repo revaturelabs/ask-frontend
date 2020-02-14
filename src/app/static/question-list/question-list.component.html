@@ -1,6 +1,5 @@
 <div class="preview-questions">
   <app-preview-question
-    (change)="giveChange($event)"
     *ngFor="let question of questions; let i = index"
     [question]="question"
     id="previewquestion_{{i}}"

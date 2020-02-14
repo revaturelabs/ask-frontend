@@ -1,10 +1,6 @@
-
 <app-question-filter (newFilteredUri)="setQuestionsListWithFilteredUri($event)" (newFilteredStatus)="setFilteredStatusAndRefreshQuestions($event)"></app-question-filter>
 
-
-<app-view-question *ngIf="selectedQuestion" [selectedQuestion]="selectedQuestion"></app-view-question>
-<app-question-list (change)="questionChange($event)" [questions]="questions"></app-question-list>
-
+<app-question-list [questions]="questions"></app-question-list>
 
 <div class="load-more" >
     <button id="loadMore" *ngIf="loadMoreEnable && !hasBeenFiltered" mat-raised-button (click)="loadMore()">Load More</button>

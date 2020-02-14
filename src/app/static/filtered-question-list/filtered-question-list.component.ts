@@ -1,8 +1,8 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { Question } from '../../models/Question';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from 'src/app/services/question.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './filtered-question-list.component.html',
   styleUrls: ['./filtered-question-list.component.css'],
 })
-export class FilteredQuestionListComponent implements OnInit, OnChanges {
+export class FilteredQuestionListComponent implements OnInit {
   hasBeenFiltered: boolean = false;
   loadMoreEnable: boolean = true;
   moreQuestions: boolean = true;
@@ -18,8 +18,6 @@ export class FilteredQuestionListComponent implements OnInit, OnChanges {
   questions: Question[];
   pageNumber: number = 0;
   tags: string[] = [];
-  selectedQuestionId: number;
-  selectedQuestion: Question;
 
   constructor(
     private http: HttpClient,
@@ -126,24 +124,5 @@ export class FilteredQuestionListComponent implements OnInit, OnChanges {
     this.questionService.getQuestions().subscribe(unfilteredQuestions => {
       this.questions = unfilteredQuestions;
     });
-    this.selectedQuestionId = null;
-  }
-
-  ngOnChanges() {
-    if(this.selectedQuestionId) {
-      this.questionService.getQuestionById(this.selectedQuestionId).subscribe((data)=>{
-        this.selectedQuestion = data;
-      });
-      console.log(this.selectedQuestion);
-    } else {
-      console.log("onChange fired without right id.")
-    }
-  }
-
-  questionChange(value: number) {
-    console.log("ID CHANGED TO " + value + " from " + this.selectedQuestionId);
-    this.selectedQuestionId = value;
-    this.ngOnChanges();
-    window.scrollTo(0,0);
   }
 }

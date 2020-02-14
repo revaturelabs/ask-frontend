@@ -43,9 +43,7 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
 
   // On click of the 'View' button, it sets the question ID of the selected question
   viewQuestion(selectedQuestionId) {
-    //Outputs id of selected question to parent.
-    this.change.emit(selectedQuestionId); //I'm assuming emits will be deleted and instead
-    //route to a specific website url designed to handle viewing questions.
+    this.router.navigate([`/question/${selectedQuestionId}`]);
   }
 
   ngOnInit() {
