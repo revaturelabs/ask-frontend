@@ -31,7 +31,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
 
   constructor(
     private questionService: QuestionService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

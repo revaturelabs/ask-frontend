@@ -20,9 +20,6 @@ import { MatSnackBar} from '@angular/material/snack-bar';
   * Modifications for more readable code, added ability for "+number of skills" tag to show up when expert's tag list is too large to fit.
   */
 
-@Injectable({
-  providedIn: 'root',
-})
 @Component({
   selector: 'app-self-tags',
   templateUrl: './self-tags.component.html',
