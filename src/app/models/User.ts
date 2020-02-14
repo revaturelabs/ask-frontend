@@ -9,4 +9,5 @@ export class User {
     expertTags: Tag[];
     questions: Question[];
     responses: Response[];
+
 }
