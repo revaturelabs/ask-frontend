@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { ExpertQuestionsComponent } from './expert-questions.component';
 import { QuestionListComponent } from '../question-list/question-list.component';
 import { PreviewQuestionComponent } from '../preview-question/preview-question.component';
-import { SkilltagPipe } from '../response/skilltag.pipe';
+import { SkilltagPipe } from '../../shared/skilltag.pipe';
 import { RouterTestingModule } from '@angular/router/testing';
 describe('ExpertQuestionsComponent', () => {
   it('should create', () => {

@@ -6,10 +6,10 @@
 <div class="msg-count"> total responses: {{totalMsgCount}}</div>
 
 <div class="highlighted-response-component">
-  <app-highlighted-response *ngIf="highlightedResponse" [highlight] = "highlightedResponse"></app-highlighted-response>
+  <app-highlighted-response *ngIf="highlightedResponse" [highlight]="highlightedResponse"></app-highlighted-response>
 </div>
 
 <div class="response-component" *ngFor="let response of questionResponses">
   <app-response (highlighted)="refreshPage()" [response]="response"></app-response>
 </div>
-  <app-enter-response (newResponse)="refreshPage()" *ngIf="this.authService.account.expert"></app-enter-response>
+<app-enter-response (newResponse)="refreshPage()" *ngIf="this.authService.account.expert"></app-enter-response>

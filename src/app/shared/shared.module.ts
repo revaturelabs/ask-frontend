@@ -5,18 +5,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 
+import { FooterComponent } from './footer/footer.component';
+
+import { SkilltagPipe } from './skilltag.pipe';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FooterComponent,
+    SkilltagPipe
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialImportModule,
   ],
   exports:[
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
     LMarkdownEditorModule,
-    MaterialImportModule
+    MaterialImportModule,
+    SkilltagPipe,
+    FooterComponent
   ]
 })
 export class SharedModule { }
