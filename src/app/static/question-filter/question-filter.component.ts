@@ -17,12 +17,9 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { QuestionService } from 'src/app/services/question.service';
 
 /**
  * @title Filter questions
@@ -62,9 +59,6 @@ export class QuestionFilterComponent implements OnInit {
     private fb: FormBuilder,
     private ts: TagService,
     private _snackBar: MatSnackBar,
-    private http: HttpClient,
-    private questionService: QuestionService,
-    private router: Router,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
