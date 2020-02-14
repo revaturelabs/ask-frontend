@@ -14,7 +14,6 @@ import { ResponseComponent } from '../static/response/response.component';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { MatChipsModule } from "@angular/material/chips";
 
-
 import { SharedModule } from '../shared/shared.module';
 import { MarkdownModule } from 'ngx-markdown';
 
@@ -37,7 +36,7 @@ import { MarkdownModule } from 'ngx-markdown';
     SharedModule,
     MarkdownModule,
     MaterialImportModule,
-    MatChipsModule
+    MatChipsModule,
   ],
   exports: [
     QuestionComponent,
@@ -49,6 +48,7 @@ import { MarkdownModule } from 'ngx-markdown';
     ExpertQuestionsComponent,
     UserQuestionsComponent,
     EnterResponseComponent,
+    HighlightedResponseComponent,
     ResponseComponent
   ]
 })
