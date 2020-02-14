@@ -17,6 +17,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
+//Angular Material Modal imports
+import { NavbarComponent } from '../../static/navbar/navbar.component';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 /**
  * @title Ask Question
@@ -241,4 +244,5 @@ export class AskQuestionComponent implements OnInit {
     setTimeout(() =>
       this.cleanMarkdown = true, );
   }
+
 }
