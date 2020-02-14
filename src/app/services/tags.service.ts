@@ -20,6 +20,10 @@ export class TagService {
     return this.http.get<Tag[]>(environment.tagsUri);
   }
 
+  getTagId(){
+    return this.tagId;
+  }
+
   getTagsById(tagId): Observable<Tag[]>{
     return this.http.get<Tag[]>(`${environment.tagsUri}/${tagId}`);
   }
@@ -33,4 +37,3 @@ export class TagService {
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
   }
 }
- 

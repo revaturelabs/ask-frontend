@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'view-topic/:id', component: SpecificTagInfoComponent, canActivate: [AuthGuard] },
   { path: 'topic-experts', component: TopicExpertsComponent },
 
-
 ];
 
 @NgModule({
