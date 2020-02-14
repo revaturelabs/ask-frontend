@@ -31,3 +31,24 @@
 .users-profile-wysiwyg--wrapper {
   flex-direction: column;
 }
+
+.chip {
+  background-color: #55698d;
+  color: white;
+}
+
+a, a:hover {
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.profilePic {
+  margin: auto;    
+  display: block;
+}
+
+.centered {
+  text-align: right;
+  padding-bottom: 3em;
+}
