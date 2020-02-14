@@ -11,6 +11,7 @@ import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
+import { WebSocketComponent } from './web-socket/web-socket.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]  },
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
-  { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] }
+  { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
+
+  { path: 'chat', component: WebSocketComponent },
 ];
 
 @NgModule({

@@ -30,6 +30,8 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WebSocketComponent } from './web-socket/web-socket.component';
+import { SocketService } from './services/socket.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent,
-    SkilltagPipe
+    SkilltagPipe,
+    WebSocketComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MarkdownModule.forRoot(),
     NgbModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, SocketService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

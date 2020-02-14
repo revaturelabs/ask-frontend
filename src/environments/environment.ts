@@ -13,7 +13,17 @@ export const environment = {
   // createQuestionUri: `${baseUri}:${port}/questions/create`,
   responsesUri: `${baseUri}:${port}/responses`,
   userUri: `${baseUri}:${port}/users`,
+  //url: `${baseUri}:${port}`,
+  url: "http://localhost:1337/"
 };
+
+
+
+// export const environment = {
+//   production: false,
+//   url: "http://localhost:8080/"
+// };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

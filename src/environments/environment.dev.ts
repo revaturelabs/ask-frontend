@@ -9,4 +9,5 @@ export const environment = {
   // createQuestionUri: `${baseUri}:${port}/questions/create`,
   responsesUri: `${baseUri}:${port}/responses`,
   userUri: `${baseUri}:${port}/users`,
+  url: `${baseUri}:${port}`,
 };
