@@ -6,11 +6,11 @@
   <!-- Angular Material form, input field for Title -->
   
   <mat-form-field>
-    <input matInput [(ngModel)]="this.form.value.head" #qTitle placeholder="Title: ">
+    <input matInput [(ngModel)]="this.form.value.head" placeholder="Title: ">
   </mat-form-field>
 
   <!-- Angular Material Chips -->
-  <mat-form-field #qTags class="tag-chip-list">
+  <mat-form-field class="tag-chip-list">
     <mat-icon matSuffix>search</mat-icon>
 
     <mat-chip-list #chipList aria-label="Tag selection">
@@ -39,8 +39,8 @@
 
   <!-- Submit button -->
   <div class="bunched">
-    <input type="file" id="ask-question-button-upload" accept="image/png, image/jpeg" (change)="onFileSelected($event)" #fileInput>
+    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)">
     <button mat-raised-button id="ask-question-button-submit"
-      (click)="submitQuestion($event, qTitle.value, tags, this.form.value.body)">Submit</button>
+      (click)="submitQuestion($event, this.form.value.head, this.tags, this.form.value.body)">Submit</button>
   </div>
 </div>

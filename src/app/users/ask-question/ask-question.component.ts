@@ -35,13 +35,11 @@ export class AskQuestionComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
-  addOnBlur = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
-  filtTags: string[] = [];
+  allTags: string[] = [];
   tags: string[] = [];
-  allTagsFromServer: string[] = [];
   cleanMarkdown = true;
 
   // image file
@@ -52,7 +50,6 @@ export class AskQuestionComponent implements OnInit {
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
-  @ViewChild('fileInput', { static: false }) fileInput: ElementRef<HTMLInputElement>;
 
   questionInput: Object = {
     questionerId: null,
@@ -71,14 +68,13 @@ export class AskQuestionComponent implements OnInit {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
-        tag ? this._filter(tag) : this.filtTags,
+        tag ? this._filter(tag) : this.allTags.slice(),
       ),
     );
     this.ts.getTags().subscribe(tags => {
-      for (let index = 0; index < tags.length; index++) {
-        this.allTagsFromServer.push(tags[index].name);
+      for (let tag of tags) {
+        this.allTags.push(tag.name);
       }
-      this.filterTags();
     });
     this.options.hideIcons = ['FullScreen'];
     this.options.showPreviewPanel = false;
@@ -87,31 +83,20 @@ export class AskQuestionComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
 
       // Add our tag
       if ((value || '').trim()) {
         // Preventing user inputting chips(tags) that are not in the list from the server
-        if (!this.filtTags.includes(value)) {
-          // Angular Material Snack-bar
-          if (this.allTagsFromServer.includes(value)) {
+        if (!this.allTags.includes(value)) {
             this._snackBar.open(
-              'Tag already chosen! No need to choose it again.',
+              'Tag not recognized! Please choose from the list.',
               'OK',
               { duration: 4000 },
             );
-          } else {
-            this._snackBar.open(
-              'Tag not recognized! Please choose from the list.',
-              'OK, I will',
-              { duration: 4000 },
-            );
-          }
         } else {
           this.tags.push(value.trim());
-          this.filterTags();
         }
       }
 
@@ -121,20 +106,6 @@ export class AskQuestionComponent implements OnInit {
       }
 
       this.tagCtrl.setValue(null);
-    }
-  }
-
-  filterTags(): void {
-    let i = 0;
-    let j = 0;
-    this.filtTags = [];
-    this.allTagsFromServer.forEach(el => {
-      this.filtTags.push(el);
-    });
-    for (i; i < this.tags.length; i++) {
-      j = this.filtTags.indexOf(this.tags[i]);
-      this.filtTags.splice(j, 1);
-    }
   }
 
   remove(tag: string): void {
@@ -142,21 +113,22 @@ export class AskQuestionComponent implements OnInit {
 
     if (index >= 0) {
       this.tags.splice(index, 1);
-      this.filterTags();
+      this.allTags.push(tag);
     }
   }
 
+   // Select tag, add chip, and remove from the list of options
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
+    this.allTags.splice(this.allTags.indexOf(event.option.viewValue),1);
     this.tagInput.nativeElement.value = '';
-    this.filterTags();
     this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.filtTags.filter(
+    return this.allTags.filter(
       tag => tag.toLowerCase().indexOf(filterValue) === 0,
     );
   }
@@ -172,7 +144,7 @@ export class AskQuestionComponent implements OnInit {
     event.preventDefault();
     this.questionInput.questionerId = this.authService.account.id;
     this.questionInput.head = head;
-    this.questionInput.tagList = this.tags;
+    this.questionInput.tagList = tagList;
     this.questionInput.body = body;
 
     // Validating if title or question body is empty
@@ -201,14 +173,11 @@ export class AskQuestionComponent implements OnInit {
 
   // submitting the images
   onUpload(questionId) {
-    event.preventDefault();
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
-        // clears the image name of input field
-        this.fileInput.nativeElement.value = '';
       },
       (err) => {
         console.log('Image upload was unsuccessful' + err);
@@ -229,7 +198,6 @@ export class AskQuestionComponent implements OnInit {
     });
     this.cleanMarkdown = false;
     this.tags = [];
-    this.filterTags();
     this.selectedFile = null;
     setTimeout(() =>
       this.cleanMarkdown = true, );
