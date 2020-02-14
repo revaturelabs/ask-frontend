@@ -40,8 +40,6 @@
   <!-- Submit button -->
   <div class="bunched">
     <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" #fileInput>
-    <button mat-raised-button id="ask-question-button-submit"
-      (click)="submitQuestion($event, qTitle.value, qTags.value, this.form.body)">Submit</button>
+    <button mat-raised-button id="ask-question-button-submit" (click)="submitQuestion($event, qTitle.value, qTags.value, this.form.body)">Submit</button>
   </div>
-  
 </div>

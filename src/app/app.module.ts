@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialImportModule } from '../material-import/material-import.module';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
@@ -14,8 +17,7 @@ import { ResponseComponent } from './static/response/response.component';
 import { AskQuestionComponent } from './users/ask-question/ask-question.component';
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
-import { MaterialImportModule } from '../material-import/material-import.module';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
@@ -26,10 +28,8 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
-import { LMarkdownEditorModule } from 'ngx-markdown-editor';
-import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MarkdownModule.forRoot(),
     NgbModule,
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
