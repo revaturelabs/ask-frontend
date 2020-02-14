@@ -30,6 +30,9 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
+import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
+import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent,
-    SkilltagPipe
+    SkilltagPipe,
+    AskMeAnythingPageComponent,
+    MessageBoxComponent,
+    ChatMessageComponent
   ],
   imports: [
     BrowserModule,
