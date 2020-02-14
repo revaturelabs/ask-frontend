@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { MatAutocompleteSelectedEvent,
-  MatAutocomplete,} from '@angular/material/autocomplete';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -11,8 +13,7 @@ import { TagService } from 'src/app/services/tags.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
-import { QuestionService } from 'src/app/services/question.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { Question } from 'src/app/models/Question';
 
 /**
  * @title Ask Question
@@ -31,7 +32,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class AskQuestionComponent implements OnInit {
 
-  form: FormGroup;
   visible = true;
   selectable = true;
   removable = true;
@@ -51,19 +51,18 @@ export class AskQuestionComponent implements OnInit {
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
 
-  questionInput: Object = {
-    questionerId: null,
-    head: null,
-    tagList: null,
-    body: null,
-  };
+  questionForm: FormGroup = this.fb.group({
+    id: [''],
+    head: ['', Validators.required],
+    body: ['', Validators.required],
+  });
 
   constructor(
-    private fb: FormBuilder,
     private ts: TagService,
     private _snackBar: MatSnackBar,
-    private questionService:QuestionService,
-    private authService: AuthService
+    private http: HttpClient,
+    private authService: AuthService,
+    private fb: FormBuilder,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -83,29 +82,29 @@ export class AskQuestionComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
-      const input = event.input;
-      const value = event.value;
+    const input = event.input;
+    const value = event.value;
 
-      // Add our tag
-      if ((value || '').trim()) {
-        // Preventing user inputting chips(tags) that are not in the list from the server
-        if (!this.allTags.includes(value)) {
-            this._snackBar.open(
-              'Tag not recognized! Please choose from the list.',
-              'OK',
-              { duration: 4000 },
-            );
-        } else {
-          this.tags.push(value.trim());
-        }
+    // Add our tag
+    if ((value || '').trim()) {
+      // Preventing user inputting chips(tags) that are not in the list from the server
+      if (!this.allTags.includes(value)) {
+        this._snackBar.open(
+          'Tag not recognized! Please choose from the list.',
+          'OK',
+          { duration: 4000 },
+        );
+      } else {
+        this.tags.push(value.trim());
       }
+    }
 
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
 
-      this.tagCtrl.setValue(null);
+    this.tagCtrl.setValue(null);
   }
 
   remove(tag: string): void {
@@ -117,10 +116,10 @@ export class AskQuestionComponent implements OnInit {
     }
   }
 
-   // Select tag, add chip, and remove from the list of options
+  // Select tag, add chip, and remove from the list of options
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
-    this.allTags.splice(this.allTags.indexOf(event.option.viewValue),1);
+    this.allTags.splice(this.allTags.indexOf(event.option.viewValue), 1);
     this.tagInput.nativeElement.value = '';
     this.tagCtrl.setValue(null);
   }
@@ -140,35 +139,32 @@ export class AskQuestionComponent implements OnInit {
   }
 
   // Submit Question
-  submitQuestion = function(event, head, tagList, body) {
-    event.preventDefault();
-    this.questionInput.questionerId = this.authService.account.id;
-    this.questionInput.head = head;
-    this.questionInput.tagList = tagList;
-    this.questionInput.body = body;
+  submitQuestion = function() {
 
-    // Validating if title or question body is empty
-    if (head.trim() === '') {
-      this._snackBar.open('Please enter a title', 'OK', { duration: 4000 });
-    } else if (body.trim() === '') {
-      this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
-    } else {
-      // POST-ing the form
-      this.questionService.saveQuestion(this.questionInput).subscribe(
-        response => {
-        // uploads the picture with form if there is one
-        if (this.selectedFile !== null) {
-         this.onUpload(response.id);
-           }
-        // clears the form
-        this.clearForm();
-        // custom snackbar message
-        this._snackBar.open('Your question is submitted!', 'OK!', {duration: 3000});
-      },
-      failed => {
-        this._snackBar.open('Your question failed to submit!', 'OK', {duration: 3000});
-      });
-    }
+    this.questionForm.addControl('tagList', new FormControl(this.tags));
+    let question: AskQuestion = new AskQuestion();
+    question.questionerId = this.authService.user.id;
+    question.body = this.questionForm.value['body'];
+    question.head = this.questionForm.value['head'];
+    question.tagList = this.tags;
+
+    // POST-ing the form
+    this.http.post(environment.questionsUri, question)
+      .subscribe(
+        (resp) => {
+          // uploads the picture with form if there is one
+          if (this.selectedFile !== null) {
+            this.onUpload(resp.id);
+          }
+          // clears the form
+          this.createForm();
+          // custom snackbar message
+          this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
+        },
+        failed => {
+          this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });
+        });
+
   };
 
   // submitting the images
@@ -179,27 +175,29 @@ export class AskQuestionComponent implements OnInit {
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
       },
-      (err) => {
-        console.log('Image upload was unsuccessful' + err);
-      });
+        (err) => {
+          console.log('Image upload was unsuccessful' + err);
+        });
   }
 
   ngOnInit() {
-    this.clearForm();
+    this.createForm();
   }
 
   // clears the form, chips(tags) and selected file of image
-  clearForm() {
-    this.form = this.fb.group({
-      questionerId: null,
-      head: [''],
-      tagList: [''],
-      body: [''],
-    });
+  createForm() {
+
     this.cleanMarkdown = false;
     this.tags = [];
     this.selectedFile = null;
     setTimeout(() =>
-      this.cleanMarkdown = true, );
+      this.cleanMarkdown = true);
   }
 }
+
+class AskQuestion {
+  questionerId: number;
+  head: string;
+  tagList: any;
+  body: string;
+};
