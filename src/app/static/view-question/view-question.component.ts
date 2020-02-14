@@ -26,8 +26,10 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
    * appropriate -- it will only ever be the question selected by the user elsewhere
    * on the site.
    */
-  @Input() selectedQuestion: Question;
+
+   @Input() selectedQuestion: Question;
   responses: Response[];
+  highlightedId: number;
 
   constructor(
     private questionService: QuestionService,
@@ -35,11 +37,19 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
-    this.ngOnChanges(null);
+    this.refreshQuestion();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    
+    this.refreshQuestion();
+  }
+
+  refreshQuestion(): void {
+    this.questionService.getQuestionById(this.selectedQuestion.id).subscribe((data)=>{
+      this.selectedQuestion = data;
+    });
+    this.highlightedId = this.selectedQuestion.highlightedResponseId;
+
   }
 
 }

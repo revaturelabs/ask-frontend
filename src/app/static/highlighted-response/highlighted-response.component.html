@@ -4,11 +4,11 @@
   </div>
   <mat-card-header> 
     <mat-card-subtitle
-      >{{ this.highlight.responderId }},
-      {{ highlight.creationDate | date: 'shortDate' }}</mat-card-subtitle
+      >{{ highlightedResponse.user.username }},
+      {{ highlightedResponse.creationDate | date: 'shortDate' }}</mat-card-subtitle
     >
   </mat-card-header>
   <mat-card-content>
-    <p [innerHTML]="highlight.body | markdown"></p>
+    <p [innerHTML]="highlightedResponse.body | markdown"></p>
   </mat-card-content>
 </mat-card>

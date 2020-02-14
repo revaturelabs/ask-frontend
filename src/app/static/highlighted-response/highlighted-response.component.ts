@@ -16,15 +16,19 @@ import { Response } from '../../models/Response';
 })
 export class HighlightedResponseComponent implements OnInit {
 
-  @Input() highnum: number;
-  private highlight: Response;
+  @Input() highlightedResponseNum: number;
+  private highlightedResponse: Response;
+
   constructor(private responseService: ResponseService) { }
   
   ngOnInit() {
-    this.responseService.getResponseById(this.highnum).subscribe((data) =>{
-      this.highlight = data;
+    this.populateResponseInfo();
+  }
+
+  populateResponseInfo() : void {
+    this.responseService.getResponseById(this.highlightedResponseNum).subscribe((data) =>{
+      this.highlightedResponse = data;
     })
-    console.log("THE ZBODY: " + this.highlight.body);  
   }
 
 }

@@ -7,10 +7,10 @@
 </div>
 
 <div class="highlighted-response-component">
-  <app-highlighted-response *ngIf="selectedQuestion.highlightedResponseId" [highnum] = "selectedQuestion.highlightedResponseId"></app-highlighted-response>
+  <app-highlighted-response *ngIf="selectedQuestion.highlightedResponseId" [highlightedResponseNum] = "highlightedId"></app-highlighted-response>
 </div>
 
 <div class="response-component" *ngFor="let response of selectedQuestion.responses">
-  <app-response (highlighted)="ngOnChanges(null)" [response]="response"></app-response>
+  <app-response (highlighted)="refreshQuestion()" [response]="response"></app-response>
 </div>
-<app-enter-response (newResponse)="ngOnChanges(null)" *ngIf="this.authService.account.expert" [question]="selectedQuestion"></app-enter-response>
+<app-enter-response (newResponse)="refreshQuestion()" *ngIf="this.authService.account.expert" [question]="selectedQuestion"></app-enter-response>

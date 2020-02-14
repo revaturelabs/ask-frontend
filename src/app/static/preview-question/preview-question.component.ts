@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, AfterViewChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
 import { Tag } from '../../models/Tag';
 
@@ -31,25 +30,31 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
 
   // represents how many tags from the tags can fit across the preview-question
   limit: number;
+
+  //Whether preview has been expanded into a full view.
+  expanded: boolean;
+
+  btnTxt: string;
   
   constructor(
     public router: Router,
-    private questionIdService: QuestionService,
     private cdRef: ChangeDetectorRef,
   ) {}
 
   // On click of the 'View' button, it sets the question ID of the selected question
   viewQuestion(selectedQuestionId) {
     //Outputs id of selected question to parent.
-    this.change.emit(selectedQuestionId);
+    this.change.emit(selectedQuestionId); //I'm assuming emits will be deleted and instead
+    //route to a specific website url designed to handle viewing questions.
   }
 
   ngOnInit() {
+    this.expanded = false;
+    this.setBtnTxt();
     if (this.question.associatedTags) {
       this.limit = this.question.associatedTags.length;
     }
     this.hiddenTags = [];
-    this.questionIdService.setQuestionId(undefined);
   }
 
   // using this angular lifecycle method allows the page to load the view
@@ -122,5 +127,18 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     }
     this.limit = index;
     this.showTagsList(index);
+  }
+
+  changeView(): void {
+    this.expanded = !this.expanded;
+    this.setBtnTxt();
+  }
+
+  setBtnTxt(): void {
+    if(this.expanded) {
+      this.btnTxt = "Collapse";
+    } else {
+      this.btnTxt = "Expand";
+    }
   }
 }
