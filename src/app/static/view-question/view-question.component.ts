@@ -35,7 +35,7 @@ export class ViewQuestionComponent implements OnInit {
 
   constructor(
     private questionService: QuestionService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {
