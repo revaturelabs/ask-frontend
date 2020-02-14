@@ -13,6 +13,7 @@ import { ExpertQuestionsComponent } from './static/expert-questions/expert-quest
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
 import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
+import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'topics', component: TopicPageComponent, canActivate: [AuthGuard] },
-  { path: 'view-topic/:id', component: SpecificTagInfoComponent, /*canActivate: [AuthGuard]*/ }
+  { path: 'view-topic/:id', component: SpecificTagInfoComponent, canActivate: [AuthGuard] },
+  { path: '404', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

@@ -37,6 +37,7 @@ import { TopicAMAComponent } from './static/topic-ama/topic-ama.component';
 import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
 import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.component';
 import { TopicFilterComponent } from './static/topic-filter/topic-filter.component';
+import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { TopicFilterComponent } from './static/topic-filter/topic-filter.compone
     TopicAMAComponent,
     TopicQuestionsComponent,
     TopicWebinarsComponent,
-    TopicFilterComponent
+    TopicFilterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
