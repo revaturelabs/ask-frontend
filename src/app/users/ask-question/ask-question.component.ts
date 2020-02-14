@@ -65,7 +65,8 @@ export class AskQuestionComponent implements OnInit {
     private fb: FormBuilder,
     private ts: TagService,
     private _snackBar: MatSnackBar,
-    private questionService:QuestionService
+    private questionService:QuestionService,
+    private authService: AuthService
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -181,7 +182,7 @@ export class AskQuestionComponent implements OnInit {
       this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
       // POST-ing the form
-      this.questionService.save(this.questionInput).subscribe(
+      this.questionService.saveQuestion(this.questionInput).subscribe(
         response => {
         // uploads the picture with form if there is one
         if (this.selectedFile !== null) {

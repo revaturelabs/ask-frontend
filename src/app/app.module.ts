@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+
+import { AppRoutingModule } from './app-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialImportModule } from '../material-import/material-import.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../app/shared/shared.module';
+
+import { AuthService } from './services/auth/auth.service';
+
+
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
@@ -29,7 +31,6 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
-import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -55,15 +56,10 @@ import { AuthService } from './services/auth/auth.service';
     SkilltagPipe
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialImportModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    LMarkdownEditorModule,
     MarkdownModule.forRoot(),
     NgbModule,
   ],
