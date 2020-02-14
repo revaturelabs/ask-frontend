@@ -1,7 +1,28 @@
 #message-box-container {
     border : 1px solid grey;
     border-radius : 2px;
-    min-height : 300px;
-    max-height : 400px;
-    overflow-y : scroll;
+    height : 300px;
+    width : 100%;
+    overflow-y : auto;
+    position : absolute;
+}
+
+#container {
+    position : relative;
+    height : 300px;
+}
+
+#autoscroll-button {
+    position : absolute;
+    background-color: lightgrey;
+    color : white;
+    opacity : 0.8;
+    z-index: 9;
+    width : 100%;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
+td {
+    word-wrap: break-word;
 }

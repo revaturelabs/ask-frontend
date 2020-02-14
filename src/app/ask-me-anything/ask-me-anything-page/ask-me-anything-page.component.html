@@ -1,14 +1,14 @@
 <div id="ama">
     <div id="top-bar">
-        <button id="close">x</button>
+        <button id="close" (close)="closeChat()">x</button>
     </div>
     <div id="ama-container">
         <h1>Ask Me Anything!</h1>
-        <h3>TRAINER NAME | TOPIC</h3>
+        <h5>{{expertDisplayName}} | {{topicDisplayName}}</h5>
         <app-message-box #messageBox [messages] = "messages"></app-message-box>
         <div id="input-container">
-            <input #inputBox type="text" placeholder="Send Message" (keydown.enter)="action(inputBox.value); inputBox.value = ''">
-            <button id="send" class="btn-light" (click) = "action(inputBox.value)">SEND</button>
+            <textarea #inputBox type="text" placeholder="Send Message" (keydown.enter)="action(inputBox.value, $event); inputBox.value = ''"></textarea>
+            <button id="send" class="btn-light" (click) = "action(inputBox.value, $event); inputBox.value = ''">SEND</button>
         </div>
     </div>
 </div>

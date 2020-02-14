@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
+import { MessageBoxComponent } from '../message-box/message-box.component';
 
 @Component({
   selector: 'app-ask-me-anything-page',
@@ -7,11 +8,13 @@ import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit 
 })
 export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
-    this.scrollToBottom();
   }
 
-  @ViewChild('messageBox',{static : false}) messageBox : ElementRef;
+  @ViewChild('messageBox',{static : false}) messageBox : MessageBoxComponent;
   @ViewChild('inputBox', {static : false}) inputBox : ElementRef;
+
+  expertDisplayName : string = 'EXPERT NAME';
+  topicDisplayName : string = 'TOPIC NAME';
 
   messages : string[] = [
   ]
@@ -27,19 +30,21 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   }
 
   @Output()
-  action(text : string){
-
+  action(text : string, event){
+    
+    if (event.keyCode == 13) {
+      event.preventDefault();
+  }
     if(text){
       this.messages.push(text);
-      this.scrollToBottom();
     }
-    
   }
 
-  scrollToBottom(): void {
-    try {
-        this.messageBox.nativeElement.scrollTop = this.messageBox.nativeElement.scrollHeight;
-    } catch(err) { }                 
-}
+  closeWindow(){
+    console.log('PLACEHOLDER CLOSE');
+  }
 
+  ngAfterViewChecked(){
+    this.messageBox.scrollToBottom();
+  }
 }
