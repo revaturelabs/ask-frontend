@@ -123,18 +123,21 @@ export class QuestionFilterComponent implements OnInit {
     }
   }
 
+
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
+    this.tags.push(event.option.viewValue);  
     this.tagInput.nativeElement.value = '';
     this.filterInputTags();
     this.tagCtrl.setValue(null);
   }
 
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.filtTags.filter(
-      tag => tag.toLowerCase().indexOf(filterValue) === 0,
+      tag => tag.toLowerCase().indexOf(filterValue) === 0
+      
     );
   }
 
