@@ -27,6 +27,9 @@ import { Question } from 'src/app/models/Question';
  *
  * This component is built on top of an example found at:
  * https://material.angular.io/components/chips/overview
+ * 
+ * See also as reference:
+ * https://angular.io/guide/reactive-forms#step-1-importing-the-formbuilder-class
  */
 
 @Component({
@@ -60,6 +63,9 @@ export class AskQuestionComponent implements OnInit {
     head: ['', Validators.required],
     body: ['', Validators.required],
   });
+
+  //convenience getter for easy access to form fields
+  get qf() {return this.questionForm.controls; }
 
   constructor(
     private ts: TagService,
@@ -116,7 +122,7 @@ export class AskQuestionComponent implements OnInit {
 
     if (index >= 0) {
       this.tags.splice(index, 1);
-      this.allTags.push(tag);
+      this.allTags.push(tag);       //adds deselected tags back to the list of options
     }
   }
 
@@ -144,14 +150,17 @@ export class AskQuestionComponent implements OnInit {
 
   // Submit Question
   submitQuestion = function() {
-
+        //adds chosen tags to the form
     this.questionForm.addControl('tagList', new FormControl(this.tags));
+
+        //form mapped to custom class, backend not set up to recieve form objects
+        //work around, since Question model is an interface
     let question: AskQuestion = new AskQuestion();
     question.questionerId = this.authService.user.id;
     question.body = this.questionForm.value['body'];
     question.head = this.questionForm.value['head'];
     question.tagList = this.tags;
-
+  
     // POST-ing the form
     this.http.post(environment.questionsUri, question)
       .subscribe(
@@ -161,14 +170,14 @@ export class AskQuestionComponent implements OnInit {
             this.onUpload(resp.id);
           }
           // clears the form
-          this.createForm();
+          this.clearForm();
           // custom snackbar message
           this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
         },
         failed => {
           this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });
         });
-
+      
   };
 
   // submitting the images
@@ -185,18 +194,19 @@ export class AskQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createForm();
+    this.clearForm();
   }
 
   // clears the form, chips(tags) and selected file of image
-  createForm() {
-
+  clearForm() {
+    this.questionForm.reset();
     this.cleanMarkdown = false;
     this.tags = [];
     this.selectedFile = null;
     setTimeout(() =>
       this.cleanMarkdown = true);
   }
+
 }
 
 class AskQuestion {
