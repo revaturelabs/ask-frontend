@@ -64,9 +64,6 @@ export class AskQuestionComponent implements OnInit {
     body: ['', Validators.required],
   });
 
-  //convenience getter for easy access to form fields
-  get qf() {return this.questionForm.controls; }
-
   constructor(
     private ts: TagService,
     private _snackBar: MatSnackBar,
@@ -149,7 +146,7 @@ export class AskQuestionComponent implements OnInit {
   }
 
   // Submit Question
-  submitQuestion = function() {
+  submitQuestion= function() {
         //adds chosen tags to the form
     this.questionForm.addControl('tagList', new FormControl(this.tags));
 
