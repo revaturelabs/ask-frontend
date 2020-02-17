@@ -63,10 +63,7 @@ import { SkilltagPipe } from './static/response/skilltag.pipe';
     MarkdownModule.forRoot(),
     NgbModule,
   ],
-  providers: [
-    AuthGuard,
-    AuthService
-  ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
