@@ -42,7 +42,6 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     private authService: AuthService,
     private _snackBar: MatSnackBar,
     private responseService: ResponseService,
-    private router: Router,
     private cdRef: ChangeDetectorRef,
   ) {}
 

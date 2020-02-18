@@ -30,6 +30,8 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
 
    @Input() selectedQuestion: Question;
   highlightedResponse$: Observable<Response>;
+  //Whether the currently logged in user owns the selected question
+  userOwnsQuestion: boolean;
 
   constructor(
     private questionService: QuestionService,
@@ -53,6 +55,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
       if(data.highlightedResponseId) {
         this.highlightedResponse$ = this.responseService.getResponseById(data.highlightedResponseId);
       }
+      this.userOwnsQuestion = this.authService.account.id === data.userId;
     });
 
   }
