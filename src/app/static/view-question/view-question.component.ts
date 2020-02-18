@@ -40,6 +40,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnInit() {
+    this.userOwnsQuestion = this.selectedQuestion.user.id === this.authService.account.id;
     this.refreshQuestion();
   }
 
