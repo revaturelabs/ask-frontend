@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { Tag } from 'src/app/models/Tag';
 import { User } from 'src/app/models/User';
-import { SkilltagPipe } from '../response/skilltag.pipe';
+import { SkilltagPipe } from '../../shared/skilltag.pipe';
 
 const MockUser: User = {
   id: 1,
