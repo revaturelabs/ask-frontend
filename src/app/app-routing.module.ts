@@ -11,7 +11,6 @@ import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
-import { ProfileComponent } from './users/profile/profile.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 
 const routes: Routes = [

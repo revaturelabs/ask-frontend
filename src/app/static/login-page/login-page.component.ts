@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { environment } from '../../../environments/environment';
-import { Account } from '../../models/Account';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -17,12 +13,12 @@ export class LoginPageComponent implements OnInit {
 
   /**
    * Takes the id of a user and sends a GET, request for that user to the server,
-   *  then logs in as that user. 
+   *  then logs in as that user.  Stand-in functionality
    *
    * @param id The id of the user to login as
    */
   onSubmit(id: number) {
-    this.authService.submitted(id);
+    this.authService.attemptLogin(id);
   }
 
 }
