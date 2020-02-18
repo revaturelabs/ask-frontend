@@ -1,17 +1,17 @@
 <h1>Ask an Expert</h1>
 <img src="../../assets/images/logo.png" />
 <div class="container">
-  <form #userLoginForm="ngForm" id="form" (ngSubmit)="onSubmit(id)">
+  <form #userLoginForm="ngForm" id="form" (ngSubmit)="onSubmit()">
     <h3>Log in</h3>
     <br /><br />
     <mat-form-field>
-      <mat-select [(ngModel)]="id" name="user" placeholder="Select User">
+      <mat-select [(ngModel)]="option" name="user" placeholder="Select User">
         <mat-option value="1" name="">User 1 -- Associate</mat-option>
         <mat-option value="2">User 2 -- Associate</mat-option>
         <mat-option value="3">User 3 -- Expert</mat-option>
         <mat-option value="4">User 4 -- Expert</mat-option>
       </mat-select>
     </mat-form-field>
-    <button id="login" mat-raised-button type="submit">Submit</button>
+    <button id="login" mat-raised-button type="submit" [disabled]="!option">Submit</button>
   </form>
 </div>

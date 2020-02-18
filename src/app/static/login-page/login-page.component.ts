@@ -11,6 +11,8 @@ import { Account } from '../../models/Account';
 export class LoginPageComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
+  option : number;
+
   ngOnInit() {}
 
   /**
@@ -21,8 +23,8 @@ export class LoginPageComponent implements OnInit {
    */
   onSubmit(id: number) {
     this.authService.getAccountById(id)
-      .subscribe((account: Account) => {
-        this.authService.userLogin(account);
-      });
+        .subscribe((account: Account) => {
+          this.authService.userLogin(account);
+        });
   }
 }
