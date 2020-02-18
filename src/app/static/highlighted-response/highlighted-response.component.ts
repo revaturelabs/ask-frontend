@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { Response } from '../../models/Response';
 
@@ -16,19 +16,12 @@ import { Response } from '../../models/Response';
 })
 export class HighlightedResponseComponent implements OnInit {
 
-  @Input() highlightedResponseNum: number;
+  @Input()
   private highlightedResponse: Response;
 
-  constructor(private responseService: ResponseService) { }
+  constructor() { }
   
   ngOnInit() {
-    this.populateResponseInfo();
-  }
-
-  populateResponseInfo() : void {
-    this.responseService.getResponseById(this.highlightedResponseNum).subscribe((data) =>{
-      this.highlightedResponse = data;
-    })
   }
 
 }

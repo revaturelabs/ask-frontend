@@ -7,7 +7,7 @@
 </div>
 
 <div class="highlighted-response-component">
-  <app-highlighted-response *ngIf="selectedQuestion.highlightedResponseId" [highlightedResponseNum] = "highlightedId"></app-highlighted-response>
+  <app-highlighted-response *ngIf="highlightedResponse$ | async as hr" [highlightedResponse]="hr"></app-highlighted-response>
 </div>
 
 <div class="response-component" *ngFor="let response of selectedQuestion.responses">

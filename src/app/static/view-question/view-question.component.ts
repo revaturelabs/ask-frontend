@@ -4,6 +4,7 @@ import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
 import { Question } from 'src/app/models/Question';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Observable } from 'rxjs';
 
 /**
  * @author: Alec Thavychith
@@ -28,11 +29,11 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
    */
 
    @Input() selectedQuestion: Question;
-  responses: Response[];
-  highlightedId: number;
+  highlightedResponse$: Observable<Response>;
 
   constructor(
     private questionService: QuestionService,
+    private responseService: ResponseService,
     public authService: AuthService
   ) { }
 
@@ -47,8 +48,12 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   refreshQuestion(): void {
     this.questionService.getQuestionById(this.selectedQuestion.id).subscribe((data)=>{
       this.selectedQuestion = data;
+      //TODO: This line should be replaced by some more sensible sequential request mechanic
+      // maybe piping an observable off questionService
+      if(data.highlightedResponseId) {
+        this.highlightedResponse$ = this.responseService.getResponseById(data.highlightedResponseId);
+      }
     });
-    this.highlightedId = this.selectedQuestion.highlightedResponseId;
 
   }
 
