@@ -8,14 +8,11 @@ import { QuestionFilterComponent } from '../question/question-filter/question-fi
 import { FilteredQuestionListComponent } from '../question/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from '../question/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from '../question/user-questions/user-questions.component';
-import { EnterResponseComponent } from '../experts/enter-response/enter-response.component';
-import { HighlightedResponseComponent } from '../../app/static/highlighted-response/highlighted-response.component';
-import { ResponseComponent } from '../static/response/response.component';
-import { MaterialImportModule } from '../../material-import/material-import.module';
-import { MatChipsModule } from "@angular/material/chips";
+import { EnterResponseComponent } from './enter-response/enter-response.component';
+import { HighlightedResponseComponent } from './highlighted-response/highlighted-response.component';
+import { ResponseComponent } from './response/response.component';
 
 import { SharedModule } from '../shared/shared.module';
-import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -34,9 +31,6 @@ import { MarkdownModule } from 'ngx-markdown';
   imports: [
     CommonModule,
     SharedModule,
-    MarkdownModule,
-    MaterialImportModule,
-    MatChipsModule,
   ],
   exports: [
     QuestionComponent,
