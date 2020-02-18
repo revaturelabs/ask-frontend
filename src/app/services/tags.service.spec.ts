@@ -76,7 +76,7 @@ describe('TagsService', () => {
     ],
     questions: [],
     responses: [],
-    isExpert: true};
+    expert: true};
 
     beforeEach(() => TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]

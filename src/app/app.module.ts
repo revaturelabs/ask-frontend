@@ -32,6 +32,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './users/profile/profile.component';
+import { ProfileUserComponent } from './users/profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ProfileComponent } from './users/profile/profile.component';
     UserQuestionsComponent,
     SkilltagPipe,
     ProfileComponent,
+    ProfileUserComponent
   ],
   imports: [
     BrowserModule,
