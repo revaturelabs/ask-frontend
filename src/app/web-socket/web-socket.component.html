@@ -1,0 +1,16 @@
+<form [formGroup]="userForm" (submit)="openSocket()" *ngIf="isLoaded">
+    <p>User Information: (If Receiver's user id is left blank, message will be sent to all users.) </p>
+    <div style="margin-bottom: 20px;">
+      <input type="text" formControlName="fromId" name="fromId" placeholder="Your id"><br><br>
+      <input type="submit" [disabled]="userForm.invalid || isCustomSocketOpened" value="Click here to recieve custom messages">
+    </div>
+    <input type="text" formControlName="toId" name="toId" placeholder="Receiver's User id">
+  </form>
+  <form [formGroup]="form" (submit)="sendMessageUsingSocket()"><br>
+    <p>Message: </p>
+    <input type="text" formControlName="message" name="message" placeholder="Message"><br><br>
+    <input type="submit" [disabled]="form.invalid || userForm.invalid" value="Send">
+  </form>
+  <ul>
+      <li *ngFor="let message of messages"> {{message.fromId}} :  {{message.message}}</li>
+  </ul>
