@@ -13,7 +13,7 @@ export class TopicQuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.questionService.getQuestions().subscribe(response=> {
-      this.questions=response
+      this.questions=response;
     });
   }
   
