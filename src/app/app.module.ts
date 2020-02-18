@@ -33,6 +33,7 @@ import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './users/profile/profile.component';
 import { ProfileUserComponent } from './users/profile-user/profile-user.component';
+import { ResponseListComponent } from './experts/response-list/response-list.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ProfileUserComponent } from './users/profile-user/profile-user.componen
     UserQuestionsComponent,
     SkilltagPipe,
     ProfileComponent,
-    ProfileUserComponent
+    ProfileUserComponent,
+    ResponseListComponent
   ],
   imports: [
     BrowserModule,

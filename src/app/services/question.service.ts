@@ -63,4 +63,9 @@ export class QuestionService {
 
     return this.http.delete<Question>(url, httpOptions);
   }
+
+  getExpertQuestionsByResponse(id : number) : Observable<Question[]> {
+    return this.http.get<Question[]>(`${environment.questionsUri}/${id}/response`);
+  }
+
 }
