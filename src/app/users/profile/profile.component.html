@@ -4,12 +4,12 @@
     <li class="nav-item">
     </li>
     <li class="nav-item">
-      <button class="btn btn-success" (click)="editMode()">{{editModeText}} &rarr;</button>
+      <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}} &rarr;</button>
     </li>
   </ul>
   <div class="row">
-    <h2 *ngIf="!this.authService.account.expert">Associate</h2>
-    <h2 *ngIf="this.authService.account.expert">Expert</h2>
+    <h2 *ngIf="isAssociate()">Associate</h2>
+    <h2 *ngIf="isExpert()">Expert</h2>
   </div>
   <div class="row">
     <div class="col-md-4">
@@ -55,27 +55,27 @@
         -->
       </div>
     </div>
-    <mat-chip-list>
-      <h2 *ngIf="!this.authService.account.expert">Interests</h2>
-      <h2 *ngIf="this.authService.account.expert">Skills</h2>
-      <div *ngFor="let tag of this.authService.user.expertTags">
+    <!-- <mat-chip-list>
+      <h2 *ngIf="isAssociate()">Interests</h2>
+      <h2 *ngIf="isExpert()">Skills</h2>
+      <div *ngFor="let tag of this.user.expertTags">
         <mat-chip class="chip">
           {{ tag.name }}
         </mat-chip>
       </div>
     </mat-chip-list>
 
-    <div *ngIf="this.authService.user.questions.length > 0">
+    <div *ngIf="this.user.questions.length > 0">
       <app-user-questions></app-user-questions>
     </div>
-    <div *ngIf="this.authService.user.responses.length > 0">
+    <div *ngIf="this.user.responses.length > 0">
       <app-expert-questions></app-expert-questions>
     </div>
-    <div *ngIf="this.authService.user.responses.length > 0">
-      <div *ngFor="let response of this.authService.user.responses">
+    <div *ngIf="this.user.responses.length > 0">
+      <div *ngFor="let response of this.user.responses">
         <p>{{ response.body }}</p>
         <p>{{ response.creationDate }}</p>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
