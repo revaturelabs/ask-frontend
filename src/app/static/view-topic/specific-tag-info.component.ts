@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { Tag } from 'src/app/models/Tag';
+import { TagService } from 'src/app/services/tags.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-specific-tag-info',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecificTagInfoComponent implements OnInit {
 
-  constructor() { }
+  tag: Tag;
+  
 
-  ngOnInit() {
-  }
+  constructor(
+    private tagService : TagService,
+    private route : ActivatedRoute
+  ) { }
+
+  ngOnInit() {    
+    let id =+ this.route.snapshot.paramMap.get('id');
+    this.tagService.getTagById(id).subscribe((data)=>{
+      this.tag = data;
+    });
+    }
 
 }
