@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import { switchMap } from 'rxjs/operators';
 import { Question } from 'src/app/models/Question';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-question-route',
@@ -11,15 +12,12 @@ import { Question } from 'src/app/models/Question';
 })
 export class QuestionRouteComponent implements OnInit {
 
-  question: Question;
-  routeNumber: number;
+  question$: Observable<Question>;
 
   constructor(private route: ActivatedRoute, private questionService: QuestionService) { }
   
   ngOnInit() {
-    this.route.paramMap.pipe(switchMap((params: ParamMap) => this.questionService.getQuestionById(params.get('id')))).subscribe((data)=>{
-      this.question = data;
-    });
+    this.question$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.questionService.getQuestionById(params.get('id'))));
   }
 
 }

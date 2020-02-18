@@ -1,1 +1,1 @@
-<app-view-question [selectedQuestion]="question"></app-view-question>
+<app-view-question *ngIf="question$ | async as question" [selectedQuestion]="question"></app-view-question>
