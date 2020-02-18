@@ -13,21 +13,23 @@ import { ExpertQuestionsComponent } from './static/expert-questions/expert-quest
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
 import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
-
+import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
 const routes: Routes = [
-  { path: '', component: LoginPageComponent  },
-  { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]  },
+  { path: '', component: LoginPageComponent },
+  { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'topics', component: TopicPageComponent, canActivate: [AuthGuard] },
-  { path: 'view-topic', component: SpecificTagInfoComponent, canActivate: [AuthGuard] }
+  { path: 'view-topic/:id', component: SpecificTagInfoComponent, canActivate: [AuthGuard] },
+  { path: 'topic-experts', component: TopicExpertsComponent },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
