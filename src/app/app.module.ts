@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,7 +71,9 @@ import { ProfileUserComponent } from './users/profile-user/profile-user.componen
     LMarkdownEditorModule,
     MarkdownModule.forRoot(),
     NgbModule,
+    MatDialogModule,
   ],
+  entryComponents: [AskQuestionComponent],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
