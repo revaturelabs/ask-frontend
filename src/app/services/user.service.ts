@@ -38,10 +38,7 @@ export class UserService {
   }
 
   updateProfilePic(profilePic: FormData, id: number){
-    this.http.patch(`${environment.userProfile}/${id}`, profilePic)
-    .subscribe((imageLink: string)=> {
-      return imageLink;
-    })
+    return this.http.patch<string>(`${environment.userProfile}/${id}`, profilePic);
   }
 
   createUser(user:User){

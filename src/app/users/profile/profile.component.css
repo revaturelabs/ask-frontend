@@ -2,10 +2,7 @@
   border: 1px solid red;
 } */
 
-.container-fluid .nav,
-.form-group.users-profile-interests,
-.users-profile-wysiwyg--row,
-.users-profile-wysiwyg--wrapper {
+.container-fluid .nav, .form-group.users-profile-interests, .users-profile-wysiwyg--row, .users-profile-wysiwyg--wrapper {
   display: flex;
 }
 
@@ -24,6 +21,7 @@
 }
 
 /* WYSIWYG EDITOR */
+
 .editor-container {
   width: 100%;
 }
@@ -44,8 +42,12 @@ a, a:hover {
 }
 
 .profilePic {
-  margin: auto;    
+  margin: auto;
   display: block;
+  width: 200px;
+  height: 300px;
+  background-size: cover;
+  object-fit: scale-down;
 }
 
 .centered {
