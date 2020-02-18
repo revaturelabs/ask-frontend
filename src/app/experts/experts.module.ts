@@ -6,9 +6,10 @@ import { SelfTagsComponent } from './self-tags/self-tags.component';
 import { TagCreationComponent } from './tag-creation/tag-creation.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
+import { ResponseListComponent } from './response-list/response-list.component';
 
 @NgModule({
-  declarations: [EnterResponseComponent, SelfTagsComponent, SettingsComponent],
+  declarations: [EnterResponseComponent, SelfTagsComponent, SettingsComponent, ResponseListComponent],
   imports: [
     CommonModule,
     MaterialImportModule,
