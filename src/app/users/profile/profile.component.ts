@@ -14,7 +14,6 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   options: Markdownoptions = new Markdownoptions();
-  //user = this.authService.user;
 
   @Input('user')
   user: User;
@@ -47,7 +46,7 @@ export class ProfileComponent implements OnInit {
     const uploadData = new FormData();
     uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
 
-    this.authService.userProfilePic(uploadData);
+    //this.authService.userProfilePic(uploadData);
   }
 
   editMode() {
