@@ -36,7 +36,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   setQuestionsListWithFilteredUri(newFilteredUri: string) {
     this.filteredUri = newFilteredUri;
-    this.http.get<Question[]>(newFilteredUri).subscribe(filteredQuestions => {
+    this.questionService.getFilteredQuestions(newFilteredUri).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
       if (this.questions.length === 0) {
         this._snackBar.open('No results!', 'OK', { duration: 3000 });
@@ -55,7 +55,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   filterLoadMore() {
     this.pageNumber += 1;
-    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(questionsRes => {
+    this.questionService.getFilteredQuestions(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(questionsRes => {
       this.questions.push.apply(this.questions, questionsRes);
       if (questionsRes.length === 0) {
         this._snackBar.open('No more results!', 'OK', { duration: 3000 });
@@ -67,7 +67,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   refreshQuestions() {
     if (this.hasBeenFiltered === true) {
-      this.getFilteredQuestions().subscribe(filteredQuestions => {
+      this.questionService.getFilteredQuestions(this.filteredUri).subscribe(filteredQuestions => {
         if (filteredQuestions.length === 0) {
           this.loadMoreEnable = false;
         } else {
@@ -83,7 +83,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   loadMore() {
     this.pageNumber += 1;
-    this.http.get<Question[]>(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
+    this.questionService.getFilteredQuestions(`${environment.questionsUri}?page=${this.pageNumber}`).subscribe(questionsRes => {
       this.questions.push.apply(this.questions, questionsRes);
       if (questionsRes.length === 0) {
         this._snackBar.open('No more results!', 'OK', { duration: 3000 });
@@ -92,9 +92,10 @@ export class FilteredQuestionListComponent implements OnInit {
       }
     });
   }
+
   nextPage() {
     this.pageNumber++;
-    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+    this.questionService.getFilteredQuestions(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
       this.questions = filteredQuestions;
       if (this.questions.length === 0) {
         this._snackBar.open('No more results', 'OK', {duration: 3000});
@@ -104,7 +105,7 @@ export class FilteredQuestionListComponent implements OnInit {
 
   previousPage() {
     this.pageNumber--;
-    this.http.get<Question[]>(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
+    this.questionService.getFilteredQuestions(`${this.filteredUri}&page=${this.pageNumber}`).subscribe(filteredQuestions => {
         this.questions = filteredQuestions;
         if(this.questions.length == 0) {
           this._snackBar.open("No more results!", "OK", {duration: 3000});
@@ -123,7 +124,6 @@ export class FilteredQuestionListComponent implements OnInit {
   ngOnInit() {
     this.questionService.getQuestions().subscribe(unfilteredQuestions => {
       this.questions = unfilteredQuestions;
-
     });
   }
 }
