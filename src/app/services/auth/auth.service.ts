@@ -41,6 +41,10 @@ constructor(private router: Router, private http: HttpClient) { }
     this.router.navigate(['/']);
   }
 
+  getUserById(id:number):Observable<User>{
+    return this.http.get<User>(`${environment.userUri}/${id}`)
+  }
+
   getAccountById(id:number){
     return this.http.get<Account>(`${environment.userUri}/${id}`)
   }
