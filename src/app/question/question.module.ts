@@ -14,6 +14,8 @@ import { ResponseComponent } from './response/response.component';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { QuestionRoutingModule } from "./question-routing.module";
+
 @NgModule({
   declarations: [
     QuestionComponent,
@@ -31,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    QuestionRoutingModule
   ],
   exports: [
     QuestionComponent,

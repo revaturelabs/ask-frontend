@@ -11,7 +11,6 @@ import { FooterComponent } from './footer/footer.component';
 
 import { SkilltagPipe } from './skilltag.pipe';
 
-
 @NgModule({
   declarations: [
     FooterComponent,

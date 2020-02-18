@@ -11,16 +11,14 @@ import { UsersModule } from "../app/users/users.module";
 
 import { AuthService } from './services/auth/auth.service';
 
-import { LoginPageComponent } from './static/login-page/login-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './static/navbar/navbar.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    NavbarComponent,
   ],
   imports: [
     SharedModule,
@@ -32,7 +30,7 @@ import { AuthGuard } from './services/auth/auth.guard';
     QuestionModule,
     MarkdownModule.forRoot(),
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
