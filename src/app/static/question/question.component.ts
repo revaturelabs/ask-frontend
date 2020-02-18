@@ -13,7 +13,6 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question;
 
   constructor(
-    private httpClient: HttpClient,
     private questionService: QuestionService,
     private domSanitizer: DomSanitizer,
   ) {}
@@ -22,7 +21,7 @@ export class QuestionComponent implements OnInit {
   imageSize = false;
 
   getPhotos() {
-    const questionId: number = this.questionService.getQuestionId();
+    const questionId: number = this.question.id;
     const observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
       result => {
