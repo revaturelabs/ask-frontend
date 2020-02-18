@@ -56,7 +56,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
       if(data.highlightedResponseId) {
         this.highlightedResponse$ = this.responseService.getResponseById(data.highlightedResponseId);
       }
-      this.userOwnsQuestion = this.authService.account.id === data.userId;
+      this.userOwnsQuestion = this.authService.account.id === data.user.id;
     });
 
   }
