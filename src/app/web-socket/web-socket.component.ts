@@ -34,6 +34,7 @@ export class WebSocketComponent implements OnInit {
       toId: new FormControl(null)
     })
     this.initializeWebSocketConnection();
+    this.openSocket();
   }
 
   sendMessageUsingSocket() {
@@ -43,23 +44,17 @@ export class WebSocketComponent implements OnInit {
     }
   }
 
-  sendMessageUsingRest() {
-    if (this.form.valid) {
-      let message: Message = { message: this.form.value.message, fromId: this.userForm.value.fromId, toId: this.userForm.value.toId };
-      this.socketService.post(message).subscribe(res => {
-        console.log(res);
-      })
-    }
-  }
-
+ 
   initializeWebSocketConnection() {
     let ws = new SockJS(this.serverUrl);
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function (frame) {
       that.isLoaded = true;
-      that.openGlobalSocket()
+      that.openGlobalSocket();
+    
     });
+    
   }
 
   openGlobalSocket() {
