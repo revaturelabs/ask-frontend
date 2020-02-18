@@ -6,7 +6,7 @@
   <!-- Angular Material form, input field for Title -->
   
   <mat-form-field>
-    <input matInput [(ngModel)]="this.form.head" #qTitle placeholder="Title: ">
+    <input matInput [(ngModel)]="this.form.value.head" #qTitle placeholder="Title: ">
   </mat-form-field>
 
   <!-- Angular Material Chips -->
@@ -33,7 +33,7 @@
 
   <!-- Markdown Editor for Question -->
     <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-    <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="this.form.body" [height]="'200px'"
+    <md-editor name="Content" [(ngModel)]="this.form.value.body" [height]="'200px'"
       [mode]="mode" [options]="options" required maxlength="500" *ngIf="cleanMarkdown">
     </md-editor>
 
@@ -41,6 +41,6 @@
   <div class="bunched">
     <input type="file" id="ask-question-button-upload" accept="image/png, image/jpeg" (change)="onFileSelected($event)" #fileInput>
     <button mat-raised-button id="ask-question-button-submit"
-      (click)="submitQuestion($event, qTitle.value, qTags.value, this.form.body)">Submit</button>
+      (click)="submitQuestion($event, qTitle.value, tags, this.form.value.body)">Submit</button>
   </div>
 </div>

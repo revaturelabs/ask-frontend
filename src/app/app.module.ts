@@ -32,10 +32,7 @@ import { AuthGuard } from './services/auth/auth.guard';
     QuestionModule,
     MarkdownModule.forRoot(),
   ],
-  providers: [
-    AuthGuard,
-    AuthService
-  ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

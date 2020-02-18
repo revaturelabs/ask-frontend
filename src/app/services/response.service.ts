@@ -41,8 +41,8 @@ export class ResponseService {
     return this.http.delete<Response>(url, httpOptions);
   }
 
-  highlightResponse(questionId:number, resp:Response):Observable<Response>{
+  highlightResponse(questionId:number, resp:Response):Observable<number>{
    return this.http
-    .patch<Response>(`${environment.questionsUri}/${questionId}/highlightedResponseId`, resp);
+    .patch<number>(`${environment.questionsUri}/${questionId}/highlightedResponseId`, resp);
   }
 }
