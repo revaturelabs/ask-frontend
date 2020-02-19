@@ -26,10 +26,10 @@ mat-toolbar{
   background-color: #474C55;
   color: #ffffff;
 }
-button{
+/* button{
   width: 68px;
   margin: 12px;
-}
+} */
 .chip-list {
   width: 70%;
   margin: 4px;

@@ -7,7 +7,6 @@ import { QuestionComponent } from '../question/question/question.component';
 import { QuestionFilterComponent } from '../question/question-filter/question-filter.component';
 import { FilteredQuestionListComponent } from '../question/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from '../question/expert-questions/expert-questions.component';
-import { UserQuestionsComponent } from '../question/user-questions/user-questions.component';
 import { EnterResponseComponent } from './enter-response/enter-response.component';
 import { HighlightedResponseComponent } from './highlighted-response/highlighted-response.component';
 import { ResponseComponent } from './response/response.component';
@@ -25,7 +24,6 @@ import { QuestionRoutingModule } from "./question-routing.module";
     QuestionFilterComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
-    UserQuestionsComponent,
     EnterResponseComponent,
     HighlightedResponseComponent,
     ResponseComponent
@@ -43,7 +41,6 @@ import { QuestionRoutingModule } from "./question-routing.module";
     QuestionFilterComponent,
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
-    UserQuestionsComponent,
     EnterResponseComponent,
     HighlightedResponseComponent,
     ResponseComponent
