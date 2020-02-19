@@ -1,10 +1,10 @@
-
 <div class="container-fluid">
   <ul class="nav">
     <li class="nav-item">
     </li>
     <li class="nav-item">
-      <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}} &rarr;</button>
+      <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}}</button>
+      <button class="btn btn-primary" (click)="updateProfile()" *ngIf="inEditMode">Save</button>
     </li>
   </ul>
   <div class="row">
@@ -13,30 +13,28 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <img class="profilePic" src="http://placekitten.com/g/200/300" alt="bianca !<3s cats">
-        <!-- <img class="profilePic" src={{user.profilePic}}> -->
-
+      <img class="profilePic" src={{user.profilePic}}>
       <div class="centered">
         <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
     </div>
     <div class="col-md-8">
-      <form>
+      <form [formGroup]="profileForm">
         <div class="form-group">
           <label for="profileInputUsername">Username: </label>
           <span> {{user.username}}</span>
-          <input type="username" class="form-control" id="profileInputUsername" placeholder="New Username"
+          <input type="username" formControlName="username" id="profileInputUsername" placeholder="New Username"
             *ngIf=inEditMode>
         </div>
         <div class="form-group">
           <label for="profileInputEmail">Email: </label>
           <span> {{user.email}}</span>
-          <input type="email" class="form-control" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
+          <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
         </div>
         <div class="form-group">
           <label for="profileInputBio"></label>
           <span> {{user.bio}}</span>
-          <input type="textarea" class="form-control" id="profileInputBio" placeholder="Bio" *ngIf=inEditMode>
+          <input type="textarea" formControlName="bio" id="profileInputBio" placeholder="Bio" *ngIf=inEditMode>
         </div>
       </form>
     </div>
