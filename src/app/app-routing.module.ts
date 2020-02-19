@@ -12,6 +12,7 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { WebSocketComponent } from './web-socket/web-socket.component';
+import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
 
   { path: 'chat', component: WebSocketComponent },
+  { path: 'askme', component: AskMeAnythingPageComponent},
 ];
 
 @NgModule({
