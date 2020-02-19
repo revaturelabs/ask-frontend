@@ -17,7 +17,7 @@ import { Response } from '../../models/Response';
 export class HighlightedResponseComponent implements OnInit {
 
   @Input()
-  private highlightedResponse: Response;
+  highlightedResponse: Response;
 
   constructor() { }
   
