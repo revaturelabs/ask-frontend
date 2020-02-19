@@ -44,6 +44,7 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    console.log("This is the question info" + this.question.user.username)
     if (this.question.associatedTags) {
       this.limit = this.question.associatedTags.length;
     }
@@ -120,5 +121,10 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     }
     this.limit = index;
     this.showTagsList(index);
+  }
+
+  //This method will redirect you to the clicked users page
+  redirectToUserPage(){
+    this.router.navigate([`profile/${this.question.user.id}`]);
   }
 }
