@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Response } from '../models/Response';
 import { environment } from 'src/environments/environment';
+import { Question } from '../models/Question';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -12,6 +13,8 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ResponseService {
+
+
   constructor(private http: HttpClient) {}
 
   getResponses(): Observable<Response[]> {
@@ -36,5 +39,10 @@ export class ResponseService {
     const id = typeof response === 'number' ? response : response.id;
     const url = `${environment.responsesUri}/${id}`;
     return this.http.delete<Response>(url, httpOptions);
+  }
+
+  highlightResponse(questionId:number, resp:Response):Observable<number>{
+   return this.http
+    .patch<number>(`${environment.questionsUri}/${questionId}/highlightedResponseId`, resp);
   }
 }

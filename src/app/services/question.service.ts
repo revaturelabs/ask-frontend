@@ -37,7 +37,7 @@ export class QuestionService {
     return this.http.get<Image[]>(`${environment.questionsUri}/${questionId}/images`);
   }
 
-  saveQuestion(question: Question): Observable<Question> {
+  saveQuestion(question: Object): Observable<Question> {
     return this.http.post<Question>(
       environment.questionsUri,
       question,
@@ -63,4 +63,18 @@ export class QuestionService {
 
     return this.http.delete<Question>(url, httpOptions);
   }
+
+  getFilteredQuestions(filteredUri:string): Observable<Question[]>{
+    return this.http.get<Question[]>(filteredUri);
+  }
+
+  getQuestionsByUserId(userId:number):Observable<Question[]>{
+    return this.http.get<Question[]>(`${environment.userUri}/${userId}/questions`);
+  }
+
+  uploadQuestionImage(questionId:number, formData:FormData):Observable<Response>{
+    return this.http.put<Response>(`${environment.questionsUri}/${questionId}/images`, formData);
+  }
+
+
 }

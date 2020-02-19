@@ -25,7 +25,7 @@ export class EnterResponseComponent implements OnInit {
     body: '',
     creationDate: null,
   };
-  private options = new Markdownoptions();
+  public options = new Markdownoptions();
   public mode = 'editor';
 
   constructor(
