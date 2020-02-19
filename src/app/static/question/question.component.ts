@@ -13,7 +13,6 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question;
 
   constructor(
-    private httpClient: HttpClient,
     private questionService: QuestionService,
     private domSanitizer: DomSanitizer,
   ) {}
