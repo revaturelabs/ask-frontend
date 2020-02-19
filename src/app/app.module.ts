@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
@@ -31,6 +30,8 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { QuestionRouteComponent } from './static/question-route/question-route.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { SkilltagPipe } from './static/response/skilltag.pipe';
     FilteredQuestionListComponent,
     ExpertQuestionsComponent,
     UserQuestionsComponent,
-    SkilltagPipe
+    SkilltagPipe,
+    QuestionRouteComponent
   ],
   imports: [
     SharedModule,

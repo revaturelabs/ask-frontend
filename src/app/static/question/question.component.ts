@@ -21,7 +21,7 @@ export class QuestionComponent implements OnInit {
   imageSize = false;
 
   getPhotos() {
-    const questionId: number = this.questionService.getQuestionId();
+    const questionId: number = this.question.id;
     const observable = this.questionService.getQuestionImages(questionId);
     observable.subscribe(
       result => {
