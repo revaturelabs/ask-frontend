@@ -45,7 +45,6 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.refreshQuestion();
   }
 
   refreshQuestion(): void {
