@@ -27,6 +27,9 @@ export class TagService {
   setTagName(tagname) {
     this.tagname = tagname;
   }
+  returnTagName(){
+    return this.tagname;
+  }
 
   getTagById(tagId): Observable<Tag>{
     return this.http.get<Tag>(`${environment.tagsUri}/${tagId}`);
