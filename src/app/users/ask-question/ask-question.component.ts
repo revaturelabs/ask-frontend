@@ -1,4 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {
@@ -9,8 +11,10 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
+import { environment } from 'src/environments/environment';
 // Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { Question } from 'src/app/models/Question';
@@ -177,7 +181,7 @@ export class AskQuestionComponent implements OnInit {
   onUpload(questionId) {
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
-    this.questionService.uploadQuestionImage(questionId, formData)
+    this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
       },
