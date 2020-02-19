@@ -13,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SpecificTagInfoComponent implements OnInit {
 
 
-  tag: Tag;
+  tag: Tag = {name:'', id:0};
+
   
 
   constructor(
