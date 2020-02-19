@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, Output, AfterViewInit, AfterViewChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Response } from '../../models/Response';
 import { ResponseService } from 'src/app/services/response.service';
-import { QuestionService } from '../../services/question.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Tag } from '../../models/Tag';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-response',
@@ -32,18 +31,13 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
   env = environment.questionsUri;
 
   constructor(
-    private http: HttpClient,
     private _snackBar: MatSnackBar,
     private responseService: ResponseService,
     private cdRef: ChangeDetectorRef,
-  ) {}
+  ) { }
 
-  highlightResponse(event, selectedResponse) {
-    this.http
-      .patch(
-        `${this.env}/${this.response.questionId}/highlightedResponseId`,
-        selectedResponse,
-      )
+  highlightResponse(selectedResponse) {
+    this.responseService.highlightResponse(this.response.questionId, selectedResponse)
       .subscribe(
         data => {
           this.highlighted.emit(true);

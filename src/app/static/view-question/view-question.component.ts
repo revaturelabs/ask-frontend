@@ -3,7 +3,7 @@ import { ResponseService } from '../../services/response.service';
 import { QuestionService } from '../../services/question.service';
 import { Response } from 'src/app/models/Response';
 import { Question } from 'src/app/models/Question';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Observable } from 'rxjs';
 
 /**
