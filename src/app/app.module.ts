@@ -33,7 +33,11 @@ import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileComponent } from './users/profile/profile.component';
 import { InterestComponent } from './users/interest/interest.component';
+<<<<<<< HEAD
 
+=======
+import { InterestTagsComponent } from './users/interest-tags/interest-tags.component';
+>>>>>>> profileFeature
 
 @NgModule({
   declarations: [
@@ -59,7 +63,11 @@ import { InterestComponent } from './users/interest/interest.component';
     SkilltagPipe,
     ProfileComponent,
     InterestComponent,
+<<<<<<< HEAD
 
+=======
+    InterestTagsComponent,
+>>>>>>> profileFeature
   ],
   imports: [
     BrowserModule,
