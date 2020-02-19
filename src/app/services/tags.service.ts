@@ -12,18 +12,27 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TagService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(environment.tagsUri);
   }
 
-  saveExpertTags(tags: Tag[], expertId: Number){
+  saveExpertTags(tags: Tag[], expertId: Number) {
     const uri = `${environment.userUri}/${expertId}/tags`;
-    return this.http.put<Tag>(uri, {"expertTags":tags}, httpOptions);
+    return this.http.put<Tag>(uri, { "expertTags": tags }, httpOptions);
   }
 
-  getExpertTags(expertId: Number): Observable<any[]>{
+  getExpertTags(expertId: Number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
+  }
+
+  saveInterestTags(tags: Tag[], interestId: Number) {
+    const uri = `${environment.userUri}/${interestId}/tags`;
+    return this.http.put<Tag>(uri, { "interestTags": tags }, httpOptions);
+  }
+
+  getInterestTags(interestId: Number): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.userUri}/${interestId}`);
   }
 }
