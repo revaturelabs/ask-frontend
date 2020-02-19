@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AskQuestionComponent } from 'src/app/users/ask-question/ask-question.component';
 
@@ -14,7 +15,8 @@ export interface DialogData {
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private authService: AuthService, private dialog: MatDialog) {}
+  
+  constructor(private authService: AuthService, private dialog: MatDialog, private router: Router) {}
 
   //declared in interface, set by modal dialog
   message: string;
@@ -35,5 +37,9 @@ export class NavbarComponent implements OnInit {
 
   onLogout() {
     this.authService.userLogOut();
+  }
+
+  yourProfile(){
+    this.router.navigate(['profile', this.authService.account.id]);
   }
 }

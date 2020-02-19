@@ -5,19 +5,15 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Image } from 'src/app/models/Image';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  //RIGHT NOW WE HAVE A USER AND A ACCOUNT OBJECT
-  //FRONT END IS MAKING TWO CALLS WHEN LOGGING IN
-  //THIS NEEDS TO BE CHANGED
   private loggedIn: boolean = false;
   public account: Account;
-  public user: User; //Will be moved to UserService
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -35,7 +31,6 @@ export class AuthService {
   userLogin(account: Account) {
     this.loggedIn = true;
     this.account = account;
-    this.login(this.account.id); //Will be moved to userService
     this.router.navigate(['/questions']);
     console.log(this.account);
   }
@@ -43,34 +38,10 @@ export class AuthService {
   userLogOut() {
     this.loggedIn = false;
     this.account = null;
-    this.user = null; //WIll be moved to userService
     this.router.navigate(['/']);
   }
 
-/**Will be moved to UserService */
-  userProfilePic(profilePic: FormData) {
-    this.http.patch(`${environment.userProfile}/${this.user.id}`, profilePic)
-    .subscribe((imageLink: string)=> {
-      this.user.profilePic = imageLink;
-    })
-  }
-
-/** Will be moved to userService */
-  login(id: number) {
-    this.http
-      .get<User>(`${environment.userUri}/${id}`)
-      .subscribe((user: User) => {
-        if (user != null) {
-          this.loggedIn = true;
-          this.user = user;
-          console.log(this.user);
-          this.router.navigate(['/questions']);
-        }
-      });
-  }
-
-/**name will be changed to login */
-  submitted(id: number){
+  attemptLogin(id: number){
     this.http
       .get<Account>(`${environment.userUri}/${id}`)
       .subscribe((account: Account) => {

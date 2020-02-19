@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { Tag } from '../../models/Tag';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { stringify } from 'querystring';
+import { User } from 'src/app/models/User';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,13 +15,15 @@ import { stringify } from 'querystring';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private userService: UserService) {
-    this.options.hideIcons = ['FullScreen'];
-    this.options.showPreviewPanel = false;
-    this.inEditMode = false;
-    this.editModeText = "Personalize";
-    this.defaultPic = "../../assets/images/defaultProfilePic.png";
-  }
+
+  options: Markdownoptions = new Markdownoptions();
+
+  @Input('user')
+  user: User;
+  temp: number;
+
+  @Input('accId')
+  accId: number;
 
   options: Markdownoptions = new Markdownoptions();
   isAssociate = (): boolean => false;
@@ -28,6 +32,16 @@ export class ProfileComponent implements OnInit {
   editModeText: string;
   profileForm: FormGroup;
   defaultPic: string;
+
+
+  constructor(private authService: AuthService, private fb: FormBuilder, private userService: UserService,
+    private route: ActivatedRoute) { 
+    this.options.hideIcons = ['FullScreen'];
+    this.options.showPreviewPanel = false;
+    this.inEditMode = false;
+    this.editModeText = "Personalize";
+    this.defaultPic = "../../assets/images/defaultProfilePic.png";
+  }
 
   ngOnInit() {
     this.profileForm = this.fb.group({
@@ -80,6 +94,18 @@ export class ProfileComponent implements OnInit {
     this.profileForm.reset();
     this.inEditMode = !this.inEditMode;
     this.editModeText = (this.inEditMode) ? "Normal View" : "Personalize";
+  }
+
+  isAssociate() : boolean {
+    return !this.user.expert;
+  }
+
+  isExpert() : boolean {
+    return this.user.expert;
+  }
+
+  viewerSameAsLoggedInUser() : boolean {
+    return this.accId == this.user.id;
   }
 
 }
