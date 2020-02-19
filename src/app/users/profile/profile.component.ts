@@ -25,8 +25,6 @@ export class ProfileComponent implements OnInit {
   @Input('accId')
   accId: number;
 
-  options: Markdownoptions = new Markdownoptions();
-  isAssociate = (): boolean => false;
   selectedFile: File = null;
   inEditMode: boolean;
   editModeText: string;
@@ -50,7 +48,7 @@ export class ProfileComponent implements OnInit {
       bio: [''],
     });
     
-    if (this.user.profilePic === null) {
+    if (this.user.profilePic === '') {
       this.user.profilePic = this.defaultPic;
     }
   }

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Question } from 'src/app/models/Question';
 import { QuestionService } from 'src/app/services/question.service';
 import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-expert-questions',
@@ -19,11 +20,11 @@ export class ExpertQuestionsComponent implements OnInit {
   filteredQuestions: Question[];
   questions: Question[];
 
-  constructor(private authService: AuthService, private questionService: QuestionService) { }
+  constructor(private authService: AuthService, private userService: UserService, private questionService: QuestionService) { }
 
   ngOnInit() {
     this.expertId = this.authService.account.id;
-    this.authService.getUserById(this.expertId).subscribe(result => {
+    this.userService.getUserById(this.expertId).subscribe(result => {
       this.expert = result;
       let tags = new Array<string>();
       for (let i = 0; i < this.expert.expertTags.length; i++) {
