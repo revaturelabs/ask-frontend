@@ -1,10 +1,13 @@
-
+;
 <div class="container-fluid">
   <ul class="nav">
     <li class="nav-item">
     </li>
     <li class="nav-item">
       <button class="btn btn-success" (click)="editMode()">{{editModeText}} &rarr;</button>
+      <br>
+      <button *ngIf="!this.authService.account.expert" class="btn btn-success" (click)="addInterest()"
+        (click)="openLg(content)">{{interestModeText}} &rarr;</button>
     </li>
   </ul>
   <div class="row">
@@ -14,8 +17,7 @@
   <div class="row">
     <div class="col-md-4">
       <img class="profilePic" src="http://placekitten.com/g/200/300" alt="bianca !<3s cats">
-        <!-- <img class="profilePic" src={{user.profilePic}}> -->
-
+      <!-- <img class="profilePic" src={{user.profilePic}}> -->
       <div class="centered">
         <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
@@ -64,7 +66,6 @@
         </mat-chip>
       </div>
     </mat-chip-list>
-
     <div *ngIf="this.authService.user.questions.length > 0">
       <app-user-questions></app-user-questions>
     </div>
@@ -79,3 +80,34 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div *ngIf="inInterestMode">
+    <button type="button" class="close float-sm-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3 class="modal-title">What Are Your Interests?</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="modal-body">
+        <div *ngFor="let tag of tags">
+          <section class="skill-tag">
+            <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}" [checked]="tag.checked"
+              matTooltip="{{ tag.name }}" [matTooltipPosition]="'above'" [matTooltipShowDelay]="300"
+              [matTooltipHideDelay]="100">
+              {{ tag.name }}</mat-checkbox>
+          </section>
+        </div>
+
+        <div class="button-div">
+          <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
+            Update Tags
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

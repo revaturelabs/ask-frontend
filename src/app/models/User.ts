@@ -9,6 +9,7 @@ export class User {
     bio: string;
     profilePic: string;
     expertTags: Tag[];
+    interestTags: Tag[];
     questions: Question[];
     responses: Response[];
 

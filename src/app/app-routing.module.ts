@@ -12,20 +12,23 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { ProfileComponent } from './users/profile/profile.component';
+import { InterestComponent } from './users/interest/interest.component';
+import { InterestTagsComponent } from './users/interest-tags/interest-tags.component'
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent  },
-  { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard]  },
-  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]  },
+  { path: '', component: LoginPageComponent },
+  { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'interest', component: InterestComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
