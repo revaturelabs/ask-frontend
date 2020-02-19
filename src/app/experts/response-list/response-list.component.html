@@ -2,7 +2,7 @@
     <table>
         <tr *ngFor="let question of questionList">
             <td>
-                <app-preview-question [question]="question.body" [tag]="question.tags"></app-preview-question>
+                <app-preview-question [question]="question" [tag]="question.tags"></app-preview-question>
             </td>
         </tr>
     </table>
