@@ -22,6 +22,9 @@ export class WebSocketComponent implements OnInit {
   private userForm: FormGroup;
   messages: Message[] = [];
 
+  expertDisplayName : string = 'EXPERT NAME';
+  topicDisplayName : string = 'TOPIC NAME';
+
 
   constructor(private socketService: SocketService) { }
 
@@ -51,10 +54,8 @@ export class WebSocketComponent implements OnInit {
     let that = this;
     this.stompClient.connect({}, function (frame) {
       that.isLoaded = true;
-      that.openGlobalSocket();
-    
-    });
-    
+      that.openGlobalSocket();    
+    });    
   }
 
   openGlobalSocket() {

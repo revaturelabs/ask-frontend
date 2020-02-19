@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, HostListener} from '@angular/core';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-message-box',
@@ -15,7 +16,7 @@ export class MessageBoxComponent implements OnInit {
   messages : string[] = [
   ]
 
-  constructor() { }
+  constructor(private socketService: SocketService) { }
 
   ngOnInit() {
   }
