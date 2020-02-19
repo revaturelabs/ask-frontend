@@ -21,14 +21,10 @@ export class TopicQuestionsComponent implements OnInit {
       this.questions=response;
       this.questions.map( question => {
         let idTag =+ this.route.snapshot.paramMap.get('id');
-        // console.log(question.associatedTags);
        
         for ( let tagKeyValPair of question.associatedTags ) {
-          console.log(idTag,tagKeyValPair.id,idTag == tagKeyValPair.id);
-          // console.log(tagKeyValPair.id);
-          // console.log(idTag == tagKeyValPair.id);
+         
           if (idTag == tagKeyValPair.id) {
-            console.log(question.head);
             this.questionsTagArr.push(question.head);
           }
           
@@ -37,25 +33,13 @@ export class TopicQuestionsComponent implements OnInit {
        
   
       });
-      // this.getTagKeyValPair();
-      // console.log(this.questionsTagArr)
+     
     });
     
-  }
-
-  getTagKeyValPair = () => {
-//  console.log(this.questions);
   }
 
   ngOnInit() {
     this.getQuestions();
   }
-  
-// getAllQuestions(); 
-// getAllQuestions(){
-//   this.questionService.getQuestions().subscribe(response=> {
-//     this.questions=response
-//   });
-// }
 
 }
