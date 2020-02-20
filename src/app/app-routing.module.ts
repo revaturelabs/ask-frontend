@@ -9,6 +9,7 @@ import { FilteredQuestionListComponent } from './static/filtered-question-list/f
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
+import { QuestionRouteComponent } from './static/question-route/question-route.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },
   { path: 'user-questions', component: UserQuestionsComponent, canActivate: [AuthGuard] },
-
   { path: 'chat', component: AskMeAnythingPageComponent },
+  { path: 'question/:id', component: QuestionRouteComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

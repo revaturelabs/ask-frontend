@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
+import { Question } from 'src/app/models/Question';
 
 @Component({
   selector: 'app-enter-response',
@@ -17,6 +18,7 @@ export class EnterResponseComponent implements OnInit {
   @Output() newResponse: EventEmitter<Response> = new EventEmitter();
   @Output() updatedResponse: EventEmitter<Response> = new EventEmitter();
   @Input() isEdit: boolean;
+  @Input() question: Question;
   @Input() response: Response = {
     user: null,
     id: 0,
@@ -36,10 +38,8 @@ export class EnterResponseComponent implements OnInit {
     private router: Router,
   ) {}
 
-  questionId: number;
 
   ngOnInit() {
-    this.questionId = this.questionService.getQuestionId();
     this.options.hideIcons = ['FullScreen'];
   }
 
@@ -48,7 +48,7 @@ export class EnterResponseComponent implements OnInit {
       this._snackBar.open('Please add a Response!', 'OK!', { duration: 3000 });
     } else {
       this.response.body = body;
-      this.response.questionId = this.questionId;
+      this.response.questionId = this.question.id;
       this.response.responderId = this.authService.account.id;
       this.responseService.saveResponse(this.response).subscribe(
         response => {
@@ -57,7 +57,9 @@ export class EnterResponseComponent implements OnInit {
             duration: 3000,
           });
           this.response.body = null;
-          this.router.navigate(['/view-question']);
+          this.router.navigate([`/question/${this.question.id}`]); //Currently routes to settings because it does
+          //not refresh the page if something is submitted, so person will have to navigate
+          //back to see changes.
         },
         failure => {
           this._snackBar.open('Response Submission Failed', ' ', {
