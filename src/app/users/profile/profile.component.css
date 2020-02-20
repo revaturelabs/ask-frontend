@@ -53,7 +53,6 @@ a:hover {
   text-align: right;
   padding-bottom: 3em;
 }
-
 .skill-tag {
   width: 144px;
   padding: 4px 0;
@@ -92,6 +91,16 @@ h3 {
   color: #ffffff;
   font-weight: normal;
   margin: 6px 0 0 6px;
+}
+.button-div {
+  width: 100%;
+}
+button {
+  margin: 10px 0 4px 0;
+  padding: 0;
+  width: 160px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 #saveButton {

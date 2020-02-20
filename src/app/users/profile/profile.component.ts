@@ -99,7 +99,7 @@ export class ProfileComponent implements OnInit {
 
   checkExpertTags() {
     for (const t of this.tags) {
-      this.currentExpert.interestTags.forEach(element => {
+      this.currentExpert.expertTags.forEach(element => {
         if (element.name === t.name) {
           this.toggle({ checked: true }, t.name);
           t.checked = true;
