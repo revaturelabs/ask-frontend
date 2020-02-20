@@ -55,9 +55,7 @@ mat-chip {
 }
 
 .expandBackground {
-  padding-top : 20px;
   padding-bottom : 20px;
-  margin-top : 10px;
   margin-bottom : 10px;
 }
 
@@ -67,6 +65,6 @@ mat-chip {
   font-size : 12px;
   background-color: orange;
   border : none;
-  margin-left : 150px;
+  margin-left : 10%;
   border-radius: 2px;
 }
