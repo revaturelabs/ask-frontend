@@ -46,3 +46,12 @@ mat-radio-group{
 mat-radio-button{
   margin: -5px 0 0 0;
 }
+
+#overflowing {
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.selectText {
+  font-size: 12px;
+}
