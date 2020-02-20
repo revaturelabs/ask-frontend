@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { Question } from 'src/app/models/Question';
+import { QuestionService } from 'src/app/services/question.service';
 
 /**
  * @title Ask Question
@@ -70,6 +71,7 @@ export class AskQuestionComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private http: HttpClient,
     private authService: AuthService,
+    private questionService: QuestionService,
     private fb: FormBuilder,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
@@ -182,7 +184,7 @@ export class AskQuestionComponent implements OnInit {
   onUpload(questionId) {
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
+    this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
       },

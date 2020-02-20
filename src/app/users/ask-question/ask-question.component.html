@@ -39,7 +39,7 @@
 
   <!-- Submit button -->
   <div class="bunched">
-    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)">
+    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
     <button mat-raised-button id="ask-question-button-submit" [disabled]="!questionForm.valid"
       type="submit">Submit</button>
   </div>
