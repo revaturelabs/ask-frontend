@@ -24,6 +24,7 @@ export class ChatMessageComponent implements OnInit {
   }
 
   formatDate() : string{
+    this.time = new Date();
     let result = `${this.time.getHours() % 12}:${this.time.getMinutes() < 10? '0' : ''}${this.time.getMinutes()} 
     ${this.time.getHours() > 11? 'PM' : 'AM'}`;
     return result;
