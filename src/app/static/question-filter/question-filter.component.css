@@ -51,3 +51,7 @@ mat-radio-button{
   overflow-y: auto;
   padding-top: 10px;
 }
+
+.selectText {
+  font-size: 12px;
+}

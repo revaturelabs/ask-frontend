@@ -57,6 +57,9 @@
 </mat-toolbar>
 <mat-toolbar id = "overflowing">
   <mat-chip-list aria-orientation="horizontal" #chipList aria-label="Tag selection">
+    <div class = "selectText">
+      Selected Tags:
+    </div>
     <mat-chip
       *ngFor="let tag of tags"
       [selectable]="selectable"
