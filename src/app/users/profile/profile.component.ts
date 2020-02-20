@@ -113,5 +113,4 @@ export class ProfileComponent implements OnInit {
   openLg(content) {
     this.modalService.open(content, { size: 'lg' });
   }
-
 }
