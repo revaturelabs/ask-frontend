@@ -32,7 +32,7 @@ constructor(private router: Router, private http: HttpClient) { }
   userLogin(account: Account) {
     this.loggedIn = true;
     this.account = account;
-    this.router.navigate(['/questions']);
+    this.router.navigate(['/question/all']);
   }
 
   userLogOut() {

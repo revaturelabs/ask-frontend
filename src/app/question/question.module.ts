@@ -9,6 +9,7 @@ import { FilteredQuestionListComponent } from '../question/filtered-question-lis
 import { EnterResponseComponent } from './enter-response/enter-response.component';
 import { HighlightedResponseComponent } from './highlighted-response/highlighted-response.component';
 import { ResponseComponent } from './response/response.component';
+import { QuestionRouteComponent } from "./question-route/question-route.component";
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -24,6 +25,7 @@ import { QuestionRoutingModule } from "./question-routing.module";
     FilteredQuestionListComponent,
     EnterResponseComponent,
     HighlightedResponseComponent,
+    QuestionRouteComponent,
     ResponseComponent
   ],
   imports: [
@@ -40,6 +42,7 @@ import { QuestionRoutingModule } from "./question-routing.module";
     FilteredQuestionListComponent,
     EnterResponseComponent,
     HighlightedResponseComponent,
+    QuestionRouteComponent,
     ResponseComponent
   ]
 })

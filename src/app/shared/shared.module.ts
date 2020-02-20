@@ -6,6 +6,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { MaterialImportModule } from '../../material-import/material-import.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http'
 
 import { FooterComponent } from './footer/footer.component';
 
@@ -20,7 +21,8 @@ import { SkilltagPipe } from './skilltag.pipe';
     CommonModule,
     MaterialImportModule,
     NgbModule,
-    MarkdownModule
+    MarkdownModule,
+    HttpClientModule
   ],
   exports:[
     ReactiveFormsModule,
@@ -31,7 +33,8 @@ import { SkilltagPipe } from './skilltag.pipe';
     SkilltagPipe,
     FooterComponent,
     NgbModule,
-    MarkdownModule
+    MarkdownModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

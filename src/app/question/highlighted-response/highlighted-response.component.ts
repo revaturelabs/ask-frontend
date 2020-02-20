@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ResponseService } from '../../services/response.service';
 import { Response } from '../../models/Response';
 
@@ -16,18 +16,12 @@ import { Response } from '../../models/Response';
 })
 export class HighlightedResponseComponent implements OnInit {
 
-  @Input() highlight: Response;
-  responderName: string;
+  @Input()
+  highlightedResponse: Response;
 
-  constructor(private responseService: ResponseService) { }
-
+  constructor() { }
+  
   ngOnInit() {
-
-    // Used for displaying the username of the expert who responded
-    let highlightId = this.highlight.id;
-    this.responseService.getResponseById(highlightId).subscribe(result => {
-      this.responderName = result.user.username;
-    });
   }
 
 }
