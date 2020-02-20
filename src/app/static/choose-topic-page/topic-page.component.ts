@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopicPageComponent implements OnInit {
 
-  tag: Tag[];
-  tagName: string;
+  tags: Tag[];
 
   constructor(
     public router: Router,
@@ -21,8 +20,7 @@ export class TopicPageComponent implements OnInit {
 
   ngOnInit() {
     this.tagService.getTags().subscribe(tag => {
-      this.tag = tag;
-      // this.tagService.setTagName(this.tag);
+      this.tags = tag;
     });
   }
 
