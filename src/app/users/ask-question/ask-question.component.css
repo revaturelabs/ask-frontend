@@ -60,3 +60,9 @@ input {
   background-color: #f26925;
   color: #ffffff;
 }
+
+#ask-question-button-submit:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
