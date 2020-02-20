@@ -53,6 +53,8 @@ a:hover {
   text-align: right;
   padding-bottom: 3em;
 }
+
+/*Start: Interest Feature Style*/
 .skill-tag {
   width: 144px;
   padding: 4px 0;
@@ -105,3 +107,4 @@ h3 {
   left: 50%;
   transform: translate(-50%, 0);
 }
+/*End: Interest-Feature*/
