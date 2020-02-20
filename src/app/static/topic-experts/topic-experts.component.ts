@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class TopicExpertsComponent implements OnInit {
   experts: User[];
   expert: User = null;
-  returnExpert: User = null;
   returnNames: User[] = [];
   getTopicId: number = 0;
   constructor(private usersService: UsersService,private route: ActivatedRoute) {}
@@ -21,7 +20,7 @@ export class TopicExpertsComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id') !== null) {
       this.getTopicId = +this.route.snapshot.paramMap.get('id');
     }
-    this.usersService.getExpertTags().subscribe(expert => {
+    this.usersService.getExperts().subscribe(expert => {
       this.experts = expert;
       this.filterExperts();
     });
