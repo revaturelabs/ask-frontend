@@ -1,11 +1,11 @@
 .topic-tagname-header {
-  background: orange;
   padding-bottom: .5em;
 }
 
 .topic-tagname-header h3 {
-  color: white;
-  font-size: 3em;
+  font-size: 2em;
+  text-align: center;
+  font-weight: 100;
 }
 
 .topic-tagname-header,
