@@ -15,20 +15,9 @@ export class TagService {
   constructor(private http: HttpClient) {}
 
   tagId:number;
-  tagname:string;
 
   getTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(environment.tagsUri);
-  }
-
-  getTagId(){
-    return this.tagId;
-  }
-  setTagName(tagname) {
-    this.tagname = tagname;
-  }
-  returnTagName(){
-    return this.tagname;
   }
 
   getTagById(tagId): Observable<Tag>{
@@ -40,7 +29,7 @@ export class TagService {
     return this.http.put<Tag>(uri, {"expertTags":tags}, httpOptions);
   }
 
-  getExpertTags(expertId: Number): Observable<any[]>{
-    return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
+  getExpertTags(expertId: Number): Observable<Tag[]>{
+    return this.http.get<Tag[]>(`${environment.userUri}/${expertId}`);
   }
 }

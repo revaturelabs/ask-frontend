@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../app/shared/shared.module';
+
+import { AuthService } from './services/auth/auth.service';
+
+
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
@@ -14,8 +18,7 @@ import { ResponseComponent } from './static/response/response.component';
 import { AskQuestionComponent } from './users/ask-question/ask-question.component';
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
-import { MaterialImportModule } from '../material-import/material-import.module';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
 import { NavbarComponent } from './static/navbar/navbar.component';
 import { FooterComponent } from './static/footer/footer.component';
 import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
@@ -26,17 +29,13 @@ import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
 import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
-import { LMarkdownEditorModule } from 'ngx-markdown-editor';
-import { MarkdownModule } from 'ngx-markdown';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
 import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
 import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
-import { TopicAMAComponent } from './static/topic-ama/topic-ama.component';
 import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
-import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.component';
-import { TopicFilterComponent } from './static/topic-filter/topic-filter.component';
+
 
 @NgModule({
   declarations: [
@@ -63,21 +62,13 @@ import { TopicFilterComponent } from './static/topic-filter/topic-filter.compone
     TopicPageComponent,
     SpecificTagInfoComponent,
     TopicExpertsComponent,
-    TopicAMAComponent,
-    TopicQuestionsComponent,
-    TopicWebinarsComponent,
-    TopicFilterComponent
+    TopicQuestionsComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MaterialImportModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    LMarkdownEditorModule,
     MarkdownModule.forRoot(),
     NgbModule,
   ],

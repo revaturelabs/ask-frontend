@@ -13,10 +13,9 @@ const httpOptions = {
 })
 export class UsersService {
   constructor(private http: HttpClient) { }
-  tagId:number;
 
-  getExpertTags(): Observable<any[]>{
-    return this.http.get<any[]>(`${environment.userUri}`);
+  getExperts(): Observable<any>{
+    return this.http.get<any>(`${environment.userUri}`);
   }
 
 }
