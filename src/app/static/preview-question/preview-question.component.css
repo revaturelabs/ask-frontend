@@ -54,7 +54,17 @@ mat-chip {
   box-shadow: inset 0 0 1px 4px #ffd13b;
 }
 
-.centered {
-  display: flex;
-  justify-content: center;
+.expandBackground {
+  padding-bottom : 20px;
+  margin-bottom : 10px;
+}
+
+.expandButton {
+  color : white;
+  font-style : italic;
+  font-size : 12px;
+  background-color: orange;
+  border : none;
+  margin-left : 10%;
+  border-radius: 2px;
 }

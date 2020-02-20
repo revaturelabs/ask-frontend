@@ -32,9 +32,9 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div *ngIf="expanded">
+<div class="expandBackground" *ngIf="expanded">
   <app-view-question [selectedQuestion]="question"></app-view-question>
 </div>
-<div class = "centered">
-  <button type="button" class="btn btn-info" (click)="changeView()">{{btnTxt}}</button>
+<div>
+  <button class="expandButton" (click)="changeView()">{{btnTxt}}</button>
 </div>
