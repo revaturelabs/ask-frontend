@@ -29,7 +29,7 @@ export class TagService {
     return this.http.put<Tag>(uri, {"expertTags":tags}, httpOptions);
   }
 
-  getExpertTags(expertId: Number): Observable<any[]>{
-    return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
+  getExpertTags(expertId: Number): Observable<Tag[]>{
+    return this.http.get<Tag[]>(`${environment.userUri}/${expertId}`);
   }
 }

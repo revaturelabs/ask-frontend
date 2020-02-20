@@ -1,22 +1,18 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import {
-  MatAutocompleteSelectedEvent,
-  MatAutocomplete,
-} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent,
+  MatAutocomplete,} from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
-import { environment } from 'src/environments/environment';
 // Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
+import { QuestionService } from 'src/app/services/question.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 /**
  * @title Ask Question
@@ -54,9 +50,7 @@ export class AskQuestionComponent implements OnInit {
   options: Markdownoptions = new Markdownoptions();
   public mode = 'editor';
 
-  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
-    HTMLInputElement
-  >;
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef<HTMLInputElement>;
 
@@ -71,9 +65,8 @@ export class AskQuestionComponent implements OnInit {
     private fb: FormBuilder,
     private ts: TagService,
     private _snackBar: MatSnackBar,
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router,
+    private questionService:QuestionService,
+    private authService: AuthService
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -189,7 +182,7 @@ export class AskQuestionComponent implements OnInit {
       this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
     } else {
       // POST-ing the form
-      this.http.post(environment.questionsUri, this.questionInput).subscribe(
+      this.questionService.saveQuestion(this.questionInput).subscribe(
         response => {
         // uploads the picture with form if there is one
         if (this.selectedFile !== null) {
@@ -211,7 +204,7 @@ export class AskQuestionComponent implements OnInit {
     event.preventDefault();
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.put(`${environment.questionsUri}/${questionId}/images`, formData)
+    this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
         // clears the image name of input field

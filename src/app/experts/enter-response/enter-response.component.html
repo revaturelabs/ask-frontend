@@ -1,6 +1,6 @@
 <div class="submit-response">
     <span class="mat-button-wrapper mockplaceholder">Enter a response.</span>
-    <md-editor name="Content" [upload]="doUpload" [preRender]="preRenderFunc" [(ngModel)]="response.body"
+    <md-editor name="Content" [(ngModel)]="response.body"
       [height]="'200px'" [mode]="mode" [options]="options" required maxlength="500">
     </md-editor>
   <mat-card-actions>
