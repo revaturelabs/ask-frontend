@@ -6,9 +6,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FormsModule } from '@angular/forms';
 import { ExpertQuestionsComponent } from './expert-questions.component';
-import { QuestionListComponent } from '../question-list/question-list.component';
-import { PreviewQuestionComponent } from '../preview-question/preview-question.component';
-import { SkilltagPipe } from '../response/skilltag.pipe';
+import { QuestionListComponent } from '../../question/question-list/question-list.component';
+import { PreviewQuestionComponent } from '../../question/preview-question/preview-question.component';
+import { SkilltagPipe } from '../../question/response/skilltag.pipe';
 import { RouterTestingModule } from '@angular/router/testing';
 describe('ExpertQuestionsComponent', () => {
   it('should create', () => {
