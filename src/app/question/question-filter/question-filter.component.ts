@@ -20,6 +20,8 @@ import { environment } from 'src/environments/environment';
 
 //Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from 'src/app/models/User';
 
 /**
  * @title Filter questions
@@ -46,6 +48,7 @@ export class QuestionFilterComponent implements OnInit {
   filteredUri: string;
   filterTags: string[];
   filteredStatus: boolean = false;
+  isExpert: Boolean;
 
   @Output() newFilteredStatus: EventEmitter<boolean> = new EventEmitter();
   @Output() newFilteredUri: EventEmitter<string> = new EventEmitter();
@@ -58,6 +61,7 @@ export class QuestionFilterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ts: TagService,
+    private authService: AuthService,
     private _snackBar: MatSnackBar,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
@@ -125,7 +129,7 @@ export class QuestionFilterComponent implements OnInit {
 
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);  
+    this.tags.push(event.option.viewValue);
     this.tagInput.nativeElement.value = '';
     this.filterInputTags();
     this.tagCtrl.setValue(null);
@@ -137,7 +141,7 @@ export class QuestionFilterComponent implements OnInit {
 
     return this.filtTags.filter(
       tag => tag.toLowerCase().indexOf(filterValue) === 0
-      
+
     );
   }
 
@@ -149,7 +153,8 @@ export class QuestionFilterComponent implements OnInit {
     let j = 0;
     this.filtTags = [];
     this.allTagsFromServer.forEach(el => {
-      this.filtTags.push(el)});
+      this.filtTags.push(el)
+    });
     for (i; i < this.tags.length; i++) {
       j = this.filtTags.indexOf(this.tags[i]);
       this.filtTags.splice(j, 1);
@@ -178,5 +183,36 @@ export class QuestionFilterComponent implements OnInit {
     this.newFilteredStatus.emit(this.filteredStatus);
   }
 
-  ngOnInit() {}
+  showYourQuestions() {
+    this.filteredStatus = true;
+    this.newFilteredStatus.emit(this.filteredStatus);
+    this.filteredUri = environment.userUri + '/' + this.authService.account.id + '/questions';
+    this.newFilteredUri.emit(this.filteredUri);
+  }
+
+  showRelevantQuestions() {
+    let expertId = this.authService.account.id;
+    let expert:User;
+    let uriTags;
+    this.authService.getUserById(expertId).subscribe(result => {
+      expert = result;
+      this.tags = new Array<string>();
+      for (let i = 0; i < expert.expertTags.length; i++) {
+        this.tags.splice(i, 0, expert.expertTags[i].name);
+      }
+      this.filterTags = this.tags;
+      for (let j = 0; j < this.filterTags.length; j++) {
+        uriTags += '&tag=' + this.filterTags[j];
+      }
+      this.filteredStatus = true;
+      this.newFilteredStatus.emit(this.filteredStatus);
+      this.filteredUri = environment.questionsUri + "/search/" + this.requireAll + "&tag=" + this.tags;
+      this.newFilteredUri.emit(this.filteredUri);
+      
+    });
+  }
+
+  ngOnInit() {
+    this.isExpert = this.authService.account.expert;
+  }
 }

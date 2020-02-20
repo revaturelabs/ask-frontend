@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Question } from 'src/app/models/Question';
-import { HttpClient } from '@angular/common/http';
 import { QuestionService } from '../../services/question.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 

@@ -19,5 +19,4 @@ export class QuestionRouteComponent implements OnInit {
   ngOnInit() {
     this.question$ = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.questionService.getQuestionById(params.get('id'))));
   }
-
 }

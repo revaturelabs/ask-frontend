@@ -13,4 +13,4 @@
 <div class="response-component" *ngFor="let response of selectedQuestion.responses">
   <app-response (highlighted)="refreshQuestion()" [response]="response" [highlightable]="userOwnsQuestion"></app-response>
 </div>
-<app-enter-response (newResponse)="refreshQuestion()" *ngIf="this.authService.account.expert" [question]="selectedQuestion"></app-enter-response>
+<app-enter-response (newResponse)="refreshPage()" *ngIf="this.authService.account.expert"></app-enter-response>
