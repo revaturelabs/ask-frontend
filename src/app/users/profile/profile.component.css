@@ -95,15 +95,13 @@ h3 {
 .button-div {
   width: 100%;
 }
-button {
+
+#saveButton {
+  background-color: #f26925;
+  color: #ffffff;
   margin: 10px 0 4px 0;
   padding: 0;
   width: 160px;
   left: 50%;
   transform: translate(-50%, 0);
-}
-
-#saveButton {
-  background-color: #f26925;
-  color: #ffffff;
 }

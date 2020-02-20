@@ -82,7 +82,8 @@
 
 <ng-template #content let-modal>
   <div *ngIf="this.inInterestMode">
-    <button type="button" class="close float-sm-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button id="close-tab" type="button" class="close float-sm-right" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
     <mat-card>

@@ -14,4 +14,4 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
   ],
 })
-export class UsersModule {}
+export class UsersModule { }
