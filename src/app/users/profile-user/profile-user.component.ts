@@ -26,7 +26,7 @@ export class ProfileUserComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserService, private route: ActivatedRoute) { }
 
-  in() {
+  populateRoutedUser() {
     this.route.paramMap.pipe(switchMap((params: ParamMap) => this.userService.getUserById(+params.get('id')))).subscribe((data:User) =>{
       this.init = data;
       this.isLoaded = true;
@@ -35,7 +35,7 @@ export class ProfileUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.in();
+    this.populateRoutedUser();
   }
 
 }

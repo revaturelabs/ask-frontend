@@ -31,10 +31,11 @@
               <span> {{user.email}}</span>
               <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
             </div>
-            <div class="form-group">
+            <div class="form-group" class="txtArea">
               <label for="profileInputBio"></label>
-              <span> {{user.bio}}</span>
-              <input type="textarea" formControlName="bio" id="profileInputBio" placeholder="Bio" *ngIf=inEditMode>
+              <div> {{user.bio}}</div>
+              <br><br>
+              <textarea rows="10" cols="100" formControlName="bio" placeholder="Bio" *ngIf=inEditMode></textarea>
             </div>
           </form>
         </div>
