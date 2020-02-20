@@ -35,6 +35,6 @@
 <div class="expandBackground" *ngIf="expanded">
   <app-view-question [selectedQuestion]="question"></app-view-question>
 </div>
-<div *ngIf="question.responses.length">
+<div>
   <button class="expandButton" (click)="changeView()">{{btnTxt}}</button>
 </div>
