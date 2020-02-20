@@ -10,15 +10,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class TopicExpertsComponent implements OnInit {
+
+
+  constructor(private usersService: UsersService, private route: ActivatedRoute) {
+  }
   experts: User[];
-  expert: User = null;
-  returnNames: User[] = [];
+  expert: User = null ;
+  returnedExpert: User = null;
+  returnedNames: User[] = [];
   getTopicId: number = 0;
-  constructor(private usersService: UsersService,private route: ActivatedRoute) {}
 
   ngOnInit() {
+   
+    experts: User[];
+    expert: User = null ;
+    returnedExpert: User = null;
+    returnedNames: User[] = [];
+    getTopicId: number = 0;
+
     if (this.route.snapshot.paramMap.get('id') !== null) {
-      this.getTopicId = +this.route.snapshot.paramMap.get('id');
+      this.getTopicId = + this.route.snapshot.paramMap.get('id');
     }
     this.usersService.getExperts().subscribe(expert => {
       this.experts = expert;
@@ -27,14 +38,18 @@ export class TopicExpertsComponent implements OnInit {
   }
 
   filterExperts(): void {
+    /*expert: User = null;
+  returnExpert: User = null;
+  returnNames: User[] = [];
+  getTopicId: number = 0;*/
     for (let i = 0; i < this.experts.length; i++) {
       this.expert = this.experts[i];
       for (let j = 0; j < this.expert.expertTags.length; j++) {
         if (this.expert.expertTags[j].id === this.getTopicId) {
-          this.returnNames.push(this.experts[i]);
+          this.returnedNames.push(this.experts[i]);
         }
       }
     }
   }
-
 }
+
