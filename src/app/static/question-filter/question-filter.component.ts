@@ -174,6 +174,7 @@ export class QuestionFilterComponent implements OnInit {
   }
 
   resetSearch() {
+    this.tags = [];
     this.filteredStatus = false;
     this.newFilteredStatus.emit(this.filteredStatus);
   }
