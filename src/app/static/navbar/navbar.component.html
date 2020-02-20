@@ -1,8 +1,8 @@
 <mat-toolbar id="navbar" *ngIf="this.authService.isLoggedIn">
     <mat-toolbar-row>
-<!--
+
         <button mat-button routerLink="/ask" *ngIf="!this.authService.account.expert">Ask Questions</button>
--->        
+        
         <button mat-raised-button (click)="openDialog()">Ask Question Modal</button>
         <button mat-button routerLink="/questions">All Questions</button>
         <button mat-button routerLink="/expert-questions" *ngIf="this.authService.account.expert">Assigned Questions</button>

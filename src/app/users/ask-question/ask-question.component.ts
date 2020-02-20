@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter, Optional } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -17,9 +17,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
-//Angular Material Modal imports
-//import { NavbarComponent } from '../../static/navbar/navbar.component';
-//import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+// Modal imports
+import { ModalService } from '../../services/modal.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 /**
  * @title Ask Question
@@ -77,6 +77,7 @@ export class AskQuestionComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
+    @Optional() private dialogRef: MatDialogRef<ModalService>,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -202,6 +203,10 @@ export class AskQuestionComponent implements OnInit {
         this.clearForm();
         // custom snackbar message
         this._snackBar.open('Your question is submitted!', 'OK!', {duration: 3000});
+        // Closes Modal, expression fails if not opened via Modal
+        if (this.dialogRef !== null) {
+          this.dialogRef.close();
+        }
       },
       failed => {
         this._snackBar.open('Your question failed to submit!', 'OK', {duration: 3000});
