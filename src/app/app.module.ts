@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
@@ -35,10 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopicPageComponent } from './static/choose-topic-page/topic-page.component';
 import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
 import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
-import { TopicAMAComponent } from './static/topic-ama/topic-ama.component';
 import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
-import { TopicWebinarsComponent } from './static/topic-webinars/topic-webinars.component';
-import { TopicFilterComponent } from './static/topic-filter/topic-filter.component';
+
 
 @NgModule({
   declarations: [
@@ -65,10 +62,7 @@ import { TopicFilterComponent } from './static/topic-filter/topic-filter.compone
     TopicPageComponent,
     SpecificTagInfoComponent,
     TopicExpertsComponent,
-    TopicAMAComponent,
-    TopicQuestionsComponent,
-    TopicWebinarsComponent,
-    TopicFilterComponent
+    TopicQuestionsComponent
   ],
   imports: [
     SharedModule,
