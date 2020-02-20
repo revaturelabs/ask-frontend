@@ -68,4 +68,5 @@ mat-chip {
   background-color: orange;
   border : none;
   margin-left : 150px;
+  border-radius: 2px;
 }
