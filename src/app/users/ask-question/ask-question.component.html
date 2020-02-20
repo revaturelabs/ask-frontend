@@ -1,4 +1,4 @@
-<form class="ask-question-container" [formGroup]="questionForm" (ngSubmit)="submitQuestion()">
+<form class="ask-question-container" [formGroup]="questionForm" (ngSubmit)="submitQuestion()" #formDirective="ngForm">
   <!-- Banner -->
   <h3>
     Ask an Expert

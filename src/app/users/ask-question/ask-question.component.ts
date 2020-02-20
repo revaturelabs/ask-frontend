@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,
@@ -57,6 +57,7 @@ export class AskQuestionComponent implements OnInit {
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+  @ViewChild('formDirective', { static: false }) formDirective: NgForm;
 
   questionForm: FormGroup = this.fb.group({
     id: [''],
@@ -153,7 +154,7 @@ export class AskQuestionComponent implements OnInit {
         //form mapped to custom class, backend not set up to recieve form objects
         //work around, since Question model is an interface
     let question: AskQuestion = new AskQuestion();
-    question.questionerId = this.authService.user.id;
+    question.questionerId = this.authService.account.id;
     question.body = this.questionForm.value['body'];
     question.head = this.questionForm.value['head'];
     question.tagList = this.tags;
@@ -191,12 +192,12 @@ export class AskQuestionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clearForm();
   }
 
   // clears the form, chips(tags) and selected file of image
   clearForm() {
     this.questionForm.reset();
+    this.formDirective.resetForm();
     this.cleanMarkdown = false;
     this.tags = [];
     this.selectedFile = null;
