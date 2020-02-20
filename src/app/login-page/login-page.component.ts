@@ -24,4 +24,6 @@ export class LoginPageComponent implements OnInit {
   onSubmit(id: number) {
     this.authService.attemptLogin(id);
   }
+
+
 }
