@@ -3,15 +3,6 @@
   <mat-form-field #qTags class="tag-chip-list">
     <mat-icon matSuffix>search</mat-icon>
     <mat-chip-list #chipList aria-label="Tag selection">
-      <mat-chip
-        *ngFor="let tag of tags"
-        [selectable]="selectable"
-        [removable]="removable"
-        (removed)="remove(tag)"
-      >
-        {{ tag }}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
       <input
         id="catInput"
         placeholder="Select category tags: "
@@ -63,4 +54,17 @@
   >
     Reset
   </button>
+</mat-toolbar>
+<mat-toolbar id = "overflowing">
+  <mat-chip-list aria-orientation="horizontal" #chipList aria-label="Tag selection">
+    <mat-chip
+      *ngFor="let tag of tags"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(tag)"
+    >
+      {{ truncateDisplayName(tag) }}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
 </mat-toolbar>

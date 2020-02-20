@@ -35,6 +35,6 @@
 <div *ngIf="expanded">
   <app-view-question [selectedQuestion]="question"></app-view-question>
 </div>
-<div>
-  <button (click)="changeView()">{{btnTxt}}</button>
+<div class = "centered">
+  <button type="button" class="btn btn-info" (click)="changeView()">{{btnTxt}}</button>
 </div>

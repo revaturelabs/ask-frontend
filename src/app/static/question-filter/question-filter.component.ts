@@ -179,4 +179,11 @@ export class QuestionFilterComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  truncateDisplayName(displayTag : string) : string{
+    if (displayTag.length > 18){
+      return displayTag.substr(0, 15) + '...';
+    }
+    else return displayTag;
+  }
 }
