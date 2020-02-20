@@ -29,7 +29,7 @@ export class UserService {
   }
 
   updateProfilePic(profilePic: FormData, id: number){
-    return this.http.patch<string>(`${environment.userProfile}/${id}`, profilePic);
+    return this.http.patch<string>(`${environment.userUri}/picture/${id}`, profilePic);
   }
 
   createUser(user:User){
