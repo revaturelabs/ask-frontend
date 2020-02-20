@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
     this.options.showPreviewPanel = false;
     this.inEditMode = false;
     this.editModeText = "Personalize";
-    this.inInterestMode = false;
+    this.inInterestMode = true;
     this.interestModeText = "Interest";
   }
 
@@ -37,20 +37,17 @@ export class ProfileComponent implements OnInit {
 
   tags: Tag[];
   isChecked = false;
-
-  interestId = this.authService.account.id;
-  interestSkills: string[] = [];
-  currentInterest: any;
+  expertId = this.authService.account.id;
+  expertSkills: string[] = [];
+  currentExpert: any;
   closeResult: string;
 
   ngOnInit() {
-    console.log(this.authService.user.isExpert);
-
     this.tagService.getTags().subscribe(tags => {
-      this.tagService.getInterestTags(this.interestId).subscribe(interest => {
+      this.tagService.getExpertTags(this.expertId).subscribe(expert => {
         this.tags = tags;
-        this.currentInterest = interest;
-        this.checkInterestTags();
+        this.currentExpert = expert;
+        this.checkExpertTags();
       },
         error => {
           // still populate tags even if getting the expert tags fails
@@ -76,23 +73,22 @@ export class ProfileComponent implements OnInit {
     this.editModeText = (this.inEditMode) ? "Normal View" : "Personalize";
   }
   addInterest() {
-    this.inInterestMode = !this.inInterestMode;
-    this.interestModeText = (this.inInterestMode) ? "Normal View" : "Interest";
+    this.inInterestMode = true;
   }
 
   toggle($event, id) {
     if ($event.checked === true) {
-      this.interestSkills.push(id);
+      this.expertSkills.push(id);
     } else {
       // delete the value and close the empty array slot
-      this.interestSkills.splice(this.interestSkills.indexOf(id), 1);
+      this.expertSkills.splice(this.expertSkills.indexOf(id), 1);
     }
   }
 
   onSubmit() {
     this.tagService
       .saveExpertTags(
-        this.interestSkills.map<Tag>(t => {
+        this.expertSkills.map<Tag>(t => {
           return { name: t, id: 0 };
         }),
         this.authService.account.id,
@@ -101,9 +97,9 @@ export class ProfileComponent implements OnInit {
     this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
   }
 
-  checkInterestTags() {
+  checkExpertTags() {
     for (const t of this.tags) {
-      this.currentInterest.interestTags.forEach(element => {
+      this.currentExpert.interestTags.forEach(element => {
         if (element.name === t.name) {
           this.toggle({ checked: true }, t.name);
           t.checked = true;
@@ -116,16 +112,6 @@ export class ProfileComponent implements OnInit {
 
   openLg(content) {
     this.modalService.open(content, { size: 'lg' });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
   }
 
 }

@@ -27,14 +27,11 @@ export class TagService {
     return this.http.get<any[]>(`${environment.userUri}/${expertId}`);
   }
 
-<<<<<<< HEAD
-=======
   saveInterestTags(tags: Tag[], interestId: Number) {
     const uri = `${environment.userUri}/${interestId}/tags`;
     return this.http.put<Tag>(uri, { "interestTags": tags }, httpOptions);
   }
 
->>>>>>> profileFeature
   getInterestTags(interestId: Number): Observable<any[]> {
     return this.http.get<any[]>(`${environment.userUri}/${interestId}`);
   }

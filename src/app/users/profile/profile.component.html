@@ -1,4 +1,3 @@
-;
 <div class="container-fluid">
   <ul class="nav">
     <li class="nav-item">
@@ -6,7 +5,7 @@
     <li class="nav-item">
       <button class="btn btn-success" (click)="editMode()">{{editModeText}} &rarr;</button>
       <br>
-      <button *ngIf="!this.authService.account.expert" class="btn btn-success" (click)="addInterest()"
+      <button *ngIf="!this.authService.account.expert && inEditMode" class="btn btn-success" (click)="addInterest()"
         (click)="openLg(content)">{{interestModeText}} &rarr;</button>
     </li>
   </ul>
@@ -82,7 +81,7 @@
 </div>
 
 <ng-template #content let-modal>
-  <div *ngIf="inInterestMode">
+  <div *ngIf="this.inInterestMode">
     <button type="button" class="close float-sm-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -92,7 +91,7 @@
           <h3 class="modal-title">What Are Your Interests?</h3>
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content class="modal-body">
+      <mat-card-content>
         <div *ngFor="let tag of tags">
           <section class="skill-tag">
             <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}" [checked]="tag.checked"
@@ -101,7 +100,6 @@
               {{ tag.name }}</mat-checkbox>
           </section>
         </div>
-
         <div class="button-div">
           <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
             Update Tags
