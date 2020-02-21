@@ -34,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
 import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
 import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
+import { QuestionRouteComponent } from './static/question-route/question-route.component';
 import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedule-amasession/schedule-amasession.component';
 import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
 
@@ -62,6 +63,7 @@ import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedul
     AskMeAnythingPageComponent,
     MessageBoxComponent,
     ChatMessageComponent,
+    QuestionRouteComponent,
     ScheduleAmasessionComponent,
     AmaScheduleComponent
   ],
