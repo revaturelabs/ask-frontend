@@ -1,0 +1,10 @@
+table {
+    background-color : white;
+    box-shadow: 1px 1px 5px grey;
+    border-radius : 2px;
+}
+
+tbody > tr {
+    border : 1px solid grey;
+    border-radius : 2px;
+}

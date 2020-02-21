@@ -20,7 +20,7 @@ export class ExpertQuestionsComponent implements OnInit {
   questions: Question[];
 
   constructor(private authService: AuthService, private questionService: QuestionService) { }
-
+ /*
   ngOnInit() {
     this.expertId = this.authService.account.id;
     this.authService.getUserById(this.expertId).subscribe(result => {
@@ -39,5 +39,10 @@ export class ExpertQuestionsComponent implements OnInit {
         this.questions = this.filteredQuestions;
       })
     });
+  }
+  */
+
+  ngOnInit() {
+    
   }
 }
