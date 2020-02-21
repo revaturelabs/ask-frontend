@@ -1,0 +1,14 @@
+.date-container {
+    background-color : #55698d;
+    color : white;
+    width : 150px;
+    height : 150px;
+}
+
+.content-container {
+    background-color : white;
+}
+
+.event-container {
+    border-radius : 5px;
+}

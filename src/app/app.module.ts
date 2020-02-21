@@ -37,6 +37,7 @@ import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-messag
 import { QuestionRouteComponent } from './static/question-route/question-route.component';
 import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedule-amasession/schedule-amasession.component';
 import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
+import { AmaEventComponent } from './ask-me-anything/ama-event/ama-event.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedul
     ChatMessageComponent,
     QuestionRouteComponent,
     ScheduleAmasessionComponent,
-    AmaScheduleComponent
+    AmaScheduleComponent,
+    AmaEventComponent
   ],
   imports: [
     SharedModule,

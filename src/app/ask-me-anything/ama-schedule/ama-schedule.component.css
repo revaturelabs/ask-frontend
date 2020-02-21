@@ -2,9 +2,25 @@ table {
     background-color : white;
     box-shadow: 1px 1px 5px grey;
     border-radius : 2px;
+    width : 100%;
+}
+
+thead > tr {
+    font-weight : bold;
+    padding : 5px;
 }
 
 tbody > tr {
-    border : 1px solid grey;
+    border-top : 1px solid lightslategrey;
+    border-bottom : 1px solid lightslategrey;
     border-radius : 2px;
+}
+
+#schedule-container {
+    width : 100%;
+}
+
+#table-body {
+    overflow-y: scroll;
+    width : 100%;
 }

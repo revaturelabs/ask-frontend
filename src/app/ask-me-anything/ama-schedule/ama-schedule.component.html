@@ -1,18 +1,5 @@
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>Date</td>
-                <td>Topic</td>
-                <td>Expert</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let event of schedule" (onClick)="openSession($event)">
-                <td>{{event.date}}</td>
-                <td>{{event.topic}}</td>
-                <td>{{event.expert}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div id="schedule-container">
+    <div *ngFor="let event of schedule">
+        <app-ama-event [event] = event></app-ama-event>
+    </div>
 </div>

@@ -30,4 +30,8 @@ export class AmaScheduleComponent implements OnInit {
   openSession(event){
     console.log(event);
   }
+
+  formateDate(date : Date){
+    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()%12}:${date.getMinutes()} ${date.getHours()%12 ? 'AM' : 'PM'}`;
+  }
 }
