@@ -21,7 +21,6 @@ export class ExpertQuestionsComponent implements OnInit {
   questions: Question[];
 
   constructor(private userService: UserService, private authService: AuthService, private questionService: QuestionService) { }
-
   ngOnInit() {
     this.expertId = this.authService.account.id;
     this.userService.getUserById(this.expertId).subscribe(result => {
