@@ -1,9 +1,20 @@
-<div class="event-container">
-    <div class="date-container">
-        <h1>{{parseDate()}}</h1><br>
-        <h3>{{event.date.getFullYear()}}</h3>
-    </div>
-    <div class="content-container">
-        <h1>{{parseTime()}} | AMA Session: {{event.topic}} with {{event.expert}}</h1>
-    </div>
+<div>
+    <table class="event-container">
+        <tr>
+            <td class="date-container">
+                <table id="date-table">
+                    <tr>
+                        <td><h2>{{parseDate()}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td><h3>{{event.date.getFullYear()}}</h3></td>
+                    </tr>
+                </table>
+            </td>
+            <td class="content-container">
+                <h1 class="content">{{parseTime()}} | AMA Session</h1>
+                <h4 class="content">{{event.topic}} with {{event.expert}}</h4>
+            </td>
+        </tr>
+    </table>
 </div>
