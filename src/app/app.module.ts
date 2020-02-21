@@ -27,8 +27,6 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
 import { SettingsComponent } from './experts/settings/settings.component';
 import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
-import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
-import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionRouteComponent } from './static/question-route/question-route.component';
@@ -52,8 +50,6 @@ import { QuestionRouteComponent } from './static/question-route/question-route.c
     TagCreationComponent,
     SettingsComponent,
     FilteredQuestionListComponent,
-    ExpertQuestionsComponent,
-    UserQuestionsComponent,
     SkilltagPipe,
     QuestionRouteComponent
   ],

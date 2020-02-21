@@ -7,7 +7,7 @@ export interface Question {
   id: number;
   username: string;
   tags?: string[];
-  userId: number;
+  userId: number; //used for testing, to get id of user associated with question, use user.id
   user?: User;
   head: string;
   body: string;
