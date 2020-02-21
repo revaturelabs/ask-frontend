@@ -34,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
 import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
 import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
+import { QuestionRouteComponent } from './static/question-route/question-route.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-messag
     AskMeAnythingPageComponent,
     MessageBoxComponent,
     ChatMessageComponent,
+    QuestionRouteComponent,
   ],
   imports: [
     SharedModule,
