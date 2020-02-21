@@ -15,6 +15,16 @@ export class AmaScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
   }
 
   openSession(event){

@@ -62,11 +62,8 @@ import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedul
     AskMeAnythingPageComponent,
     MessageBoxComponent,
     ChatMessageComponent,
-<<<<<<< HEAD
     ScheduleAmasessionComponent,
-=======
     AmaScheduleComponent
->>>>>>> 13a193d35464d032a79e778ba9efe6e86cd942e8
   ],
   imports: [
     SharedModule,
