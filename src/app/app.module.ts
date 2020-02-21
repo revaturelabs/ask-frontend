@@ -35,6 +35,7 @@ import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-pa
 import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
 import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
 import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedule-amasession/schedule-amasession.component';
+import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,11 @@ import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedu
     AskMeAnythingPageComponent,
     MessageBoxComponent,
     ChatMessageComponent,
+<<<<<<< HEAD
     ScheduleAmasessionComponent,
+=======
+    AmaScheduleComponent
+>>>>>>> 13a193d35464d032a79e778ba9efe6e86cd942e8
   ],
   imports: [
     SharedModule,
