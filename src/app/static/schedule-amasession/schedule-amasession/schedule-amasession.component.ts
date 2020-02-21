@@ -12,8 +12,8 @@ export class ScheduleAmasessionComponent implements OnInit {
   ngOnInit() {
   }
 
-  testFunc(){
-    console.log("This is from testFunc()")
+  testClick(){
+    console.log("You clicked the thing")
   }
 
 }
