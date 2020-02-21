@@ -1,93 +1,94 @@
 <div class="container-fluid">
-    <ul class="nav">
-        <li class="nav-item">
-        </li>
-        <li class="nav-item">
-          <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}}</button>
-          <button class="btn btn-primary" (click)="updateProfile()" *ngIf="inEditMode">Save</button>
-          <button *ngIf="!this.authService.account.expert && inEditMode" class="btn btn-success" (click)="addInterest()"
-        (click)="openLg(content)">{{interestModeText}} &rarr;</button>
-        </li>
-      </ul>
-      <div class="row">
-        <h2 *ngIf="isAssociate()">Associate</h2>
-        <h2 *ngIf="isExpert()">Expert</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <img class="profilePic" src={{user.profilePic}}>
-          <div class="centered">
-            <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <form [formGroup]="profileForm">
-            <div class="form-group">
-              <label for="profileInputUsername">Username: </label>
-              <span> {{user.username}}</span>
-              <input type="username" formControlName="username" id="profileInputUsername" placeholder="New Username"
-                *ngIf=inEditMode>
-            </div>
-            <div class="form-group">
-              <label for="profileInputEmail">Email: </label>
-              <span> {{user.email}}</span>
-              <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
-            </div>
-            <div class="form-group" class="txtArea">
-              <label for="profileInputBio"></label>
-              <div> {{user.bio}}</div>
-              <br><br>
-              <textarea rows="10" cols="100" formControlName="bio" placeholder="Bio" *ngIf=inEditMode></textarea>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <mat-chip-list>
-              <h2 *ngIf="isAssociate()">Interests</h2>
-              <h2 *ngIf="isExpert()">Skills</h2>
-              <div *ngFor="let tag of this.user.expertTags">
-                <mat-chip class="chip">
-                  {{ tag.name }}
-                </mat-chip>
-              </div>
-            </mat-chip-list>
-          
-          </div>
-        </div>
-        <!-- Questions Go Here-->
+  <ul class="nav">
+    <li class="nav-item">
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}}</button>
+      <button class="btn btn-primary" (click)="updateProfile()" *ngIf="inEditMode">Save</button>
+    </li>
+  </ul>
+  <div class="row">
+    <h2 *ngIf="isAssociate()">Associate</h2>
+    <h2 *ngIf="isExpert()">Expert</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <img class="profilePic" src={{user.profilePic}}>
+      <div class="centered">
+        <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
     </div>
-
-    <ng-template #content let-modal>
-      <div *ngIf="this.inInterestMode">
-        <button id="close-tab" type="button" class="close float-sm-right" aria-label="Close"
-          (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>
-              <h3 class="modal-title">What Are Your Interests?</h3>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <div *ngFor="let tag of tags">
-              <section class="skill-tag">
-                <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}" [checked]="tag.checked"
-                  matTooltip="{{ tag.name }}" [matTooltipPosition]="'above'" [matTooltipShowDelay]="300"
-                  [matTooltipHideDelay]="100">
-                  {{ tag.name }}</mat-checkbox>
-              </section>
-            </div>
-            <div class="button-div">
-              <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
-                Update Tags
-              </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
+    <div class="col-md-8">
+      <form [formGroup]="profileForm">
+        <div class="form-group">
+          <label for="profileInputUsername">Username: </label>
+          <span> {{user.username}}</span>
+          <input type="username" formControlName="username" id="profileInputUsername" placeholder="New Username"
+            *ngIf=inEditMode>
+        </div>
+        <div class="form-group">
+          <label for="profileInputEmail">Email: </label>
+          <span> {{user.email}}</span>
+          <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
+        </div>
+        <div class="form-group" class="txtArea">
+          <label for="profileInputBio"></label>
+          <div> {{user.bio}}</div>
+          <br><br>
+          <textarea rows="10" cols="100" formControlName="bio" placeholder="Bio" *ngIf=inEditMode></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-11">
+        <mat-chip-list>
+          <h2 *ngIf="isAssociate()">Interests</h2>
+          <h2 *ngIf="isExpert()">Skills</h2>
+          <div *ngFor="let tag of user.expertTags">
+            <mat-chip class="chip">
+              {{ tag.name }}
+            </mat-chip>
+          </div>
+        </mat-chip-list>
       </div>
-    </ng-template>
+      <div class="col-md-1">
+        <div class="form-group users-profile-interests" *ngIf="inEditMode">
+          <button *ngIf="inEditMode" class="btn btn-primary" (click)="addInterest()"
+      (click)="openLg(content)">Add</button>
+        </div>
+      </div>
+        <ng-template #content let-modal>
+          <div *ngIf="this.inInterestMode">
+            <button id="close-tab" type="button" class="close float-sm-right" aria-label="Close"
+              (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>
+                  <h3 class="modal-title">What Are Your 
+                    <span *ngIf="isAssociate()" >Interests?</span>
+                    <span *ngIf="isExpert()" >Skills?</span>
+                  </h3>
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div *ngFor="let tag of tags">
+                  <section class="skill-tag">
+                    <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}"
+                      [checked]="tag.checked" matTooltip="{{ tag.name }}" [matTooltipPosition]="'above'"
+                      [matTooltipShowDelay]="300" [matTooltipHideDelay]="100">
+                      {{ tag.name }}</mat-checkbox>
+                  </section>
+                </div>
+                <div class="button-div">
+                  <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
+                    Update Tags
+                  </button>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </ng-template>

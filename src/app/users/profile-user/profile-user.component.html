@@ -1,1 +1,1 @@
-<app-profile *ngIf="isLoaded" [user]="init" [accId]="idLoggedIn"></app-profile>
+<app-profile *ngIf="isLoaded" [user]="init" [accId]="idLoggedIn" (tagsUpdated)="populateRoutedUser()"></app-profile>

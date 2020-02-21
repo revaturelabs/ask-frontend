@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Injectable, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -30,13 +30,16 @@ export class ProfileComponent implements OnInit {
   @Input('accId')
   accId: number;
 
+  @Output()
+  tagsUpdated: EventEmitter<boolean> = new EventEmitter();
+  
+
   selectedFile: File = null;
   inEditMode: boolean;
   editModeText: string;
   profileForm: FormGroup;
   defaultPic: string;
   inInterestMode: boolean;
-  interestModeText: string;
   tags: Tag[];
   isChecked = false;
   expertId = this.authService.account.id;
@@ -53,7 +56,6 @@ export class ProfileComponent implements OnInit {
     this.editModeText = "Personalize";
     this.defaultPic = "../../assets/images/defaultProfilePic.png";
     this.inInterestMode = true;
-    this.interestModeText = "Interest";
   }
 
   ngOnInit() {
@@ -66,7 +68,10 @@ export class ProfileComponent implements OnInit {
     if (this.user.profilePic === "") {
       this.user.profilePic = this.defaultPic;
     }
+    this.getTags();
+  }
 
+  getTags() {
     this.tagService.getTags().subscribe(tags => {
       this.tagService.getExpertTags(this.expertId).subscribe(expert => {
         this.tags = tags;
@@ -155,8 +160,15 @@ export class ProfileComponent implements OnInit {
         }),
         this.authService.account.id,
       )
-      .subscribe();
-    this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
+      .subscribe(resp => {
+        //updates chip tags and checked tags in model
+        this.tagsUpdated.emit(true);
+        this.getTags();
+        this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
+      },err=>{
+        this.snackBar.open('Failed to update skills', `OK`, { duration: 2000 })
+      });
+    
   }
 
   checkExpertTags() {
