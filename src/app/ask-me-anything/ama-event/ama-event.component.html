@@ -7,13 +7,13 @@
                         <td><h2>{{parseDate()}}</h2></td>
                     </tr>
                     <tr>
-                        <td><h3>{{event.date.getFullYear()}}</h3></td>
+                        <td><h3>{{year}}</h3></td>
                     </tr>
                 </table>
             </td>
             <td class="content-container">
                 <h1 class="content">{{parseTime()}} | AMA Session</h1>
-                <h4 class="content">{{event.topic}} with {{event.expert}}</h4>
+                <h4 class="content">{{event.topic.name}} with {{event.expert.username}}</h4>
             </td>
         </tr>
     </table>

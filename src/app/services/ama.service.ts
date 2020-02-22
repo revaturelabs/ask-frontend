@@ -11,8 +11,8 @@ export class AmaService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getAmaListByExpert(expertName : string) : Observable<AmaSession[]>{
-    return this.httpClient.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertName}`);
+  getAmaListByExpert(expertId : number) : Observable<AmaSession[]>{
+    return this.httpClient.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertId}`);
   }
 
   getAmaList(){

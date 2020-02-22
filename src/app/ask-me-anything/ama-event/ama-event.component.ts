@@ -21,11 +21,14 @@ export class AmaEventComponent implements OnInit {
   }
 
   parseDate(){
-    return `${this.getMonthString(this.event.date.getMonth())} ${this.event.date.getDate()}`;
+    let dateToParse = new Date(this.event.date);
+    this.year = dateToParse.getFullYear();
+    return `${this.getMonthString(dateToParse.getMonth())} ${dateToParse.getDate()}`;
   }
 
   parseTime() : string{
-    return  `${this.event.date.getHours()%12}:${this.event.date.getMinutes()} ${this.event.date.getHours()%12 ? 'PM':'AM'}`;
+    let dateToParse = new Date(this.event.date);
+    return  `${dateToParse.getHours()%12}:${dateToParse.getMinutes()>9 ? '':'0'}${dateToParse.getMinutes()} ${dateToParse.getHours()%12 ? 'PM':'AM'}`;
   }
 
   getMonthString(monthNum : number) : string{

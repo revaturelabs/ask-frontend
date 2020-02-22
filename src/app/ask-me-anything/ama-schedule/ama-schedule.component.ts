@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AmaSession } from 'src/app/models/ama-session';
 import { AmaService } from 'src/app/services/ama.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ama-schedule',
@@ -11,27 +12,25 @@ export class AmaScheduleComponent implements OnInit {
 
   schedule : AmaSession[] = [];
 
+  @Input()
+  expert : number = null;
+
   constructor(private amaService : AmaService) { }
 
   ngOnInit() {
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
-    this.schedule.push(new AmaSession(0, new Date(), "Test Topic", "Danny Rubbo"));
+    if(this.expert) this.amaService.getAmaListByExpert(this.expert).subscribe((data)=>{
+      this.schedule = data;
+    });
+    else this.amaService.getAmaList().subscribe((data)=>{
+      this.schedule = data;
+    })
   }
 
   openSession(event){
     console.log(event);
   }
 
-  formateDate(date : Date){
+  formatDate(date : Date){
     return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()%12}:${date.getMinutes()} ${date.getHours()%12 ? 'AM' : 'PM'}`;
   }
 }
