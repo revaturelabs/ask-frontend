@@ -27,6 +27,16 @@
             </mat-select>
         </div>
     </mat-form-field>
+    <mat-form-field>
+        <div>
+            <mat-label>AM/PM</mat-label>
+            <mat-select [(ngModel)]="meridiem">
+                <mat-option *ngFor="let meridiem of meridiems" [value]="meridiem.value" >
+                {{meridiem.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+    </mat-form-field>
     <div>
         <button mat-raised-button type="submit" (click)="createAmaSession()">Schedule</button>
     </div>

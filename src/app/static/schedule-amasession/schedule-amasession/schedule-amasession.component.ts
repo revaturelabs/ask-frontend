@@ -22,6 +22,7 @@ export class ScheduleAmasessionComponent implements OnInit {
 
   hour: any;
   minute: any;
+  meridiem: any;
 
   session: AmaSession = new AmaSession(this.id, this.myDate, this.topic, this.expert);
 
@@ -34,6 +35,9 @@ export class ScheduleAmasessionComponent implements OnInit {
   minutes: any[] = [
     {value: 15, viewValue: '15'}, {value: 30, viewValue: '30'}, {value: 45, viewValue: '45'},
   ];
+  meridiems: any[]=[
+    {value: 'AM', viewValue: 'AM'}, {value: 'PM', viewValue: 'PM'},
+  ]
 
   constructor(public amaService: AmaService, public authService: AuthService, private route : ActivatedRoute, public tagService: TagService) { }
 
@@ -46,6 +50,9 @@ export class ScheduleAmasessionComponent implements OnInit {
   }
 
   createAmaSession(){
+    if(this.meridiem == "PM"){
+      this.hour = 24 + this.hour - 12;
+    };
     this.session.date = new Date(this.myDate.setHours(this.hour, this.minute, 0));
     this.session.topic = this.topic;
     this.session.expert = this.expert;
