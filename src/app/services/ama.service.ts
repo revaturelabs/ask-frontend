@@ -13,17 +13,22 @@ const httpOptions = {
 })
 export class AmaService {
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAmaListByExpert(expertId : number) : Observable<AmaSession[]>{
-    return this.httpClient.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertId}`);
+    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertId}`);
   }
 
   getAmaList(){
-    return this.httpClient.get<AmaSession[]>(`http://localhost:1337/amaSession`);
+    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession`);
   }
 
-  postAmaSession(newSession : AmaSession) : Observable<AmaSession>{
-    return this.httpClient.post<AmaSession>(`http://localhost:1337/amaSession`, newSession, httpOptions);
+  createAmaSession(createAmaSession: AmaSession): Observable<AmaSession> {
+    return this.http.post<AmaSession>(
+      environment.amaSessionUri,
+      createAmaSession,
+      httpOptions
+    );
   }
+
 }

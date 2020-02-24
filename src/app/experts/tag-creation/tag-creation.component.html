@@ -3,7 +3,7 @@
   <br /><br />
   <form>
     <mat-form-field>
-      <input matInput [(ngModel)]="this.tag.name" placeholder="New Tag Name" name="tagInput"/>
+      <input matInput [(ngModel)]="myDate" placeholder="New Tag Name" name="tagInput"/>
     </mat-form-field>
     <button id="submit" (click)="onSubmit()" mat-raised-button type="submit" [disabled]="!tag.name || tag.name[0] == ' '">
       Submit
