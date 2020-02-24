@@ -1,0 +1,14 @@
+.topic-question-list {
+  margin-top: 2em;
+  padding-left: 0;
+}
+.topic-question-list-item {
+  list-style: none;
+  border-top: 1px solid rgba(120,120,120,.08);
+  border-bottom: 1px solid rgba(120,120,120,.08);
+  padding: 1em 0 1em;
+}
+
+.topic-question-list-item:hover {
+  background-color: rgba(120,120,120, .16);
+}

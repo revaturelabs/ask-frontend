@@ -1,0 +1,9 @@
+.topic-experts__names {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container {
+  padding: 0;
+}

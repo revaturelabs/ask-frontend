@@ -5,6 +5,7 @@ import { Response } from 'src/app/models/Response';
 import { Question } from 'src/app/models/Question';
 import { AuthService } from '../../services/auth/auth.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 /**
  * @author: Alec Thavychith
@@ -36,11 +37,12 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   constructor(
     private questionService: QuestionService,
     private responseService: ResponseService,
-    public authService: AuthService
+    public authService: AuthService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.userOwnsQuestion = this.selectedQuestion.user.id === this.authService.account.id;
+    // this.userOwnsQuestion = this.selectedQuestion.user.id === this.authService.account.id;
     this.refreshQuestion();
   }
 
@@ -48,7 +50,9 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   }
 
   refreshQuestion(): void {
-    this.questionService.getQuestionById(this.selectedQuestion.id).subscribe((data)=>{
+    let id =+ this.route.snapshot.paramMap.get('id');
+    this.questionService.getQuestionById(id).subscribe((data)=>{
+    // this.questionService.getQuestionById(this.selectedQuestion.id).subscribe((data)=>{
       this.selectedQuestion = data;
       //TODO: This line should be replaced by some more sensible sequential request mechanic
       // maybe piping an observable off questionService
