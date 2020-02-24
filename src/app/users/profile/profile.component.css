@@ -50,9 +50,19 @@
     object-fit: scale-down;
   }
   
+  #Qspan{
+    margin-top: 25px;
+    font-size: large;
+    font-weight: bold;
+    margin: auto;
+  }
+
+  
+
   .centered {
-    text-indent: 12.5em;
-    padding-bottom: 3em;
+    margin-left: 19%;
+    /*text-indent: 12.5em;
+    padding-bottom: 3em;*/
   }
 
   .txtArea {

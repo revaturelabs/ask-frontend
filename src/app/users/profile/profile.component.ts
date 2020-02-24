@@ -95,13 +95,15 @@ export class ProfileComponent implements OnInit {
       if (this.profileForm.value['bio'] !== null) {
         this.user.bio = this.profileForm.value['bio'];
       }
-      this.userService.updateUser(this.user,this.user.id);
-      this.profileForm.reset();
+      this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
+
+      });
     }
 
     if (this.selectedFile !== null) {
       this.onUpload();
     }
+    this.tagsUpdated.emit(true);
   }
 
   onFileChange(event) {
@@ -110,7 +112,7 @@ export class ProfileComponent implements OnInit {
 
   onUpload() {
     const uploadData = new FormData();
-    uploadData.append('image', this.selectedFile, this.selectedFile.name)
+    uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
 
     this.userService.updateProfilePic(uploadData,this.user.id).subscribe(imageLink => {
       this.user.profilePic = imageLink;
