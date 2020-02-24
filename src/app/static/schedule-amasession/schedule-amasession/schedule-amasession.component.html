@@ -1,10 +1,35 @@
 <div>
     <h4>Schedule an AMA Session</h4>
-    <mat-form-field>
+    <mat-form-field >
         <input matInput  [matDatepicker]="myDatePicker" [(ngModel)]="myDate">
         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>
+    <h4>Set A Time For The Session</h4>
+
+    <mat-form-field>
+        <div>
+            <mat-label>Select Hour</mat-label>
+            <mat-select [(ngModel)]="hour">
+                <mat-option *ngFor="let hour of hours" [value]="hour.value" >
+                {{hour.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <div>
+            <mat-label>Select Minute</mat-label>
+            <mat-select [(ngModel)]="minute">
+                <mat-option *ngFor="let minute of minutes" [value]="minute.value" >
+                {{minute.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+    </mat-form-field>
+    
+    
+    
     <button mat-raised-button type="submit" (click)="createAmaSession()">Schedule</button>
 </div>
 

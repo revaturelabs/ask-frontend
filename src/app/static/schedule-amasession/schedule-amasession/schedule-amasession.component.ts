@@ -17,33 +17,39 @@ export class ScheduleAmasessionComponent implements OnInit {
 
   id: number;
   myDate = new Date();
-
   topic: Tag;
   expert: User = new User();
 
+  hour: any;
+  minute: any;
+
   session: AmaSession = new AmaSession(this.id, this.myDate, this.topic, this.expert);
 
+  hours: any[] = [
+    {value: 1, viewValue: '1'}, {value: 2, viewValue: '2'}, {value: 3, viewValue: '3'},
+    {value: 4, viewValue: '4'}, {value: 5, viewValue: '5'}, {value: 6, viewValue: '6'},
+    {value: 7, viewValue: '7'}, {value: 8, viewValue: '8'}, {value: 9, viewValue: '9'},
+    {value: 10, viewValue: '10'}, {value: 11, viewValue: '11'}, {value: 12, viewValue: '12'},
+  ];
+  minutes: any[] = [
+    {value: 15, viewValue: '15'}, {value: 30, viewValue: '30'}, {value: 45, viewValue: '45'},
+  ];
 
   constructor(public amaService: AmaService, public authService: AuthService, private route : ActivatedRoute, public tagService: TagService) { }
 
   ngOnInit() {
     this.expert.id = this.authService.account.id;
-    console.log(this.authService.account.id)
-    console.log("The user logged in is: " + this.expert.id)
     let id =+ this.route.snapshot.paramMap.get('id');
     this.tagService.getTagById(id).subscribe((data)=>{
       this.topic = data;
-      console.log(this.topic)
     });
-    
   }
 
   createAmaSession(){
-    this.session.date = this.myDate;
+    this.session.date = new Date(this.myDate.setHours(this.hour, this.minute, 0));
     this.session.topic = this.topic;
     this.session.expert = this.expert;
     this.amaService.createAmaSession(this.session).subscribe();
   }
-  
 
 }
