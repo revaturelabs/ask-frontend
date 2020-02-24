@@ -23,10 +23,8 @@ export class TopicQuestionsComponent implements OnInit {
     this.questionService.getQuestions().subscribe(response=> {
       this.questions=response;
       this.questions.map( question => {
-        let idTag =+ this.route.snapshot.paramMap.get('id');
-       
-        for ( let tagKeyValPair of question.associatedTags ) {
-         
+        let idTag =+ this.route.snapshot.paramMap.get('id');       
+        for ( let tagKeyValPair of question.associatedTags ) {         
           if (idTag == tagKeyValPair.id) {
             this.questionsTagArr.push(question.head);
           }          
