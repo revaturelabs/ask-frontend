@@ -1,7 +1,7 @@
 import { AnswerPage } from './load-more.po';
 import { browser, logging, element, by } from 'protractor';
 import { callbackify } from 'util';
-import { FilteredQuestionListComponent } from '../../../src/app/static/filtered-question-list/filtered-question-list.component';
+import { FilteredQuestionListComponent } from '../../../src/app/question/filtered-question-list/filtered-question-list.component';
 
 describe('questions list page', () => {
   let page: AnswerPage;
