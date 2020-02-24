@@ -1,5 +1,6 @@
+  
 import { Pipe, PipeTransform } from '@angular/core';
-import { Tag } from 'src/app/models/Tag';
+import { Tag } from '../models/Tag';
 
 /*
 this pipe allows only a certain amount of an expert's skills to be explicitly displayed on a response
