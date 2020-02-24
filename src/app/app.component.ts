@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
       .right()
       ;
     const overlayConfig = new OverlayConfig({
-      hasBackdrop: true,
+      hasBackdrop: false,
       backdropClass: 'dark-backdrop',
       panelClass: 'tm-file-preview-dialog-panel',
       scrollStrategy: this.overlay.scrollStrategies.block(),
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
   ngOnInit() { //The view of the Overlay.
     const overlayRef = this.overlay.create(this.getOverlayConfig());
     const askMeAnythingPortal = new ComponentPortal(AskMeAnythingPageComponent);
-    overlayRef.attach(askMeAnythingPortal); //OverlayCOnfig ends here.
+    overlayRef.attach(askMeAnythingPortal); 
   }
 
 }
