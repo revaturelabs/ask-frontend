@@ -134,9 +134,9 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
 
   setBtnTxt(): void {
     if(this.expanded) {
-      this.btnTxt = "Collapse";
+      this.btnTxt = "(-) Collapse";
     } else {
-      this.btnTxt = "Expand";
+      this.btnTxt = "(+) Expand";
     }
   }
 }

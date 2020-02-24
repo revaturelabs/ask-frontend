@@ -1,5 +1,5 @@
 div {
-    margin-top: 2.5%;
+    margin-top: 1%;
 }
 
 .question-component {
@@ -32,10 +32,16 @@ div {
 
 .msg-count {  /* AG class */
   font-size: 0.9em;
-  margin: 0 0 8px 0;
+  margin: 0 0 0 10%;
   display: flex;
-  align-items: flex-end;
-  flex-direction: row-reverse;
+  align-items: flex-start;
+  flex-direction: row;
   width: 91%;
   color: lightslategrey; 
+}
+
+.responseContainer {
+  border-left : 1px solid grey;
+  margin-left : 10%;
+  margin-top : 2px;
 }
