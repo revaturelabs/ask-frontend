@@ -53,6 +53,9 @@ describe('TagsService', () => {
     const userDummyData: User = {
     id: 3,
     username: 'Zach Marshello',
+    email: 'Zach.m@gmail.com',
+    bio: 'Senior Java Developer',
+    profilePic: '',
     expertTags: [
         {
             id: 15,
@@ -73,7 +76,7 @@ describe('TagsService', () => {
     ],
     questions: [],
     responses: [],
-    isExpert: true};
+    expert: true};
 
     beforeEach(() => TestBed.configureTestingModule({
         imports: [HttpClientTestingModule]

@@ -9,7 +9,7 @@ import { Account } from '../../models/Account';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   option : number;
 
@@ -22,9 +22,6 @@ export class LoginPageComponent implements OnInit {
    * @param id The id of the user to login as
    */
   onSubmit(id: number) {
-    this.authService.getAccountById(id)
-        .subscribe((account: Account) => {
-          this.authService.userLogin(account);
-        });
+    this.authService.attemptLogin(id);
   }
 }

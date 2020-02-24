@@ -1,0 +1,15 @@
+<div id="ama">
+    <div id="top-bar">
+        <button id="close" >x</button>
+    </div>
+    <div id="ama-container">
+        <h1>Ask Me Anything!</h1>
+        <h5>{{expertDisplayName}} | {{topicDisplayName}}</h5>
+        <app-message-box #messageBox [messages] = "messages"></app-message-box>
+        <div id="input-container">
+            <textarea #inputBox type="text" placeholder="Send Message" (keydown.enter)="inputText(inputBox.value, $event); inputBox.value = ''"></textarea>
+            <button id="send" class="btn-light" (click) = "inputText(inputBox.value, $event); inputBox.value = ''">SEND</button>
+        </div>
+    </div>
+</div>
+
