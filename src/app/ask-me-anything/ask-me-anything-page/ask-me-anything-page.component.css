@@ -1,0 +1,45 @@
+#ama-container{
+    min-height : 200px;
+    padding : 20px;
+    border : 1px solid #55698d;
+}
+
+textarea {
+    width : 100%;
+    word-wrap: break-word;
+}
+
+#send {
+    min-width : fit-content;
+    background-color: #f26925;
+    color : white;
+    border-radius : 4px;
+    margin-top: 5px;
+}
+
+#input-container {
+    max-width : 100%;
+    flex-direction: row;
+    padding-top : 10px;
+}
+
+#close {
+    background-color: #55698d;
+    color : white;
+    border : none;
+    border-right : 1px solid lightgrey;
+    padding-right : 10px;
+}
+
+#top-bar {
+    height : 30px;
+    background-color: #55698d;
+    color : white;
+    padding : 2px;
+}
+
+#ama {
+    max-width : 100%;
+    box-shadow: 1px 1px 5px grey;
+    background-color : white;
+}

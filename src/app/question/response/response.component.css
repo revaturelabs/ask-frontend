@@ -1,0 +1,73 @@
+mat-card {
+  width : 80%;
+  display: hidden;
+  margin-left : 2%;
+  margin-right: 9%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 16px 12px 16px;
+}
+mat-card-subtitle {
+  font-size: 0.9em;
+  margin: 0 0 8px 0;
+}
+p {
+  margin-left: 12px;
+  margin-right: 12px;
+  line-height: 1.5;
+}
+button {
+  background: linear-gradient(#ebebeb 50%, #e4e4e4 50.1%, #d3d3d3);
+  color: #656565;
+  font-weight: normal;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  height: 32px;
+  font-size: 12px;
+}
+button:hover {
+  background: linear-gradient(#ffe386 50%, #ffdc6a 50.1%, #ffd95d);
+  color: #222222;
+}
+.mat-chip-list-wrapper,
+.skillset {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+mat-chip-list {
+  margin: 0 8px 0 16px;
+  right: 0;
+  height: 100%;
+}
+.mat-basic-chip {
+  border-radius: 4px;
+  padding: 4px;
+  color: #ffffff;
+  background-color: #9f9f9f;
+  margin: -2px;
+}
+mat-chip-list mat-card-subtitle {
+  color: #979797;
+  margin: 0 8px 0 0;
+  font-style: italic;
+}
+div.mat-chips{
+  margin: 4px;
+}
+.skillsetPopover {
+  margin:0px;
+  border:0px;
+  padding:5px;
+  background-color:none;
+  overflow-y:auto;
+  overflow-x:hidden;
+  display:flex;
+  max-height:398px;
+  flex-wrap:wrap;
+}
+.need-space {
+  margin: 2px;
+}

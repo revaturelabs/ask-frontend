@@ -10,9 +10,6 @@
     </mat-card-header>
     <mat-card-content>
       <textarea [(ngModel)]="question.body"></textarea>
-      <ng-container *ngFor ="let image of images">
-        <img mat-card-image [src]='image' alt='Image Not Found' [class]="imageSize" (click)="imageSize=!imageSize"/>
-      </ng-container>
     </mat-card-content>
     <br>
 
@@ -39,6 +36,7 @@
     </mat-form-field>
 
   </mat-card>
-  <button class="btn btn-info" (click)="update()">SAVE!</button>
-  <button class="btn btn-danger" (click)="returnToQuestion()">Cancel!</button>
-  
+  <div id="button-container">
+    <button class="btn btn-info" (click)="update()">SAVE!</button>
+    <button class="btn btn-danger" (click)="returnToQuestion()">Cancel!</button>
+  </div>
