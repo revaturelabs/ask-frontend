@@ -1,16 +1,16 @@
-<div class="ask-question-container">
+<form class="ask-question-container" [formGroup]="questionForm" (ngSubmit)="submitQuestion()" #formDirective="ngForm">
   <!-- Banner -->
   <h3>
     Ask an Expert
   </h3>
   <!-- Angular Material form, input field for Title -->
   
-  <mat-form-field>
-    <input matInput [(ngModel)]="this.form.value.head" #qTitle placeholder="Title: ">
+  <mat-form-field class="form-group">
+    <input matInput placeholder="Title: " formControlName="head">
   </mat-form-field>
 
   <!-- Angular Material Chips -->
-  <mat-form-field #qTags class="tag-chip-list">
+  <mat-form-field class="tag-chip-list">
     <mat-icon matSuffix>search</mat-icon>
 
     <mat-chip-list #chipList aria-label="Tag selection">
@@ -20,7 +20,7 @@
       </mat-chip>
       <input placeholder="Select category tags: " #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto"
         [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+        (matChipInputTokenEnd)="add($event)" />
     </mat-chip-list>
 
     <!-- Angular Material, implementing autocomplete on chips -->
@@ -33,14 +33,15 @@
 
   <!-- Markdown Editor for Question -->
     <span class="mat-button-wrapper mockplaceholder">Ask Question:</span>
-    <md-editor name="Content" [(ngModel)]="this.form.value.body" [height]="'200px'"
+    <md-editor name="Content" formControlName="body" [height]="'200px'"
       [mode]="mode" [options]="options" required maxlength="500" *ngIf="cleanMarkdown">
     </md-editor>
 
   <!-- Submit button -->
   <div class="bunched">
-    <input type="file" id="ask-question-button-upload" accept="image/png, image/jpeg" (change)="onFileSelected($event)" #fileInput>
-    <button mat-raised-button id="ask-question-button-submit"
-      (click)="submitQuestion($event, qTitle.value, tags, this.form.value.body)">Submit</button>
+    <input type="file" id="ask-question-button-upload" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
+    <button mat-raised-button id="ask-question-button-submit" [disabled]="!questionForm.valid"
+      type="submit">Submit</button>
   </div>
-</div>
+  
+</form>

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, AfterViewChecked, ChangeDetectorRef, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/Question';
 import { Tag } from '../../models/Tag';
 
@@ -24,26 +23,32 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   @Input() question: Question;
   @Input() tag: Tag;
 
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+
   // stores associated tags that don't fit on the preview-question element to be shown in popover
   hiddenTags: Tag[];
 
   // represents how many tags from the tags can fit across the preview-question
   limit: number;
 
+  //Whether preview has been expanded into a full view.
+  expanded: boolean;
+
+  btnTxt: string;
+  
   constructor(
     public router: Router,
-    private questionIdService: QuestionService,
     private cdRef: ChangeDetectorRef,
   ) {}
 
   // On click of the 'View' button, it sets the question ID of the selected question
-  viewQuestion = selectQuestionId => {
-    // Stores selected question ID in the QuestionService for use in the ViewQuestionComponent
-    this.questionIdService.setQuestionId(selectQuestionId);
-    this.router.navigate([`/view-question/`]);
+  viewQuestion(selectedQuestionId) {
+    this.router.navigate([`/question/${selectedQuestionId}`]);
   }
 
   ngOnInit() {
+    this.expanded = false;
+    this.setBtnTxt();
     if (this.question.associatedTags) {
       this.limit = this.question.associatedTags.length;
     }
@@ -120,5 +125,18 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     }
     this.limit = index;
     this.showTagsList(index);
+  }
+
+  changeView(): void {
+    this.expanded = !this.expanded;
+    this.setBtnTxt();
+  }
+
+  setBtnTxt(): void {
+    if(this.expanded) {
+      this.btnTxt = "Collapse";
+    } else {
+      this.btnTxt = "Expand";
+    }
   }
 }

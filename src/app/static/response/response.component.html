@@ -28,7 +28,7 @@
       </div>
     </mat-chip-list>
     <mat-card-actions>
-      <button id="btn{{ response.id }}" *ngIf="this.currentQuestionerId == this.currentUserId && hoverToggle"
+      <button id="btn{{ response.id }}" *ngIf="highlightable && hoverToggle"
         mat-stroked-button (click)="highlightResponse(response.id)"
         matTooltip="Was this response the most helpful?" [matTooltipPosition]="'above'" [matTooltipShowDelay]="500"
         [matTooltipHideDelay]="100">

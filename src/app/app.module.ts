@@ -35,7 +35,14 @@ import { TopicPageComponent } from './static/choose-topic-page/topic-page.compon
 import { SpecificTagInfoComponent } from './static/view-topic/specific-tag-info.component';
 import { TopicExpertsComponent } from './static/topic-experts/topic-experts.component';
 import { TopicQuestionsComponent } from './static/topic-questions/topic-questions.component';
-
+import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
+import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
+import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
+import { QuestionRouteComponent } from './static/question-route/question-route.component';
+import { 
+  ScheduleAmasessionComponent } from './static/schedule-amasession/schedule-amasession/schedule-amasession.component';
+import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
+import { AmaEventComponent } from './ask-me-anything/ama-event/ama-event.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +70,13 @@ import { TopicQuestionsComponent } from './static/topic-questions/topic-question
     SpecificTagInfoComponent,
     TopicExpertsComponent,
     TopicQuestionsComponent
+    AskMeAnythingPageComponent,
+    MessageBoxComponent,
+    ChatMessageComponent,
+    QuestionRouteComponent,
+    ScheduleAmasessionComponent,
+    AmaScheduleComponent,
+    AmaEventComponent
   ],
   imports: [
     SharedModule,
