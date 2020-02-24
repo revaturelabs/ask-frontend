@@ -6,7 +6,6 @@ export const environment = {
   environmentName: 'Default Dev Environment',
   tagsUri: `${baseUri}:${port}/tags`,
   questionsUri: `${baseUri}:${port}/questions`,
-  // createQuestionUri: `${baseUri}:${port}/questions/create`,
   responsesUri: `${baseUri}:${port}/responses`,
   userUri: `${baseUri}:${port}/users`,
   url: `${baseUri}:${port}`,
