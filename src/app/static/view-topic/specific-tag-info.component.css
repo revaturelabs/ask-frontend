@@ -1,0 +1,25 @@
+.topic-tagname-header {
+  padding-bottom: .5em;
+}
+
+.topic-tagname-header h3 {
+  font-size: 2em;
+  text-align: center;
+  font-weight: 100;
+}
+
+.topic-tagname-header,
+.topic-tagname-questions {
+  padding-top: 2em;
+}
+
+.topic-tagname-expertname {
+  padding-top: 4em;
+  margin-bottom: 2em;
+}
+
+.topic-tagname-header h3,
+.topic-tagname-expertname h1,
+.topic-tagname-questions h2 {
+  font-weight: 100;
+}
