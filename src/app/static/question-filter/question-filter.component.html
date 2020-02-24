@@ -43,8 +43,26 @@
     class="filter-button"
     (click)="createFilteredQuestionsUri()"
   >
-    Filter
+    Filter By Tag(s)
   </button>
+    
+  <button *ngIf="isExpert"
+    mat-raised-button
+    class="filter-button"
+    (click)="showRelevantQuestions()"
+  >
+    Show Relevant Questions
+
+  </button>
+
+  <button *ngIf="!isExpert"
+  mat-raised-button
+  class="filter-button"
+  (click)="showYourQuestions()"
+>
+  Show Your Questions
+
+</button>
 
   <button
     *ngIf="hasBeenFiltered()"
