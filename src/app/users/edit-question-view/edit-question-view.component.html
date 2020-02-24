@@ -1,0 +1,44 @@
+<mat-card class="question-card">
+    <mat-card-header>
+      <mat-card-title>
+        <input [(ngModel)]="question.head">
+      </mat-card-title>
+      <mat-card-subtitle>
+        Posted by {{ question?.user.username }} on 
+        {{question?.creationDate | date: 'shortDate'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <textarea [(ngModel)]="question.body"></textarea>
+      <ng-container *ngFor ="let image of images">
+        <img mat-card-image [src]='image' alt='Image Not Found' [class]="imageSize" (click)="imageSize=!imageSize"/>
+      </ng-container>
+    </mat-card-content>
+    <br>
+
+    <!-- Angular Material Chips -->
+    <mat-form-field class="tag-chip-list">
+      <mat-icon matSuffix>search</mat-icon>
+
+      <mat-chip-list #chipList aria-label="Tag selection">
+        <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
+          {{ tag }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Select category tags: " #tagInput [formControl]="tagCtrl" [matAutocomplete]="auto"
+          [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)" />
+      </mat-chip-list>
+
+      <!-- Angular Material, implementing autocomplete on chips -->
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+          {{ tag }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  </mat-card>
+  <button class="btn btn-info" (click)="update()">SAVE!</button>
+  <button class="btn btn-danger" (click)="returnToQuestion()">Cancel!</button>
+  

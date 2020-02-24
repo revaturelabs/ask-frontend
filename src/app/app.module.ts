@@ -32,6 +32,8 @@ import { UserQuestionsComponent } from './static/user-questions/user-questions.c
 import { SkilltagPipe } from './static/response/skilltag.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { QuestionRouteComponent } from './static/question-route/question-route.component';
+import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
+import { EditQuestionViewComponent } from './users/edit-question-view/edit-question-view.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { QuestionRouteComponent } from './static/question-route/question-route.c
     ExpertQuestionsComponent,
     UserQuestionsComponent,
     SkilltagPipe,
-    QuestionRouteComponent
+    QuestionRouteComponent,
+    EditQuestionRouteComponent,
+    EditQuestionViewComponent
   ],
   imports: [
     SharedModule,
