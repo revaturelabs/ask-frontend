@@ -1,14 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../app/shared/shared.module';
-
 import { AuthService } from './services/auth/auth.service';
-
-
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { QuestionListComponent } from './static/question-list/question-list.component';
 import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
@@ -35,6 +31,10 @@ import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-pa
 import { MessageBoxComponent } from './ask-me-anything/message-box/message-box.component';
 import { ChatMessageComponent } from './ask-me-anything/chat-message/chat-message.component';
 import { WebSocketComponent } from './web-socket/web-socket.component';
+import {OverlayModule} from '@angular/cdk/overlay';
+import { AngularDraggableModule } from 'angular2-draggable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -70,8 +70,16 @@ import { WebSocketComponent } from './web-socket/web-socket.component';
     HttpClientModule,
     MarkdownModule.forRoot(),
     NgbModule,
+    OverlayModule,
+    AngularDraggableModule,
+    BrowserAnimationsModule,
+
+   
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
+  entryComponents: [    
+    AskMeAnythingPageComponent
+  ]
 })
 export class AppModule {}

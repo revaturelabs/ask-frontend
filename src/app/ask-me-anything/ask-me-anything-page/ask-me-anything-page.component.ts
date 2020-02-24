@@ -1,12 +1,16 @@
-import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit, EventEmitter } from '@angular/core';
 import { MessageBoxComponent } from '../message-box/message-box.component';
 import { ChatMessage } from 'src/app/static/chat-message/chat-message';
+import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ask-me-anything-page',
   templateUrl: './ask-me-anything-page.component.html',
-  styleUrls: ['./ask-me-anything-page.component.css']
+  styleUrls: ['./ask-me-anything-page.component.css'],
+ 
 })
+
+
 export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
@@ -28,6 +32,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
+
   }
 
   @Output()
@@ -42,8 +47,10 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeWindow(){
-    console.log('PLACEHOLDER CLOSE');
+  closeChat(){
+    console.log('PLACEHOLDER CLOSE, YES');
+   
+  
   }
 
   ngAfterViewChecked(){
