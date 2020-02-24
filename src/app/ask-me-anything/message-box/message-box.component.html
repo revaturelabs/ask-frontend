@@ -1,0 +1,10 @@
+<div id="container">
+    <div #displayBox (mousewheel) = "manualScroll($event)" id="message-box-container">
+        <table id="messages-table">
+            <tr *ngFor="let message of messages">
+                <app-chat-message [name]="message.name" [body]="message.body" [time]="message.time"></app-chat-message>
+            </tr>
+        </table>
+    </div>
+    <button id="autoscroll-button" *ngIf="userScrolled" (click)="enableAutoScroll()"><p>Resume autoscrolling</p></button>
+</div>
