@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from 'src/app/models/Question';
 import { QuestionService } from '../../services/question.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-topic-questions',
@@ -12,7 +12,10 @@ export class TopicQuestionsComponent implements OnInit {
   questions: Question[];
   questionsTagArr: String[];
  
-  constructor(private questionService: QuestionService,private route : ActivatedRoute) { }
+  constructor(
+    private questionService: QuestionService,
+    private route : ActivatedRoute,
+    private router: Router) { }
 
   getQuestions = () => {
     this.questionsTagArr=[];
@@ -28,9 +31,7 @@ export class TopicQuestionsComponent implements OnInit {
             this.questionsTagArr.push(question.head);
           }
           
-        }
-  
-       
+        }     
   
       });
      
@@ -41,5 +42,14 @@ export class TopicQuestionsComponent implements OnInit {
   ngOnInit() {
     this.getQuestions();
   }
+
+
+  goToQuestion = questionId => {
+    this.router.navigate([`/view-question/`]);
+    console.log(questionId)
+  }
+
+
+  
 
 }

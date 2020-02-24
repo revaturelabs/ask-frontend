@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { UsersService } from 'src/app/services/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-topic-experts',
@@ -14,7 +15,10 @@ export class TopicExpertsComponent implements OnInit {
   expert: User = null;
   returnNames: User[] = [];
   getTopicId: number = 0;
-  constructor(private usersService: UsersService,private route: ActivatedRoute) {}
+  constructor(
+    private usersService: UsersService, 
+    private route: ActivatedRoute,
+    private router: Router) {}
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id') !== null) {
@@ -35,6 +39,16 @@ export class TopicExpertsComponent implements OnInit {
         }
       }
     }
+  }
+
+  showExpertProfile = selectedExpert => {
+    // Place holder to route to the expert's profile page
+    alert("This method will route you to the Expert's Profile");
+    this.router.navigate([`/expert-profile-page/${selectedExpert.Id}`]);    
+  }
+
+  viewTopic = selectTagId => {
+    this.router.navigate([`/view-topic/${selectTagId}`]);
   }
 
 }

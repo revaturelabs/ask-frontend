@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Expert</h1>
-    <p *ngFor="let topicExpertName of returnNames">
-        {{topicExpertName.username}}
-    </p>
+    <ul *ngFor="let topicExpert of returnNames">
+       <li (click)="showExpertProfile(topicExpert)"> {{topicExpert.username}}</li>
+    </ul>
 </div>

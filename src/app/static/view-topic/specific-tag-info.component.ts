@@ -12,10 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SpecificTagInfoComponent implements OnInit {
 
-
-  tag: Tag = {name:'', id:0};
-
-  
+  tag: Tag = {name:'', id:0};  
 
   constructor(
     private tagService : TagService,
