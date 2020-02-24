@@ -14,7 +14,7 @@ export class TopicExpertsComponent implements OnInit {
   experts: User[];
   expertNames: User[] = [];
   topicId: number;
-  constructor(private usersService: UsersService, private route: ActivatedRoute) { }
+  constructor(private usersService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id') !== null) {
@@ -36,8 +36,8 @@ export class TopicExpertsComponent implements OnInit {
       }
     }
   }
+  
   showExpertProfile = selectedExpert => {
-    // Place holder to route to the expert's profile page
     alert("This method will route you to the Expert's Profile");
     this.router.navigate([`/expert-profile-page/${selectedExpert.Id}`]);    
   }
@@ -46,6 +46,4 @@ export class TopicExpertsComponent implements OnInit {
     this.router.navigate([`/view-topic/${selectTagId}`]);
   }
 
-
-
-
+}

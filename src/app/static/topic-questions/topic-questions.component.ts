@@ -29,27 +29,18 @@ export class TopicQuestionsComponent implements OnInit {
          
           if (idTag == tagKeyValPair.id) {
             this.questionsTagArr.push(question.head);
-          }
-          
-        }     
-  
-      });
-     
-    });
-    
+          }          
+        } 
+      });    
+    });    
   }
 
   ngOnInit() {
     this.getQuestions();
   }
 
-
   goToQuestion = questionId => {
     this.router.navigate([`/view-question/`]);
     console.log(questionId)
-  }
-
-
-  
-
+  } 
 }
