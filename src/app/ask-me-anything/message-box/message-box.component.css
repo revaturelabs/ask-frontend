@@ -1,0 +1,29 @@
+#message-box-container {
+    border : 1px solid grey;
+    border-radius : 2px;
+    height : 300px;
+    width : 100%;
+    overflow-y : auto;
+    position : absolute;
+}
+
+#messages-table {
+    width : 100%;
+}
+
+#container {
+    position : relative;
+    height : 300px;
+}
+
+#autoscroll-button {
+    position : absolute;
+    background-color: lightgrey;
+    color : white;
+    opacity : 0.8;
+    z-index: 9;
+    width : 100%;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
