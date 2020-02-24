@@ -76,5 +76,9 @@ export class QuestionService {
     return this.http.put<Response>(`${environment.questionsUri}/${questionId}/images`, formData);
   }
 
+  getExpertQuestionsByResponse(id : number) : Observable<Question[]> {
+    return this.http.get<Question[]>(`${environment.questionsUri}/${id}/answeredQuestions`);
+  }
+
 
 }

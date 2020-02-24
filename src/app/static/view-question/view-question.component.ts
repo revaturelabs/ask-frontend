@@ -33,6 +33,9 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
   //Whether the currently logged in user owns the selected question
   userOwnsQuestion: boolean;
 
+  @Input()
+  responseMode = true;
+
   constructor(
     private questionService: QuestionService,
     private responseService: ResponseService,

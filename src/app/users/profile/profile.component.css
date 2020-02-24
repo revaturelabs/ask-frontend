@@ -44,68 +44,73 @@
   .profilePic {
     margin: auto;
     display: block;
-    width: 200px;
-    height: 300px;
+    width: 250px;
+    height: 350px;
     background-size: cover;
     object-fit: scale-down;
   }
   
   .centered {
-    text-align: right;
+    text-indent: 12.5em;
     padding-bottom: 3em;
   }
 
-  /*Start: Interest Feature Style*/
-.skill-tag {
-  width: 144px;
-  padding: 4px 0;
-  margin: 4px;
-  background-color: #eeeeee;
-  border-radius: 5px;
-  overflow: hidden;
-  line-height: 1.3;
-}
-mat-checkbox {
-  width: 100%;
-  padding: 4px 8px 8px 8px;
-  border-radius: 5px;
-}
-mat-checkbox:hover {
-  background-color: #00000011;
-  transition-duration: 2ms;
-}
-mat-card {
-  margin: 25px 100px 0 0;
-  max-width: 648px;
-  padding: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  border: 1.5px solid #55698d;
-}
-mat-card-content {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 8px 20px 4px;
-}
-mat-card-header {
-  background-color: #55698d;
-}
-h3 {
-  color: #ffffff;
-  font-weight: normal;
-  margin: 6px 0 0 6px;
-}
-.button-div {
-  width: 100%;
-}
+  .txtArea {
+    width: 70%;
+    overflow: hidden;
+  } 
 
-#saveButton {
-  background-color: #f26925;
-  color: #ffffff;
-  margin: 10px 0 4px 0;
-  padding: 0;
-  width: 160px;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-/*End: Interest-Feature*/
+  /*Start: Interest Feature Style*/
+  .skill-tag {
+    width: 144px;
+    padding: 4px 0;
+    margin: 4px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+  mat-checkbox {
+    width: 100%;
+    padding: 4px 8px 8px 8px;
+    border-radius: 5px;
+  }
+  mat-checkbox:hover {
+    background-color: #00000011;
+    transition-duration: 2ms;
+  }
+  mat-card {
+    margin: 25px 100px 0 0;
+    max-width: 648px;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 1.5px solid #55698d;
+  }
+  mat-card-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 20px 4px;
+  }
+  mat-card-header {
+    background-color: #55698d;
+  }
+  h3 {
+    color: #ffffff;
+    font-weight: normal;
+    margin: 6px 0 0 6px;
+  }
+  .button-div {
+    width: 100%;
+  }
+  
+  #saveButton {
+    background-color: #f26925;
+    color: #ffffff;
+    margin: 10px 0 4px 0;
+    padding: 0;
+    width: 160px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  /*End: Interest-Feature*/
