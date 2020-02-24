@@ -9,6 +9,7 @@ import { TagService } from 'src/app/services/tags.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Tag } from 'src/app/models/Tag';
+import { SelfTagsComponent } from 'src/app/experts/self-tags/self-tags.component';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ import { Tag } from 'src/app/models/Tag';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [SelfTagsComponent]
 })
 export class ProfileComponent implements OnInit {
 
@@ -110,7 +112,7 @@ export class ProfileComponent implements OnInit {
 
   onUpload() {
     const uploadData = new FormData();
-    uploadData.append('image', this.selectedFile, this.selectedFile.name)
+    uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
 
     this.userService.updateProfilePic(uploadData,this.user.id).subscribe(imageLink => {
       this.user.profilePic = imageLink;
@@ -181,6 +183,10 @@ export class ProfileComponent implements OnInit {
 
   openLg(content) {
     this.modalService.open(content, { size: 'lg' });
+  }
+
+  addNewTag() {
+    this.tagService.getTags().subscribe((tagsUpdate) => { this.tags.push(tagsUpdate[tagsUpdate.length - 1]); });
   }
 
 }

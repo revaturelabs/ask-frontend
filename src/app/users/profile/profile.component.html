@@ -94,6 +94,9 @@
             </mat-card-content>
           </mat-card>
         </div>
+        <div *ngIf="isExpert()">
+          <app-tag-creation (tagCreated)="addNewTag()"></app-tag-creation>
+        </div>
       </ng-template>
       <div>
         <span *ngIf="isExpert()">Questions Responded To:</span>
