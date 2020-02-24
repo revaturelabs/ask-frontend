@@ -17,7 +17,7 @@ import { QuestionRouteComponent } from './static/question-route/question-route.c
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard] },
-  { path: 'view-question', component: ViewQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'view-question/:id', component: ViewQuestionComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'expert-questions', component: ExpertQuestionsComponent, canActivate: [AuthGuard] },

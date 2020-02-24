@@ -10,7 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TopicQuestionsComponent implements OnInit {
   questions: Question[];
-  questionsTagArr: String[];
+  // questionsTagArr: String[];
+  questionsTagArr: Question[];
  
   constructor(
     private questionService: QuestionService,
@@ -22,11 +23,12 @@ export class TopicQuestionsComponent implements OnInit {
     
     this.questionService.getQuestions().subscribe(response=> {
       this.questions=response;
+      console.log(this.questions);
       this.questions.map( question => {
         let idTag =+ this.route.snapshot.paramMap.get('id');       
         for ( let tagKeyValPair of question.associatedTags ) {         
           if (idTag == tagKeyValPair.id) {
-            this.questionsTagArr.push(question.head);
+            this.questionsTagArr.push(question);
           }          
         } 
       });    
@@ -38,7 +40,7 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   goToQuestion = questionId => {
-    this.router.navigate([`/view-question/`]);
-    console.log(questionId)
+    console.log(questionId);
+    this.router.navigate([`/view-question/${questionId}`]);
   } 
 }

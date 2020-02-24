@@ -4,7 +4,7 @@ import { ResponseService } from 'src/app/services/response.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Tag } from '../../models/Tag';
 import { QuestionService } from 'src/app/services/question.service';
 
@@ -34,6 +34,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     private _snackBar: MatSnackBar,
     private responseService: ResponseService,
     private cdRef: ChangeDetectorRef,
+    private route: ActivatedRoute
   ) { }
 
   highlightResponse(selectedResponse) {
@@ -63,7 +64,9 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.responseService.getResponseById(this.response.id).subscribe(result => {
+    let id =+ this.route.snapshot.paramMap.get('id');
+    this.responseService.getResponseById(id).subscribe((result)=>{
+    // this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
       this.expertTags = result.user.expertTags;
     });
