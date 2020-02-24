@@ -23,8 +23,8 @@ import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedu
 import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
 import { AmaEventComponent } from './ask-me-anything/ama-event/ama-event.component';
 import { LoginPageComponent } from './static/login-page/login-page.component';
-
-
+import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
+import { EditQuestionViewComponent } from './users/edit-question-view/edit-question-view.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,8 @@ import { LoginPageComponent } from './static/login-page/login-page.component';
     ScheduleAmasessionComponent,
     AmaScheduleComponent,
     AmaEventComponent,
+    EditQuestionRouteComponent,
+    EditQuestionViewComponent
   ],
   imports: [
     SharedModule,
