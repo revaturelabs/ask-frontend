@@ -69,14 +69,14 @@ import { AmaEventComponent } from './ask-me-anything/ama-event/ama-event.compone
     TopicPageComponent,
     SpecificTagInfoComponent,
     TopicExpertsComponent,
-    TopicQuestionsComponent
+    TopicQuestionsComponent,
     AskMeAnythingPageComponent,
     MessageBoxComponent,
     ChatMessageComponent,
     QuestionRouteComponent,
     ScheduleAmasessionComponent,
     AmaScheduleComponent,
-    AmaEventComponent
+    AmaEventComponent,
   ],
   imports: [
     SharedModule,

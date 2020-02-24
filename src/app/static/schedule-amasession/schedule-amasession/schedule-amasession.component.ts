@@ -29,7 +29,6 @@ export class ScheduleAmasessionComponent implements OnInit {
     this.session.date = this.myDate;
     this.session.topic = this.topic;
     this.session.expert = this.expert;
-    console.log(this.topic)
     this.amaService.createAmaSession(this.session).subscribe();
   }
   

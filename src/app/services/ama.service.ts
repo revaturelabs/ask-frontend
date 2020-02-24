@@ -16,11 +16,11 @@ export class AmaService {
   constructor(private http: HttpClient) { }
 
   getAmaListByExpert(expertId : number) : Observable<AmaSession[]>{
-    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertId}`);
+    return this.http.get<AmaSession[]>(`${environment.amaSessionUri}/${expertId}`);
   }
 
   getAmaList(){
-    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession`);
+    return this.http.get<AmaSession[]>(`${environment.amaSessionUri}`);
   }
 
   createAmaSession(createAmaSession: AmaSession): Observable<AmaSession> {
