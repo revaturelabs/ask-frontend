@@ -19,45 +19,13 @@ import { AskQuestionComponent } from './users/ask-question/ask-question.componen
 import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
 import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './static/navbar/navbar.component';
-import { FooterComponent } from './static/footer/footer.component';
-import { HighlightedResponseComponent } from '../app/static/highlighted-response/highlighted-response.component';
-import { QuestionFilterComponent } from './static/question-filter/question-filter.component';
-import { AuthGuard } from './services/auth/auth.guard';
-import { TagCreationComponent } from './experts/tag-creation/tag-creation.component';
-import { SettingsComponent } from './experts/settings/settings.component';
-import { FilteredQuestionListComponent } from './static/filtered-question-list/filtered-question-list.component';
-import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
-import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
-import { SkilltagPipe } from './static/response/skilltag.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { QuestionRouteComponent } from './static/question-route/question-route.component';
 import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    QuestionListComponent,
-    PreviewQuestionComponent,
-    ViewQuestionComponent,
-    QuestionComponent,
-    ResponseComponent,
-    AskQuestionComponent,
-    EnterResponseComponent,
-    SelfTagsComponent,
-    NavbarComponent,
-    FooterComponent,
-    HighlightedResponseComponent,
-    QuestionFilterComponent,
-    TagCreationComponent,
-    SettingsComponent,
-    FilteredQuestionListComponent,
-    ExpertQuestionsComponent,
-    UserQuestionsComponent,
-    SkilltagPipe,
-    QuestionRouteComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     SharedModule,
