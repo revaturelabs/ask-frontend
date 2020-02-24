@@ -33,7 +33,7 @@ export class ScheduleAmasessionComponent implements OnInit {
     {value: 10, viewValue: '10'}, {value: 11, viewValue: '11'}, {value: 12, viewValue: '12'},
   ];
   minutes: any[] = [
-    {value: 15, viewValue: '15'}, {value: 30, viewValue: '30'}, {value: 45, viewValue: '45'},
+    {value: 0, viewValue: '00'}, {value: 15, viewValue: '15'}, {value: 30, viewValue: '30'}, {value: 45, viewValue: '45'},
   ];
   meridiems: any[]=[
     {value: 'AM', viewValue: 'AM'}, {value: 'PM', viewValue: 'PM'},
@@ -50,6 +50,9 @@ export class ScheduleAmasessionComponent implements OnInit {
   }
 
   createAmaSession(){
+    if(this.hour == 12 && this.meridiem == "AM"){
+      this.hour = 0;
+    }
     if(this.meridiem == "PM"){
       this.hour = 24 + this.hour - 12;
     };
