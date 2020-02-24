@@ -12,17 +12,13 @@ import { AuthService } from './services/auth/auth.service';
 
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { AppComponent } from './app.component';
-import { ExpertQuestionsComponent } from './static/expert-questions/expert-questions.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import { UserQuestionsComponent } from './static/user-questions/user-questions.component';
 import { NavbarComponent } from "./static/navbar/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    ExpertQuestionsComponent,
-    UserQuestionsComponent,
     NavbarComponent
   ],
   imports: [

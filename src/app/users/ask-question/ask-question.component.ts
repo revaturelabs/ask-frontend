@@ -1,18 +1,24 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { MatAutocompleteSelectedEvent,
-  MatAutocomplete,} from '@angular/material/autocomplete';
+import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { TagService } from 'src/app/services/tags.service';
+import { environment } from 'src/environments/environment';
 // Snack-bar import, (materials alert-alike) for "Tag not recognized!"
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 // Markdowns
 import { Markdownoptions } from 'src/app/models/markdownoptions';
+import { Question } from 'src/app/models/Question';
 import { QuestionService } from 'src/app/services/question.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
 
 /**
  * @title Ask Question
@@ -22,6 +28,9 @@ import { AuthService } from 'src/app/services/auth/auth.service';
  *
  * This component is built on top of an example found at:
  * https://material.angular.io/components/chips/overview
+ * 
+ * See also as reference:
+ * https://angular.io/guide/reactive-forms#step-1-importing-the-formbuilder-class
  */
 
 @Component({
@@ -31,17 +40,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class AskQuestionComponent implements OnInit {
 
-  form: FormGroup;
   visible = true;
   selectable = true;
   removable = true;
-  addOnBlur = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   tagCtrl = new FormControl();
   filteredTags: Observable<string[]>;
-  filtTags: string[] = [];
+  allTags: string[] = [];
   tags: string[] = [];
-  allTagsFromServer: string[] = [];
   cleanMarkdown = true;
 
   // image file
@@ -52,33 +58,32 @@ export class AskQuestionComponent implements OnInit {
 
   @ViewChild('tagInput', { static: false }) tagInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
-  @ViewChild('fileInput', { static: false }) fileInput: ElementRef<HTMLInputElement>;
+  @ViewChild('formDirective', { static: false }) formDirective: NgForm;
 
-  questionInput: Object = {
-    questionerId: null,
-    head: null,
-    tagList: null,
-    body: null,
-  };
+  questionForm: FormGroup = this.fb.group({
+    id: [''],
+    head: ['', Validators.required],
+    body: ['', Validators.required],
+  });
 
   constructor(
-    private fb: FormBuilder,
     private ts: TagService,
     private _snackBar: MatSnackBar,
-    private questionService:QuestionService,
-    private authService: AuthService
+    private http: HttpClient,
+    private authService: AuthService,
+    private questionService: QuestionService,
+    private fb: FormBuilder,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) =>
-        tag ? this._filter(tag) : this.filtTags,
+        tag ? this._filter(tag) : this.allTags.slice(),
       ),
     );
     this.ts.getTags().subscribe(tags => {
-      for (let index = 0; index < tags.length; index++) {
-        this.allTagsFromServer.push(tags[index].name);
+      for (let tag of tags) {
+        this.allTags.push(tag.name);
       }
-      this.filterTags();
     });
     this.options.hideIcons = ['FullScreen'];
     this.options.showPreviewPanel = false;
@@ -87,54 +92,29 @@ export class AskQuestionComponent implements OnInit {
   add(event: MatChipInputEvent): void {
     // Add tag only when MatAutocomplete is not open
     // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) {
-      const input = event.input;
-      const value = event.value;
+    const input = event.input;
+    const value = event.value;
 
-      // Add our tag
-      if ((value || '').trim()) {
-        // Preventing user inputting chips(tags) that are not in the list from the server
-        if (!this.filtTags.includes(value)) {
-          // Angular Material Snack-bar
-          if (this.allTagsFromServer.includes(value)) {
-            this._snackBar.open(
-              'Tag already chosen! No need to choose it again.',
-              'OK',
-              { duration: 4000 },
-            );
-          } else {
-            this._snackBar.open(
-              'Tag not recognized! Please choose from the list.',
-              'OK, I will',
-              { duration: 4000 },
-            );
-          }
-        } else {
-          this.tags.push(value.trim());
-          this.filterTags();
-        }
+    // Add our tag
+    if ((value || '').trim()) {
+      // Preventing user inputting chips(tags) that are not in the list from the server
+      if (!this.allTags.includes(value)) {
+        this._snackBar.open(
+          'Tag not recognized! Please choose from the list.',
+          'OK',
+          { duration: 4000 },
+        );
+      } else {
+        this.tags.push(value.trim());
       }
-
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
-
-      this.tagCtrl.setValue(null);
     }
-  }
 
-  filterTags(): void {
-    let i = 0;
-    let j = 0;
-    this.filtTags = [];
-    this.allTagsFromServer.forEach(el => {
-      this.filtTags.push(el);
-    });
-    for (i; i < this.tags.length; i++) {
-      j = this.filtTags.indexOf(this.tags[i]);
-      this.filtTags.splice(j, 1);
+    // Reset the input value
+    if (input) {
+      input.value = '';
     }
+
+    this.tagCtrl.setValue(null);
   }
 
   remove(tag: string): void {
@@ -142,21 +122,22 @@ export class AskQuestionComponent implements OnInit {
 
     if (index >= 0) {
       this.tags.splice(index, 1);
-      this.filterTags();
+      this.allTags.push(tag);       //adds deselected tags back to the list of options
     }
   }
 
+  // Select tag, add chip, and remove from the list of options
   selected(event: MatAutocompleteSelectedEvent): void {
     this.tags.push(event.option.viewValue);
+    this.allTags.splice(this.allTags.indexOf(event.option.viewValue), 1);
     this.tagInput.nativeElement.value = '';
-    this.filterTags();
     this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.filtTags.filter(
+    return this.allTags.filter(
       tag => tag.toLowerCase().indexOf(filterValue) === 0,
     );
   }
@@ -168,70 +149,71 @@ export class AskQuestionComponent implements OnInit {
   }
 
   // Submit Question
-  submitQuestion = function(event, head, tagList, body) {
-    event.preventDefault();
-    this.questionInput.questionerId = this.authService.account.id;
-    this.questionInput.head = head;
-    this.questionInput.tagList = this.tags;
-    this.questionInput.body = body;
+  submitQuestion= function() {
+        //adds chosen tags to the form
+    this.questionForm.addControl('tagList', new FormControl(this.tags));
 
-    // Validating if title or question body is empty
-    if (head.trim() === '') {
-      this._snackBar.open('Please enter a title', 'OK', { duration: 4000 });
-    } else if (body.trim() === '') {
-      this._snackBar.open('Please enter a question', 'OK', { duration: 4000 });
-    } else {
-      // POST-ing the form
-      this.questionService.saveQuestion(this.questionInput).subscribe(
-        response => {
-        // uploads the picture with form if there is one
-        if (this.selectedFile !== null) {
-         this.onUpload(response.id);
-           }
-        // clears the form
-        this.clearForm();
-        // custom snackbar message
-        this._snackBar.open('Your question is submitted!', 'OK!', {duration: 3000});
-      },
-      failed => {
-        this._snackBar.open('Your question failed to submit!', 'OK', {duration: 3000});
-      });
-    }
+        //form mapped to custom class, backend not set up to recieve form objects
+        //work around, since Question model is an interface
+    let question: AskQuestion = new AskQuestion();
+    question.questionerId = this.authService.account.id;
+    question.body = this.questionForm.value['body'];
+    question.head = this.questionForm.value['head'];
+    question.tagList = this.tags;
+
+    this.questionService.saveQuestion(question).subscribe((resp) => {
+      // uploads the picture with form if there is one
+      if (this.selectedFile !== null) {
+        this.onUpload(resp.id);
+      }
+      // clears the form
+      this.clearForm();
+      // custom snackbar message
+      this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
+    },
+    failed => {
+      this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });
+    });
+  /*
+    // POST-ing the form
+    this.http.post(environment.questionsUri, question)
+      .subscribe(
+        
+      */
   };
 
   // submitting the images
   onUpload(questionId) {
-    event.preventDefault();
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
         console.log('Image successfully uploaded with the question');
-        // clears the image name of input field
-        this.fileInput.nativeElement.value = '';
       },
-      (err) => {
-        console.log('Image upload was unsuccessful' + err);
-      });
+        (err) => {
+          console.log('Image upload was unsuccessful' + err);
+        });
   }
 
   ngOnInit() {
-    this.clearForm();
   }
 
   // clears the form, chips(tags) and selected file of image
   clearForm() {
-    this.form = this.fb.group({
-      questionerId: null,
-      head: [''],
-      tagList: [''],
-      body: [''],
-    });
+    this.questionForm.reset();
+    this.formDirective.resetForm();
     this.cleanMarkdown = false;
     this.tags = [];
-    this.filterTags();
     this.selectedFile = null;
     setTimeout(() =>
-      this.cleanMarkdown = true, );
+      this.cleanMarkdown = true);
   }
+
 }
+
+class AskQuestion {
+  questionerId: number;
+  head: string;
+  tagList: any;
+  body: string;
+};
