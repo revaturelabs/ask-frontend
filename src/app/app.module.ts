@@ -6,6 +6,7 @@ import { SharedModule } from '../app/shared/shared.module';
 import { QuestionModule } from "../app/question/question.module";
 import { ExpertsModule } from "../app/experts/experts.module";
 import { UsersModule } from "../app/users/users.module";
+import { AuthService } from './services/auth/auth.service';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './services/auth/auth.guard';
@@ -16,6 +17,8 @@ import { ScheduleAmasessionComponent } from './static/schedule-amasession/schedu
 import { AmaScheduleComponent } from './ask-me-anything/ama-schedule/ama-schedule.component';
 import { AmaEventComponent } from './ask-me-anything/ama-event/ama-event.component';
 import { NavbarComponent } from "./static/navbar/navbar.component";
+import {OverlayModule} from '@angular/cdk/overlay';
+import { AngularDraggableModule } from 'angular2-draggable';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,15 @@ import { NavbarComponent } from "./static/navbar/navbar.component";
     AppRoutingModule,
     QuestionModule,
     MarkdownModule.forRoot(),
+    NgbModule,
+    OverlayModule,
+    AngularDraggableModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthGuard, ],
   bootstrap: [AppComponent],
+  entryComponents: [    
+    AskMeAnythingPageComponent
+  ]
 })
 export class AppModule {}

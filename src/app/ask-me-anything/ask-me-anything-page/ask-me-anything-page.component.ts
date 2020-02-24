@@ -1,16 +1,20 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, AfterViewInit, Output } from '@angular/core';
 import { MessageBoxComponent } from '../message-box/message-box.component';
 import { ChatMessage } from 'src/app/static/chat-message/chat-message';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit, EventEmitter } from '@angular/core';
+import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ask-me-anything-page',
   templateUrl: './ask-me-anything-page.component.html',
-  styleUrls: ['./ask-me-anything-page.component.css']
+  styleUrls: ['./ask-me-anything-page.component.css'],
+ 
 })
+
+
 export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
   }
@@ -41,6 +45,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   }
 
+
   openSocket() {
     if (this.isLoaded) {
       this.isCustomSocketOpened = true;
@@ -58,6 +63,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
       that.isLoaded = true;
       that.openGlobalSocket();
     });
+
   }
 
   openGlobalSocket() {
@@ -92,8 +98,10 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeWindow(){
-    console.log('PLACEHOLDER CLOSE');
+  closeChat(){
+    console.log('PLACEHOLDER CLOSE, YES');
+   
+  
   }
 
   ngAfterViewChecked(){
