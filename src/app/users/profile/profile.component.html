@@ -95,7 +95,7 @@
           </mat-card>
         </div>
       </ng-template>
-      <div>
-        <span *ngIf="isExpert()">Questions Responded To:</span>
+      <div class="row">
+        <span *ngIf="isExpert()" id="Qspan">Questions Responded To:</span>
         <app-response-list [userId]="user.id" *ngIf="isExpert()"></app-response-list>
       </div>
