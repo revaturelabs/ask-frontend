@@ -11,6 +11,6 @@
     <app-topic-questions></app-topic-questions>
   </div>
 
-  <app-schedule-amasession></app-schedule-amasession>
+  <app-schedule-amasession *ngIf="this.authService.account.expert"></app-schedule-amasession>
 
 </div>

@@ -32,6 +32,7 @@ constructor(private router: Router, private http: HttpClient) { }
   userLogin(account: Account) {
     this.loggedIn = true;
     this.account = account;
+    console.log("You are signed in as: " + account.id)
     this.router.navigate(['/questions']);
   }
 
