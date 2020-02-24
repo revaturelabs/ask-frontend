@@ -8,13 +8,19 @@ import { AuthService } from './services/auth/auth.service';
 })
 export class AppComponent {
   isLoggedIn : boolean;
+  isExpert: Boolean;
 
-  constructor(public authService: AuthService) {
+  constructor(private authService: AuthService) {
   }
 
   getLoggedIn(){
     this.isLoggedIn = this.authService.isLoggedIn;
     return this.isLoggedIn;
+  }
+
+  getUserType(){
+    this.isExpert = this.authService.account.expert;
+    return this.isExpert;
   }
 
   onLogout() {
