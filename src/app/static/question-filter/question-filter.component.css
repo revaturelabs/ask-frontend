@@ -29,9 +29,8 @@ mat-toolbar{
 .chip-list {
   width: 70%;
   margin: 4px;
-  /* position: absolute;
-  padding-left: 15%; */
 }
+
 mat-radio-group{
   display: flex;
   flex-direction: column;
@@ -41,4 +40,19 @@ mat-radio-group{
 }
 mat-radio-button{
   margin: -5px 0 0 0;
+}
+
+#overflowing {
+  background-color: white;
+  border-top : 1px solid rgb(197, 197, 197);
+  border-bottom : 1px solid rgb(197, 197, 197);
+  padding : 8px;
+  padding-left : 30px;
+  display : flex;
+  overflow-y : auto;
+}
+
+.selectText {
+  font-size: 12px;
+  font-weight: bold;
 }
