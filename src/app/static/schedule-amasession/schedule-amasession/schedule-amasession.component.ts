@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { AmaSession } from '../../../models/ama-session'
 import { AmaService } from 'src/app/services/ama.service';
+import { Tag } from 'src/app/models/Tag';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-schedule-amasession',
+
   templateUrl: './schedule-amasession.component.html',
   styleUrls: ['./schedule-amasession.component.css']
 })
 export class ScheduleAmasessionComponent implements OnInit {
 
-
+  id: number;
   myDate = new Date();
-  session: AmaSession = new AmaSession(7,this.myDate,'blah','John Revature');
+  topic: Tag;
+  expert: User;
+
+  session: AmaSession = new AmaSession(this.id, this.myDate, this.topic, this.expert);
 
 
   constructor(public amaService: AmaService) { }
@@ -19,23 +25,13 @@ export class ScheduleAmasessionComponent implements OnInit {
   ngOnInit() {
   }
 
-  postClick(){
+  createAmaSession(){
     this.session.date = this.myDate;
-    console.log("createSession()");
-    console.log("Your id is: " + this.session.id);
-    console.log("Your date is: " + this.session.date);
-    console.log("Your topic is: " + this.session.topic);
-    console.log("Your expert is: " + this.session.expert);
-    this.amaService.createSession(this.session);
+    this.session.topic = this.topic;
+    this.session.expert = this.expert;
+    console.log(this.topic)
+    this.amaService.createAmaSession(this.session).subscribe();
   }
-  getClick(){
-    this.session.date = this.myDate;
-    console.log("getSession()");
-    console.log("Your id is: " + this.session.id);
-    console.log("Your date is: " + this.session.date);
-    console.log("Your topic is: " + this.session.topic);
-    console.log("Your expert is: " + this.session.expert);
-    this.amaService.getSession();
-  }
+  
 
 }

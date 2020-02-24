@@ -1,14 +1,11 @@
 <div>
-    <h2>Schedule and AMA Session</h2>
+    <h4>Schedule an AMA Session</h4>
     <mat-form-field>
         <input matInput  [matDatepicker]="myDatePicker" [(ngModel)]="myDate">
         <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
         <mat-datepicker #myDatePicker></mat-datepicker>
     </mat-form-field>
-    <button mat-raised-button type="submit" (click)="postClick()">postRequest</button>
-    <button mat-raised-button type="submit" (click)="getClick()">getRequest</button>
-
-
+    <button mat-raised-button type="submit" (click)="createAmaSession()">Schedule</button>
 </div>
 
 
