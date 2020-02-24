@@ -160,24 +160,26 @@ export class AskQuestionComponent implements OnInit {
     question.body = this.questionForm.value['body'];
     question.head = this.questionForm.value['head'];
     question.tagList = this.tags;
-  
+
+    this.questionService.saveQuestion(question).subscribe((resp) => {
+      // uploads the picture with form if there is one
+      if (this.selectedFile !== null) {
+        this.onUpload(resp.id);
+      }
+      // clears the form
+      this.clearForm();
+      // custom snackbar message
+      this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
+    },
+    failed => {
+      this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });
+    });
+  /*
     // POST-ing the form
     this.http.post(environment.questionsUri, question)
       .subscribe(
-        (resp) => {
-          // uploads the picture with form if there is one
-          if (this.selectedFile !== null) {
-            this.onUpload(resp.id);
-          }
-          // clears the form
-          this.clearForm();
-          // custom snackbar message
-          this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
-        },
-        failed => {
-          this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });
-        });
-      
+        
+      */
   };
 
   // submitting the images

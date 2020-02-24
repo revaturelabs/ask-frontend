@@ -1,13 +1,18 @@
 <div class="content">
+
+  <mat-toolbar id="navbar" *ngIf="this.getLoggedIn()">
+    <mat-toolbar-row>
+        <button mat-button routerLink="/user/ask" *ngIf="!this.getUserType()">Ask Questions</button>
+        <button mat-button routerLink="/question/all">All Questions</button>
+        <button mat-button routerLink="/expert/settings" *ngIf="this.getUserType()">Settings</button>
+        <button mat-button routerLink="topics">Topics</button>
+        <button mat-button (click)="onLogout()">Logout</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
     <div>
-      <div>
-        <app-navbar></app-navbar>
-      </div>
-      <div>
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </div>
-  </div>
-  <app-footer></app-footer>
-  <app-schedule-amasession></app-schedule-amasession>
-  <app-ama-schedule></app-ama-schedule>
+  
+</div>
+<app-footer></app-footer>

@@ -41,6 +41,6 @@ export class TopicQuestionsComponent implements OnInit {
 
   goToQuestion = questionId => {
     console.log(questionId);
-    this.router.navigate([`/view-question/${questionId}`]);
+    this.router.navigate([`/question/${questionId}`]);
   } 
 }

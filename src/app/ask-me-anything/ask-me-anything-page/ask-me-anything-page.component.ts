@@ -3,7 +3,7 @@ import { MessageBoxComponent } from '../message-box/message-box.component';
 import { ChatMessage } from 'src/app/static/chat-message/chat-message';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-//import * as Stomp from 'stompjs';
+import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 
 @Component({
@@ -52,7 +52,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   initializeWebSocketConnection() {
     let ws = new SockJS(this.serverUrl);
-    //this.stompClient = Stomp.over(ws);
+    this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function (frame) {
       that.isLoaded = true;
