@@ -3,12 +3,32 @@
     color : white;
     width : 150px;
     height : 150px;
+    border-top-left-radius : 2px;
+    border-bottom-left-radius : 2px;
+    display: flex;
+    justify-content: center;
 }
 
 .content-container {
     background-color : white;
+    width : 600px;
+    border-top-right-radius : 2px;
+    border-bottom-right-radius : 2px;
+}
+
+.content-container:hover {
+    background-color : rgb(231, 248, 255);
 }
 
 .event-container {
-    border-radius : 5px;
+    margin : 5px;
+    box-shadow: 0px 0px 5px grey;
+}
+
+#date-table {
+    margin-top : 30px;
+}
+
+.content {
+    margin-left : 20px;
 }

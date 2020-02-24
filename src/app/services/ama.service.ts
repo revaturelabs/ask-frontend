@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { AmaSession } from '../models/ama-session';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -13,16 +13,22 @@ const httpOptions = {
 })
 export class AmaService {
 
+  constructor(private http: HttpClient) { }
 
-  constructor(public http: HttpClient) { }
+  getAmaListByExpert(expertId : number) : Observable<AmaSession[]>{
+    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession/${expertId}`);
+  }
+
+  getAmaList(){
+    return this.http.get<AmaSession[]>(`http://localhost:1337/amaSession`);
+  }
 
   createAmaSession(createAmaSession: AmaSession): Observable<AmaSession> {
     return this.http.post<AmaSession>(
       environment.amaSessionUri,
       createAmaSession,
       httpOptions
-  );
+    );
   }
-
 
 }
