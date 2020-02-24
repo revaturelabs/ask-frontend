@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Expert</h1>
-    <ul *ngFor="let topicExpert of returnNames">
-       <li (click)="showExpertProfile(topicExpert)"> {{topicExpert.username}}</li>
-    </ul>
+    <div *ngFor="let topicExpertName of expertNames">
+        {{ topicExpertName.username }}
+    </div>
 </div>
+
