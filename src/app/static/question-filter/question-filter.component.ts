@@ -218,7 +218,6 @@ export class QuestionFilterComponent implements OnInit {
   ngOnInit() {
     this.isExpert = this.authService.account.expert;
   }
-}
 
   truncateDisplayName(displayTag : string) : string{
     if (displayTag.length > 18){
