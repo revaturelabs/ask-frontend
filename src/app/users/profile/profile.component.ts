@@ -129,9 +129,9 @@ export class ProfileComponent implements OnInit {
       const uploadData = new FormData();
       uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
 
-      this.userService.updateProfilePic(uploadData,this.user.id).subscribe(imageLink => {
-        this.user.profilePic = imageLink;
-        this.pictureToBeDisplayed = `https://ask-an-expert.s3.amazonaws.com/${imageLink}`;
+      this.userService.updateProfilePic(uploadData,this.user.id).subscribe((data) => {
+        this.user.profilePic = data['key'];
+        this.pictureToBeDisplayed = `https://ask-an-expert.s3.amazonaws.com/${data['key']}`;
       });
     }
   }
