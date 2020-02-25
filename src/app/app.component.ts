@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component'; //This is imported for the Overlay.
+import { AskMeAnythingPageComponent } from './ama/ask-me-anything/ask-me-anything-page/ask-me-anything-page.component'; //This is imported for the Overlay.
 import { ComponentPortal} from '@angular/cdk/portal';
 import { AuthService } from './services/auth/auth.service';
 
