@@ -29,7 +29,7 @@ export class ViewQuestionComponent implements OnInit, OnChanges {
    * on the site.
    */
 
-   @Input() selectedQuestion: Question;
+  @Input() selectedQuestion: Question;
   highlightedResponse$: Observable<Response>;
   //Whether the currently logged in user owns the selected question
   userOwnsQuestion: boolean;

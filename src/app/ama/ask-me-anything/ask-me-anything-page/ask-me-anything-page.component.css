@@ -41,4 +41,14 @@ textarea {
 #ama {
     max-width : 100%;
     box-shadow: 1px 1px 5px grey;
+    background-color : white;
+}
+
+#open {
+    color : white;
+    border : none;
+}
+
+.above {
+    z-index: 5000;
 }

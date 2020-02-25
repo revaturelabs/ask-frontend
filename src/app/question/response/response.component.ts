@@ -65,8 +65,8 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     let id =+ this.route.snapshot.paramMap.get('id');
-    this.responseService.getResponseById(id).subscribe((result)=>{
-    // this.responseService.getResponseById(this.response.id).subscribe(result => {
+    //this.responseService.getResponseById(id).subscribe((result)=>{
+    this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
       this.expertTags = result.user.expertTags;
     });
