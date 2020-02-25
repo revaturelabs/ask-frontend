@@ -122,5 +122,3 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     }
   }
 }
-
-}
