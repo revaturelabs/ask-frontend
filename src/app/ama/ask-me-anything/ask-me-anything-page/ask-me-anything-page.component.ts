@@ -121,5 +121,6 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
       this.messageBox.scrollToBottom();
     }
   }
+}
 
 }

@@ -22,7 +22,7 @@ import { Tag } from '../../models/Tag';
 export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
   @Input() question: Question;
   @Input() tag: Tag;
-
+  @Input() responseMode: boolean = true;
   @Output() change: EventEmitter<number> = new EventEmitter<number>();
 
   // stores associated tags that don't fit on the preview-question element to be shown in popover
@@ -125,6 +125,10 @@ export class PreviewQuestionComponent implements OnInit, AfterViewChecked {
     }
     this.limit = index;
     this.showTagsList(index);
+  }
+
+  redirectToUserPage(){
+    this.router.navigate([`profile/${this.question.user.id}`]);
   }
 
   changeView(): void {

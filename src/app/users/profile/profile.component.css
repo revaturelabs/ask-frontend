@@ -1,0 +1,153 @@
+/* {
+  border: 1px solid red;
+} */
+
+.container-fluid .nav, .form-group.users-profile-interests, .users-profile-wysiwyg--row, .users-profile-wysiwyg--wrapper {
+    display: flex;
+  }
+  
+  .container-fluid .nav {
+    justify-content: space-between;
+  }
+  
+  .btn.users-profile-interests__interest-btn {
+    background-color: #f26925;
+    color: #fff;
+    margin-right: 0.23em;
+  }
+  
+  .btn.users-profile-interests__interest-btn:last-child {
+    margin-right: 0;
+  }
+  
+  /* WYSIWYG EDITOR */
+  
+  .editor-container {
+    width: 100%;
+  }
+  
+  .users-profile-wysiwyg--wrapper {
+    flex-direction: column;
+  }
+  
+  .chip {
+    background-color: #55698d;
+    color: white;
+  }
+  
+  a, a:hover {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+  }
+  
+  .profilePic {
+    margin: auto;
+    display: block;
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    object-fit: scale-down;
+  }
+  
+  #Qspan{
+    margin-top: 10px;
+    font-size: x-large;
+    font-weight: bold;
+  }
+
+  #qs{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 5%;
+    margin-left: 25%;
+  }
+
+  .skills{
+    margin-top: 30px;
+  }
+
+  .utext{
+    font-size: larger;
+  }
+
+  .centered {
+    margin-left: 19.5%;
+    /*text-indent: 12.5em;
+    padding-bottom: 3em;*/
+  }
+
+  .txtArea {
+    width: 70%;
+    overflow: hidden;
+  } 
+
+  /*Start: Interest Feature Style*/
+  .skill-tag {
+    width: 144px;
+    padding: 4px 0;
+    margin: 4px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+  mat-checkbox {
+    width: 100%;
+    padding: 4px 8px 8px 8px;
+    border-radius: 5px;
+  }
+  mat-checkbox:hover {
+    background-color: #00000011;
+    transition-duration: 2ms;
+  }
+  mat-card {
+    margin: 25px 100px 0 0;
+    max-width: 648px;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 1.5px solid #55698d;
+  }
+  mat-card-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px 20px 4px;
+  }
+  mat-card-header {
+    background-color: #55698d;
+  }
+  h3 {
+    color: #ffffff;
+    font-weight: normal;
+    margin: 6px 0 0 6px;
+  }
+  .button-div {
+    width: 100%;
+  }
+  
+  #saveButton {
+    background-color: #f26925;
+    color: #ffffff;
+    margin: 10px 0 4px 0;
+    padding: 0;
+    width: 160px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .save-image {
+    background-color : #f26925;
+    color: white;
+  }
+
+  .profile-frame {
+    border: 1px solid grey;
+    border-radius : 2px;
+    background-color : white;
+  }
+
+  .profile-content {
+    
+  }
+  /*End: Interest-Feature*/

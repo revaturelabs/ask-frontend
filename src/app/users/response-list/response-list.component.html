@@ -1,0 +1,9 @@
+<div>
+    <table>
+        <tr *ngFor="let question of questionList">
+            <td>
+                <app-preview-question [question]="question" [tag]="question.tags" [responseMode]="false"></app-preview-question>
+            </td>
+        </tr>
+    </table>
+</div> 
