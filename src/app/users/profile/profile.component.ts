@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
   expertSkills: string[] = [];
   currentExpert: any;
   closeResult: string;
+  pictureToBeDisplayed : string;
 
 
   constructor(private authService: AuthService, private fb: FormBuilder, private userService: UserService,
@@ -56,19 +57,24 @@ export class ProfileComponent implements OnInit {
     this.interestModeText = "Interest";
   }
 
-  ngOnInit() {
-    this.profileForm = this.fb.group({
-      username: [''],
-      email: [''],
-      bio: [''],
-    });
+  ngOnInit() {   
+    this.userService.getUserById(this.authService.account.id).subscribe((data)=>{
+      this.user = data;
+      console.log(this.user);
 
-    if (this.user.profilePic === '') {
-      this.user.profilePic = this.defaultPic;
-    }else{
-      this.user.profilePic = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
-    }
-    this.getTags();
+      this.profileForm = this.fb.group({
+        username: [''],
+        email: [''],
+        bio: [''],
+      });
+  
+      if (!this.user.profilePic) {
+        this.pictureToBeDisplayed = this.defaultPic;
+      }else{
+        this.pictureToBeDisplayed = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
+      }
+      this.getTags();
+    });
   }
 
   getTags(){
@@ -100,14 +106,14 @@ export class ProfileComponent implements OnInit {
         this.user.bio = this.profileForm.value['bio'];
       }
       this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
+        if (this.selectedFile) {
+          this.onUpload();
+        }
+        this.tagsUpdated.emit(true);
 
+        this.ngOnInit();
       });
     }
-
-    if (this.selectedFile !== null) {
-      this.onUpload();
-    }
-    this.tagsUpdated.emit(true);
   }
 
   onFileChange(event) {
