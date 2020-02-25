@@ -1,0 +1,18 @@
+.timestamp {
+    color : grey;
+    font-size : 10px;
+    font-style : italic;
+    width : 50px;
+}
+
+.text-body {
+    word-wrap: break-word;
+}
+
+table {
+    width : 100%;
+}
+
+tr {
+    width : 100%;
+}

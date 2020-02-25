@@ -14,8 +14,14 @@ const httpOptions = {
 export class TagService {
   constructor(private http: HttpClient) {}
 
+  tagId:number;
+
   getTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(environment.tagsUri);
+  }
+
+  getTagById(tagId): Observable<Tag>{
+    return this.http.get<Tag>(`${environment.tagsUri}/${tagId}`);
   }
 
   saveExpertTags(tags: Tag[], expertId: Number){

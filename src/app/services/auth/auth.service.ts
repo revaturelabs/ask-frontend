@@ -41,7 +41,7 @@ ngOnInit() {
   userLogin(account: Account) {
     this.loggedIn = true;
     this.account = account;
-    this.router.navigate(['/questions']);
+    this.router.navigate(['/question/all']);
   }
 
   userLogOut() {
@@ -50,12 +50,12 @@ ngOnInit() {
     this.router.navigate(['/']);
   }
 
-  getUserById(id:number):Observable<User>{
-    return this.http.get<User>(`${environment.userUri}/${id}`)
-  }
-
-  getAccountById(id:number){
-    return this.http.get<Account>(`${environment.userUri}/${id}`)
+  attemptLogin(id:number){
+    this.http
+      .get<Account>(`${environment.userUri}/${id}`)
+      .subscribe((account: Account) => {
+        this.userLogin(account);
+      });
   }
 
   getQueryParams() {

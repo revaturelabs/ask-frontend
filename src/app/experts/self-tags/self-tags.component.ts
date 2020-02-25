@@ -93,4 +93,11 @@ export class SelfTagsComponent implements OnInit {
   addNewTag() {
     this.tagService.getTags().subscribe((tagsUpdate) => { this.tags.push(tagsUpdate[tagsUpdate.length - 1]); });
   }
+
+  truncateDisplayName(displayTag : string) : string{
+    if (displayTag.length > 18){
+      return displayTag.substr(0, 15) + '...';
+    }
+    else return displayTag;
+  }
 }

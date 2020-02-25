@@ -1,41 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MarkdownModule } from 'ngx-markdown';
-import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../app/shared/shared.module';
+import { QuestionModule } from "../app/question/question.module";
+import { ExpertsModule } from "../app/experts/experts.module";
+import { UsersModule } from "../app/users/users.module";
+import { TopicModule } from './topic/topic.module';
+import { AmaModule } from "./ama/ama.module";
 
 import { AuthService } from './services/auth/auth.service';
 
+import { AuthGuard } from './services/auth/auth.guard';
 
-import { LoginPageComponent } from './static/login-page/login-page.component';
-import { QuestionListComponent } from './static/question-list/question-list.component';
-import { PreviewQuestionComponent } from './static/preview-question/preview-question.component';
-import { ViewQuestionComponent } from './static/view-question/view-question.component';
-import { QuestionComponent } from './static/question/question.component';
-import { ResponseComponent } from './static/response/response.component';
-import { AskQuestionComponent } from './users/ask-question/ask-question.component';
-import { EnterResponseComponent } from './experts/enter-response/enter-response.component';
-import { SelfTagsComponent } from './experts/self-tags/self-tags.component';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
+import { LoginPageComponent } from './static/login-page/login-page.component';
+import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
+import { EditQuestionViewComponent } from './users/edit-question-view/edit-question-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     PageNotFoundComponent,
+    EditQuestionRouteComponent,
+    EditQuestionViewComponent
   ],
   imports: [
     SharedModule,
+    ExpertsModule,
+    UsersModule,
+    TopicModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    QuestionModule,
+    AmaModule,
     MarkdownModule.forRoot(),
-    NgbModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, ],
   bootstrap: [AppComponent],
+  entryComponents: [    
+    
+  ]
 })
 export class AppModule {}

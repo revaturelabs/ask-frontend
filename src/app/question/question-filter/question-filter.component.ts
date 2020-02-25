@@ -1,0 +1,228 @@
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { TagService } from 'src/app/services/tags.service';
+import { environment } from 'src/environments/environment';
+
+//Snack-bar import, (materials alert-alike) for "Tag not recognized!"
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
+
+/**
+ * @title Filter questions
+ * @author Borko Stankovic, Kyung Min Lee, Jonathan Gworek
+ */
+
+@Component({
+  selector: 'app-question-filter',
+  templateUrl: './question-filter.component.html',
+  styleUrls: ['./question-filter.component.css'],
+})
+export class QuestionFilterComponent implements OnInit {
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  tagCtrl = new FormControl();
+  filteredTags: Observable<string[]>;
+  filtTags: string[] = [];
+  tags: string[] = [];
+  allTagsFromServer: string[] = [];
+  requireAll: string = '?requireAll=false';
+  filteredUri: string;
+  filterTags: string[];
+  filteredStatus: boolean = false;
+  isExpert: Boolean;
+
+  @Output() newFilteredStatus: EventEmitter<boolean> = new EventEmitter();
+  @Output() newFilteredUri: EventEmitter<string> = new EventEmitter();
+
+  @ViewChild('tagInput', { static: false }) tagInput: ElementRef<
+    HTMLInputElement
+  >;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+
+  constructor(
+    private fb: FormBuilder,
+    private ts: TagService,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar,
+    private userService: UserService
+  ) {
+    this.filteredTags = this.tagCtrl.valueChanges.pipe(
+      startWith(null),
+      map((tag: string | null) =>
+        tag ? this._filter(tag) : this.filtTags,
+      ),
+    );
+    this.ts.getTags().subscribe(tags => {
+      for (let index = 0; index < tags.length; index++) {
+        this.allTagsFromServer.push(tags[index].name);
+      }
+      this.filterInputTags();
+    });
+  }
+
+  add(event: MatChipInputEvent): void {
+    // Add tag only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value;
+
+      // Add our tag
+      if ((value || '').trim()) {
+        //Preventing user inputing chips(tags) that are not in the list from the server
+        if (!this.filtTags.includes(value)) {
+          //Angular Material Snack-bar
+          if (this.allTagsFromServer.includes(value)) {
+            this._snackBar.open(
+              'Tag already chosen! No need to choose it again.',
+              'OK',
+              { duration: 4000 },
+            );
+          } else {
+            this._snackBar.open(
+              'Tag not recognized! Please choose from the list.',
+              'OK, I will',
+              { duration: 4000 },
+            );
+          }
+        } else {
+          this.tags.push(value.trim());
+          this.filterInputTags();
+        }
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.tagCtrl.setValue(null);
+    }
+  }
+
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+      this.filterInputTags();
+    }
+  }
+
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.filterInputTags();
+    this.tagCtrl.setValue(null);
+  }
+
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.filtTags.filter(
+      tag => tag.toLowerCase().indexOf(filterValue) === 0
+
+    );
+  }
+
+  // Uri format for local host tags are case sensitive
+  // get all questions that hava tag Java
+  // http://localhost:1337/questions/search/?requireAll=false&tag=Java
+  filterInputTags(): void {
+    let i = 0;
+    let j = 0;
+    this.filtTags = [];
+    this.allTagsFromServer.forEach(el => {
+      this.filtTags.push(el)
+    });
+    for (i; i < this.tags.length; i++) {
+      j = this.filtTags.indexOf(this.tags[i]);
+      this.filtTags.splice(j, 1);
+    }
+  }
+
+  createFilteredQuestionsUri() {
+    this.filteredStatus = true;
+    this.newFilteredStatus.emit(this.filteredStatus);
+    let tags: String = '';
+    this.filterTags = this.tags;
+    for (var i = 0; i < this.filterTags.length; i++) {
+      tags += '&tag=' + this.filterTags[i];
+    }
+    (this.filteredUri =
+      environment.questionsUri + '/search/' + this.requireAll + tags),
+      this.newFilteredUri.emit(this.filteredUri);
+  }
+
+  hasBeenFiltered() {
+    return this.filteredStatus;
+  }
+
+  resetSearch() {
+    this.tags = [];
+    this.filteredStatus = false;
+    this.newFilteredStatus.emit(this.filteredStatus);
+  }
+
+  showYourQuestions() {
+    this.filteredStatus = true;
+    this.newFilteredStatus.emit(this.filteredStatus);
+    this.filteredUri = environment.userUri + '/' + this.authService.account.id + '/questions';
+    this.newFilteredUri.emit(this.filteredUri);
+  }
+
+  showRelevantQuestions() {
+    let expertId = this.authService.account.id;
+    let expert:User;
+    let uriTags;
+    this.userService.getUserById(expertId).subscribe(result => {
+      expert = result;
+      this.tags = new Array<string>();
+      for (let i = 0; i < expert.expertTags.length; i++) {
+        this.tags.splice(i, 0, expert.expertTags[i].name);
+      }
+      this.filterTags = this.tags;
+      for (let j = 0; j < this.filterTags.length; j++) {
+        uriTags += '&tag=' + this.filterTags[j];
+      }
+      this.filteredStatus = true;
+      this.newFilteredStatus.emit(this.filteredStatus);
+      this.filteredUri = environment.questionsUri + "/search/" + this.requireAll + "&tag=" + this.tags;
+      this.newFilteredUri.emit(this.filteredUri);
+      
+    });
+  }
+
+  ngOnInit() {
+    this.isExpert = this.authService.account.expert;
+  }
+
+  truncateDisplayName(displayTag : string) : string{
+    if (displayTag.length > 18){
+      return displayTag.substr(0, 15) + '...';
+    }
+    else return displayTag;
+  }
+}
