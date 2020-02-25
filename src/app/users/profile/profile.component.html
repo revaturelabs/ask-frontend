@@ -3,8 +3,8 @@
     <li class="nav-item">
     </li>
     <li class="nav-item">
-      <button class="btn btn-success" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}}</button>
-      <button class="btn btn-primary" (click)="updateProfile()" *ngIf="inEditMode">Save</button>
+      <button class="btn save-image" *ngIf="viewerSameAsLoggedInUser()" (click)="editMode()">{{editModeText}}</button>
+      <button class="btn save-image" (click)="updateProfile()" *ngIf="inEditMode">Save Changes</button>
     </li>
   </ul>
   <div class="row justify-content-center">
