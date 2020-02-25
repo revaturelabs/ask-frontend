@@ -135,4 +135,19 @@
     left: 50%;
     transform: translate(-50%, 0);
   }
+
+  .save-image {
+    background-color : #f26925;
+    color: white;
+  }
+
+  .profile-frame {
+    border: 1px solid grey;
+    border-radius : 2px;
+    background-color : white;
+  }
+
+  .profile-content {
+    
+  }
   /*End: Interest-Feature*/

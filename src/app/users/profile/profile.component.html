@@ -13,31 +13,31 @@
       <h2 *ngIf="isExpert()">Expert</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row justify-content-center">
+    <div class="col-md-3 profile-frame">
       <img class="profilePic" src={{pictureToBeDisplayed}}>
       <div class="centered">
         <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
-      <button class="btn btn-danger" (click)="onUpload()" *ngIf=inEditMode>Save Image</button>
+      <button class="btn save-image" (click)="onUpload()" *ngIf=inEditMode>Save Image</button>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7 profile-frame profile-content">
       <form [formGroup]="profileForm">
         <div class="form-group">
           <label for="profileInputUsername" class="utext">Username: </label>
-          <span class="utext"> {{user.username}}</span>
-          <input type="username" formControlName="username" id="profileInputUsername" placeholder="New Username"
+          <span class="utext" *ngIf=!inEditMode> {{user.username}}</span>
+          <input type="username" formControlName="username" id="profileInputUsername" placeholder={{user.username}}
             *ngIf=inEditMode>
         </div>
         <div class="form-group">
           <label for="profileInputEmail" class="utext">Email: </label>
-          <span class="utext"> {{user.email}}</span>
-          <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
+          <span class="utext" *ngIf=!inEditMode> {{user.email}}</span>
+          <input type="email" formControlName="email" id="profileInputEmail" placeholder={{user.email}} *ngIf=inEditMode>
         </div>
         <div class="form-group" class="txtArea">
           <label for="profileInputBio"></label>
-          <div class="utext"> {{user.bio}}</div>
-          <textarea rows="8" cols="80" formControlName="bio" placeholder="New Bio" *ngIf=inEditMode></textarea>
+          <div class="utext" *ngIf=!inEditMode> {{user.bio}}</div>
+          <textarea rows="8" cols="80" formControlName="bio" placeholder={{user.bio}} *ngIf=inEditMode></textarea>
         </div>
       </form>
     </div>
