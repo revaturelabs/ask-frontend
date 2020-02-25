@@ -5,6 +5,7 @@ import { AskMeAnythingPageComponent } from './ama/ask-me-anything/ask-me-anythin
 import { ComponentPortal} from '@angular/cdk/portal';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit{
   overlayRef: OverlayRef;
   askMeAnythingPortal: ComponentPortal<AskMeAnythingPageComponent>;
 
-  constructor(private overlay: Overlay, public authService: AuthService, private route: Router) {
+  constructor(private overlay: Overlay, public authService: AuthService, private route: Router,
+      private modalService: ModalService) {
     this.showChat = false;
     this.askMeAnythingPortal = new ComponentPortal(AskMeAnythingPageComponent);
     var self = this;
@@ -81,5 +83,9 @@ export class AppComponent implements OnInit{
 
   onLogout() {
     this.authService.userLogOut();
+  }
+
+  openAsk() {
+    this.modalService.openAsk();
   }
 }
