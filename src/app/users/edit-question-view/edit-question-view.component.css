@@ -73,17 +73,6 @@ input {
   margin-left: 10%;
 }
 
-#ask-question-button-submit {
-  background-color: #f26925;
-  color: #ffffff;
-}
-
-#ask-question-button-submit:disabled{
-  border: 1px solid #999999;
-  background-color: #cccccc;
-  color: #666666;
-}
-
 #button-container {
   display: flex;
   justify-content: center;
@@ -93,6 +82,11 @@ input {
   width : 90%;
   max-height: 125px;
   min-height: 90px;
+}
+
+.edit-question-button {
+  background-color : #f26925;
+  color : white;
 }
 
 #question-head {

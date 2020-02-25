@@ -224,9 +224,11 @@ export class EditQuestionViewComponent implements OnInit {
         }
       }
     }
-    this.questionService.updateQuestion(this.question).subscribe();
-    
-    this.returnToQuestion();
+    this.questionService.updateQuestion(this.question).subscribe((resp)=>{
+      if(resp){
+        this.returnToQuestion();
+      }   
+    });
   }
 
   returnToQuestion() {
