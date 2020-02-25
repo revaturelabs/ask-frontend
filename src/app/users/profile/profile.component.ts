@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
   expertSkills: string[] = [];
   currentExpert: any;
   closeResult: string;
-  isDefaultImage : boolean = true;
+  pictureToBeDisplayed : string;
 
 
   constructor(private authService: AuthService, private fb: FormBuilder, private userService: UserService,
@@ -68,11 +68,10 @@ export class ProfileComponent implements OnInit {
         bio: [''],
       });
   
-      if (!this.user.profilePic || this.isDefaultImage) {
-        this.user.profilePic = this.defaultPic;
-        this.isDefaultImage = true;
-      }else if(!this.isDefaultImage){
-        this.user.profilePic = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
+      if (!this.user.profilePic) {
+        this.pictureToBeDisplayed = this.defaultPic;
+      }else{
+        this.pictureToBeDisplayed = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
       }
       this.getTags();
     });
@@ -107,20 +106,18 @@ export class ProfileComponent implements OnInit {
         this.user.bio = this.profileForm.value['bio'];
       }
       this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
+        if (this.selectedFile) {
+          this.onUpload();
+        }
+        this.tagsUpdated.emit(true);
 
+        this.ngOnInit();
       });
     }
-/*
-    if (this.selectedFile !== null) {
-      this.onUpload();
-    }
-    this.tagsUpdated.emit(true);
-    */
   }
 
   onFileChange(event) {
     this.selectedFile = event.target.files[0];
-    this.isDefaultImage = false;
   }
 
   onUpload() {
