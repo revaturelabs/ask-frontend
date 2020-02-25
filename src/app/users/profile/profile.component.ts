@@ -65,9 +65,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {   
-    this.userService.getUserById(this.authService.account.id).subscribe((data)=>{
-      this.user = data;
-      console.log(this.user);
 
       this.profileForm = this.fb.group({
         username: [''],
@@ -81,7 +78,6 @@ export class ProfileComponent implements OnInit {
         this.pictureToBeDisplayed = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
       }
       this.getTags();
-    });
   }
 
   getTags(){
