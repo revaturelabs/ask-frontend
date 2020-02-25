@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Injectable, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Injectable, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -48,8 +48,15 @@ export class ProfileComponent implements OnInit {
   pictureToBeDisplayed : string;
 
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private userService: UserService,
-    private route: ActivatedRoute, private tagService: TagService, private snackBar: MatSnackBar, private modalService: NgbModal) { 
+  constructor(
+    private authService: AuthService, 
+    private fb: FormBuilder, 
+    private userService: UserService,
+    private route: ActivatedRoute, 
+    private tagService: TagService, 
+    private snackBar: MatSnackBar, 
+    private modalService: NgbModal,
+    ) { 
     this.inEditMode = false;
     this.editModeText = "Personalize";
     this.defaultPic = "../../assets/images/defaultProfilePic.png";
@@ -94,23 +101,20 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     if (this.profileForm.dirty) {
-      if (this.profileForm.value['username'] !== null) {
+      if (this.profileForm.value['username']) {
         this.user.username = this.profileForm.value['username'];
       }
 
-      if (this.profileForm.value['email'] !== null) {
+      if (this.profileForm.value['email']) {
         this.user.email = this.profileForm.value['email'];
       }
 
-      if (this.profileForm.value['bio'] !== null) {
+      if (this.profileForm.value['bio']) {
         this.user.bio = this.profileForm.value['bio'];
       }
-      this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
-        if (this.selectedFile) {
-          this.onUpload();
-        }
-        this.tagsUpdated.emit(true);
 
+      this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
+        this.tagsUpdated.emit(true);
         this.ngOnInit();
       });
     }
@@ -121,12 +125,15 @@ export class ProfileComponent implements OnInit {
   }
 
   onUpload() {
-    const uploadData = new FormData();
-    uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
+    if(this.selectedFile){
+      const uploadData = new FormData();
+      uploadData.append('myImage', this.selectedFile, this.selectedFile.name)
 
-    this.userService.updateProfilePic(uploadData,this.user.id).subscribe(imageLink => {
-      this.user.profilePic = imageLink;
-    });
+      this.userService.updateProfilePic(uploadData,this.user.id).subscribe(imageLink => {
+        this.user.profilePic = imageLink;
+        this.pictureToBeDisplayed = `https://ask-an-expert.s3.amazonaws.com/${imageLink}`;
+      });
+    }
   }
 
   editMode() {

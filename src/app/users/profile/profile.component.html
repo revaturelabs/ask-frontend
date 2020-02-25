@@ -19,6 +19,7 @@
       <div class="centered">
         <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
       </div>
+      <button class="btn btn-danger" (click)="onUpload()" *ngIf=inEditMode>Save Image</button>
     </div>
     <div class="col-md-8">
       <form [formGroup]="profileForm">
