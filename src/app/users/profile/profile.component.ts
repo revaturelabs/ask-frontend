@@ -113,7 +113,10 @@ export class ProfileComponent implements OnInit {
         this.tagsUpdated.emit(true);
         this.ngOnInit();
       });
+
     }
+    this.inEditMode = !this.inEditMode;
+    this.editModeText = (this.inEditMode) ? "Cancel" : "Personalize";
   }
 
   onFileChange(event) {
@@ -135,7 +138,7 @@ export class ProfileComponent implements OnInit {
   editMode() {
     this.profileForm.reset();
     this.inEditMode = !this.inEditMode;
-    this.editModeText = (this.inEditMode) ? "Normal View" : "Personalize";
+    this.editModeText = (this.inEditMode) ? "Cancel" : "Personalize";
   }
 
   isAssociate() : boolean {
