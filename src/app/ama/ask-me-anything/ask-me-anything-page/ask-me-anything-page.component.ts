@@ -1,5 +1,5 @@
 import { MessageBoxComponent } from '../message-box/message-box.component';
-import { ChatMessage } from 'src/app/static/chat-message/chat-message';
+import { ChatMessage } from 'src/app/models/chat-message/chat-message';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import * as Stomp from 'stompjs';
@@ -25,7 +25,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   @ViewChild('messageBox',{static : false}) messageBox : MessageBoxComponent;
   @ViewChild('inputBox', {static : false}) inputBox : ElementRef;
 
-  private closed: boolean;
+  public closed: boolean;
 
   private serverUrl = environment.url + 'socket'
   isLoaded: boolean = false;

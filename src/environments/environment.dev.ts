@@ -9,4 +9,5 @@ export const environment = {
   responsesUri: `${baseUri}:${port}/responses`,
   userUri: `${baseUri}:${port}/users`,
   url: `${baseUri}:${port}`,
+  amaSessionUri: `${baseUri}:${port}/amaSession`
 };

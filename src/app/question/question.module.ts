@@ -1,4 +1,3 @@
-  
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuestionListComponent } from '../question/question-list/question-list.component';
@@ -14,6 +13,7 @@ import { QuestionRouteComponent } from "./question-route/question-route.componen
 
 import { SharedModule } from '../shared/shared.module';
 
+import { QuestionRoutingModule } from "./question-routing.module";
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
+    QuestionRoutingModule
   ],
   exports: [
     QuestionComponent,

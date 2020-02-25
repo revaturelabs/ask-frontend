@@ -14,7 +14,8 @@ export const environment = {
   responsesUri: `${baseUri}:${port}/responses`,
   userUri: `${baseUri}:${port}/users`,
   //url: `${baseUri}:${port}`,
-  url: "http://localhost:1337/"
+  url: "http://localhost:1337/",
+  amaSessionUri: `${baseUri}:${port}/amaSession`
 };
 
 

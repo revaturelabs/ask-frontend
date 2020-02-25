@@ -6,6 +6,7 @@ div {
   background: linear-gradient( #32373F,#474C55 10%);
   color: white;
   text-align: center;
+  z-index: 10;
 }
 p{
   padding-top: 10px;
