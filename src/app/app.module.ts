@@ -15,6 +15,7 @@ import { AuthService } from './services/auth/auth.service';
 import { AuthGuard } from './services/auth/auth.guard';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
 import { EditQuestionViewComponent } from './users/edit-question-view/edit-question-view.component';
@@ -23,6 +24,7 @@ import { EditQuestionViewComponent } from './users/edit-question-view/edit-quest
   declarations: [
     AppComponent,
     LoginPageComponent,
+    PageNotFoundComponent,
     EditQuestionRouteComponent,
     EditQuestionViewComponent
   ],
