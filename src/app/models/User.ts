@@ -4,9 +4,10 @@ import { Question } from './Question';
 export class User {
     id: number;
     username: string;
-    expert: boolean;
+    password: string;
     email: string;
     bio: string;
+    expert: boolean;
     profilePic: string;
     expertTags: Tag[];
     questions: Question[];
