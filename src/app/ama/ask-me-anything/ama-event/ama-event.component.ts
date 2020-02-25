@@ -32,7 +32,6 @@ export class AmaEventComponent implements OnInit {
   }
 
   getMonthString(monthNum : number) : string{
-    console.log("The monthNum is: " + monthNum);
     switch(monthNum){
       case 0 : return 'JAN';
       case 1 : return 'FEB';
