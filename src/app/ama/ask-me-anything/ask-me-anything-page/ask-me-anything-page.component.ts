@@ -117,7 +117,9 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewChecked(){
+    if(this.messageBox){
     this.messageBox.scrollToBottom();
   }
+}
 
 }
