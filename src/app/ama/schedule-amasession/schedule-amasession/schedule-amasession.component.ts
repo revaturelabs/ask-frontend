@@ -4,7 +4,7 @@ import { AmaService } from 'src/app/services/ama.service';
 import { Tag } from 'src/app/models/Tag';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TagService } from 'src/app/services/tags.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class ScheduleAmasessionComponent implements OnInit {
     {value: 'AM', viewValue: 'AM'}, {value: 'PM', viewValue: 'PM'},
   ]
 
-  constructor(public amaService: AmaService, public authService: AuthService, private route : ActivatedRoute, public tagService: TagService) { }
+  constructor(public amaService: AmaService, public authService: AuthService, private route : ActivatedRoute, public tagService: TagService, public router: Router) { }
 
   ngOnInit() {
     this.expert.id = this.authService.account.id;
@@ -60,6 +60,7 @@ export class ScheduleAmasessionComponent implements OnInit {
     this.session.topic = this.topic;
     this.session.expert = this.expert;
     this.amaService.createAmaSession(this.session).subscribe();
+    this.router.navigate(['/topic/all'])
   }
 
 }

@@ -129,4 +129,14 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
       this.messageBox.scrollToBottom();
     }
   }
+
+  getNextAMA(){
+
+  }
+
+  waitForAma(){
+    while(!this.isAmaActive){
+      console.log("ama is not active");
+    }
+  }
 }

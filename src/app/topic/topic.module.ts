@@ -15,7 +15,7 @@ import { AmaModule } from "../ama/ama.module";
     SpecificTagInfoComponent,
     TopicQuestionsComponent,
     TopicExpertsComponent,
-    TopicPageComponent
+    TopicPageComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +27,7 @@ import { AmaModule } from "../ama/ama.module";
     SpecificTagInfoComponent,
     TopicQuestionsComponent,
     TopicExpertsComponent,
-    TopicPageComponent
+    TopicPageComponent,
   ]
 })
 export class TopicModule { }
