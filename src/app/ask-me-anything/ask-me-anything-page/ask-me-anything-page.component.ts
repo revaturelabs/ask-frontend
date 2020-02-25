@@ -25,6 +25,8 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   @ViewChild('messageBox',{static : false}) messageBox : MessageBoxComponent;
   @ViewChild('inputBox', {static : false}) inputBox : ElementRef;
 
+  private closed: boolean;
+
   private serverUrl = environment.url + 'socket'
   isLoaded: boolean = false;
   isCustomSocketOpened = false;
@@ -45,9 +47,17 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.initializeWebSocketConnection();
     this.openSocket();
+    this.closed = false;
 
   }
 
+  openChatBox() {
+    this.closed = false;
+  }
+
+  closeChatBox(){
+    this.closed = true;
+  }
 
   openSocket() {
     if (this.isLoaded) {
