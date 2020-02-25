@@ -23,7 +23,6 @@ export class SpecificTagInfoComponent implements OnInit {
 
   ngOnInit() {
     let id =+ this.route.snapshot.paramMap.get('id');
-    console.log(id);
     this.tagService.getTagById(id).subscribe((data) => {
       this.tag = data;
     });

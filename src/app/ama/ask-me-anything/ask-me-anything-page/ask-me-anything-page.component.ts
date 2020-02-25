@@ -96,9 +96,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   
   handleResult(message){
     if (message.body) {
-      console.log(message);
       let messageResult: ChatMessage = JSON.parse(message.body);
-      console.log(messageResult);
       this.messages.push(messageResult);
     }
   }
@@ -136,7 +134,6 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   waitForAma(){
     while(!this.isAmaActive){
-      console.log("ama is not active");
     }
   }
 }

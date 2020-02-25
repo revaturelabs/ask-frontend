@@ -197,10 +197,9 @@ export class AskQuestionComponent implements OnInit {
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
-        console.log('Image successfully uploaded with the question');
       },
         (err) => {
-          console.log('Image upload was unsuccessful' + err);
+          
         });
   }
 

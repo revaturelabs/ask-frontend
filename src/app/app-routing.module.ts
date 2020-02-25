@@ -5,7 +5,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { AskMeAnythingPageComponent } from './ama/ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
 import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
 import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
-import { ProfileUserComponent } from './users/profile-user/profile-user.component';
+import { ProfileUserComponent } from './profile/profile-user/profile-user.component';
 
 
 const routes: Routes = [
