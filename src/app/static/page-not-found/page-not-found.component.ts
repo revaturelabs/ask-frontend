@@ -14,10 +14,7 @@ export class PageNotFoundComponent implements OnInit {
     private authService : AuthService,
   ) { }
 
-  goBack = () => console.log(this.returnString);
-
   ngOnInit() {
-    console.log(this.authService.isLoggedIn);
     this.returnString = this.authService.getQueryParams();
   }
 

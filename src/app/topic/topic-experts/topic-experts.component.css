@@ -1,9 +1,15 @@
-.topic-experts__names {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+#topic-expert-list {  
+  border-top: 1px solid #474c55;  
 }
 
-.container {
-  padding: 0;
+#topic-expert-list-item {
+  list-style: none;
+  border: 1px solid #474c55;
+  border-top: unset;
+  padding: .5em 0; 
 }
+
+#topic-expert-list-item:hover {
+  background-color: rgba(120,120,120, .16);
+}
+

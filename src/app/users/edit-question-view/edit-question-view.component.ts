@@ -29,7 +29,6 @@ import { Tag } from 'src/app/models/Tag';
 })
 export class EditQuestionViewComponent implements OnInit {
   @Input() question: Question;
-  //STIFF
 
   visible = true;
   selectable = true;
@@ -182,10 +181,8 @@ export class EditQuestionViewComponent implements OnInit {
     formData.append('image', this.selectedFile, this.selectedFile.name);
     this.questionService.uploadQuestionImage(questionId, formData)
       .subscribe(response => {
-        console.log('Image successfully uploaded with the question');
       },
         (err) => {
-          console.log('Image upload was unsuccessful' + err);
         });
   }
 
@@ -199,15 +196,6 @@ export class EditQuestionViewComponent implements OnInit {
     setTimeout(() =>
       this.cleanMarkdown = true);
   }
-
-
-
-
-
-
-
-
-  //STIFF 
 
   ngOnInit() {
     for (let tag of this.question.associatedTags) {
