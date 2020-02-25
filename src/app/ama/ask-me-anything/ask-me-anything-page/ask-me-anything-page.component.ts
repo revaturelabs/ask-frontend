@@ -7,6 +7,8 @@ import * as SockJS from 'sockjs-client';
 import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit, EventEmitter } from '@angular/core';
 import { reduce } from 'rxjs/operators';
 import { connect } from 'net';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -28,12 +30,14 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   public closed: boolean;
 
   private serverUrl = environment.url + 'socket'
-  isLoaded: boolean = false;
-  isCustomSocketOpened = false;
   private stompClient;
   private form: FormGroup;
   private userForm: FormGroup;
   messages: ChatMessage[] = [];
+  userName: string = "User";
+  isLoaded: boolean = false;
+  isCustomSocketOpened = false;
+  isAmaActive = false;
 
   expertDisplayName : string = 'EXPERT NAME';
   topicDisplayName : string = 'TOPIC NAME';
@@ -42,17 +46,18 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   newMessage : string = '';
 
 
-  constructor() { }
+  constructor(public authservice: AuthService, public userService: UserService) { }
 
   ngOnInit() {
-    this.initializeWebSocketConnection();
-    this.openSocket();
-    this.closed = false;
-
-  }
+      this.userService.getUserById(this.authservice.account.id).subscribe(data => this.userName = data.username);
+      this.initializeWebSocketConnection();
+      this.openSocket();
+      this.closed = false;
+    }
 
   openChatBox() {
     this.closed = false;
+
   }
 
   closeChatBox(){
@@ -104,7 +109,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
       event.preventDefault();
   }
     if(text){
-      let message: ChatMessage = { body: text, name: "Jordan", time: new Date()};
+      let message: ChatMessage = { body: text, name: this.userName, time: new Date()};
       this.stompClient.send("/socket-subscriber/send/message", {}, JSON.stringify(message));
       //temporary post line, send to server here
       // this.messages.push(new ChatMessage('Mr. Bean', text, new Date()));
@@ -118,6 +123,20 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewChecked(){
     this.messageBox.scrollToBottom();
+  }
+
+  getNextAMA(){
+
+  }
+
+  waitForAma(){
+    while(!this.isAmaActive){
+      console.log("ama is not active");
+      
+    }
+    this.userService.getUserById(this.authservice.account.id).subscribe(data => this.userName = data.username);
+      this.initializeWebSocketConnection();
+      this.openSocket();
   }
 
 }
