@@ -5,7 +5,7 @@
 <div class="msg-count"> 
   total responses: {{selectedQuestion.responses.length}}
 </div>
-
+<div class="responseContainer">
 <div class="highlighted-response-component">
   <app-highlighted-response *ngIf="highlightedResponse$ | async as hr" [highlightedResponse]="hr"></app-highlighted-response>
 </div>
@@ -14,3 +14,4 @@
   <app-response (highlighted)="refreshQuestion()" [response]="response" [highlightable]="userOwnsQuestion"></app-response>
 </div>
 <app-enter-response (newResponse)="refreshQuestion()" *ngIf="this.authService.account.expert && responseMode" [question]="selectedQuestion"></app-enter-response>
+</div>
