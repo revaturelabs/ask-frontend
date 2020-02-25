@@ -7,22 +7,26 @@
       <button class="btn btn-primary" (click)="updateProfile()" *ngIf="inEditMode">Save</button>
     </li>
   </ul>
-  <div class="row">
-    <div class="centered">
-      <h2 *ngIf="isAssociate()">Associate</h2>
-      <h2 *ngIf="isExpert()">Expert</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <h2 *ngIf="isAssociate()">ASSOCIATE |
+        <span class="profile-name">{{user.username}}</span>
+      </h2>
+      <h2 *ngIf="isExpert()">EXPERT |
+        <span class="profile-name">{{user.username}}</span>
+      </h2>
     </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-md-3 profile-frame">
       <img class="profilePic" src={{pictureToBeDisplayed}}>
-      <div class="centered">
-        <input type="file" accept="image/*" (change)="onFileChange($event)" *ngIf=inEditMode>
+      <div *ngIf=inEditMode>
+        <input type="file" accept="image/*" (change)="onFileChange($event)">
+        <button class="btn save-image" (click)="onUpload()">Save Image</button>
       </div>
-      <button class="btn save-image" (click)="onUpload()" *ngIf=inEditMode>Save Image</button>
     </div>
-    <div class="col-md-7 profile-frame profile-content">
-      <form [formGroup]="profileForm">
+    <div class="col-md-7 profile-frame">
+      <form [formGroup]="profileForm" class="profile-content">
         <div class="form-group">
           <label for="profileInputUsername" class="utext">Username: </label>
           <span class="utext" *ngIf=!inEditMode> {{user.username}}</span>
@@ -42,12 +46,13 @@
       </form>
     </div>
   </div>
-  <div class="container skills">
-    <div class="row">
-      <div class="col-md-11">
+  <div class="row justify-content-center skills ">
+    <div class="col-md-10 profile-frame">
+      <div class="col-md-10">
         <mat-chip-list>
-          <h2 *ngIf="isAssociate()">Interests</h2>
+          <h2 *ngIf="isAssociate()">INTERESTS: </h2>
           <h2 *ngIf="isExpert()">Skills</h2>
+          <h6 id="no-interest" *ngIf="!user.expertTags[0]">No Interests Found (yet)</h6>
           <div *ngFor="let tag of user.expertTags">
             <mat-chip class="chip">
               {{ tag.name }}
