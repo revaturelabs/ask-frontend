@@ -58,6 +58,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     if(!this.isSocketEstablished){
       this.initializeWebSocketConnection();
       this.openSocket();
+      this.isSocketEstablished = true;
     }
     this.closed = false;
   }
