@@ -1,7 +1,7 @@
 <mat-card class="response-card" (mouseenter)="hoverToggle = !hoverToggle" (mouseleave)="hoverToggle = !hoverToggle">
   <div id="responseCard_{{response.id}}" (window:resize)="resizedPage()">
     <mat-card-header [id]="'r='+response.id">
-      <mat-card-subtitle>{{ responderName }},
+      <mat-card-subtitle><span (click)="redirectToUserPage()" class="name">{{ responderName }},</span>
         {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
