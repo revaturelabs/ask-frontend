@@ -8,24 +8,26 @@ import { TopicQuestionsComponent } from './topic-questions/topic-questions.compo
 import { TopicExpertsComponent } from './topic-experts/topic-experts.component';
 import { TopicPageComponent } from './choose-topic-page/topic-page.component';
 import { TopicRoutingModule } from "./topic-routing.module";
+import { AmaModule } from "../ama/ama.module";
 
 @NgModule({
   declarations: [
     SpecificTagInfoComponent,
     TopicQuestionsComponent,
     TopicExpertsComponent,
-    TopicPageComponent
+    TopicPageComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    TopicRoutingModule
+    TopicRoutingModule,
+    AmaModule,
   ],
   exports: [
     SpecificTagInfoComponent,
     TopicQuestionsComponent,
     TopicExpertsComponent,
-    TopicPageComponent
+    TopicPageComponent,
   ]
 })
 export class TopicModule { }

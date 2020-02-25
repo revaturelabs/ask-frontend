@@ -1,8 +1,9 @@
 
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { Tag } from 'src/app/models/Tag';
 import { TagService } from 'src/app/services/tags.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class SpecificTagInfoComponent implements OnInit {
 
   constructor(
     private tagService: TagService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
