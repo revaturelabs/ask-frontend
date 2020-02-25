@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
       hasBackdrop: false,
       backdropClass: 'dark-backdrop',
       panelClass: 'tm-file-preview-dialog-panel',
-      scrollStrategy: this.overlay.scrollStrategies.block(),
+      scrollStrategy: this.overlay.scrollStrategies.noop(),
       width: '300px', //Please don't change this.With will make a gap on right-side of the screen.
       positionStrategy,
     });
