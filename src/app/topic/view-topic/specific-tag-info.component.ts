@@ -17,7 +17,8 @@ export class SpecificTagInfoComponent implements OnInit {
 
   constructor(
     private tagService: TagService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public authService: AuthService,
   ) { }
 
   ngOnInit() {
