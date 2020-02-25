@@ -38,6 +38,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   isLoaded: boolean = false;
   isCustomSocketOpened = false;
   isAmaActive = false;
+  isSocketEstablished = false;
 
   expertDisplayName : string = 'EXPERT NAME';
   topicDisplayName : string = 'TOPIC NAME';
@@ -50,14 +51,16 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
       this.userService.getUserById(this.authservice.account.id).subscribe(data => this.userName = data.username);
-      this.initializeWebSocketConnection();
-      this.openSocket();
-      this.closed = false;
+      this.closed = true;
     }
 
   openChatBox() {
+    if(!this.isSocketEstablished){
+      this.initializeWebSocketConnection();
+      this.openSocket();
+      this.isSocketEstablished = true;
+    }
     this.closed = false;
-
   }
 
   closeChatBox(){
@@ -134,11 +137,6 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   waitForAma(){
     while(!this.isAmaActive){
       console.log("ama is not active");
-      
     }
-    this.userService.getUserById(this.authservice.account.id).subscribe(data => this.userName = data.username);
-      this.initializeWebSocketConnection();
-      this.openSocket();
   }
-
 }

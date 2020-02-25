@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, Optional } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -19,6 +19,10 @@ import { Router } from '@angular/router';
 import { Markdownoptions } from 'src/app/models/markdownoptions';
 import { Question } from 'src/app/models/Question';
 import { QuestionService } from 'src/app/services/question.service';
+// Modals
+import { ModalService } from '../../services/modal.service';
+import { MatDialogRef } from '@angular/material/dialog';
+
 
 /**
  * @title Ask Question
@@ -73,6 +77,7 @@ export class AskQuestionComponent implements OnInit {
     private authService: AuthService,
     private questionService: QuestionService,
     private fb: FormBuilder,
+    @Optional() private dialogRef: MatDialogRef<ModalService>,
   ) {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
@@ -170,6 +175,10 @@ export class AskQuestionComponent implements OnInit {
       this.clearForm();
       // custom snackbar message
       this._snackBar.open('Your question is submitted!', 'OK!', { duration: 3000 });
+      // closes Modal view. Expression only passes if opened via dialog
+      if (this.dialogRef !== null) {
+        this.dialogRef.close();
+      }
     },
     failed => {
       this._snackBar.open('Your question failed to submit!', 'OK', { duration: 3000 });

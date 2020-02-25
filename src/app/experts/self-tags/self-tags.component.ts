@@ -1,9 +1,11 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Optional } from '@angular/core';
 import { Tag } from '../../models/Tag';
 import { TagService } from 'src/app/services/tags.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MatSnackBar} from '@angular/material/snack-bar';
-
+// Modals
+import { ModalService } from 'src/app/services/modal.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 /**
  * @author Zach Marshello, Adam Shipe, Nick Brinson
@@ -37,6 +39,7 @@ export class SelfTagsComponent implements OnInit {
     private tagService: TagService,
     private authService: AuthService,
     private snackBar: MatSnackBar,
+    @Optional() private dialogRef: MatDialogRef<ModalService>,
   ) {}
 
   // Check and uncheck tags use toggle to add and remove tags from list of expert associated tags to be updated
@@ -59,6 +62,10 @@ export class SelfTagsComponent implements OnInit {
       )
       .subscribe();
     this.snackBar.open(`Tags Updated`, `OK`, { duration: 2000 });
+    // closes Modal view. Expression only passes if opened via dialog
+    if (this.dialogRef !== null) {
+      this.dialogRef.close();
+    }
   }
 
   // For initialization, currentExpert associated tags are prechecked in list of tags
