@@ -65,6 +65,8 @@ export class ProfileComponent implements OnInit {
 
     if (this.user.profilePic === '') {
       this.user.profilePic = this.defaultPic;
+    }else{
+      this.user.profilePic = "https://ask-an-expert.s3.amazonaws.com/" + this.user.profilePic;
     }
     this.getTags();
   }
