@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { ResponseListComponent } from './response-list/response-list.component';
+
 import { QuestionModule } from '../question/question.module';
 import { SharedModule } from '../shared/shared.module';
 import { UsersModule } from '../users/users.module';
 import { ExpertsModule } from '../experts/experts.module';
-
-
+import { ProfileRoutingModule } from "./profile-routing.module";
 
 @NgModule({
   declarations: [ProfileComponent, ProfileUserComponent, ResponseListComponent],
@@ -18,7 +18,8 @@ import { ExpertsModule } from '../experts/experts.module';
     QuestionModule,
     UsersModule,
     ExpertsModule,
-    SharedModule
+    SharedModule,
+    ProfileRoutingModule
   ],
   exports: [
     ProfileComponent, 
