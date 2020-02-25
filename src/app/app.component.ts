@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
   overlayRef: OverlayRef;
   askMeAnythingPortal: ComponentPortal<AskMeAnythingPageComponent>;
 
-  constructor(private overlay: Overlay, private authService: AuthService, private route: Router,
+  constructor(private overlay: Overlay, public authService: AuthService, private route: Router,
       private modalService: ModalService) {
     this.showChat = false;
     this.askMeAnythingPortal = new ComponentPortal(AskMeAnythingPageComponent);

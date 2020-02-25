@@ -54,6 +54,17 @@ mat-chip {
   box-shadow: inset 0 0 1px 4px #ffd13b;
 }
 
+.name{
+  color: #405272;
+}
+
+.name:hover{
+  color: #405272;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+
+}
 .expandBackground {
   margin-bottom : 2px;
 }

@@ -9,12 +9,11 @@ import { ExpertsModule } from "../app/experts/experts.module";
 import { UsersModule } from "../app/users/users.module";
 import { TopicModule } from './topic/topic.module';
 import { AmaModule } from "./ama/ama.module";
-
-import { AuthService } from './services/auth/auth.service';
-
-import { AuthGuard } from './services/auth/auth.guard';
-
 import { AppComponent } from './app.component';
+import { AuthGuard } from './services/auth/auth.guard';
+import { ProfileUserComponent } from './users/profile-user/profile-user.component';
+import { ProfileComponent } from './users/profile/profile.component';
+import { ResponseListComponent } from './users/response-list/response-list.component';
 import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 import { LoginPageComponent } from './static/login-page/login-page.component';
 import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
@@ -26,7 +25,10 @@ import { EditQuestionViewComponent } from './users/edit-question-view/edit-quest
     LoginPageComponent,
     PageNotFoundComponent,
     EditQuestionRouteComponent,
-    EditQuestionViewComponent
+    EditQuestionViewComponent,
+    ProfileUserComponent,
+    ProfileComponent,
+    ResponseListComponent
   ],
   imports: [
     SharedModule,
