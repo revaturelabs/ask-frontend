@@ -7,6 +7,8 @@ import { MaterialImportModule } from '../../material-import/material-import.modu
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientModule } from '@angular/common/http'
+import { OverlayModule } from '@angular/cdk/overlay';
+import { AngularDraggableModule } from 'angular2-draggable';
 
 import { FooterComponent } from './footer/footer.component';
 
@@ -19,6 +21,8 @@ import { SkilltagPipe } from './skilltag.pipe';
   ],
   imports: [
     CommonModule,
+    OverlayModule,
+    AngularDraggableModule,
     MaterialImportModule,
     NgbModule,
     MarkdownModule,
@@ -26,6 +30,8 @@ import { SkilltagPipe } from './skilltag.pipe';
   ],
   exports:[
     ReactiveFormsModule,
+    OverlayModule,
+    AngularDraggableModule,
     FormsModule,
     BrowserAnimationsModule,
     LMarkdownEditorModule,

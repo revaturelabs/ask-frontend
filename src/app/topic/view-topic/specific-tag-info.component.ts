@@ -13,20 +13,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class SpecificTagInfoComponent implements OnInit {
 
-  
-  tag: Tag = {name:'', id:0};  
+  tag: Tag = { name: '', id: 0 };
 
   constructor(
-    private tagService : TagService,
-    private route : ActivatedRoute,
-    public authService: AuthService,
+    private tagService: TagService,
+    private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     let id =+ this.route.snapshot.paramMap.get('id');
-    this.tagService.getTagById(id).subscribe((data)=>{
+    console.log(id);
+    this.tagService.getTagById(id).subscribe((data) => {
       this.tag = data;
     });
-    }
+  }
 
 }
