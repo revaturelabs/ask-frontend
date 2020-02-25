@@ -30,7 +30,8 @@ import { AngularDraggableModule } from 'angular2-draggable';
     ScheduleAmasessionComponent,
     AmaScheduleComponent,
     AmaEventComponent,
-    NavbarComponent
+    NavbarComponent,
+ 
   ],
   imports: [
     SharedModule,
@@ -42,11 +43,14 @@ import { AngularDraggableModule } from 'angular2-draggable';
     MarkdownModule.forRoot(),
     OverlayModule,
     AngularDraggableModule,
+
+  
   ],
-  providers: [AuthGuard, ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [    
-    AskMeAnythingPageComponent
+    AskMeAnythingPageComponent,
+   
   ]
 })
 export class AppModule {}

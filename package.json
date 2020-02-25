@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
+    "@nebular/theme": "^4.6.0",
     "@ng-bootstrap/ng-bootstrap": "^5.2.2",
     "angular-material-protractor": "^3.2.0",
     "angular-resizable-element": "^3.3.0",

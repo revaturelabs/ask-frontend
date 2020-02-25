@@ -10,6 +10,7 @@ import { FilteredQuestionListComponent } from './question/filtered-question-list
 import { QuestionRouteComponent } from './question/question-route/question-route.component';
 import { AskMeAnythingPageComponent } from './ask-me-anything/ask-me-anything-page/ask-me-anything-page.component';
 
+
 const routes: Routes = [
   { path: '', component: LoginPageComponent  },
   { path: 'ask', component: AskQuestionComponent, canActivate: [AuthGuard]  },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]  },
   { path: 'questions', component: FilteredQuestionListComponent, canActivate: [AuthGuard] },
   { path: 'chat', component: AskMeAnythingPageComponent },
+
   { path: 'question/:id', component: QuestionRouteComponent, canActivate: [AuthGuard]},
 ];
 

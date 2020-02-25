@@ -6,6 +6,9 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit, EventEmitter } from '@angular/core';
 import { reduce } from 'rxjs/operators';
+import { connect } from 'net';
+
+
 
 @Component({
   selector: 'app-ask-me-anything-page',
@@ -98,10 +101,9 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeChat(){
-    console.log('PLACEHOLDER CLOSE, YES');
-   
-  
+  closeChat(event: any){
+
+
   }
 
   ngAfterViewChecked(){

@@ -3,8 +3,7 @@
         <button mat-button routerLink="/ask" *ngIf="!this.authService.account.expert">Ask Questions</button>
         <button mat-button routerLink="/questions">All Questions</button>
         <button mat-button routerLink="/settings" *ngIf="this.authService.account.expert">Settings</button>
-
-        <button mat-button routerLink="/chat">Chat now</button>
+        <button mat-button routerLink="/chat">Chat Now</button>
         <button mat-button (click)="onLogout()">Logout</button>
     </mat-toolbar-row>
 </mat-toolbar>
