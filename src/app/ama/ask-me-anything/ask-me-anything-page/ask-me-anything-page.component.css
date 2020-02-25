@@ -17,6 +17,10 @@ textarea {
     margin-top: 5px;
 }
 
+#send:disabled {
+    background-color: grey;
+}
+
 #input-container {
     max-width : 100%;
     flex-direction: row;
@@ -52,3 +56,4 @@ textarea {
 .above {
     z-index: 5000;
 }
+

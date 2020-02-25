@@ -40,6 +40,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   isAmaActive = false;
   isSocketEstablished = false;
 
+
   expertDisplayName : string = 'EXPERT NAME';
   topicDisplayName : string = 'TOPIC NAME';
 
@@ -121,7 +122,6 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   closeChat(event: any){
 
-
   }
 
   ngAfterViewChecked(){
@@ -129,14 +129,5 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
       this.messageBox.scrollToBottom();
     }
   }
-
-  getNextAMA(){
-
-  }
-
-  waitForAma(){
-    while(!this.isAmaActive){
-      console.log("ama is not active");
-    }
-  }
+  
 }

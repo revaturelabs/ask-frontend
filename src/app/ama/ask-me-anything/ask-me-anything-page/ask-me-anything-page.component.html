@@ -13,9 +13,10 @@
             <app-message-box #messageBox [messages]="messages"></app-message-box>
             <div id="input-container">
                 <textarea #inputBox type="text" placeholder="Send Message"
-                    (keydown.enter)="inputText(inputBox.value, $event); inputBox.value = ''"></textarea>
+                    (keydown.enter)="inputText(inputBox.value, $event); inputBox.value = ''">
+                </textarea>
                 <button id="send" class="btn-light"
-                    (click)="inputText(inputBox.value, $event); inputBox.value = ''">SEND</button>
+                    (click)="inputText(inputBox.value, $event); inputBox.value = ''" [disabled]=!isAmaActive>SEND</button>
             </div>
         </div>
     </div>
