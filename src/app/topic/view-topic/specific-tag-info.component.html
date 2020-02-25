@@ -1,13 +1,13 @@
 <div class="container topic-container">
-  <header class="col-md-12 topic-tagname-header">
-    <h3>Topic: {{tag.name}}</h3>
-  </header>
-
-  <div class="col-md-6 topic-tagname-expertname">
+  <div class="row">
+    <header class="col-md-12" id="topic-tagname-header">
+      <h1>{{tag.name}}</h1>
+    </header>
+  <div class="col-md-5" id="topic-tagname-experts">
     <app-topic-experts></app-topic-experts>
-  </div>
-
-  <div class="col-md-6 topic-tagname-questions">
+  </div>  
+  <div class="col-md-1"></div>
+  <div class="col-md-6" id="topic-tagname-questions">
     <app-topic-questions></app-topic-questions>
   </div>
 
@@ -15,3 +15,4 @@
 
   <app-ama-schedule [inputTag]="tag"></app-ama-schedule>
 </div>
+</div> 

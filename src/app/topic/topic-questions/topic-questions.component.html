@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>Questions</h2>
-  <ul class="topic-question-list">
-    <li class="topic-question-list-item" *ngFor="let question of questionsTagArr" (click)="goToQuestion(question.id)">{{question.head}}</li>
-  </ul>
+  <h1>Questions</h1>
+  <div id="topic-question-list">
+    <li id="topic-question-list-item" *ngFor="let question of questionsTagArr" (click)="goToQuestion(question.id)">{{question.head}}</li>
+  </div>
 </div>

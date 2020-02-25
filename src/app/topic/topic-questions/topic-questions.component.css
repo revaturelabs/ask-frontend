@@ -1,14 +1,15 @@
-.topic-question-list {
-  margin-top: 2em;
-  padding-left: 0;
-}
-.topic-question-list-item {
-  list-style: none;
-  border-top: 1px solid rgba(120,120,120,.08);
-  border-bottom: 1px solid rgba(120,120,120,.08);
-  padding: 1em 0 1em;
+#topic-question-list {  
+  border-top: 1px solid #474c55;
 }
 
-.topic-question-list-item:hover {
+#topic-question-list-item {
+  list-style: none;  
+  border: 1px solid #474c55;
+  border-top: unset;
+  padding: .5em 0; 
+}
+
+#topic-question-list-item:hover {
   background-color: rgba(120,120,120, .16);
+  cursor: pointer;
 }

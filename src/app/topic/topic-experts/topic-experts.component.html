@@ -1,7 +1,6 @@
 <div class="container">
-    <h1>Expert</h1>
-    <div *ngFor="let topicExpertName of expertNames">
-        {{ topicExpertName.username }}
-    </div>
+  <h1>Expert</h1>
+  <div id="topic-expert-list">
+    <li id="topic-expert-list-item" *ngFor="let topicExpertName of expertNames">{{topicExpertName.username}}</li>
+  </div>
 </div>
-
