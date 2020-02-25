@@ -23,26 +23,25 @@
     <div class="col-md-8">
       <form [formGroup]="profileForm">
         <div class="form-group">
-          <label for="profileInputUsername">Username: </label>
-          <span> {{user.username}}</span>
+          <label for="profileInputUsername" class="utext">Username: </label>
+          <span class="utext"> {{user.username}}</span>
           <input type="username" formControlName="username" id="profileInputUsername" placeholder="New Username"
             *ngIf=inEditMode>
         </div>
         <div class="form-group">
-          <label for="profileInputEmail">Email: </label>
-          <span> {{user.email}}</span>
+          <label for="profileInputEmail" class="utext">Email: </label>
+          <span class="utext"> {{user.email}}</span>
           <input type="email" formControlName="email" id="profileInputEmail" placeholder="New Email" *ngIf=inEditMode>
         </div>
         <div class="form-group" class="txtArea">
           <label for="profileInputBio"></label>
-          <div> {{user.bio}}</div>
-          <br><br>
-          <textarea rows="10" cols="100" formControlName="bio" placeholder="Bio" *ngIf=inEditMode></textarea>
+          <div class="utext"> {{user.bio}}</div>
+          <textarea rows="8" cols="80" formControlName="bio" placeholder="New Bio" *ngIf=inEditMode></textarea>
         </div>
       </form>
     </div>
   </div>
-  <div class="container">
+  <div class="container skills">
     <div class="row">
       <div class="col-md-11">
         <mat-chip-list>
@@ -61,44 +60,55 @@
             (click)="openLg(content)">Add</button>
         </div>
       </div>
+    </div>
+  </div>
 
-      <ng-template #content let-modal>
-        <div *ngIf="this.inInterestMode">
-          <button id="close-tab" type="button" class="close float-sm-right" aria-label="Close"
-            (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <mat-card>
-            <mat-card-header>
-              <mat-card-title>
-                <h3 class="modal-title">What Are Your 
-                  <span *ngIf="isAssociate()" >Interests?</span>
-                  <span *ngIf="isExpert()" >Skills?</span>
-                </h3>
-              </mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <div *ngFor="let tag of tags">
-                <section class="skill-tag">
-                  <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}"
-                    [checked]="tag.checked" matTooltip="{{ tag.name }}" [matTooltipPosition]="'above'"
-                    [matTooltipShowDelay]="300" [matTooltipHideDelay]="100">
-                    {{ tag.name }}</mat-checkbox>
-                </section>
-              </div>
-              <div class="button-div">
-                <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
-                  Update Tags
-                </button>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div *ngIf="isExpert()">
-          <app-tag-creation (tagCreated)="addNewTag()"></app-tag-creation>
-        </div>
-      </ng-template>
-      <div class="row">
-        <span *ngIf="isExpert()" id="Qspan">Questions Responded To:</span>
-        <app-response-list [userId]="user.id" *ngIf="isExpert()"></app-response-list>
-      </div>
+  <ng-template #content let-modal>
+    <div *ngIf="this.inInterestMode">
+      <button id="close-tab" type="button" class="close float-sm-right" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h3 class="modal-title">What Are Your
+              <span *ngIf="isAssociate()">Interests?</span>
+              <span *ngIf="isExpert()">Skills?</span>
+            </h3>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngFor="let tag of tags">
+            <section class="skill-tag">
+              <mat-checkbox color="warn" (change)="toggle($event, tag.name)" id="{{ tag.name }}" [checked]="tag.checked"
+                matTooltip="{{ tag.name }}" [matTooltipPosition]="'above'" [matTooltipShowDelay]="300"
+                [matTooltipHideDelay]="100">
+                {{ tag.name }}</mat-checkbox>
+            </section>
+          </div>
+          <div class="button-div">
+            <button id="saveButton" mat-raised-button (click)="onSubmit(); modal.dismiss('Cross click')">
+              Update Tags
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div *ngIf="isExpert()">
+      <app-tag-creation (tagCreated)="addNewTag()"></app-tag-creation>
+    </div>
+  </ng-template>
+</div>
+<div class="container" id="qs">
+  <div class="row">
+    <div class="col-md-12">
+      <div *ngIf="isExpert()" id="Qspan">Questions Responded To:</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-response-list [userId]="user.id" *ngIf="isExpert()"></app-response-list>
+    </div>
+  </div>
+</div>

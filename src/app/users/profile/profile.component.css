@@ -51,16 +51,28 @@
   }
   
   #Qspan{
-    margin-top: 25px;
-    font-size: large;
+    margin-top: 10px;
+    font-size: x-large;
     font-weight: bold;
-    margin: auto;
   }
 
-  
+  #qs{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 5%;
+    margin-left: 25%;
+  }
+
+  .skills{
+    margin-top: 30px;
+  }
+
+  .utext{
+    font-size: larger;
+  }
 
   .centered {
-    margin-left: 19%;
+    margin-left: 19.5%;
     /*text-indent: 12.5em;
     padding-bottom: 3em;*/
   }
