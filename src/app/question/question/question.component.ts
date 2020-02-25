@@ -39,7 +39,6 @@ export class QuestionComponent implements OnInit {
         }
       },
       err => {
-        console.log('Invalid');
       },
     );
   }

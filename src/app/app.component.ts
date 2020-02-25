@@ -25,11 +25,9 @@ export class AppComponent implements OnInit{
     this.route.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
                   if(ev.urlAfterRedirects === '/' || ev.urlAfterRedirects === '/chat') {
-                    console.log("equals");
                     self.removeChatBox();
                   }
                   else {
-                    console.log("Not equals");
                     this.showChat = true;
                     self.openChatBox();
                   }

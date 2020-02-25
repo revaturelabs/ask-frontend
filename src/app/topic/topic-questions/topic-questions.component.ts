@@ -23,7 +23,6 @@ export class TopicQuestionsComponent implements OnInit {
     
     this.questionService.getQuestions().subscribe(response=> {
       this.questions=response;
-      console.log(this.questions);
       this.questions.map( question => {
         let idTag =+ this.route.snapshot.paramMap.get('id');       
         for ( let tagKeyValPair of question.associatedTags ) {         
@@ -40,7 +39,6 @@ export class TopicQuestionsComponent implements OnInit {
   }
 
   goToQuestion = questionId => {
-    console.log(questionId);
     this.router.navigate([`/question/${questionId}`]);
   } 
 }

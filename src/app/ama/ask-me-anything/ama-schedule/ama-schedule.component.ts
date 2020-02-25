@@ -37,11 +37,9 @@ export class AmaScheduleComponent implements OnInit {
         this.schedule = data;
       }
     })
-    console.log(this.schedule)
   }
 
   openSession(event){
-    console.log(event);
   }
 
   formatDate(date : Date){

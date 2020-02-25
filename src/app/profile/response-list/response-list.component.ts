@@ -20,7 +20,6 @@ export class ResponseListComponent implements OnInit {
 
   ngOnInit() {
     this.questionService.getExpertQuestionsByResponse(this.userId).subscribe((data)=>{
-      console.log(data);
       this.questionList = data;
     });
   }

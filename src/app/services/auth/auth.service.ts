@@ -59,7 +59,6 @@ ngOnInit() {
   }
 
   getQueryParams() {
-    console.log(this.route);
     return this.queryParams;
   }
 }
