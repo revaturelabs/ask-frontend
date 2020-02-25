@@ -1,25 +1,22 @@
-.topic-tagname-header {
-  padding-bottom: .5em;
+.container{
+  background-color: #f5f5f5;
 }
 
-.topic-tagname-header h3 {
-  font-size: 2em;
+#topic-tagname-header,
+#topic-tagname-experts, 
+#topic-tagname-questions {
+  background-color: #ffffff;
+  padding: 1em;
   text-align: center;
-  font-weight: 100;
+  border: .5px solid #474c55;
+  border-radius: 5px;
+  display: block;
+  box-shadow: 1px 1px grey;
 }
 
-.topic-tagname-header,
-.topic-tagname-questions {
-  padding-top: 2em;
+#topic-tagname-header{
+  margin-bottom: 5px;
+  margin-top: 2px;
 }
 
-.topic-tagname-expertname {
-  padding-top: 4em;
-  margin-bottom: 2em;
-}
 
-.topic-tagname-header h3,
-.topic-tagname-expertname h1,
-.topic-tagname-questions h2 {
-  font-weight: 100;
-}
