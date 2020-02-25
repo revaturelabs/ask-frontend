@@ -1,0 +1,5 @@
+<div id="schedule-container">
+    <div *ngFor="let event of schedule">
+        <app-ama-event [event] = event (click)="openSession($event)"></app-ama-event>
+    </div>
+</div>

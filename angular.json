@@ -27,6 +27,8 @@
                             "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
                             "./node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "./node_modules/font-awesome/css/font-awesome.min.css",
+                            "./node_modules/angular2-draggable/css/resizable.min.css",
+                            "./node_modules/@nebular/theme/styles/prebuilt/default.css",
                             "./node_modules/ngx-markdown-editor/assets/highlight.js/agate.min.css",
                             "src/styles.css"
                         ],

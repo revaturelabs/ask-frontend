@@ -1,0 +1,49 @@
+.question-card {
+  width: 80%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+mat-card-content {
+  margin: 0 16px;
+}
+mat-card-subtitle{
+  margin: 10px 0 12px 0;
+}
+p{
+  line-height: 1.5;
+}
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+/* Small Images */
+.false{
+  max-width: 60%;
+  max-height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1.5px solid #868e93;
+  border-radius: 2px;
+}
+/* Full Size Images */
+.true{
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1.5px solid #868e93;
+  border-radius: 2px;
+}
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: #55698d;
+}
+
+.button-tag {
+  font-size: 8px;
+}

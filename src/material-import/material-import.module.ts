@@ -17,6 +17,8 @@ import {
   MatSnackBarModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
@@ -45,6 +47,8 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     FormsModule,
@@ -66,6 +70,8 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 })
 export class MaterialImportModule {}

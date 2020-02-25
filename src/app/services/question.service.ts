@@ -48,7 +48,7 @@ export class QuestionService {
   updateQuestion(question: Question): Observable<Question> {
     const url = `${environment.questionsUri}/${question.id}`;
 
-    return this.http.put<Question>(url, question, httpOptions);
+    return this.http.patch<Question>(url, question, httpOptions);
   }
 
   highlightResponse(question: Question): Observable<Question> {

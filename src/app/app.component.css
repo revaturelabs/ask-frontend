@@ -1,3 +1,10 @@
 .content {
   min-height: calc(100vh - 65px);
 }
+mat-toolbar {
+  background-color: #474C55;
+  color: whitesmoke;
+}
+button:hover{
+  background-color:#ffffff15;
+}
