@@ -34,10 +34,10 @@ import { EditQuestionViewComponent } from './users/edit-question-view/edit-quest
     UsersModule,
     TopicModule,
     BrowserModule,
-    AppRoutingModule,
     QuestionModule,
     AmaModule,
     MarkdownModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [AuthGuard, ],
   bootstrap: [AppComponent],

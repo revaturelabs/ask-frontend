@@ -10,8 +10,7 @@ const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'chat', component: AskMeAnythingPageComponent },
   { path: 'edit-question/:id', component: EditQuestionRouteComponent, canActivate: [AuthGuard]},
-  { path: '404', component: PageNotFoundComponent },
-  { path: '**', redirectTo: '/404' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
