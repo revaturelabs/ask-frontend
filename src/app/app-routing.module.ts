@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'chat', component: AskMeAnythingPageComponent },
   { path: 'edit-question/:id', component: EditQuestionRouteComponent, canActivate: [AuthGuard]},
+  { path: 'profile/:id', component: ProfileUserComponent, canActivate: [AuthGuard]},
   { path: '**', component: PageNotFoundComponent },
-  { path: 'profile/:id', component: ProfileUserComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
