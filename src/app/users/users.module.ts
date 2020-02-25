@@ -13,8 +13,7 @@ import { EditQuestionRouteComponent } from './edit-question-route/edit-question-
   imports: [
     CommonModule,
     SharedModule,
-    UsersRoutingModule,
-    
+    UsersRoutingModule,  
   ],
   exports:[
     AskQuestionComponent,
