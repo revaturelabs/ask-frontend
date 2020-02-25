@@ -40,8 +40,8 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   isAmaActive = false;
   isSocketEstablished = false;
 
-  expertDisplayName : string = 'EXPERT NAME';
-  topicDisplayName : string = 'TOPIC NAME';
+  expertDisplayName : string = 'Zach Marshello';
+  topicDisplayName : string = 'Java';
 
   @Input()
   newMessage : string = '';
