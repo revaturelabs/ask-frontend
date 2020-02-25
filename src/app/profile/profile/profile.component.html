@@ -51,7 +51,7 @@
       <div class="col-md-10">
         <mat-chip-list>
           <h2 *ngIf="isAssociate()">INTERESTS: </h2>
-          <h2 *ngIf="isExpert()">Skills</h2>
+          <h2 *ngIf="isExpert()">SKILLS: </h2>
           <h6 id="no-interest" *ngIf="!user.expertTags[0]">No Interests Found (yet)</h6>
           <div *ngFor="let tag of user.expertTags">
             <mat-chip class="chip">
