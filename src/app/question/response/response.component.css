@@ -71,3 +71,14 @@ div.mat-chips{
 .need-space {
   margin: 2px;
 }
+.name{
+  color: #405272;
+}
+
+.name:hover{
+  color: #405272;
+  text-decoration: underline;
+  font-weight: 500;
+  cursor: pointer;
+
+}

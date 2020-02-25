@@ -19,6 +19,7 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
   @Output() highlighted = new EventEmitter<boolean>();
 
   responderName: string;
+  responderId: number;
   expertTags = [];
   hoverToggle = false;
 
@@ -34,7 +35,8 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     private _snackBar: MatSnackBar,
     private responseService: ResponseService,
     private cdRef: ChangeDetectorRef,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   highlightResponse(selectedResponse) {
@@ -63,12 +65,17 @@ export class ResponseComponent implements OnInit, AfterViewChecked {
     this.hiddenExpertTags = tagsList;
   }
 
+  redirectToUserPage(){
+    this.router.navigate([`profile/${this.responderId}`]);
+  }
+
   ngOnInit() {
     let id =+ this.route.snapshot.paramMap.get('id');
     //this.responseService.getResponseById(id).subscribe((result)=>{
     this.responseService.getResponseById(this.response.id).subscribe(result => {
       this.responderName = result.user.username;
       this.expertTags = result.user.expertTags;
+      this.responderId = result.user.id;
     });
     this.hiddenExpertTags = [];
   }
