@@ -2,7 +2,6 @@
 
   <mat-toolbar id="navbar" *ngIf="this.getLoggedIn()">
     <mat-toolbar-row>
-        <button mat-button routerLink="/user/ask" *ngIf="!this.getUserType()">Ask Questions</button>
         <button mat-button (click)="openAsk()" *ngIf="!this.getUserType()">Ask Question Modal</button>
         <button mat-button routerLink="/question/all">All Questions</button>
         <button mat-button routerLink="/topic/all">Topics</button>
