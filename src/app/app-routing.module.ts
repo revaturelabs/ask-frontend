@@ -6,6 +6,7 @@ import { AskMeAnythingPageComponent } from './ama/ask-me-anything/ask-me-anythin
 import { EditQuestionRouteComponent } from './users/edit-question-route/edit-question-route.component';
 import { PageNotFoundComponent } from './static/page-not-found/page-not-found.component';
 
+
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'chat', component: AskMeAnythingPageComponent },

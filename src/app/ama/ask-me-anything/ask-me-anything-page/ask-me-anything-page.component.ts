@@ -6,6 +6,9 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Component, OnInit, Output, ViewChild, ElementRef, Input, AfterViewInit, EventEmitter } from '@angular/core';
 import { reduce } from 'rxjs/operators';
+import { connect } from 'net';
+
+
 
 @Component({
   selector: 'app-ask-me-anything-page',
@@ -21,6 +24,8 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('messageBox',{static : false}) messageBox : MessageBoxComponent;
   @ViewChild('inputBox', {static : false}) inputBox : ElementRef;
+
+  public closed: boolean;
 
   private serverUrl = environment.url + 'socket'
   isLoaded: boolean = false;
@@ -42,9 +47,17 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.initializeWebSocketConnection();
     this.openSocket();
+    this.closed = false;
 
   }
 
+  openChatBox() {
+    this.closed = false;
+  }
+
+  closeChatBox(){
+    this.closed = true;
+  }
 
   openSocket() {
     if (this.isLoaded) {
@@ -98,10 +111,9 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  closeChat(){
-    console.log('PLACEHOLDER CLOSE, YES');
-   
-  
+  closeChat(event: any){
+
+
   }
 
   ngAfterViewChecked(){

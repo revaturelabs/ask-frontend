@@ -39,7 +39,7 @@ import { EditQuestionViewComponent } from './users/edit-question-view/edit-quest
     MarkdownModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [AuthGuard, ],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [    
     
