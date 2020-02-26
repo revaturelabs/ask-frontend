@@ -15,17 +15,16 @@ export class TopicExpertsComponent implements OnInit {
   experts: User[];
   expertNames: User[] = [];
   topicId: number;
-  constructor(private userService:UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private usersService:UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     let id =+ this.route.snapshot.paramMap.get('id');
     if (this.route.snapshot.paramMap.get('id') !== null) {
       this.topicId = + this.route.snapshot.paramMap.get('id');
     }
-    this.userService.getAllUsers(id,0).subscribe(expert => {
+    this.usersService.getExperts().subscribe(expert => {
       this.experts = expert;
       this.filterExperts();
-      console.log(expert);
     });    
   }
 
@@ -34,15 +33,13 @@ export class TopicExpertsComponent implements OnInit {
       let expert = this.experts[i];
       for (let a = 0; a < expert.expertTags.length; a++) {
         if (expert.expertTags[a].id === this.topicId) {
+          if(expert.expert){
           this.expertNames.push(this.experts[i]);
+          }
         }
       }
     }
   }
-
-  // redirectToUserPage(){
-  //   this.router.navigate([`profile/${this.responderId}`]);
-  // }
   
   showExpertProfile = expertId =>{    
     // alert("This method will route you to the Expert's Profile");
