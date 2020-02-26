@@ -1,6 +1,17 @@
 .btn{
-    margin: 4px;
-    margin-right: unset;
-    margin-left: unset;
-    background-color: #474c55;
+    margin-top: 4px;
+    border: .5px solid #474c55;
+    border-radius: 5px;
+    display: block;
+    box-shadow: 1px 1px grey;
+    background-color: #ffffff;
 }
+
+#topicbtn:hover{
+    background-color: grey;
+}
+
+.row{
+    margin-top: 2px;
+}
+
