@@ -33,15 +33,13 @@ export class TopicExpertsComponent implements OnInit {
       let expert = this.experts[i];
       for (let a = 0; a < expert.expertTags.length; a++) {
         if (expert.expertTags[a].id === this.topicId) {
+          if(expert.expert){
           this.expertNames.push(this.experts[i]);
+          }
         }
       }
     }
   }
-
-  // redirectToUserPage(){
-  //   this.router.navigate([`profile/${this.responderId}`]);
-  // }
   
   showExpertProfile = expertId =>{    
     // alert("This method will route you to the Expert's Profile");
