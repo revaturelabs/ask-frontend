@@ -1,3 +1,33 @@
+* {
+  border: 1px solid red;
+}
+
+.app-topic-page--wrapper,
+.app-topic-page--button-container {
+  display: flex;
+}
+
+.app-topic-page--wrapper {
+  justify-content: center;
+  height: 80vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.app-topic-page--button-container {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app-topic-page--button-container button {
+  flex: 0 0 33.33333%;
+  margin: 0 .25em;
+}
+
 .btn{
     margin: 4px;
     margin-right: unset;
