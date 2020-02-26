@@ -1,5 +1,5 @@
 <mat-card class="response-card" (mouseenter)="hoverToggle = !hoverToggle" (mouseleave)="hoverToggle = !hoverToggle">
-  <div id="responseCard_{{response.id}}" (window:resize)="resizedPage()">
+  <div id="responseCard_{{response.id}}" class="responseCard--container" (window:resize)="resizedPage()">
     <mat-card-header [id]="'r='+response.id">
       <mat-card-subtitle><span (click)="redirectToUserPage()" class="name">{{ responderName }},</span>
         {{ response.creationDate | date: 'shortDate' }}</mat-card-subtitle>

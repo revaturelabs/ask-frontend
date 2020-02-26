@@ -1,10 +1,9 @@
-div {
-    margin-top: 1%;
-}
-
 .question-component {
-    height: 25%;
-    /* margin-bottom: 5%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 85vh;
 }
 
 .submit-response {
@@ -13,8 +12,7 @@ div {
   justify-content: center;
   align-items: center;
   width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   border: 2px solid #474C55;
   padding: 2%;
   text-align: center;
@@ -22,7 +20,7 @@ div {
 }
 
 .submit-response > * {
-  width: 100%;
+  border: 1px solid red;
 }
 
 .mat-button {
@@ -32,16 +30,18 @@ div {
 
 .msg-count {  /* AG class */
   font-size: 0.9em;
-  margin: 0 0 0 10%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  width: 91%;
-  color: lightslategrey; 
+  color: lightslategrey;
+}
+
+.msg-count p {
+  margin: 2em 0 1em;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+  font-weight: 100;
 }
 
 .responseContainer {
-  border-left : 1px solid grey;
-  margin-left : 10%;
-  margin-top : 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

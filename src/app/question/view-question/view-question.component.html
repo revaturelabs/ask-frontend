@@ -1,17 +1,19 @@
 <div class="question-component">
   <app-question [question]="selectedQuestion"></app-question>
-</div>
 
-<div class="msg-count"> 
-  total responses: {{selectedQuestion.responses.length}}
-</div>
-<div class="responseContainer">
-<div class="highlighted-response-component">
-  <app-highlighted-response *ngIf="highlightedResponse$ | async as hr" [highlightedResponse]="hr"></app-highlighted-response>
-</div>
+  <div class="msg-count">
+    <p>total responses: {{selectedQuestion.responses.length}}</p>
+  </div>
 
-<div class="response-component" *ngFor="let response of selectedQuestion.responses">
-  <app-response (highlighted)="refreshQuestion()" [response]="response" [highlightable]="userOwnsQuestion"></app-response>
-</div>
-<app-enter-response (newResponse)="refreshQuestion()" *ngIf="this.authService.account.expert && responseMode" [question]="selectedQuestion"></app-enter-response>
+  <div class="responseContainer">
+    <div class="highlighted-response-component">
+      <app-highlighted-response *ngIf="highlightedResponse$ | async as hr" [highlightedResponse]="hr"></app-highlighted-response>
+    </div>
+    
+    <div class="response-component" *ngFor="let response of selectedQuestion.responses">
+      <app-response (highlighted)="refreshQuestion()" [response]="response" [highlightable]="userOwnsQuestion"></app-response>
+    </div>
+
+    <app-enter-response (newResponse)="refreshQuestion()" *ngIf="this.authService.account.expert && responseMode" [question]="selectedQuestion"></app-enter-response>
+  </div>
 </div>
