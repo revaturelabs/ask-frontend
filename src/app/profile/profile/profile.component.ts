@@ -109,9 +109,12 @@ export class ProfileComponent implements OnInit {
         this.user.bio = this.profileForm.value['bio'];
       }
 
+      let tempQuestions = this.user.questions;
+      this.user.questions = null;
       this.userService.updateUser(this.user,this.user.id).subscribe(resp => {
         this.tagsUpdated.emit(true);
         this.ngOnInit();
+        this.user.questions = tempQuestions;
       });
 
     }
