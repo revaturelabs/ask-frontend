@@ -1,7 +1,3 @@
-* {
-  border: 1px solid red;
-}
-
 .app-topic-page--wrapper,
 .app-topic-page--button-container {
   display: flex;
