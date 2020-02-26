@@ -29,7 +29,7 @@ export class AskMeAnythingPageComponent implements OnInit, AfterViewInit {
 
   public closed: boolean;
 
-  private serverUrl = environment.url + 'socket'
+  private serverUrl = environment.url + '/socket'
   private stompClient;
   private form: FormGroup;
   private userForm: FormGroup;
